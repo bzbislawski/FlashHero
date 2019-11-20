@@ -14,11 +14,11 @@ struct Homepage: View {
     var body: some View {
         NavigationView {
             VStack {
-                Text("Welcome back!")
+                Text("Welcome back!")
                 NavigationLink(destination: Game()) {
                     Text("Play")
                 }
-                NavigationLink(destination: ContentView(), isActive: self.$showingChildView) { EmptyView()
+                NavigationLink(destination: FormView(), isActive: self.$showingChildView) { EmptyView()
                 }
                 .frame(width: 0, height: 0)
                 .disabled(true)

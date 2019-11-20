@@ -1,5 +1,5 @@
 //
-//  ContentView.swift
+//  FormView.swift
 //  dict
 //
 //  Created by Bartosz Zbislawski on 20/11/2019.
@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct FormView: View {
     @State private var word: String = ""
     @State private var translation: String = ""
     
@@ -31,8 +31,8 @@ struct ContentView: View {
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
+struct FormView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        FormView()
     }
 }
