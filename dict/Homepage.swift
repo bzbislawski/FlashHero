@@ -13,17 +13,14 @@ struct Homepage: View {
         NavigationView {
             VStack {
                 Text("Welcome back!")
-                NavigationLink(destination: ContentView()) {
+                NavigationLink(destination: Game()) {
                     Text("Play")
                 }
             }.navigationBarItems(trailing:
                 HStack {
-                    Button(action: {
-                        print("About tapped!")
-                    }) {
+                    NavigationLink(destination: ContentView()) {
                         Image(systemName: "plus.circle.fill")
                     }
-
                 }
             )
         }
