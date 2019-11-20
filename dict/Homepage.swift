@@ -9,6 +9,8 @@
 import SwiftUI
 
 struct Homepage: View {
+    @State private var showingChildView = false
+    
     var body: some View {
         NavigationView {
             VStack {
@@ -16,12 +18,13 @@ struct Homepage: View {
                 NavigationLink(destination: Game()) {
                     Text("Play")
                 }
-            }.navigationBarItems(trailing:
-                HStack {
-                    NavigationLink(destination: ContentView()) {
-                        Image(systemName: "plus.circle.fill")
-                    }
+                NavigationLink(destination: ContentView(), isActive: self.$showingChildView) { EmptyView()
                 }
+                .frame(width: 0, height: 0)
+                .disabled(true)
+            }
+            .navigationBarItems(
+                trailing: Button(action:{ self.showingChildView = true }) { Image(systemName: "plus.circle.fill") }
             )
         }
     }
