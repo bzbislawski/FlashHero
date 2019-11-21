@@ -34,8 +34,8 @@
 		D64D510E2385CA920075AD3D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D64D51142385CCA30075AD3D /* Homepage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Homepage.swift; sourceTree = "<group>"; };
 		D64D51162385E0BF0075AD3D /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
-		D66668202386D1EC008421AB /* FlashCard+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FlashCard+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
-		D66668212386D1EC008421AB /* FlashCard+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FlashCard+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
+		D66668202386D1EC008421AB /* FlashCard+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "FlashCard+CoreDataClass.swift"; path = "dict/Entity/FlashCard+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
+		D66668212386D1EC008421AB /* FlashCard+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "FlashCard+CoreDataProperties.swift"; path = "dict/Entity/FlashCard+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
 		D66668242386D311008421AB /* Dictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dictionary.swift; sourceTree = "<group>"; };
 		D66668262386FDE2008421AB /* FormEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormEditView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -70,15 +70,9 @@
 		D64D50FC2385CA900075AD3D /* dict */ = {
 			isa = PBXGroup;
 			children = (
-				D66668202386D1EC008421AB /* FlashCard+CoreDataClass.swift */,
-				D66668212386D1EC008421AB /* FlashCard+CoreDataProperties.swift */,
-				D64D50FD2385CA900075AD3D /* AppDelegate.swift */,
-				D64D50FF2385CA900075AD3D /* SceneDelegate.swift */,
-				D64D51142385CCA30075AD3D /* Homepage.swift */,
-				D66668242386D311008421AB /* Dictionary.swift */,
-				D64D51042385CA900075AD3D /* FormAddView.swift */,
-				D66668262386FDE2008421AB /* FormEditView.swift */,
-				D64D51162385E0BF0075AD3D /* Game.swift */,
+				D6666179238701F300D1CB8A /* Entity */,
+				D6666178238701D800D1CB8A /* AppDelegate */,
+				D6666177238701A000D1CB8A /* View */,
 				D64D51062385CA920075AD3D /* Assets.xcassets */,
 				D64D510B2385CA920075AD3D /* LaunchScreen.storyboard */,
 				D64D510E2385CA920075AD3D /* Info.plist */,
@@ -94,6 +88,36 @@
 				D64D51092385CA920075AD3D /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		D6666177238701A000D1CB8A /* View */ = {
+			isa = PBXGroup;
+			children = (
+				D64D51142385CCA30075AD3D /* Homepage.swift */,
+				D66668242386D311008421AB /* Dictionary.swift */,
+				D64D51042385CA900075AD3D /* FormAddView.swift */,
+				D66668262386FDE2008421AB /* FormEditView.swift */,
+				D64D51162385E0BF0075AD3D /* Game.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		D6666178238701D800D1CB8A /* AppDelegate */ = {
+			isa = PBXGroup;
+			children = (
+				D64D50FD2385CA900075AD3D /* AppDelegate.swift */,
+				D64D50FF2385CA900075AD3D /* SceneDelegate.swift */,
+			);
+			path = AppDelegate;
+			sourceTree = "<group>";
+		};
+		D6666179238701F300D1CB8A /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				D66668202386D1EC008421AB /* FlashCard+CoreDataClass.swift */,
+				D66668212386D1EC008421AB /* FlashCard+CoreDataProperties.swift */,
+			);
+			path = Entity;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
