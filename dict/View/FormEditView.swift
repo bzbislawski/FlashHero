@@ -10,6 +10,9 @@ import SwiftUI
 
 struct FormEditView: View {
     @ObservedObject var flashCard: FlashCard
+    @Environment(\.managedObjectContext) var moc
+    @Environment(\.presentationMode) var presentationMode
+
     
     var body: some View {
         Form {
@@ -19,7 +22,11 @@ struct FormEditView: View {
             }
         
             Section(header: Text("Manage")) {
-                Button(action:{ print("Delete") }) {
+                Button(action:{
+                    self.moc.delete(self.flashCard)
+                    try? self.moc.save()
+                    self.presentationMode.wrappedValue.dismiss()
+                }) {
                     Text("Delete").foregroundColor(Color.red)
                 }
             }.navigationBarTitle("Edit word")

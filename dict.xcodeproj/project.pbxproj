@@ -16,6 +16,7 @@
 		D64D510D2385CA920075AD3D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D64D510B2385CA920075AD3D /* LaunchScreen.storyboard */; };
 		D64D51152385CCA30075AD3D /* Homepage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64D51142385CCA30075AD3D /* Homepage.swift */; };
 		D64D51172385E0BF0075AD3D /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64D51162385E0BF0075AD3D /* Game.swift */; };
+		D666617B2387107700D1CB8A /* FlashCardRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = D666617A2387107700D1CB8A /* FlashCardRepository.swift */; };
 		D66668222386D1EC008421AB /* FlashCard+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = D66668202386D1EC008421AB /* FlashCard+CoreDataClass.swift */; };
 		D66668232386D1EC008421AB /* FlashCard+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D66668212386D1EC008421AB /* FlashCard+CoreDataProperties.swift */; };
 		D66668252386D311008421AB /* Dictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = D66668242386D311008421AB /* Dictionary.swift */; };
@@ -34,6 +35,7 @@
 		D64D510E2385CA920075AD3D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D64D51142385CCA30075AD3D /* Homepage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Homepage.swift; sourceTree = "<group>"; };
 		D64D51162385E0BF0075AD3D /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
+		D666617A2387107700D1CB8A /* FlashCardRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashCardRepository.swift; sourceTree = "<group>"; };
 		D66668202386D1EC008421AB /* FlashCard+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "FlashCard+CoreDataClass.swift"; path = "dict/Entity/FlashCard+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
 		D66668212386D1EC008421AB /* FlashCard+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "FlashCard+CoreDataProperties.swift"; path = "dict/Entity/FlashCard+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
 		D66668242386D311008421AB /* Dictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dictionary.swift; sourceTree = "<group>"; };
@@ -70,6 +72,7 @@
 		D64D50FC2385CA900075AD3D /* dict */ = {
 			isa = PBXGroup;
 			children = (
+				D666617A2387107700D1CB8A /* FlashCardRepository.swift */,
 				D6666179238701F300D1CB8A /* Entity */,
 				D6666178238701D800D1CB8A /* AppDelegate */,
 				D6666177238701A000D1CB8A /* View */,
@@ -196,6 +199,7 @@
 				D64D51172385E0BF0075AD3D /* Game.swift in Sources */,
 				D66668222386D1EC008421AB /* FlashCard+CoreDataClass.swift in Sources */,
 				D64D50FE2385CA900075AD3D /* AppDelegate.swift in Sources */,
+				D666617B2387107700D1CB8A /* FlashCardRepository.swift in Sources */,
 				D66668252386D311008421AB /* Dictionary.swift in Sources */,
 				D66668272386FDE2008421AB /* FormEditView.swift in Sources */,
 				D64D51052385CA900075AD3D /* FormAddView.swift in Sources */,

@@ -36,12 +36,8 @@ struct FormAddView: View {
                     newFlashCard.word = self.word
                     newFlashCard.translation = self.translation
                     
-                    do {
-                        try self.moc.save()
-                        self.presentationMode.wrappedValue.dismiss()
-                    } catch {
-                        fatalError("Whoops! \(error.localizedDescription)")
-                    }
+                    try? self.moc.save()
+                    self.presentationMode.wrappedValue.dismiss()
                 }
             }
         )
