@@ -13,11 +13,15 @@ struct FormEditView: View {
     
     var body: some View {
         Form {
-            Section(header: Text("Word")) {
-                TextField(" Enter some word here...", text: $flashCard.word)
+            Section(header: Text("Word & translation")) {
+                TextField("Word", text: $flashCard.word)
+                TextField("Translation", text: $flashCard.translation)
             }
-            Section(header: Text("Translation")) {
-                TextField(" Enter the translation here...", text: $flashCard.translation)
+        
+            Section(header: Text("Manage")) {
+                Button(action:{ print("Delete") }) {
+                    Text("Delete").foregroundColor(Color.red)
+                }
             }.navigationBarTitle("Edit word")
         }
     }
