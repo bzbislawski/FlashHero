@@ -10,6 +10,7 @@ import SwiftUI
 
 struct FormView: View {
     @Environment(\.managedObjectContext) var moc
+    @Environment(\.presentationMode) var presentationMode
     @State private var word: String = ""
     @State private var translation: String = ""
     
@@ -28,6 +29,7 @@ struct FormView: View {
             HStack {
                 Button("Done") {
                     if (self.word == "") {
+                        self.presentationMode.wrappedValue.dismiss()
                         return
                     }
                     let newFlashCard = FlashCard(context: self.moc)
@@ -36,6 +38,7 @@ struct FormView: View {
                     
                     do {
                         try self.moc.save()
+                        self.presentationMode.wrappedValue.dismiss()
                     } catch {
                         fatalError("Whoops! \(error.localizedDescription)")
                     }
