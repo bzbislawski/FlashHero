@@ -10,7 +10,7 @@
 		D64D50FE2385CA900075AD3D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64D50FD2385CA900075AD3D /* AppDelegate.swift */; };
 		D64D51002385CA900075AD3D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64D50FF2385CA900075AD3D /* SceneDelegate.swift */; };
 		D64D51032385CA900075AD3D /* dict.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D64D51012385CA900075AD3D /* dict.xcdatamodeld */; };
-		D64D51052385CA900075AD3D /* FormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64D51042385CA900075AD3D /* FormView.swift */; };
+		D64D51052385CA900075AD3D /* FormAddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64D51042385CA900075AD3D /* FormAddView.swift */; };
 		D64D51072385CA920075AD3D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D64D51062385CA920075AD3D /* Assets.xcassets */; };
 		D64D510A2385CA920075AD3D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D64D51092385CA920075AD3D /* Preview Assets.xcassets */; };
 		D64D510D2385CA920075AD3D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D64D510B2385CA920075AD3D /* LaunchScreen.storyboard */; };
@@ -19,6 +19,7 @@
 		D66668222386D1EC008421AB /* FlashCard+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = D66668202386D1EC008421AB /* FlashCard+CoreDataClass.swift */; };
 		D66668232386D1EC008421AB /* FlashCard+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D66668212386D1EC008421AB /* FlashCard+CoreDataProperties.swift */; };
 		D66668252386D311008421AB /* Dictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = D66668242386D311008421AB /* Dictionary.swift */; };
+		D66668272386FDE2008421AB /* FormEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D66668262386FDE2008421AB /* FormEditView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,7 +27,7 @@
 		D64D50FD2385CA900075AD3D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D64D50FF2385CA900075AD3D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		D64D51022385CA900075AD3D /* dict.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = dict.xcdatamodel; sourceTree = "<group>"; };
-		D64D51042385CA900075AD3D /* FormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormView.swift; sourceTree = "<group>"; };
+		D64D51042385CA900075AD3D /* FormAddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormAddView.swift; sourceTree = "<group>"; };
 		D64D51062385CA920075AD3D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D64D51092385CA920075AD3D /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		D64D510C2385CA920075AD3D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -36,6 +37,7 @@
 		D66668202386D1EC008421AB /* FlashCard+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FlashCard+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
 		D66668212386D1EC008421AB /* FlashCard+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FlashCard+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
 		D66668242386D311008421AB /* Dictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dictionary.swift; sourceTree = "<group>"; };
+		D66668262386FDE2008421AB /* FormEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormEditView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,7 +76,8 @@
 				D64D50FF2385CA900075AD3D /* SceneDelegate.swift */,
 				D64D51142385CCA30075AD3D /* Homepage.swift */,
 				D66668242386D311008421AB /* Dictionary.swift */,
-				D64D51042385CA900075AD3D /* FormView.swift */,
+				D64D51042385CA900075AD3D /* FormAddView.swift */,
+				D66668262386FDE2008421AB /* FormEditView.swift */,
 				D64D51162385E0BF0075AD3D /* Game.swift */,
 				D64D51062385CA920075AD3D /* Assets.xcassets */,
 				D64D510B2385CA920075AD3D /* LaunchScreen.storyboard */,
@@ -170,7 +173,8 @@
 				D66668222386D1EC008421AB /* FlashCard+CoreDataClass.swift in Sources */,
 				D64D50FE2385CA900075AD3D /* AppDelegate.swift in Sources */,
 				D66668252386D311008421AB /* Dictionary.swift in Sources */,
-				D64D51052385CA900075AD3D /* FormView.swift in Sources */,
+				D66668272386FDE2008421AB /* FormEditView.swift in Sources */,
+				D64D51052385CA900075AD3D /* FormAddView.swift in Sources */,
 				D64D51152385CCA30075AD3D /* Homepage.swift in Sources */,
 				D64D51002385CA900075AD3D /* SceneDelegate.swift in Sources */,
 			);

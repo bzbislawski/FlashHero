@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct FormView: View {
+struct FormAddView: View {
     @Environment(\.managedObjectContext) var moc
     @Environment(\.presentationMode) var presentationMode
     @State private var word: String = ""
@@ -50,6 +50,6 @@ struct FormView: View {
 
 struct FormView_Previews: PreviewProvider {
     static var previews: some View {
-        FormView()
+        FormAddView()
     }
 }
