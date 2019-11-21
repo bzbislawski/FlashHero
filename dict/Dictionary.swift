@@ -21,13 +21,12 @@ struct Dictionary: View {
         VStack {
             List {
                 ForEach(flashCards, id: \.word) { flashCard in
-//                    NavigationLink(destination: Text(flashCard.translation)) {
+                    NavigationLink(destination: FormView()) {
                         Text(flashCard.word)
-//                    }
+                    }
                 }.onDelete(perform: removeFlashCard)
             }
             .navigationBarTitle("Dictionary")
-            .navigationBarItems(leading: EditButton())
             NavigationLink(destination: FormView(), isActive: self.$showingFormView){ EmptyView()
             }
             .frame(width: 0, height: 0)
