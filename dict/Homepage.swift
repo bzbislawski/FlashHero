@@ -18,16 +18,15 @@ struct Homepage: View {
                 NavigationLink(destination: Game()) {
                     Text("Play")
                 }
-                NavigationLink(destination: FlashCardList()) {
-                    Text("List")
-                }
-                NavigationLink(destination: FormView(), isActive: self.$showingChildView) { EmptyView()
+                NavigationLink(destination: Dictionary(), isActive: self.$showingChildView) { EmptyView()
                 }
                 .frame(width: 0, height: 0)
                 .disabled(true)
             }
             .navigationBarItems(
-                trailing: Button(action:{ self.showingChildView = true }) { Image(systemName: "plus.circle.fill") }
+                trailing: Button(action:{ self.showingChildView = true }) {
+                    Text("Dictionary")
+                }
             )
         }
     }
