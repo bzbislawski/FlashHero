@@ -18,6 +18,9 @@ struct Homepage: View {
                 NavigationLink(destination: Game()) {
                     Text("Play")
                 }
+                NavigationLink(destination: FlashCardList()) {
+                    Text("List")
+                }
                 NavigationLink(destination: FormView(), isActive: self.$showingChildView) { EmptyView()
                 }
                 .frame(width: 0, height: 0)

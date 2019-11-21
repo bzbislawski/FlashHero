@@ -9,6 +9,7 @@
 import SwiftUI
 
 struct FormView: View {
+    @Environment(\.managedObjectContext) var moc
     @State private var word: String = ""
     @State private var translation: String = ""
     
@@ -25,7 +26,20 @@ struct FormView: View {
         .navigationBarTitle("Add word")
         .navigationBarItems(trailing:
             HStack {
-                Text("Save")
+                Button("Done") {
+                    if (self.word == "") {
+                        return
+                    }
+                    let newFlashCard = FlashCard(context: self.moc)
+                    newFlashCard.word = self.word
+                    newFlashCard.translation = self.translation
+                    
+                    do {
+                        try self.moc.save()
+                    } catch {
+                        fatalError("Whoops! \(error.localizedDescription)")
+                    }
+                }
             }
         )
     }
