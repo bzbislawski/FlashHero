@@ -13,6 +13,7 @@ struct Dictionary: View {
         NSSortDescriptor(keyPath: \FlashCard.word, ascending: true)
     ]) var flashCards: FetchedResults<FlashCard>
     
+    @Environment(\.managedObjectContext) var moc
     @State private var showingFormView = false
     
     var body: some View {
@@ -20,9 +21,13 @@ struct Dictionary: View {
         VStack {
             List {
                 ForEach(flashCards, id: \.word) { flashCard in
-                    Text(flashCard.word)
-                }
+//                    NavigationLink(destination: Text(flashCard.translation)) {
+                        Text(flashCard.word)
+//                    }
+                }.onDelete(perform: removeFlashCard)
             }
+            .navigationBarTitle("Dictionary")
+            .navigationBarItems(leading: EditButton())
             NavigationLink(destination: FormView(), isActive: self.$showingFormView){ EmptyView()
             }
             .frame(width: 0, height: 0)
@@ -33,6 +38,13 @@ struct Dictionary: View {
                 Image(systemName: "plus.circle.fill")
             }
         )
+    }
+    
+    func removeFlashCard(at offsets: IndexSet) {
+        for index in offsets {
+            let flashCard = flashCards[index]
+            moc.delete(flashCard)
+        }
     }
 }
 
