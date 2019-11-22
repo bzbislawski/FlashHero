@@ -12,26 +12,31 @@ struct Game: View {
     @Environment(\.colorScheme) var colorScheme: ColorScheme
     
     var body: some View {
-        VStack {
+        
+        GeometryReader { geometry in
             ZStack {
-                GeometryReader { geometry in
+                ZStack {
                     Image("rectangle")
                         .resizable()
                         .cornerRadius(10)
-                        .frame(width: geometry.size.width * 0.95, height: geometry.size.width / 1.5)
+                        .frame(width: 320, height: 220)
                         .overlay(RoundedRectangle(cornerRadius: 10).stroke(self.colorScheme == .light ? Color.white : Color.gray, lineWidth: 4))
                         .shadow(radius: 5)
-                }
-                VStack {
                     Text("haha")
-                    
+                }.offset(y: -30)
+                ZStack {
+                    Image("rectangle")
+                        .resizable()
+                        .cornerRadius(10)
+                        .frame(width: 340, height: 220)
+                        .overlay(RoundedRectangle(cornerRadius: 10).stroke(self.colorScheme == .light ? Color.white : Color.gray, lineWidth: 4))
+                        .shadow(radius: 5)
+                    Text("haha")
                 }
-            }//.offset(y: -150)
-//            Spacer()
-//            Button("Check") {
-//
-//            }
+            }
         }
+        
+        
     }
 }
 

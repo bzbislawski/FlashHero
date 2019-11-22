@@ -16,7 +16,7 @@ struct Homepage: View {
             VStack {
                 Text("Welcome back!")
                 NavigationLink(destination: Game()) {
-                    Text("Play")
+                    Text("Play").font(.title).fontWeight(.bold)
                 }
                 NavigationLink(destination: Dictionary(), isActive: self.$showingChildView) { EmptyView()
                 }
