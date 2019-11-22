@@ -22,7 +22,7 @@ struct FormEditView: View {
                 TextField("Word", text: $word).onAppear() {
                     self.word = self.flashCard.word
                 }
-                TextField("Translation", text: $flashCard.translation).onAppear() {
+                TextField("Translation", text: $translation).onAppear() {
                     self.translation = self.flashCard.translation
                 }
             }
@@ -52,11 +52,11 @@ struct FormEditView: View {
     }
 }
 
-//struct FormEditView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        let flashCard = FlashCard()
-//        flashCard.word = "word"
-//        flashCard.translation = "trans"
-//        return FormEditView(flashCard: flashCard)
-//    }
-//}
+struct FormEditView_Previews: PreviewProvider {
+    static var previews: some View {
+        let flashCard = FlashCard()
+        flashCard.word = "word"
+        flashCard.translation = "trans"
+        return FormEditView(flashCard: flashCard)
+    }
+}
