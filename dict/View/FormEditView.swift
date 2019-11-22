@@ -9,18 +9,24 @@
 import SwiftUI
 
 struct FormEditView: View {
-    @ObservedObject var flashCard: FlashCard
     @Environment(\.managedObjectContext) var moc
     @Environment(\.presentationMode) var presentationMode
-
+    @ObservedObject var flashCard: FlashCard
+    @State private var word: String = ""
+    @State private var translation: String = ""
+    
     
     var body: some View {
-        Form {
+        return Form {
             Section(header: Text("Word & translation")) {
-                TextField("Word", text: $flashCard.word)
-                TextField("Translation", text: $flashCard.translation)
+                TextField("Word", text: $word).onAppear() {
+                    self.word = self.flashCard.word
+                }
+                TextField("Translation", text: $flashCard.translation).onAppear() {
+                    self.translation = self.flashCard.translation
+                }
             }
-        
+            
             Section(header: Text("Manage")) {
                 Button(action:{
                     self.moc.delete(self.flashCard)
@@ -29,16 +35,28 @@ struct FormEditView: View {
                 }) {
                     Text("Delete").foregroundColor(Color.red)
                 }
-            }.navigationBarTitle("Edit word")
+            }
         }
+        .navigationBarTitle("Edit word")
+        .navigationBarItems(trailing:
+            HStack {
+                Button("Done") {
+                    self.flashCard.word = self.word
+                    self.flashCard.translation = self.translation
+                    try? self.moc.save()
+                    self.presentationMode.wrappedValue.dismiss()
+                }
+            }
+        )
+        
     }
 }
 
-struct FormEditView_Previews: PreviewProvider {
-    static var previews: some View {
-        let flashCard = FlashCard()
-        flashCard.word = "word"
-        flashCard.translation = "trans"
-        return FormEditView(flashCard: flashCard)
-    }
-}
+//struct FormEditView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        let flashCard = FlashCard()
+//        flashCard.word = "word"
+//        flashCard.translation = "trans"
+//        return FormEditView(flashCard: flashCard)
+//    }
+//}
