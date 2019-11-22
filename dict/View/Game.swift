@@ -22,7 +22,7 @@ struct Game: View {
                         .frame(width: 320, height: 220)
                         .overlay(RoundedRectangle(cornerRadius: 10).stroke(self.colorScheme == .light ? Color.white : Color.gray, lineWidth: 4))
                         .shadow(radius: 5)
-                    Text("haha")
+                    Text("Cat").bold().font(.title)
                 }.offset(y: -30)
                 ZStack {
                     Image("rectangle")
@@ -31,7 +31,7 @@ struct Game: View {
                         .frame(width: 340, height: 220)
                         .overlay(RoundedRectangle(cornerRadius: 10).stroke(self.colorScheme == .light ? Color.white : Color.gray, lineWidth: 4))
                         .shadow(radius: 5)
-                    Text("haha")
+                    Text("Dog").bold().font(.title)
                 }
             }
         }
