@@ -10,33 +10,21 @@ import SwiftUI
 
 struct Game: View {
     @Environment(\.colorScheme) var colorScheme: ColorScheme
+    @State var showAnswer = false
     
     var body: some View {
         
         GeometryReader { geometry in
             ZStack {
-                ZStack {
-                    Image("rectangle")
-                        .resizable()
-                        .cornerRadius(10)
-                        .frame(width: 320, height: 220)
-                        .overlay(RoundedRectangle(cornerRadius: 10).stroke(self.colorScheme == .light ? Color.white : Color.gray, lineWidth: 4))
-                        .shadow(radius: 5)
-                    Text("Cat").bold().font(.title)
-                }.offset(y: -30)
-                ZStack {
-                    Image("rectangle")
-                        .resizable()
-                        .cornerRadius(10)
-                        .frame(width: 340, height: 220)
-                        .overlay(RoundedRectangle(cornerRadius: 10).stroke(self.colorScheme == .light ? Color.white : Color.gray, lineWidth: 4))
-                        .shadow(radius: 5)
-                    Text("Dog").bold().font(.title)
+                FlashCardView(showAnswer: self.$showAnswer, word: "Kot", translation: "Answer").offset(y: -30).scaleEffect(0.95)
+                FlashCardView(showAnswer: self.$showAnswer, word: "Dog", translation: "Piesel")
+                    .rotation3DEffect(.degrees(self.showAnswer ? 180 : 0), axis: (x: 1, y: 0, z: 0))
+                    .onTapGesture {
+                        print(self.showAnswer)
                 }
+                .animation(.spring())
             }
         }
-        
-        
     }
 }
 
