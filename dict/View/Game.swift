@@ -11,6 +11,11 @@ import SwiftUI
 struct Game: View {
     @Environment(\.colorScheme) var colorScheme: ColorScheme
     @State var showAnswer = false
+    @State var dragState = CGSize.zero
+    
+    var animation: Animation {
+        Animation.interpolatingSpring(mass: 1, stiffness: 80, damping: 10, initialVelocity: 0)
+    }
     
     var body: some View {
         
@@ -18,11 +23,20 @@ struct Game: View {
             ZStack {
                 FlashCardView(showAnswer: self.$showAnswer, word: "Kot", translation: "Answer").offset(y: -30).scaleEffect(0.95)
                 FlashCardView(showAnswer: self.$showAnswer, word: "Dog", translation: "Piesel")
+                    .offset(x: self.dragState.width, y: self.dragState.height)
                     .rotation3DEffect(.degrees(self.showAnswer ? 180 : 0), axis: (x: 1, y: 0, z: 0))
                     .onTapGesture {
                         print(self.showAnswer)
+                        self.showAnswer.toggle()
                 }
-                .animation(.spring())
+                .animation(self.animation)
+                .gesture(DragGesture()
+                .onChanged { value in
+                    self.dragState = value.translation
+                }
+                .onEnded { value in
+                    self.dragState = CGSize.zero
+                })
             }
         }
     }
