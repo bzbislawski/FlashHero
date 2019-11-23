@@ -10,6 +10,7 @@ import SwiftUI
 
 struct FlashCardView: View {
     @Environment(\.colorScheme) var colorScheme: ColorScheme
+    @EnvironmentObject var gameStatus: GameStatus
     @Binding var showAnswer: Bool
     @State private var goAway = false
     @State private var currentPosition: CGSize = .zero
@@ -18,7 +19,7 @@ struct FlashCardView: View {
     var translation: String
     
     var animation: Animation {
-        Animation.interpolatingSpring(mass: 3, stiffness: 80, damping: 10, initialVelocity: 0)
+        Animation.interpolatingSpring(mass: 1, stiffness: 80, damping: 10, initialVelocity: 0)
     }
     
     func textView(text: String, isAnswer: Bool) -> some View {
@@ -68,12 +69,15 @@ struct FlashCardView: View {
                 if self.currentPosition.width >= 200 || self.currentPosition.width <= -200 {
                     self.goAway = true
                     self.currentPosition.width *= 8
+                    
                 }
             }
             .onEnded { value in
                 if (!self.goAway) {
                     self.currentPosition = CGSize.zero
                     self.newPosition = self.currentPosition
+                } else {
+                    self.gameStatus.answers += 1
                 }
             })
             
