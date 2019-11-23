@@ -26,19 +26,22 @@ struct FlashCardView: View {
             Text(self.word)
                 .bold()
                 .font(.title)
-                .opacity(self.showAnswer ? 0 : 1)
+//                .opacity(self.showAnswer ? 0 : 1)
             
             Text(self.translation)
+              
                 .bold()
                 .font(.title)
-                .opacity(showAnswer ? 1 : 0)
+//                .opacity(showAnswer ? 1 : 0)
                 .rotation3DEffect(Angle(degrees: 180), axis: (x: 1, y: 0, z: 0))
+//                .offset(x: 0, y: 60)
         }
     }
 }
 
-//struct FlashCardView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        FlashCardView(showAnswer: true, word: "Word", translation: "Answer")
-//    }
-//}
+struct FlashCardView_Previews: PreviewProvider {
+    @Binding var param: Bool
+    static var previews: some View {
+        Game()
+    }
+}
