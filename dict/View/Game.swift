@@ -17,8 +17,8 @@ struct Game: View {
         ZStack {
             FlashCardDeckView().offset(y: -100).scaleEffect(0.80)
             FlashCardDeckView().offset(y: -75).scaleEffect(0.85)
-            FlashCardDeckView().offset(y: -50).scaleEffect(0.90)
-            FlashCardDeckView().offset(y: -25).scaleEffect(0.95)
+            FlashCardView(showAnswer: self.$showAnswer, word: "Mietek", translation: "Piesel").offset(y: -50).scaleEffect(0.90)
+            FlashCardView(showAnswer: self.$showAnswer, word: "Mietek", translation: "Piesel").offset(y: -25).scaleEffect(0.95)
             FlashCardView(showAnswer: self.$showAnswer, word: "Mietek", translation: "Piesel")
         }
     }

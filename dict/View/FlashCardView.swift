@@ -11,6 +11,7 @@ import SwiftUI
 struct FlashCardView: View {
     @Environment(\.colorScheme) var colorScheme: ColorScheme
     @Binding var showAnswer: Bool
+    @State private var goAway = false
     @State private var currentPosition: CGSize = .zero
     @State private var newPosition: CGSize = .zero
     var word: String
@@ -57,18 +58,23 @@ struct FlashCardView: View {
                 .offset(x: self.currentPosition.width, y: self.currentPosition.height)
                 .rotation3DEffect(.degrees(self.showAnswer ? 180 : 0), axis: (x: 1, y: 0, z: 0))
                 .onTapGesture {
-                    print(self.showAnswer)
                     self.showAnswer.toggle()
             }
             .animation(self.animation)
             .gesture(DragGesture()
             .onChanged { value in
                 self.currentPosition = CGSize(width: value.translation.width + self.newPosition.width, height: self.showAnswer ? -1 * value.translation.height : value.translation.height + self.newPosition.height)
+//                print(self.currentPosition.width,  self.currentPosition.height)
+                if self.currentPosition.width >= 200 || self.currentPosition.width <= -200 {
+                    self.goAway = true
+                    self.currentPosition.width *= 8
+                }
             }
             .onEnded { value in
-                self.currentPosition = CGSize.zero
-                print(self.newPosition.width)
-                self.newPosition = self.currentPosition
+                if (!self.goAway) {
+                    self.currentPosition = CGSize.zero
+                    self.newPosition = self.currentPosition
+                }
             })
             
             self.textView(text: self.word, isAnswer: false)
