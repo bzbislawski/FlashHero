@@ -15,11 +15,11 @@ struct Game: View {
     
     var body: some View {
         ZStack {
-            FlashCardView(showAnswer: self.$showAnswer, word: "Mietek", translation: "Piesel").offset(y: -125).scaleEffect(0.75 + CGFloat(Double(self.gameStatus.answers) * 0.05)).animation(.spring())
-            FlashCardView(showAnswer: self.$showAnswer, word: "Mietek", translation: "Piesel").offset(y: -100).scaleEffect(0.80 + CGFloat(Double(self.gameStatus.answers) * 0.05)).animation(.spring())
-            FlashCardView(showAnswer: self.$showAnswer, word: "Mietek", translation: "Piesel").offset(y: -75).scaleEffect(0.85 + CGFloat(Double(self.gameStatus.answers) * 0.05)).animation(.spring())
-            FlashCardView(showAnswer: self.$showAnswer, word: "Mietek", translation: "Piesel").offset(y: -50).scaleEffect(0.90 + CGFloat(Double(self.gameStatus.answers) * 0.05)).animation(.spring())
-            FlashCardView(showAnswer: self.$showAnswer, word: "Mietek", translation: "Piesel").offset(y: -25).scaleEffect(0.95 + CGFloat(Double(self.gameStatus.answers) * 0.05)).animation(.spring())
+//            FlashCardView(showAnswer: self.$showAnswer, word: "Mietek", translation: "Piesel").offset(y: -125).scaleEffect(0.75 + CGFloat(Double(self.gameStatus.answers) * 0.05)).animation(.spring())
+//            FlashCardView(showAnswer: self.$showAnswer, word: "Mietek", translation: "Piesel").offset(y: -100).scaleEffect(0.80 + CGFloat(Double(self.gameStatus.answers) * 0.05)).animation(.spring())
+//            FlashCardView(showAnswer: self.$showAnswer, word: "Mietek", translation: "Piesel").offset(y: -75).scaleEffect(0.85 + CGFloat(Double(self.gameStatus.answers) * 0.05)).animation(.spring())
+//            FlashCardView(showAnswer: self.$showAnswer, word: "Mietek", translation: "Piesel").offset(y: -50).scaleEffect(0.90 + CGFloat(Double(self.gameStatus.answers) * 0.05)).animation(.spring())
+//            FlashCardView(showAnswer: self.$showAnswer, word: "Mietek", translation: "Piesel").offset(y: -25).scaleEffect(0.95 + CGFloat(Double(self.gameStatus.answers) * 0.05)).animation(.spring())
             FlashCardView(showAnswer: self.$showAnswer, word: "Mietek", translation: "Piesel")
         }
     }

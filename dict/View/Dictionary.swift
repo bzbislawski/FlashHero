@@ -22,7 +22,10 @@ struct Dictionary: View {
             List {
                 ForEach(flashCards, id: \.word) { flashCard in
                     NavigationLink(destination: FormEditView(flashCard: flashCard)) {
-                        Text(flashCard.word)
+                        VStack(alignment: .leading) {
+                            Text(flashCard.word).font(.headline)
+                            Text(flashCard.translation).font(.subheadline).foregroundColor(Color.gray)
+                        }
                     }
                 }.onDelete(perform: removeFlashCard)
             }

@@ -26,6 +26,8 @@ struct FlashCardView: View {
         Text(text)
             .bold()
             .font(.title)
+            .foregroundColor(Color.white)
+            .shadow(radius: 10)
             .rotation3DEffect(Angle(degrees: isAnswer ? 180 : 0), axis: (x: 1, y: 0, z: 0))
             .offset(x: self.currentPosition.width, y: self.currentPosition.height)
             .rotation3DEffect(.degrees(self.showAnswer ? 180 : 0), axis: (x: 1, y: 0, z: 0))
@@ -50,7 +52,7 @@ struct FlashCardView: View {
             self.textView(text: self.translation, isAnswer: true)
                 .zIndex(self.showAnswer ? 1 : 0)
             
-            Image("rectangle")
+            Image("rectangle_v2")
                 .resizable()
                 .cornerRadius(10)
                 .frame(width: 320, height: 220)
