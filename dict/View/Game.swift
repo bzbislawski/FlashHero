@@ -22,7 +22,7 @@ struct Game: View {
     }
     
     func scaleEffect(index: Int) -> CGFloat {
-        return CGFloat((1 - (0.05 * Double(flashCards.count - index - self.gameStatus.answers))))
+        return CGFloat(1 - (0.05 * Double(flashCards.count - index - self.gameStatus.answers)))
     }
     
     var body: some View {

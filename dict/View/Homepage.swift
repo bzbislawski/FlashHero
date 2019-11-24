@@ -9,12 +9,19 @@
 import SwiftUI
 
 struct Homepage: View {
-    @State private var showingChildView = false
+    @EnvironmentObject var gameStatus: GameStatus
+    @State private var showDictionary = false
+    @State private var startGame = false
     
     var body: some View {
         NavigationView {
             ZStack {
-                NavigationLink(destination: Game()) {
+                NavigationLink(destination: Game(), isActive: $startGame) { EmptyView() }
+                
+                Button(action: {
+                    self.gameStatus.answers = 0
+                    self.startGame = true
+                }) {
                     Text("Play")
                         .font(.title)
                         .fontWeight(.bold)
@@ -23,16 +30,15 @@ struct Homepage: View {
                         .background(Color.blue)
                         .cornerRadius(3100)
                         .shadow(radius: 20, x: 0, y: 20)
-                    
                 }
                 
-                NavigationLink(destination: Dictionary(), isActive: self.$showingChildView) { EmptyView()
+                NavigationLink(destination: Dictionary(), isActive: self.$showDictionary) { EmptyView()
                 }
                 .frame(width: 0, height: 0)
                 .disabled(true)
             }
             .navigationBarItems(
-                trailing: Button(action:{ self.showingChildView = true }) {
+                trailing: Button(action:{ self.showDictionary = true }) {
                     HStack {
                         Image(systemName: "book")
                         Text("Dictionary")
