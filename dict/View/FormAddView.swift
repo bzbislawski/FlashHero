@@ -38,7 +38,7 @@ struct FormAddView: View {
                     
                     try? self.moc.save()
                     self.presentationMode.wrappedValue.dismiss()
-                }
+                }.font(.system(size: 18))
             }
         )
     }

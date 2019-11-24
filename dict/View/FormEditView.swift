@@ -45,7 +45,7 @@ struct FormEditView: View {
                     self.flashCard.translation = self.translation
                     try? self.moc.save()
                     self.presentationMode.wrappedValue.dismiss()
-                }
+                }.font(.system(size: 18))
             }
         )
         
