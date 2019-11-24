@@ -13,11 +13,24 @@ struct Homepage: View {
     
     var body: some View {
         NavigationView {
-            VStack {
-                Text("Welcome back!")
-                NavigationLink(destination: Game()) {
-                    Text("Play").font(.title).fontWeight(.bold)
+            ZStack {
+                VStack() {
+                    Text("Welcome back!").padding(.top, 80)
+                    Spacer()
                 }
+                
+                NavigationLink(destination: Game()) {
+                    Text("Play")
+                        .font(.title)
+                        .fontWeight(.bold)
+                        .foregroundColor(Color.white)
+                        .frame(width:120, height: 65)
+                        .background(Color.blue)
+                        .cornerRadius(3100)
+                        .shadow(radius: 20, x: 0, y: 20)
+                    
+                }
+                
                 NavigationLink(destination: Dictionary(), isActive: self.$showingChildView) { EmptyView()
                 }
                 .frame(width: 0, height: 0)
