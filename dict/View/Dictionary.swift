@@ -38,6 +38,8 @@ struct Dictionary: View {
         .navigationBarItems(
             trailing: Button(action:{ self.showingFormView = true }) {
                 Image(systemName: "plus.circle.fill")
+                    .frame(width: 44, height: 44)
+                    .font(.system(size: 22, weight: .medium))
             }
         )
     }

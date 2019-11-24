@@ -39,6 +39,8 @@ struct Homepage: View {
             .navigationBarItems(
                 trailing: Button(action:{ self.showingChildView = true }) {
                     Text("Dictionary")
+                        .frame(minHeight: 44)
+                        .font(.system(size: 20))
                 }
             )
         }
