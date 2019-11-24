@@ -18,11 +18,11 @@ struct Game: View {
     ]) var flashCards: FetchedResults<FlashCard>
     
     func offset(index: Int) -> CGSize {
-        return CGSize.init(width: 0, height: -(flashCards.count - index) * 25)
+        return CGSize.init(width: 0, height: -(flashCards.count - index - self.gameStatus.answers) * 25)
     }
     
     func scaleEffect(index: Int) -> CGFloat {
-        return CGFloat((1 - (0.05 * Double(flashCards.count - index))))
+        return CGFloat((1 - (0.05 * Double(flashCards.count - index - self.gameStatus.answers))))
     }
     
     var body: some View {
