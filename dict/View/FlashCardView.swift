@@ -27,6 +27,7 @@ struct FlashCardView: View {
             .bold()
             .font(.title)
             .foregroundColor(Color.white)
+            .frame(maxWidth: 300)
             .shadow(radius: 10)
             .rotation3DEffect(Angle(degrees: isAnswer ? 180 : 0), axis: (x: 1, y: 0, z: 0))
             .offset(x: self.currentPosition.width, y: self.currentPosition.height)
