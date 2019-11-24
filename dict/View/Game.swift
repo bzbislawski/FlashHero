@@ -11,16 +11,28 @@ import SwiftUI
 struct Game: View {
     @Environment(\.colorScheme) var colorScheme: ColorScheme
     @State var showAnswer = false
-    @EnvironmentObject var gameStatus: GameStatus    
+    @EnvironmentObject var gameStatus: GameStatus
+    
+    @FetchRequest(entity: FlashCard.entity(), sortDescriptors: [
+        NSSortDescriptor(keyPath: \FlashCard.word, ascending: false)
+    ]) var flashCards: FetchedResults<FlashCard>
+    
+    func offset(index: Int) -> CGSize {
+        return CGSize.init(width: 0, height: -(flashCards.count - index) * 25)
+    }
+    
+    func scaleEffect(index: Int) -> CGFloat {
+        return CGFloat((1 - (0.05 * Double(flashCards.count - index))))
+    }
     
     var body: some View {
         ZStack {
-//            FlashCardView(showAnswer: self.$showAnswer, word: "Mietek", translation: "Piesel").offset(y: -125).scaleEffect(0.75 + CGFloat(Double(self.gameStatus.answers) * 0.05)).animation(.spring())
-//            FlashCardView(showAnswer: self.$showAnswer, word: "Mietek", translation: "Piesel").offset(y: -100).scaleEffect(0.80 + CGFloat(Double(self.gameStatus.answers) * 0.05)).animation(.spring())
-//            FlashCardView(showAnswer: self.$showAnswer, word: "Mietek", translation: "Piesel").offset(y: -75).scaleEffect(0.85 + CGFloat(Double(self.gameStatus.answers) * 0.05)).animation(.spring())
-//            FlashCardView(showAnswer: self.$showAnswer, word: "Mietek", translation: "Piesel").offset(y: -50).scaleEffect(0.90 + CGFloat(Double(self.gameStatus.answers) * 0.05)).animation(.spring())
-//            FlashCardView(showAnswer: self.$showAnswer, word: "Mietek", translation: "Piesel").offset(y: -25).scaleEffect(0.95 + CGFloat(Double(self.gameStatus.answers) * 0.05)).animation(.spring())
-            FlashCardView(showAnswer: self.$showAnswer, word: "Mietek", translation: "Piesel")
+            ForEach(0..<flashCards.count) { index in
+                FlashCardView(showAnswer: self.$showAnswer, word: self.flashCards[index].word, translation: self.flashCards[index].translation)
+                    .offset(self.offset(index: index))
+                    .scaleEffect(self.scaleEffect(index: index))
+                    .animation(.spring())
+            }
         }
     }
 }

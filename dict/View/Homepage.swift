@@ -14,11 +14,6 @@ struct Homepage: View {
     var body: some View {
         NavigationView {
             ZStack {
-                VStack() {
-                    Text("Welcome back!").padding(.top, 80)
-                    Spacer()
-                }
-                
                 NavigationLink(destination: Game()) {
                     Text("Play")
                         .font(.title)
