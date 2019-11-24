@@ -10,7 +10,6 @@ import SwiftUI
 
 struct Game: View {
     @Environment(\.colorScheme) var colorScheme: ColorScheme
-    @State var showAnswer = false
     @EnvironmentObject var gameStatus: GameStatus
     
     @FetchRequest(entity: FlashCard.entity(), sortDescriptors: [
@@ -28,7 +27,7 @@ struct Game: View {
     var body: some View {
         ZStack {
             ForEach(0..<flashCards.count) { index in
-                FlashCardView(showAnswer: self.$showAnswer, word: self.flashCards[index].word, translation: self.flashCards[index].translation)
+                FlashCardView(word: self.flashCards[index].word, translation: self.flashCards[index].translation)
                     .offset(self.offset(index: index))
                     .scaleEffect(self.scaleEffect(index: index))
                     .animation(.spring())

@@ -11,7 +11,7 @@ import SwiftUI
 struct FlashCardView: View {
     @Environment(\.colorScheme) var colorScheme: ColorScheme
     @EnvironmentObject var gameStatus: GameStatus
-    @Binding var showAnswer: Bool
+    @State private var showAnswer = false
     @State private var goAway = false
     @State private var currentPosition: CGSize = .zero
     @State private var newPosition: CGSize = .zero
@@ -68,7 +68,6 @@ struct FlashCardView: View {
             .gesture(DragGesture()
             .onChanged { value in
                 self.currentPosition = CGSize(width: value.translation.width + self.newPosition.width, height: self.showAnswer ? -1 * value.translation.height : value.translation.height + self.newPosition.height)
-//                print(self.currentPosition.width,  self.currentPosition.height)
                 if self.currentPosition.width >= 200 || self.currentPosition.width <= -200 {
                     self.goAway = true
                     self.currentPosition.width *= 8
