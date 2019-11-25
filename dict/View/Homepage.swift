@@ -10,42 +10,26 @@ import SwiftUI
 
 struct Homepage: View {
     @EnvironmentObject var gameStatus: GameStatus
-    @State private var showDictionary = false
-    @State private var startGame = false
     
     var body: some View {
-        NavigationView {
-            ZStack {
-                NavigationLink(destination: Game(), isActive: $startGame) { EmptyView() }
-                
-                Button(action: {
-                    self.gameStatus.answers = 0
-                    self.startGame = true
-                }) {
-                    Text("Play")
-                        .font(.title)
-                        .fontWeight(.bold)
-                        .foregroundColor(Color.white)
-                        .frame(width:120, height: 65)
-                        .background(Color.blue)
-                        .cornerRadius(3100)
-                        .shadow(radius: 20, x: 0, y: 20)
+        TabView {
+            Game()
+                .tabItem {
+                    Image(systemName: "gamecontroller")
+                    Text("Game")
                 }
-                
-                NavigationLink(destination: Dictionary(), isActive: self.$showDictionary) { EmptyView()
+            Dictionary()
+                .tabItem {
+                    Image(systemName: "book")
+                    Text("Dictionary")
                 }
-                .frame(width: 0, height: 0)
-                .disabled(true)
-            }
-            .navigationBarItems(
-                trailing: Button(action:{ self.showDictionary = true }) {
-                    HStack {
-                        Image(systemName: "book")
-                        Text("Dictionary")
-                    }.frame(minHeight: 64).font(.system(size: 18))
+            Text("The Third Tab")
+                .tabItem {
+                    Image(systemName: "info.circle")
+                    Text("About")
                 }
-            )
         }
+        .font(.headline)
     }
 }
 

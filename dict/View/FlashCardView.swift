@@ -33,7 +33,6 @@ struct FlashCardView: View {
             .offset(x: self.currentPosition.width, y: self.currentPosition.height)
             .rotation3DEffect(.degrees(self.showAnswer ? 180 : 0), axis: (x: 1, y: 0, z: 0))
             .onTapGesture {
-                print(self.showAnswer)
                 self.showAnswer.toggle()
         }
         .animation(self.animation)
@@ -43,7 +42,6 @@ struct FlashCardView: View {
         }
         .onEnded { value in
             self.currentPosition = CGSize.zero
-            print(self.newPosition.width)
             self.newPosition = self.currentPosition
         })
     }

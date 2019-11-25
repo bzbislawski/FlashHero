@@ -25,13 +25,16 @@ struct Game: View {
     }
     
     var body: some View {
-        ZStack {
-            ForEach(0..<flashCards.count) { index in
-                FlashCardView(word: self.flashCards[index].word, translation: self.flashCards[index].translation)
-                    .offset(self.offset(index: index))
-                    .scaleEffect(self.scaleEffect(index: index))
-                    .animation(.spring())
-            }
+        
+        NavigationView {
+            ZStack {
+                ForEach(0..<flashCards.count) { index in
+                    FlashCardView(word: self.flashCards[index].word, translation: self.flashCards[index].translation)
+                        .offset(self.offset(index: index))
+                        .scaleEffect(self.scaleEffect(index: index))
+                        .animation(.spring())
+                }
+            }.navigationBarTitle("Swipe game")
         }
     }
 }

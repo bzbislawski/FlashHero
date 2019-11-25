@@ -18,7 +18,7 @@ struct Dictionary: View {
     
     var body: some View {
         
-        VStack {
+        NavigationView {
             List {
                 ForEach(flashCards, id: \.word) { flashCard in
                     NavigationLink(destination: FormEditView(flashCard: flashCard)) {
@@ -28,20 +28,19 @@ struct Dictionary: View {
                         }
                     }
                 }.onDelete(perform: removeFlashCard)
+                NavigationLink(destination: FormAddView(), isActive: self.$showingFormView){ EmptyView()
+                }
+                .frame(width: 0, height: 0)
+                .disabled(true)
             }
             .navigationBarTitle("Dictionary")
-            NavigationLink(destination: FormAddView(), isActive: self.$showingFormView){ EmptyView()
-            }
-            .frame(width: 0, height: 0)
-            .disabled(true)
+            .navigationBarItems(
+                trailing: Button(action:{ self.showingFormView = true }) {
+                    Image(systemName: "plus.circle.fill")
+                        .frame(width: 44, height: 44)
+                        .font(.system(size: 22, weight: .medium))
+            })
         }
-        .navigationBarItems(
-            trailing: Button(action:{ self.showingFormView = true }) {
-                Image(systemName: "plus.circle.fill")
-                    .frame(width: 44, height: 44)
-                    .font(.system(size: 22, weight: .medium))
-            }
-        )
     }
     
     func removeFlashCard(at offsets: IndexSet) {
