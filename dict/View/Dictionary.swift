@@ -10,7 +10,7 @@ import SwiftUI
 
 struct Dictionary: View {
     @FetchRequest(entity: FlashCard.entity(), sortDescriptors: [
-        NSSortDescriptor(keyPath: \FlashCard.word, ascending: true)
+        NSSortDescriptor(keyPath: \FlashCard.createdAt, ascending: true)
     ]) var flashCards: FetchedResults<FlashCard>
     
     @Environment(\.managedObjectContext) var moc

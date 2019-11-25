@@ -35,6 +35,7 @@ struct FormAddView: View {
                     let newFlashCard = FlashCard(context: self.moc)
                     newFlashCard.word = self.word
                     newFlashCard.translation = self.translation
+                    newFlashCard.createdAt = Date()
                     
                     try? self.moc.save()
                     self.presentationMode.wrappedValue.dismiss()

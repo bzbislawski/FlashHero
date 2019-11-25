@@ -13,7 +13,7 @@ struct Game: View {
     @EnvironmentObject var gameStatus: GameStatus
     
     @FetchRequest(entity: FlashCard.entity(), sortDescriptors: [
-        NSSortDescriptor(keyPath: \FlashCard.word, ascending: false)
+        NSSortDescriptor(keyPath: \FlashCard.createdAt, ascending: false)
     ]) var flashCards: FetchedResults<FlashCard>
     
     func offset(index: Int) -> CGSize {

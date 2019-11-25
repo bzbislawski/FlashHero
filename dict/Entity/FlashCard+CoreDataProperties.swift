@@ -19,5 +19,5 @@ extension FlashCard {
 
     @NSManaged public var word: String
     @NSManaged public var translation: String
-
+    @NSManaged public var createdAt: Date
 }
