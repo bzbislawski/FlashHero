@@ -12,16 +12,20 @@ struct Game: View {
     @Environment(\.colorScheme) var colorScheme: ColorScheme
     @EnvironmentObject var gameStatus: GameStatus
     
-    @FetchRequest(entity: FlashCard.entity(), sortDescriptors: [
-        NSSortDescriptor(keyPath: \FlashCard.createdAt, ascending: false)
-    ]) var flashCards: FetchedResults<FlashCard>
+    var flashCards: Array<FlashCard> {
+        return self.gameStatus.fetchAllFlashCards()
+    }
+    
+    var answersCount: Int {
+        return self.gameStatus.answers
+    }
     
     func offset(index: Int) -> CGSize {
-        return CGSize.init(width: 0, height: -(flashCards.count - index - self.gameStatus.answers) * 25)
+        return CGSize.init(width: 0, height: -(flashCards.count - index - answersCount) * 25)
     }
     
     func scaleEffect(index: Int) -> CGFloat {
-        return CGFloat(1 - (0.05 * Double(flashCards.count - index - self.gameStatus.answers)))
+        return CGFloat(1 - (0.05 * Double(flashCards.count - index - answersCount)))
     }
     
     var body: some View {

@@ -78,6 +78,12 @@ struct FlashCardView: View {
                     self.newPosition = self.currentPosition
                 } else {
                     self.gameStatus.answers += 1
+                    // TODO: Just for now. Maybe should reset game when chaning tab views instead?
+                    let needToResetTheGame = self.gameStatus.fetchAllFlashCards().count == self.gameStatus.answers
+                    if (needToResetTheGame) {
+                        self.gameStatus.answers = 0
+                    }
+                    
                 }
             })
             
