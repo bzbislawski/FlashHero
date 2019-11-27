@@ -28,7 +28,8 @@ class FlashCardRepository {
     }
     
     func delete(flashCard: FlashCard) {
-        try? self.moc.delete(flashCard)
+        self.moc.delete(flashCard)
+        try? self.moc.save()
     }
     
     func getAll() -> Array<FlashCard> {
