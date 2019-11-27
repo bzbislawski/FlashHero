@@ -12,9 +12,9 @@ struct Game: View {
     @Environment(\.colorScheme) var colorScheme: ColorScheme
     @EnvironmentObject var gameStatus: GameStatus
     
-    var flashCards: Array<FlashCard> {
-        return self.gameStatus.fetchAllFlashCards()
-    }
+    @FetchRequest(entity: FlashCard.entity(), sortDescriptors: [
+        NSSortDescriptor(keyPath: \FlashCard.createdAt, ascending: true)
+    ]) var flashCards: FetchedResults<FlashCard>
     
     var answersCount: Int {
         return self.gameStatus.answers

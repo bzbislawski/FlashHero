@@ -12,7 +12,7 @@ struct Dictionary: View {
     @FetchRequest(entity: FlashCard.entity(), sortDescriptors: [
         NSSortDescriptor(keyPath: \FlashCard.createdAt, ascending: true)
     ]) var flashCards: FetchedResults<FlashCard>
-    
+    @EnvironmentObject var gameStatus: GameStatus
     @Environment(\.managedObjectContext) var moc
     @State private var showingFormView = false
     
@@ -51,8 +51,10 @@ struct Dictionary: View {
     }
 }
 
+#if debug
 struct Dictionary_Previews: PreviewProvider {
     static var previews: some View {
         Dictionary()
     }
 }
+#endif

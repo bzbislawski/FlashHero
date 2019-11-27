@@ -9,6 +9,10 @@
 import SwiftUI
 
 struct FlashCardView: View {
+    @FetchRequest(entity: FlashCard.entity(), sortDescriptors: [
+        NSSortDescriptor(keyPath: \FlashCard.createdAt, ascending: true)
+    ]) var flashCards: FetchedResults<FlashCard>
+    
     @Environment(\.colorScheme) var colorScheme: ColorScheme
     @EnvironmentObject var gameStatus: GameStatus
     @State private var showAnswer = false
@@ -79,7 +83,7 @@ struct FlashCardView: View {
                 } else {
                     self.gameStatus.answers += 1
                     // TODO: Just for now. Maybe should reset game when chaning tab views instead?
-                    let needToResetTheGame = self.gameStatus.fetchAllFlashCards().count == self.gameStatus.answers
+                    let needToResetTheGame = self.flashCards.count == self.gameStatus.answers
                     if (needToResetTheGame) {
                         self.gameStatus.answers = 0
                     }

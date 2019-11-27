@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct FormEditView: View {
-    @Environment(\.managedObjectContext) var moc
+    @EnvironmentObject var gameStatus: GameStatus
     @Environment(\.presentationMode) var presentationMode
     @ObservedObject var flashCard: FlashCard
     @State private var word: String = ""
@@ -19,18 +19,17 @@ struct FormEditView: View {
     var body: some View {
         return Form {
             Section(header: Text("Word & translation")) {
-                TextField("Word", text: $word).onAppear() {
+                TextField("Word", text: $word).onAppear {
                     self.word = self.flashCard.word
                 }
-                TextField("Translation", text: $translation).onAppear() {
+                TextField("Translation", text: $translation).onAppear {
                     self.translation = self.flashCard.translation
                 }
             }
             
             Section(header: Text("Manage")) {
                 Button(action:{
-                    self.moc.delete(self.flashCard)
-                    try? self.moc.save()
+                    self.gameStatus.delete(flashCard: self.flashCard)
                     self.presentationMode.wrappedValue.dismiss()
                 }) {
                     Text("Delete").foregroundColor(Color.red)
@@ -41,9 +40,7 @@ struct FormEditView: View {
         .navigationBarItems(trailing:
             HStack {
                 Button("Done") {
-                    self.flashCard.word = self.word
-                    self.flashCard.translation = self.translation
-                    try? self.moc.save()
+                    self.gameStatus.save(word: self.word, translation: self.translation)
                     self.presentationMode.wrappedValue.dismiss()
                 }.font(.system(size: 18))
             }

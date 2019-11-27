@@ -13,24 +13,17 @@ class GameStatus: ObservableObject {
     @Published var flashCardsCount: Int = 0
     @Published var answers: Int = 0
     
-    var moc: NSManagedObjectContext
+    var flashCardRepository: FlashCardRepository
 
-    init(moc: NSManagedObjectContext) {
-        self.moc = moc
+    init(flashCardRepository: FlashCardRepository) {
+        self.flashCardRepository = flashCardRepository
     }
     
-    func fetchAllFlashCards() -> Array<FlashCard> {
-        var fetchedResults: Array<FlashCard> = Array<FlashCard>()
-
-        let fetchRequest : NSFetchRequest<FlashCard> = FlashCard.fetchRequest()
-
-        do {
-            fetchedResults = try  self.moc.fetch(fetchRequest)
-        } catch let fetchError as NSError {
-            print("retrieveById error: \(fetchError.localizedDescription)")
-            fetchedResults = Array<FlashCard>()
-        }
-        
-        return fetchedResults
+    func save(word: String, translation: String) {
+        flashCardRepository.save(word: word, translation: translation)
+    }
+    
+    func delete(flashCard: FlashCard) {
+        flashCardRepository.delete(flashCard: flashCard)
     }
 }
