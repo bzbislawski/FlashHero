@@ -13,7 +13,7 @@ class GameStatus: ObservableObject {
     @Published var flashCardsCount: Int = 0
     @Published var answers: Int = 0
     
-    var flashCardRepository: FlashCardRepository
+    private var flashCardRepository: FlashCardRepository
 
     init(flashCardRepository: FlashCardRepository) {
         self.flashCardRepository = flashCardRepository

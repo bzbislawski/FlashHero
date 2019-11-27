@@ -13,7 +13,6 @@ struct Dictionary: View {
         NSSortDescriptor(keyPath: \FlashCard.createdAt, ascending: true)
     ]) var flashCards: FetchedResults<FlashCard>
     @EnvironmentObject var gameStatus: GameStatus
-    @Environment(\.managedObjectContext) var moc
     @State private var showingFormView = false
     
     var body: some View {
@@ -46,7 +45,7 @@ struct Dictionary: View {
     func removeFlashCard(at offsets: IndexSet) {
         for index in offsets {
             let flashCard = flashCards[index]
-            moc.delete(flashCard)
+            self.gameStatus.delete(flashCard: flashCard)
         }
     }
 }

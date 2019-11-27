@@ -17,7 +17,6 @@ class FlashCardRepository {
         self.moc = moc
     }
     
-    
     func save(word: String, translation: String) {
         let newFlashCard = FlashCard(context: self.moc)
         newFlashCard.word = word
