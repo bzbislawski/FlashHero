@@ -58,9 +58,9 @@ struct FlashCardView: View {
             Image("rectangle_v2")
                 .resizable()
                 .cornerRadius(10)
-                .frame(width: 320, height: 220)
+                .frame(width: 340, height: 220)
                 .overlay(RoundedRectangle(cornerRadius: 10).stroke(self.colorScheme == .light ? Color.white : Color.gray, lineWidth: 4))
-                .shadow(radius: 5)
+                .shadow(radius: 20, x: 0, y: self.showAnswer ? -20 : 20)
                 .offset(x: self.currentPosition.width, y: self.currentPosition.height)
                 .rotation3DEffect(.degrees(self.showAnswer ? 180 : 0), axis: (x: 1, y: 0, z: 0))
                 .onTapGesture {
