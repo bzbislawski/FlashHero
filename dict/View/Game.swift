@@ -31,22 +31,23 @@ struct Game: View {
     var body: some View {
         
         NavigationView {
-            ZStack {
-                ForEach(0..<flashCards.count) { index in
-                    FlashCardView(word: self.flashCards[index].word, translation: self.flashCards[index].translation)
-                        .offset(self.offset(index: index))
-                        .scaleEffect(self.scaleEffect(index: index))
-                        .animation(.spring())
-                }
-                
-                VStack {
-                    Spacer()
-                    Divider()
-                    HStack {
-                        ScoreTile(text: "Current score", number: 20)
-                        ScoreTile(text: "Highscore", number: 35)
+            VStack {
+                Spacer()
+                ZStack {
+                    ForEach(0..<flashCards.count) { index in
+                        FlashCardView(word: self.flashCards[index].word, translation: self.flashCards[index].translation)
+                            .offset(self.offset(index: index))
+                            .scaleEffect(self.scaleEffect(index: index))
+                            .animation(.spring())
                     }
                 }
+                
+                Divider()
+                HStack {
+                    ScoreTile(text: "Current score", number: 20)
+                    ScoreTile(text: "Highscore", number: 35)
+                }
+                
             }.navigationBarTitle("Swipe game")
         }
     }
@@ -92,7 +93,7 @@ struct ScoreTile: View {
                             .foregroundColor(.white)
                             .padding(.top, -10)
                         
-                }.frame(width:144, height: 144))
+                    }.frame(width:144, height: 144))
             
             
             
