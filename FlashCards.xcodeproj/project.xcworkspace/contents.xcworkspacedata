@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:dict.xcodeproj">
+      location = "self:/Users/bzbislawski/Developer/dict/FlashCards.xcodeproj">
    </FileRef>
 </Workspace>
