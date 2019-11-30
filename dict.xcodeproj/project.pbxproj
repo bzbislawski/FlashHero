@@ -29,7 +29,7 @@
 		BAFA0EA4238EB7F60077D574 /* FlashCardRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashCardRepository.swift; sourceTree = "<group>"; };
 		D601A6C52389CB6A00FFE9FC /* GameStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameStatus.swift; sourceTree = "<group>"; };
 		D6412B802388367000EA3758 /* FlashCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashCardView.swift; sourceTree = "<group>"; };
-		D64D50FA2385CA900075AD3D /* FlashCards.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlashCards.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D64D50FA2385CA900075AD3D /* dict.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = dict.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D64D50FD2385CA900075AD3D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D64D50FF2385CA900075AD3D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		D64D51022385CA900075AD3D /* dict.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = dict.xcdatamodel; sourceTree = "<group>"; };
@@ -60,7 +60,7 @@
 		D64D50F12385CA900075AD3D = {
 			isa = PBXGroup;
 			children = (
-				D64D50FC2385CA900075AD3D /* FlashCards */,
+				D64D50FC2385CA900075AD3D /* dict */,
 				D64D50FB2385CA900075AD3D /* Products */,
 			);
 			sourceTree = "<group>";
@@ -68,12 +68,12 @@
 		D64D50FB2385CA900075AD3D /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				D64D50FA2385CA900075AD3D /* FlashCards.app */,
+				D64D50FA2385CA900075AD3D /* dict.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		D64D50FC2385CA900075AD3D /* FlashCards */ = {
+		D64D50FC2385CA900075AD3D /* dict */ = {
 			isa = PBXGroup;
 			children = (
 				BAFA0EA4238EB7F60077D574 /* FlashCardRepository.swift */,
@@ -87,7 +87,7 @@
 				D64D51012385CA900075AD3D /* dict.xcdatamodeld */,
 				D64D51082385CA920075AD3D /* Preview Content */,
 			);
-			path = FlashCards;
+			path = dict;
 			sourceTree = "<group>";
 		};
 		D64D51082385CA920075AD3D /* Preview Content */ = {
@@ -132,9 +132,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		D64D50F92385CA900075AD3D /* FlashCards */ = {
+		D64D50F92385CA900075AD3D /* dict */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = D64D51112385CA920075AD3D /* Build configuration list for PBXNativeTarget "FlashCards" */;
+			buildConfigurationList = D64D51112385CA920075AD3D /* Build configuration list for PBXNativeTarget "dict" */;
 			buildPhases = (
 				D64D50F62385CA900075AD3D /* Sources */,
 				D64D50F72385CA900075AD3D /* Frameworks */,
@@ -144,9 +144,9 @@
 			);
 			dependencies = (
 			);
-			name = FlashCards;
+			name = dict;
 			productName = dict;
-			productReference = D64D50FA2385CA900075AD3D /* FlashCards.app */;
+			productReference = D64D50FA2385CA900075AD3D /* dict.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -164,7 +164,7 @@
 					};
 				};
 			};
-			buildConfigurationList = D64D50F52385CA900075AD3D /* Build configuration list for PBXProject "FlashCards" */;
+			buildConfigurationList = D64D50F52385CA900075AD3D /* Build configuration list for PBXProject "dict" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -177,7 +177,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				D64D50F92385CA900075AD3D /* FlashCards */,
+				D64D50F92385CA900075AD3D /* dict */,
 			);
 		};
 /* End PBXProject section */
@@ -357,8 +357,8 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = homeland.flashcards;
-				PRODUCT_NAME = FlashCards;
+				PRODUCT_BUNDLE_IDENTIFIER = homeland.dict;
+				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -377,8 +377,8 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = homeland.flashcards;
-				PRODUCT_NAME = FlashCards;
+				PRODUCT_BUNDLE_IDENTIFIER = homeland.dict;
+				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -387,7 +387,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		D64D50F52385CA900075AD3D /* Build configuration list for PBXProject "FlashCards" */ = {
+		D64D50F52385CA900075AD3D /* Build configuration list for PBXProject "dict" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D64D510F2385CA920075AD3D /* Debug */,
@@ -396,7 +396,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		D64D51112385CA920075AD3D /* Build configuration list for PBXNativeTarget "FlashCards" */ = {
+		D64D51112385CA920075AD3D /* Build configuration list for PBXNativeTarget "dict" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D64D51122385CA920075AD3D /* Debug */,
