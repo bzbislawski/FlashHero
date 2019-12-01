@@ -357,7 +357,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = homeland.FlashCards;
+				PRODUCT_BUNDLE_IDENTIFIER = bzbislawski.FlashCards;
 				PRODUCT_NAME = FlashCards;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -377,7 +377,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = homeland.FlashCards;
+				PRODUCT_BUNDLE_IDENTIFIER = bzbislawski.FlashCards;
 				PRODUCT_NAME = FlashCards;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
