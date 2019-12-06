@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BA89D8B6239AAC9200D97AC2 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA89D8B5239AAC9200D97AC2 /* SettingsView.swift */; };
 		BAFA0EA5238EB7F60077D574 /* FlashCardRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAFA0EA4238EB7F60077D574 /* FlashCardRepository.swift */; };
 		D601A6C62389CB6A00FFE9FC /* GameStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = D601A6C52389CB6A00FFE9FC /* GameStatus.swift */; };
 		D6412B812388367000EA3758 /* FlashCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6412B802388367000EA3758 /* FlashCardView.swift */; };
@@ -26,6 +27,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		BA89D8B5239AAC9200D97AC2 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		BAFA0EA4238EB7F60077D574 /* FlashCardRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashCardRepository.swift; sourceTree = "<group>"; };
 		D601A6C52389CB6A00FFE9FC /* GameStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameStatus.swift; sourceTree = "<group>"; };
 		D6412B802388367000EA3758 /* FlashCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashCardView.swift; sourceTree = "<group>"; };
@@ -107,6 +109,7 @@
 				D66668262386FDE2008421AB /* FormEditView.swift */,
 				D64D51162385E0BF0075AD3D /* Game.swift */,
 				D6412B802388367000EA3758 /* FlashCardView.swift */,
+				BA89D8B5239AAC9200D97AC2 /* SettingsView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -207,6 +210,7 @@
 				D64D50FE2385CA900075AD3D /* AppDelegate.swift in Sources */,
 				D66668252386D311008421AB /* Dictionary.swift in Sources */,
 				D66668272386FDE2008421AB /* FormEditView.swift in Sources */,
+				BA89D8B6239AAC9200D97AC2 /* SettingsView.swift in Sources */,
 				D6412B812388367000EA3758 /* FlashCardView.swift in Sources */,
 				D64D51052385CA900075AD3D /* FormAddView.swift in Sources */,
 				D601A6C62389CB6A00FFE9FC /* GameStatus.swift in Sources */,

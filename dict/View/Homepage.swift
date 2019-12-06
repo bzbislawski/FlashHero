@@ -23,7 +23,7 @@ struct Homepage: View {
                     Image(systemName: "book")
                     Text("Dictionary")
                 }
-            Text("The Third Tab")
+            SettingsView()
                 .tabItem {
                     Image(systemName: "info.circle")
                     Text("About")
