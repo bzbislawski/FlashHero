@@ -30,12 +30,17 @@ struct Game: View {
     
     var body: some View {
         VStack {
-            ForEach(0..<flashCards.count) { index in
-                FlashCardView(word: self.flashCards[index].word, translation: self.flashCards[index].translation)
-                    .animation(.spring())
-                    .padding(.top)
+            ScrollView(.vertical, showsIndicators: false) {
+                ForEach(0..<flashCards.count) { index in
+                    FlashCardView(word: self.flashCards[index].word, translation: self.flashCards[index].translation)
+                        .animation(.spring())
+                        .padding(.top)
+                        .padding(.bottom)
+                        .padding(.leading, 300)
+                        .padding(.trailing, 300)
+                }
+                Spacer()
             }
-            Spacer()
         }.navigationBarTitle("Swipe game")
         
     }
