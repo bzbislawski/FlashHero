@@ -20,7 +20,7 @@ struct Game: View {
         NavigationView {
             VStack {
                 if self.gameStatus.flashCards.count == 0 {
-                    EndOfGame()
+                    Scoreboard()
                 } else {
                     ScrollView(.vertical, showsIndicators: false) {
                         ForEach(flashCards, id: \.self) { flashCard in

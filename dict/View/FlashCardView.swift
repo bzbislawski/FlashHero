@@ -50,7 +50,7 @@ struct FlashCardView: View {
             self.textView(text: self.flashCard.translation, isAnswer: true)
                 .zIndex(self.showAnswer ? 1 : 0)
             
-            Image("rectangle_v2")
+            Image("rectangle")
                 .resizable()
                 .cornerRadius(10)
                 .frame(width: 320, height: 200)
