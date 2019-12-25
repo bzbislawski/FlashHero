@@ -17,9 +17,18 @@ struct EndOfGame: View {
         let score = Float(self.gameStatus.correctAnswers) / totalScore
         return VStack {
             if (score > 0.60) {
-                Text("Congratulations" + String(score))
+                Button(action: {
+                    self.gameStatus.resetGame()
+                }) {
+                    Text("Congratulations " + String(score))
+                }
+                
             } else {
-                Text("You could have done better" + String(score))
+                Button(action: {
+                    self.gameStatus.resetGame()
+                }) {
+                    Text("You could have done better " + String(score))
+                }
             }
         
         Image(systemName: "arrow.clockwise.circle")

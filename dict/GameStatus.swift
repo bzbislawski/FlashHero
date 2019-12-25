@@ -28,7 +28,9 @@ class GameStatus: ObservableObject {
         flashCardRepository.delete(flashCard: flashCard)
     }
     
-    func getAll() -> Array<FlashCard> {
-        return flashCardRepository.getAll()
+    func resetGame() {
+        self.flashCards = flashCardRepository.getAll()
+        self.correctAnswers = 0
+        self.wrongAnswers = 0
     }
 }

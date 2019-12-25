@@ -17,24 +17,25 @@ struct Game: View {
     }
     
     var body: some View {
-        VStack {
-            if self.gameStatus.flashCards.count == 0 {
-                EndOfGame()
-            } else {
-                ScrollView(.vertical, showsIndicators: false) {
-                    ForEach(flashCards, id: \.self) { flashCard in
-                        FlashCardView(flashCard: flashCard)
-                            .animation(.spring())
-                            .padding(.top, 15)
-                            .padding(.bottom, 15)
-                            .padding(.leading, 300)
-                            .padding(.trailing, 300)
+        NavigationView {
+            VStack {
+                if self.gameStatus.flashCards.count == 0 {
+                    EndOfGame()
+                } else {
+                    ScrollView(.vertical, showsIndicators: false) {
+                        ForEach(flashCards, id: \.self) { flashCard in
+                            FlashCardView(flashCard: flashCard)
+                                .animation(.spring())
+                                .padding(.top, 15)
+                                .padding(.bottom, 15)
+                                .padding(.leading, 300)
+                                .padding(.trailing, 300)
+                        }
+                        Spacer()
                     }
-                    Spacer()
                 }
-            }
-        }.navigationBarTitle("Swipe game")
-        
+            }.navigationBarTitle("Swipe game")
+        }
     }
 }
 
