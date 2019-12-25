@@ -65,7 +65,7 @@ struct FlashCardView: View {
             .gesture(DragGesture()
             .onChanged { value in
                 self.currentPosition = CGSize(width: value.translation.width + self.newPosition.width, height: self.showAnswer ? -1 * value.translation.height : value.translation.height + self.newPosition.height)
-                if self.currentPosition.width >= 200 || self.currentPosition.width <= -200 {
+                if self.currentPosition.width >= 180 || self.currentPosition.width <= -180 {
                     self.goAway = true
                     self.currentPosition.width *= 8
                 }
