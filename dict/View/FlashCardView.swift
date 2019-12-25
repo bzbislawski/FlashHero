@@ -9,18 +9,13 @@
 import SwiftUI
 
 struct FlashCardView: View {
-    @FetchRequest(entity: FlashCard.entity(), sortDescriptors: [
-        NSSortDescriptor(keyPath: \FlashCard.createdAt, ascending: true)
-    ]) var flashCards: FetchedResults<FlashCard>
-    
     @Environment(\.colorScheme) var colorScheme: ColorScheme
     @EnvironmentObject var gameStatus: GameStatus
     @State private var showAnswer = false
     @State private var goAway = false
     @State private var currentPosition: CGSize = .zero
     @State private var newPosition: CGSize = .zero
-    var word: String
-    var translation: String
+    var flashCard: FlashCard
     
     var animation: Animation {
         Animation.interpolatingSpring(mass: 1, stiffness: 80, damping: 10, initialVelocity: 0)
@@ -52,7 +47,7 @@ struct FlashCardView: View {
     
     var body: some View {
         ZStack {
-            self.textView(text: self.translation, isAnswer: true)
+            self.textView(text: self.flashCard.translation, isAnswer: true)
                 .zIndex(self.showAnswer ? 1 : 0)
             
             Image("rectangle_v2")
@@ -73,7 +68,6 @@ struct FlashCardView: View {
                 if self.currentPosition.width >= 200 || self.currentPosition.width <= -200 {
                     self.goAway = true
                     self.currentPosition.width *= 8
-                    
                 }
             }
             .onEnded { value in
@@ -81,17 +75,12 @@ struct FlashCardView: View {
                     self.currentPosition = CGSize.zero
                     self.newPosition = self.currentPosition
                 } else {
+                    self.gameStatus.flashCards.removeAll(where: { $0 == self.flashCard })
                     self.gameStatus.answers += 1
-                    // TODO: Just for now. Maybe should reset game when chaning tab views instead?
-                    let needToResetTheGame = self.flashCards.count == self.gameStatus.answers
-                    if (needToResetTheGame) {
-                        self.gameStatus.answers = 0
-                    }
-                    
                 }
             })
             
-            self.textView(text: self.word, isAnswer: false)
+            self.textView(text: self.flashCard.word, isAnswer: false)
                 .zIndex(self.showAnswer ? -1 : 0)
         }
     }

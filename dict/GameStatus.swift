@@ -10,8 +10,8 @@ import Foundation
 import CoreData
 
 class GameStatus: ObservableObject {
-    @Published var flashCardsCount: Int = 0
     @Published var answers: Int = 0
+    @Published var flashCards: Array<FlashCard> = []
     
     private var flashCardRepository: FlashCardRepository
 
@@ -25,5 +25,9 @@ class GameStatus: ObservableObject {
     
     func delete(flashCard: FlashCard) {
         flashCardRepository.delete(flashCard: flashCard)
+    }
+    
+    func getAll() -> Array<FlashCard> {
+        return flashCardRepository.getAll()
     }
 }

@@ -12,30 +12,22 @@ struct Game: View {
     @Environment(\.colorScheme) var colorScheme: ColorScheme
     @EnvironmentObject var gameStatus: GameStatus
     
-    @FetchRequest(entity: FlashCard.entity(), sortDescriptors: [
-        NSSortDescriptor(keyPath: \FlashCard.createdAt, ascending: true)
-    ]) var flashCards: FetchedResults<FlashCard>
-    
     var answersCount: Int {
         return self.gameStatus.answers
     }
     
-    func offset(index: Int) -> CGSize {
-        return CGSize.init(width: 0, height: -(flashCards.count - index - answersCount) * 25)
-    }
-    
-    func scaleEffect(index: Int) -> CGFloat {
-        return CGFloat(1 - (0.05 * Double(flashCards.count - index - answersCount)))
+    var flashCards: Array<FlashCard> {
+        return self.gameStatus.flashCards
     }
     
     var body: some View {
         VStack {
             ScrollView(.vertical, showsIndicators: false) {
-                ForEach(0..<flashCards.count) { index in
-                    FlashCardView(word: self.flashCards[index].word, translation: self.flashCards[index].translation)
+                ForEach(flashCards, id: \.self) { flashCard in
+                    FlashCardView(flashCard: flashCard)
                         .animation(.spring())
-                        .padding(.top)
-                        .padding(.bottom)
+                        .padding(.top, 15)
+                        .padding(.bottom, 15)
                         .padding(.leading, 300)
                         .padding(.trailing, 300)
                 }
