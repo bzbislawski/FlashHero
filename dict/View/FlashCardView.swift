@@ -75,8 +75,12 @@ struct FlashCardView: View {
                     self.currentPosition = CGSize.zero
                     self.newPosition = self.currentPosition
                 } else {
+                    if self.currentPosition.width > 0 {
+                        self.gameStatus.correctAnswers += 1
+                    } else {
+                        self.gameStatus.wrongAnswers += 1
+                    }
                     self.gameStatus.flashCards.removeAll(where: { $0 == self.flashCard })
-                    self.gameStatus.answers += 1
                 }
             })
             

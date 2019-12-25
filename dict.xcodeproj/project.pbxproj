@@ -10,6 +10,7 @@
 		BA89D8B6239AAC9200D97AC2 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA89D8B5239AAC9200D97AC2 /* SettingsView.swift */; };
 		BAFA0EA5238EB7F60077D574 /* FlashCardRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAFA0EA4238EB7F60077D574 /* FlashCardRepository.swift */; };
 		D601A6C62389CB6A00FFE9FC /* GameStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = D601A6C52389CB6A00FFE9FC /* GameStatus.swift */; };
+		D60F037F23B2E6D5007F1F74 /* EndOfGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = D60F037E23B2E6D5007F1F74 /* EndOfGame.swift */; };
 		D6412B812388367000EA3758 /* FlashCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6412B802388367000EA3758 /* FlashCardView.swift */; };
 		D64D50FE2385CA900075AD3D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64D50FD2385CA900075AD3D /* AppDelegate.swift */; };
 		D64D51002385CA900075AD3D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64D50FF2385CA900075AD3D /* SceneDelegate.swift */; };
@@ -24,13 +25,13 @@
 		D66668232386D1EC008421AB /* FlashCard+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D66668212386D1EC008421AB /* FlashCard+CoreDataProperties.swift */; };
 		D66668252386D311008421AB /* Dictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = D66668242386D311008421AB /* Dictionary.swift */; };
 		D66668272386FDE2008421AB /* FormEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D66668262386FDE2008421AB /* FormEditView.swift */; };
-		D670C1C323AEE53C002EA7A3 /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D670C1C223AEE53C002EA7A3 /* TestView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		BA89D8B5239AAC9200D97AC2 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		BAFA0EA4238EB7F60077D574 /* FlashCardRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashCardRepository.swift; sourceTree = "<group>"; };
 		D601A6C52389CB6A00FFE9FC /* GameStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameStatus.swift; sourceTree = "<group>"; };
+		D60F037E23B2E6D5007F1F74 /* EndOfGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndOfGame.swift; sourceTree = "<group>"; };
 		D6412B802388367000EA3758 /* FlashCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashCardView.swift; sourceTree = "<group>"; };
 		D64D50FA2385CA900075AD3D /* FlashCards.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlashCards.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D64D50FD2385CA900075AD3D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -47,7 +48,6 @@
 		D66668212386D1EC008421AB /* FlashCard+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "FlashCard+CoreDataProperties.swift"; path = "dict/Entity/FlashCard+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
 		D66668242386D311008421AB /* Dictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dictionary.swift; sourceTree = "<group>"; };
 		D66668262386FDE2008421AB /* FormEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormEditView.swift; sourceTree = "<group>"; };
-		D670C1C223AEE53C002EA7A3 /* TestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,9 +110,9 @@
 				D64D51042385CA900075AD3D /* FormAddView.swift */,
 				D66668262386FDE2008421AB /* FormEditView.swift */,
 				D64D51162385E0BF0075AD3D /* Game.swift */,
+				D60F037E23B2E6D5007F1F74 /* EndOfGame.swift */,
 				D6412B802388367000EA3758 /* FlashCardView.swift */,
 				BA89D8B5239AAC9200D97AC2 /* SettingsView.swift */,
-				D670C1C223AEE53C002EA7A3 /* TestView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -212,11 +212,11 @@
 				D66668222386D1EC008421AB /* FlashCard+CoreDataClass.swift in Sources */,
 				D64D50FE2385CA900075AD3D /* AppDelegate.swift in Sources */,
 				D66668252386D311008421AB /* Dictionary.swift in Sources */,
-				D670C1C323AEE53C002EA7A3 /* TestView.swift in Sources */,
 				D66668272386FDE2008421AB /* FormEditView.swift in Sources */,
 				BA89D8B6239AAC9200D97AC2 /* SettingsView.swift in Sources */,
 				D6412B812388367000EA3758 /* FlashCardView.swift in Sources */,
 				D64D51052385CA900075AD3D /* FormAddView.swift in Sources */,
+				D60F037F23B2E6D5007F1F74 /* EndOfGame.swift in Sources */,
 				D601A6C62389CB6A00FFE9FC /* GameStatus.swift in Sources */,
 				D64D51152385CCA30075AD3D /* Homepage.swift in Sources */,
 				BAFA0EA5238EB7F60077D574 /* FlashCardRepository.swift in Sources */,

@@ -10,7 +10,8 @@ import Foundation
 import CoreData
 
 class GameStatus: ObservableObject {
-    @Published var answers: Int = 0
+    @Published var correctAnswers: Int = 0
+    @Published var wrongAnswers: Int = 0
     @Published var flashCards: Array<FlashCard> = []
     
     private var flashCardRepository: FlashCardRepository
