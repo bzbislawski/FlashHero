@@ -16,41 +16,40 @@ struct Scoreboard: View {
         let totalScore = self.gameStatus.correctAnswers + self.gameStatus.wrongAnswers
         let score = Float(self.gameStatus.correctAnswers) / Float(totalScore)
         let winGame = score > 0.6
-        return ZStack {
-            VStack {
-                Text(winGame ? "Congrats!" : "Whoops!")
-                    .font(.system(size: 26, weight: .bold))
-                    .padding(.all)
-                    .frame(width: 240)
-                
-                Image(systemName: winGame ? "checkmark.seal.fill" : "xmark.seal.fill")
-                    .font(.system(size: 46, weight: .medium))
-                
-                Text("Score:")
-                    .padding(.top)
-                
-                Text(String(self.gameStatus.correctAnswers) + "/" + String(totalScore))
-                    .font(.system(size: 32, weight: .medium))
-                    .padding(.bottom)
-                
-                Button(action: {
-                    self.gameStatus.resetGame()
-                }) {
-                    VStack {
-                        Text("Restart the game")
-                            .frame(width: 160, height: 40)
-                            .font(.system(size: 16, weight: .medium))
-                            .foregroundColor(Color("GreenFont"))
-                    }
-                    .background(Color("Gray"))
-                    .cornerRadius(5)
-                }.padding(.all)
-            }
-            .foregroundColor(Color("Gray"))
-            .frame(width: 260)
-            .background(winGame ? Color("Success") : Color("Failure"))
-            .cornerRadius(20)
+        return VStack {
+            Text(winGame ? "Congrats!" : "Whoops!")
+                .font(.system(size: 26, weight: .bold))
+                .padding(.all)
+                .frame(width: 240)
+            
+            Image(systemName: winGame ? "checkmark.seal.fill" : "xmark.seal.fill")
+                .font(.system(size: 46, weight: .medium))
+            
+            Text("Score:")
+                .padding(.top)
+            
+            Text(String(self.gameStatus.correctAnswers) + "/" + String(totalScore))
+                .font(.system(size: 32, weight: .medium))
+                .padding(.bottom)
+            
+            Button(action: {
+                self.gameStatus.resetGame()
+            }) {
+                VStack {
+                    Text("Restart the game")
+                        .frame(width: 160, height: 40)
+                        .font(.system(size: 16, weight: .medium))
+                        .foregroundColor(Color("GreenFont"))
+                }
+                .background(Color("Gray"))
+                .cornerRadius(5)
+            }.padding(.all)
         }
+        .foregroundColor(Color("Gray"))
+        .frame(width: 260)
+        .background(winGame ? Color("Success") : Color("Failure"))
+        .cornerRadius(20)
+        
     }
 }
 
