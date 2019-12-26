@@ -43,13 +43,14 @@ struct Scoreboard: View {
                 }
                 .background(Color("Gray"))
                 .cornerRadius(5)
-            }.padding(.all)
+            }.padding(.bottom, 25)
         }
-        .foregroundColor(Color("Gray"))
-        .frame(width: 260)
+        .frame(width: 280)
         .background(winGame ? Color("Success") : Color("Failure"))
-        .cornerRadius(20)
-        
+        .cornerRadius(40)
+        .overlay(RoundedRectangle(cornerRadius: 40).stroke(self.colorScheme == .light ? Color.white : Color.gray, lineWidth: 4))
+        .shadow(radius: 20, x: 0, y: 20)
+        .foregroundColor(Color("Gray"))
     }
 }
 
@@ -61,8 +62,9 @@ struct Scoreboard_Previews: PreviewProvider {
         let gs2 = GameStatus(flashCardRepository: repository)
         gs.correctAnswers = 5
         gs2.correctAnswers = 0
-        return List {
+        return VStack {
             Scoreboard().environmentObject(gs)
+            Spacer()
             Scoreboard().environmentObject(gs2)
         }
     }
