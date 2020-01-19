@@ -27,7 +27,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let view = Homepage().environment(\.managedObjectContext, context)
         
         let gameStatus = GameStatus(flashCardRepository: FlashCardRepository(moc: context))
-        gameStatus.resetGame()
 
         // Use a UIHostingController as window root view controller.
         if let windowScene = scene as? UIWindowScene {

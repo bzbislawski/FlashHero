@@ -11,6 +11,11 @@ import SwiftUI
 struct Scoreboard: View {
     @Environment(\.colorScheme) var colorScheme: ColorScheme
     @EnvironmentObject var gameStatus: GameStatus
+    @State private var dim = false
+    
+    var animation: Animation {
+        Animation.interpolatingSpring(mass: 1, stiffness: 80, damping: 10, initialVelocity: 0)
+    }
     
     var body: some View {
         let totalScore = self.gameStatus.correctAnswers + self.gameStatus.wrongAnswers
@@ -51,6 +56,14 @@ struct Scoreboard: View {
         .overlay(RoundedRectangle(cornerRadius: 40).stroke(self.colorScheme == .light ? Color.white : Color.gray, lineWidth: 4))
         .shadow(radius: 20, x: 0, y: 20)
         .foregroundColor(Color("Gray"))
+        .opacity(dim ? 1.0 : 0.5)
+        .offset(y: dim ? 0 : 120)
+        .animation(self.animation)
+        .onAppear {
+            withAnimation(.easeOut(duration: 0.4)) {
+                self.dim.toggle()
+            }
+        }
     }
 }
 

@@ -18,6 +18,7 @@ struct Homepage: View {
                     Image(systemName: "gamecontroller")
                     Text("Game")
                 }
+            .onAppear{ self.gameStatus.resetGame()}
             Dictionary()
                 .tabItem {
                     Image(systemName: "book")
