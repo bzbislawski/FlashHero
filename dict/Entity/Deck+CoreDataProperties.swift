@@ -18,7 +18,7 @@ extension Deck {
     }
 
     @NSManaged public var id: UUID
-    @NSManaged public var created_at: Date
+    @NSManaged public var createdAt: Date
     @NSManaged public var color: String
     @NSManaged public var name: String
 

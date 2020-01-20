@@ -9,11 +9,12 @@
 import SwiftUI
 
 struct Dictionary: View {
-//    @FetchRequest(entity: FlashCard.entity(), sortDescriptors: [
-//        NSSortDescriptor(keyPath: \FlashCard.createdAt, ascending: true)
-//    ]) var flashCards: FetchedResults<FlashCard>
+    @FetchRequest(entity: Deck.entity(), sortDescriptors: [
+        NSSortDescriptor(keyPath: \Deck.createdAt, ascending: true)
+    ]) var decks: FetchedResults<Deck>
 //    @EnvironmentObject var gameStatus: GameStatus
 //    @State private var showingFormView = false
+    @State private var showingFormView = false
     
     var body: some View {
         
@@ -21,13 +22,20 @@ struct Dictionary: View {
             VStack {
                 ScrollView(.horizontal, showsIndicators: false) {
                     HStack {
-                        DeckView()
-                        DeckView()
-                        DeckView()
-                        DeckView()
+                        ForEach(decks, id: \.self) { deck in
+                            DeckView()
+                        }
                     }
                 }
             }.navigationBarTitle("Dictionary")
+            .navigationBarItems(
+                trailing: Button(action:{ self.showingFormView = true }) {
+                Image(systemName: "plus.app")
+                    .frame(width: 44, height: 44)
+                    .font(.system(size: 26, weight: .semibold))
+                    .foregroundColor(Color("GreenFont"))
+                
+            })
         }
     }
     
