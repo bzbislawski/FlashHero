@@ -19,7 +19,7 @@ struct Homepage: View {
                     Text("Game")
                 }
             .onAppear{ self.gameStatus.resetGame()}
-            DictionaryList()
+            Dictionary()
                 .tabItem {
                     Image(systemName: "book")
                     Text("Dictionary")

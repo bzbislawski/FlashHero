@@ -11,7 +11,7 @@
 		BAFA0EA5238EB7F60077D574 /* FlashCardRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAFA0EA4238EB7F60077D574 /* FlashCardRepository.swift */; };
 		D601A6C62389CB6A00FFE9FC /* GameStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = D601A6C52389CB6A00FFE9FC /* GameStatus.swift */; };
 		D60F038123B3E0A5007F1F74 /* Scoreboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = D60F038023B3E0A5007F1F74 /* Scoreboard.swift */; };
-		D63B466223D517EC008370C7 /* Dictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = D63B466123D517EC008370C7 /* Dictionary.swift */; };
+		D63B466223D517EC008370C7 /* Deck.swift in Sources */ = {isa = PBXBuildFile; fileRef = D63B466123D517EC008370C7 /* Deck.swift */; };
 		D6412B812388367000EA3758 /* FlashCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6412B802388367000EA3758 /* FlashCardView.swift */; };
 		D64D50FE2385CA900075AD3D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64D50FD2385CA900075AD3D /* AppDelegate.swift */; };
 		D64D51002385CA900075AD3D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64D50FF2385CA900075AD3D /* SceneDelegate.swift */; };
@@ -24,7 +24,7 @@
 		D64D51172385E0BF0075AD3D /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64D51162385E0BF0075AD3D /* Game.swift */; };
 		D66668222386D1EC008421AB /* FlashCard+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = D66668202386D1EC008421AB /* FlashCard+CoreDataClass.swift */; };
 		D66668232386D1EC008421AB /* FlashCard+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D66668212386D1EC008421AB /* FlashCard+CoreDataProperties.swift */; };
-		D66668252386D311008421AB /* DictionaryList.swift in Sources */ = {isa = PBXBuildFile; fileRef = D66668242386D311008421AB /* DictionaryList.swift */; };
+		D66668252386D311008421AB /* Dictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = D66668242386D311008421AB /* Dictionary.swift */; };
 		D66668272386FDE2008421AB /* FormEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D66668262386FDE2008421AB /* FormEditView.swift */; };
 /* End PBXBuildFile section */
 
@@ -33,7 +33,7 @@
 		BAFA0EA4238EB7F60077D574 /* FlashCardRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashCardRepository.swift; sourceTree = "<group>"; };
 		D601A6C52389CB6A00FFE9FC /* GameStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameStatus.swift; sourceTree = "<group>"; };
 		D60F038023B3E0A5007F1F74 /* Scoreboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scoreboard.swift; sourceTree = "<group>"; };
-		D63B466123D517EC008370C7 /* Dictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dictionary.swift; sourceTree = "<group>"; };
+		D63B466123D517EC008370C7 /* Deck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Deck.swift; sourceTree = "<group>"; };
 		D6412B802388367000EA3758 /* FlashCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashCardView.swift; sourceTree = "<group>"; };
 		D64D50FA2385CA900075AD3D /* FlashCards.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlashCards.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D64D50FD2385CA900075AD3D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -48,7 +48,7 @@
 		D64D51162385E0BF0075AD3D /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		D66668202386D1EC008421AB /* FlashCard+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "FlashCard+CoreDataClass.swift"; path = "dict/Entity/FlashCard+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
 		D66668212386D1EC008421AB /* FlashCard+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "FlashCard+CoreDataProperties.swift"; path = "dict/Entity/FlashCard+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
-		D66668242386D311008421AB /* DictionaryList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryList.swift; sourceTree = "<group>"; };
+		D66668242386D311008421AB /* Dictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dictionary.swift; sourceTree = "<group>"; };
 		D66668262386FDE2008421AB /* FormEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormEditView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -108,8 +108,8 @@
 			isa = PBXGroup;
 			children = (
 				D64D51142385CCA30075AD3D /* Homepage.swift */,
-				D66668242386D311008421AB /* DictionaryList.swift */,
-				D63B466123D517EC008370C7 /* Dictionary.swift */,
+				D66668242386D311008421AB /* Dictionary.swift */,
+				D63B466123D517EC008370C7 /* Deck.swift */,
 				D64D51042385CA900075AD3D /* FormAddView.swift */,
 				D66668262386FDE2008421AB /* FormEditView.swift */,
 				D64D51162385E0BF0075AD3D /* Game.swift */,
@@ -210,12 +210,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				D66668232386D1EC008421AB /* FlashCard+CoreDataProperties.swift in Sources */,
-				D63B466223D517EC008370C7 /* Dictionary.swift in Sources */,
+				D63B466223D517EC008370C7 /* Deck.swift in Sources */,
 				D64D51032385CA900075AD3D /* dict.xcdatamodeld in Sources */,
 				D64D51172385E0BF0075AD3D /* Game.swift in Sources */,
 				D66668222386D1EC008421AB /* FlashCard+CoreDataClass.swift in Sources */,
 				D64D50FE2385CA900075AD3D /* AppDelegate.swift in Sources */,
-				D66668252386D311008421AB /* DictionaryList.swift in Sources */,
+				D66668252386D311008421AB /* Dictionary.swift in Sources */,
 				D66668272386FDE2008421AB /* FormEditView.swift in Sources */,
 				BA89D8B6239AAC9200D97AC2 /* SettingsView.swift in Sources */,
 				D6412B812388367000EA3758 /* FlashCardView.swift in Sources */,
