@@ -21,10 +21,10 @@ struct Dictionary: View {
             VStack {
                 ScrollView(.horizontal, showsIndicators: false) {
                     HStack {
-                        Deck()
-                        Deck()
-                        Deck()
-                        Deck()
+                        DeckView()
+                        DeckView()
+                        DeckView()
+                        DeckView()
                     }
                 }
             }.navigationBarTitle("Dictionary")
