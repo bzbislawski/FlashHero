@@ -26,7 +26,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Add `@Environment(\.managedObjectContext)` in the views that will need the context.
         let view = Homepage().environment(\.managedObjectContext, context)
         
-        let gameStatus = GameStatus(flashCardRepository: FlashCardRepository(moc: context))
+        let gameStatus = GameStatus(flashCardRepository: FlashCardRepository(moc: context), deckRepository: DeckRepository(moc: context))
 
         // Use a UIHostingController as window root view controller.
         if let windowScene = scene as? UIWindowScene {

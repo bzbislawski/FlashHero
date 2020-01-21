@@ -15,9 +15,11 @@ class GameStatus: ObservableObject {
     @Published var flashCards: Array<FlashCard> = []
     
     private var flashCardRepository: FlashCardRepository
+    private var deckRepository: DeckRepository
 
-    init(flashCardRepository: FlashCardRepository) {
+    init(flashCardRepository: FlashCardRepository, deckRepository: DeckRepository) {
         self.flashCardRepository = flashCardRepository
+        self.deckRepository = deckRepository
     }
     
     func save(word: String, translation: String) {
@@ -26,6 +28,10 @@ class GameStatus: ObservableObject {
     
     func delete(flashCard: FlashCard) {
         flashCardRepository.delete(flashCard: flashCard)
+    }
+    
+    func save(name: String, color: String) {
+        deckRepository.save(name: name, color: color)
     }
     
     func resetGame() {

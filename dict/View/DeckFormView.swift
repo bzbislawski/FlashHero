@@ -12,11 +12,13 @@ struct DeckFormView: View {
     @Environment (\.presentationMode) var presentationMode
     @State private var name: String = ""
     
+    @EnvironmentObject var gameStatus: GameStatus
+    
     var body: some View {
         NavigationView {
             ZStack {
                 Color.backgroundColor.edgesIgnoringSafeArea(.all)
-                VStack(spacing: 70) {
+                VStack(spacing: 60) {
                     VStack {
                         Image(systemName: "book")
                             .frame(width: 32, height: 32)
@@ -25,11 +27,10 @@ struct DeckFormView: View {
                         Text("Deck")
                             .foregroundColor(Color("GreenFont"))
                             .font(.system(size: 32, weight: .bold))
-                    }
+                    }.padding(.top, 60)
                     VStack {
                         HStack {
                             Text("Deck name")
-                                .padding(.leading, 5)
                                 .foregroundColor(Color("GreenFont"))
                                 .font(.system(size: 18, weight: .semibold))
                                 Spacer()
@@ -55,7 +56,8 @@ struct DeckFormView: View {
                         }
                     }
                     Button(action: {
-                        print("save")
+                        self.gameStatus.save(name: self.name, color: "default")
+                        self.presentationMode.wrappedValue.dismiss()
                     }) {
                         VStack {
                             Text("Save")
@@ -74,7 +76,7 @@ struct DeckFormView: View {
                 })
                 .navigationBarItems(
                     leading:
-                        Button(action: { self.presentationMode.wrappedValue.dismiss() }) { Text("Cancel").foregroundColor(Color("GreenFont")) }
+                    Button(action: { self.presentationMode.wrappedValue.dismiss() }) { Text("Cancel").foregroundColor(Color.firstColor).font(.system(size: 16, weight: .semibold)) }
                 )
                     
             }

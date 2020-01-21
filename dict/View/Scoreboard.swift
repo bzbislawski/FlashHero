@@ -71,8 +71,9 @@ struct Scoreboard_Previews: PreviewProvider {
     static var previews: some View {
         let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
         let repository = FlashCardRepository(moc: context)
-        let gs = GameStatus(flashCardRepository: repository)
-        let gs2 = GameStatus(flashCardRepository: repository)
+        let repository2 = DeckRepository(moc: context)
+        let gs = GameStatus(flashCardRepository: repository, deckRepository: repository2)
+        let gs2 = GameStatus(flashCardRepository: repository, deckRepository: repository2)
         gs.correctAnswers = 5
         gs2.correctAnswers = 0
         return VStack {

@@ -9,6 +9,7 @@
 import SwiftUI
 
 struct Dictionary: View {
+    @EnvironmentObject var gameStatus: GameStatus
     @FetchRequest(entity: Deck.entity(), sortDescriptors: [
         NSSortDescriptor(keyPath: \Deck.createdAt, ascending: true)
     ]) var decks: FetchedResults<Deck>
@@ -35,7 +36,7 @@ struct Dictionary: View {
                     .font(.system(size: 26, weight: .semibold))
                     .foregroundColor(Color("GreenFont"))
                 }).sheet(isPresented: $showingFormView, content: {
-                    DeckFormView()
+                    DeckFormView().environmentObject(self.gameStatus)
                 })
                 
                 
