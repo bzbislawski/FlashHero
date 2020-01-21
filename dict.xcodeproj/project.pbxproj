@@ -15,6 +15,7 @@
 		D63B466D23D66033008370C7 /* Deck+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = D63B466B23D66033008370C7 /* Deck+CoreDataClass.swift */; };
 		D63B466E23D66033008370C7 /* Deck+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D63B466C23D66033008370C7 /* Deck+CoreDataProperties.swift */; };
 		D63B467023D79865008370C7 /* DeckFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D63B466F23D79865008370C7 /* DeckFormView.swift */; };
+		D63B467223D79F8A008370C7 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D63B467123D79F8A008370C7 /* Extensions.swift */; };
 		D6412B812388367000EA3758 /* FlashCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6412B802388367000EA3758 /* FlashCardView.swift */; };
 		D64D50FE2385CA900075AD3D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64D50FD2385CA900075AD3D /* AppDelegate.swift */; };
 		D64D51002385CA900075AD3D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64D50FF2385CA900075AD3D /* SceneDelegate.swift */; };
@@ -40,6 +41,7 @@
 		D63B466B23D66033008370C7 /* Deck+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Deck+CoreDataClass.swift"; sourceTree = "<group>"; };
 		D63B466C23D66033008370C7 /* Deck+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Deck+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		D63B466F23D79865008370C7 /* DeckFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckFormView.swift; sourceTree = "<group>"; };
+		D63B467123D79F8A008370C7 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		D6412B802388367000EA3758 /* FlashCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashCardView.swift; sourceTree = "<group>"; };
 		D64D50FA2385CA900075AD3D /* FlashCards.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlashCards.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D64D50FD2385CA900075AD3D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -88,6 +90,7 @@
 		D64D50FC2385CA900075AD3D /* dict */ = {
 			isa = PBXGroup;
 			children = (
+				D63B467123D79F8A008370C7 /* Extensions.swift */,
 				BAFA0EA4238EB7F60077D574 /* FlashCardRepository.swift */,
 				D601A6C52389CB6A00FFE9FC /* GameStatus.swift */,
 				D6666179238701F300D1CB8A /* Entity */,
@@ -233,6 +236,7 @@
 				D601A6C62389CB6A00FFE9FC /* GameStatus.swift in Sources */,
 				D64D51152385CCA30075AD3D /* Homepage.swift in Sources */,
 				BAFA0EA5238EB7F60077D574 /* FlashCardRepository.swift in Sources */,
+				D63B467223D79F8A008370C7 /* Extensions.swift in Sources */,
 				D63B467023D79865008370C7 /* DeckFormView.swift in Sources */,
 				D64D51002385CA900075AD3D /* SceneDelegate.swift in Sources */,
 				D63B466E23D66033008370C7 /* Deck+CoreDataProperties.swift in Sources */,
