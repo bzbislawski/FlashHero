@@ -12,8 +12,6 @@ struct Dictionary: View {
     @FetchRequest(entity: Deck.entity(), sortDescriptors: [
         NSSortDescriptor(keyPath: \Deck.createdAt, ascending: true)
     ]) var decks: FetchedResults<Deck>
-//    @EnvironmentObject var gameStatus: GameStatus
-//    @State private var showingFormView = false
     @State private var showingFormView = false
     
     var body: some View {
@@ -29,22 +27,21 @@ struct Dictionary: View {
                 }
             }.navigationBarTitle("Dictionary")
             .navigationBarItems(
-                trailing: Button(action:{ self.showingFormView = true }) {
-                Image(systemName: "plus.app")
+                trailing: Button(action: {
+                    self.showingFormView.toggle()
+                }, label: {
+                    Image(systemName: "plus.app")
                     .frame(width: 44, height: 44)
                     .font(.system(size: 26, weight: .semibold))
                     .foregroundColor(Color("GreenFont"))
+                }).sheet(isPresented: $showingFormView, content: {
+                    DeckFormView()
+                })
                 
-            })
+                
+            )
         }
     }
-    
-//    func removeFlashCard(at offsets: IndexSet) {
-//        for index in offsets {
-//            let flashCard = flashCards[index]
-//            self.gameStatus.delete(flashCard: flashCard)
-//        }
-//    }
 }
 
 //#if debug

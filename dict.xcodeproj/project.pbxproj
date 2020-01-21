@@ -14,6 +14,7 @@
 		D63B466223D517EC008370C7 /* DeckView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D63B466123D517EC008370C7 /* DeckView.swift */; };
 		D63B466D23D66033008370C7 /* Deck+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = D63B466B23D66033008370C7 /* Deck+CoreDataClass.swift */; };
 		D63B466E23D66033008370C7 /* Deck+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D63B466C23D66033008370C7 /* Deck+CoreDataProperties.swift */; };
+		D63B467023D79865008370C7 /* DeckFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D63B466F23D79865008370C7 /* DeckFormView.swift */; };
 		D6412B812388367000EA3758 /* FlashCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6412B802388367000EA3758 /* FlashCardView.swift */; };
 		D64D50FE2385CA900075AD3D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64D50FD2385CA900075AD3D /* AppDelegate.swift */; };
 		D64D51002385CA900075AD3D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64D50FF2385CA900075AD3D /* SceneDelegate.swift */; };
@@ -38,6 +39,7 @@
 		D63B466123D517EC008370C7 /* DeckView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckView.swift; sourceTree = "<group>"; };
 		D63B466B23D66033008370C7 /* Deck+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Deck+CoreDataClass.swift"; sourceTree = "<group>"; };
 		D63B466C23D66033008370C7 /* Deck+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Deck+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		D63B466F23D79865008370C7 /* DeckFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckFormView.swift; sourceTree = "<group>"; };
 		D6412B802388367000EA3758 /* FlashCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashCardView.swift; sourceTree = "<group>"; };
 		D64D50FA2385CA900075AD3D /* FlashCards.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlashCards.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D64D50FD2385CA900075AD3D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -114,6 +116,7 @@
 				D64D51142385CCA30075AD3D /* Homepage.swift */,
 				D66668242386D311008421AB /* Dictionary.swift */,
 				D63B466123D517EC008370C7 /* DeckView.swift */,
+				D63B466F23D79865008370C7 /* DeckFormView.swift */,
 				D64D51042385CA900075AD3D /* FormAddView.swift */,
 				D66668262386FDE2008421AB /* FormEditView.swift */,
 				D64D51162385E0BF0075AD3D /* Game.swift */,
@@ -230,6 +233,7 @@
 				D601A6C62389CB6A00FFE9FC /* GameStatus.swift in Sources */,
 				D64D51152385CCA30075AD3D /* Homepage.swift in Sources */,
 				BAFA0EA5238EB7F60077D574 /* FlashCardRepository.swift in Sources */,
+				D63B467023D79865008370C7 /* DeckFormView.swift in Sources */,
 				D64D51002385CA900075AD3D /* SceneDelegate.swift in Sources */,
 				D63B466E23D66033008370C7 /* Deck+CoreDataProperties.swift in Sources */,
 				D60F038123B3E0A5007F1F74 /* Scoreboard.swift in Sources */,
