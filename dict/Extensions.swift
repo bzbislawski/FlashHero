@@ -21,5 +21,6 @@ extension Color {
 }
 
 extension UIColor {
-    static let secondaryBackgroundColor = UIColor(red:0.75, green:0.75, blue:0.75, alpha:1.0)
+    static let backgroundColor = UIColor(red:216/255, green:216/255, blue:216/255, alpha:1.0)
+    static let secondaryBackgroundColor = UIColor(red:0.6, green:0.6, blue:0.6, alpha:1.0)
 }
