@@ -16,30 +16,41 @@ struct Dictionary: View {
     @State private var showingFormView = false
     
     var body: some View {
+        let decks = ["jeden", "dwa"]
         
-        NavigationView {
+        return NavigationView {
             VStack {
-                ScrollView(.horizontal, showsIndicators: false) {
-                    HStack {
-                        ForEach(decks, id: \.self) { deck in
-                            DeckView()
+                ScrollView(.vertical, showsIndicators: false) {
+                    ForEach(decks, id: \.self) { deck in
+                        VStack {
+                            HStack {
+                                Text("Deck name")
+                                    .padding(.leading, 20)
+                                    .font(.system(size: 20, weight: .semibold))
+                                    .foregroundColor(.grayFont)
+                                
+                                Spacer()
+                            }.padding(.top, 20)
+                            ScrollView(.horizontal, showsIndicators: false) {
+                                VStack {
+                                    DeckView()
+                                }
+                            }
                         }
                     }
                 }
-            }.navigationBarTitle("Dictionary")
-            .navigationBarItems(
-                trailing: Button(action: {
-                    self.showingFormView.toggle()
-                }, label: {
-                    Image(systemName: "plus.app")
-                    .frame(width: 44, height: 44)
-                    .font(.system(size: 26, weight: .semibold))
-                    .foregroundColor(Color("GreenFont"))
-                }).sheet(isPresented: $showingFormView, content: {
-                    DeckFormView().environmentObject(self.gameStatus)
-                })
-                
-                
+            }.navigationBarTitle(Text("Dictionary").foregroundColor(Color.blackFont))
+                .navigationBarItems(
+                    trailing: Button(action: {
+                        self.showingFormView.toggle()
+                    }, label: {
+                        Image(systemName: "plus.app")
+                            .frame(width: 44, height: 44)
+                            .font(.system(size: 26, weight: .semibold))
+                            .foregroundColor(Color("GreenFont"))
+                    }).sheet(isPresented: $showingFormView, content: {
+                        DeckFormView().environmentObject(self.gameStatus)
+                    })
             )
         }
     }

@@ -30,7 +30,6 @@ struct Homepage: View {
                     Text("About")
                 }
         }
-        .font(.headline)
     }
 }
 
