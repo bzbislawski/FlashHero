@@ -17,7 +17,7 @@ struct DeckFormView: View {
     var body: some View {
         NavigationView {
             ZStack {
-                Color.backgroundColor.edgesIgnoringSafeArea(.all)
+                Color.secondaryBackgroundColor.edgesIgnoringSafeArea(.all)
                 VStack(spacing: 60) {
                     VStack {
                         Image(systemName: "book")
@@ -72,7 +72,7 @@ struct DeckFormView: View {
                     
                 }.navigationBarTitle("", displayMode: .inline)
                 .background(NavigationConfigurator { nc in
-                    nc.navigationBar.barTintColor = UIColor.secondaryBackgroundColor
+                    nc.navigationBar.barTintColor = UIColor.backgroundColor
                 })
                 .navigationBarItems(
                     leading:
