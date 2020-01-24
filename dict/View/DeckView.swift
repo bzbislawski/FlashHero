@@ -41,9 +41,6 @@ struct DeckView: View {
                 .padding(.leading, 20)
                 
             }
-            Button("Add") {
-                self.gameStatus.save(deck: self.deck, word: "test", translation: "test")
-            }
         }
     }
 }
