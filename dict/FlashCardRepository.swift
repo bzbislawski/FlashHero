@@ -17,11 +17,15 @@ class FlashCardRepository {
         self.moc = moc
     }
     
-    func save(word: String, translation: String) {
+    func save(deck: Deck, word: String, translation: String) {
+        
         let newFlashCard = FlashCard(context: self.moc)
+//        newFlashCard.origin = deck
         newFlashCard.word = word
         newFlashCard.translation = translation
         newFlashCard.createdAt = Date()
+        
+        deck.addToFlashCard(newFlashCard)
         
         try? self.moc.save()
     }
@@ -32,17 +36,19 @@ class FlashCardRepository {
     }
     
     func getAll() -> Array<FlashCard> {
-        var fetchedResults: Array<FlashCard> = Array<FlashCard>()
+        var fetchedResults: Array<Deck> = Array<Deck>()
 
-        let fetchRequest : NSFetchRequest<FlashCard> = FlashCard.fetchRequest()
-
+        let fetchRequest : NSFetchRequest<Deck> = Deck.fetchRequest()
+        let response: Array<FlashCard>
+        
         do {
             fetchedResults = try  self.moc.fetch(fetchRequest)
+            response = fetchedResults[0].flashCardArray
         } catch let fetchError as NSError {
             print("retrieveById error: \(fetchError.localizedDescription)")
-            fetchedResults = Array<FlashCard>()
+            response = Array<FlashCard>()
         }
         
-        return fetchedResults
+        return response
     }
 }

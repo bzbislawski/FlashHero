@@ -32,7 +32,7 @@ struct FormAddView: View {
                         self.presentationMode.wrappedValue.dismiss()
                         return
                     }
-                    self.gameStatus.save(word: self.word, translation: self.translation)
+//                    self.gameStatus.save(word: self.word, translation: self.translation)
                     self.presentationMode.wrappedValue.dismiss()
                 }.font(.system(size: 18))
             }

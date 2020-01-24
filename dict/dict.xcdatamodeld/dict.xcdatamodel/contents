@@ -5,14 +5,21 @@
         <attribute name="createdAt" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="name" optional="YES" attributeType="String"/>
+        <relationship name="flashCard" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="FlashCard" inverseName="origin" inverseEntity="FlashCard"/>
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="id"/>
+            </uniquenessConstraint>
+        </uniquenessConstraints>
     </entity>
     <entity name="FlashCard" representedClassName="FlashCard" syncable="YES">
         <attribute name="createdAt" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="translation" optional="YES" attributeType="String"/>
         <attribute name="word" optional="YES" attributeType="String"/>
+        <relationship name="origin" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Deck" inverseName="flashCard" inverseEntity="Deck"/>
     </entity>
     <elements>
-        <element name="Deck" positionX="-36" positionY="36" width="128" height="103"/>
-        <element name="FlashCard" positionX="-63" positionY="-18" width="128" height="88"/>
+        <element name="Deck" positionX="-36" positionY="36" width="128" height="118"/>
+        <element name="FlashCard" positionX="-63" positionY="-18" width="128" height="103"/>
     </elements>
 </model>

@@ -47,7 +47,7 @@ struct FlashCardView: View {
     
     var body: some View {
         ZStack {
-            self.textView(text: self.flashCard.translation, isAnswer: true)
+            self.textView(text: self.flashCard.wrappedTranslation, isAnswer: true)
                 .zIndex(self.showAnswer ? 1 : 0)
             
             Image("rectangle")
@@ -84,7 +84,7 @@ struct FlashCardView: View {
                 }
             })
             
-            self.textView(text: self.flashCard.word, isAnswer: false)
+            self.textView(text: self.flashCard.wrappedWord, isAnswer: false)
                 .zIndex(self.showAnswer ? -1 : 0)
         }
     }

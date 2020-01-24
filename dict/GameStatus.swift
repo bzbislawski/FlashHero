@@ -22,8 +22,8 @@ class GameStatus: ObservableObject {
         self.deckRepository = deckRepository
     }
     
-    func save(word: String, translation: String) {
-        flashCardRepository.save(word: word, translation: translation)
+    func save(deck: Deck, word: String, translation: String) {
+        flashCardRepository.save(deck: deck, word: word, translation: translation)
     }
     
     func delete(flashCard: FlashCard) {

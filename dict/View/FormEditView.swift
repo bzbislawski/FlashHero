@@ -20,10 +20,10 @@ struct FormEditView: View {
         return Form {
             Section(header: Text("Word & translation")) {
                 TextField("Word", text: $word).onAppear {
-                    self.word = self.flashCard.word
+                    self.word = self.flashCard.wrappedWord
                 }
                 TextField("Translation", text: $translation).onAppear {
-                    self.translation = self.flashCard.translation
+                    self.translation = self.flashCard.wrappedTranslation
                 }
             }
             
@@ -40,7 +40,7 @@ struct FormEditView: View {
         .navigationBarItems(trailing:
             HStack {
                 Button("Done") {
-                    self.gameStatus.save(word: self.word, translation: self.translation)
+//                    self.gameStatus.save(word: self.word, translation: self.translation)
                     self.presentationMode.wrappedValue.dismiss()
                 }.font(.system(size: 18))
             }

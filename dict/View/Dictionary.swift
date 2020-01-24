@@ -16,15 +16,13 @@ struct Dictionary: View {
     @State private var showingFormView = false
     
     var body: some View {
-        let decks = ["jeden", "dwa"]
-        
-        return NavigationView {
+        NavigationView {
             VStack {
                 ScrollView(.vertical, showsIndicators: false) {
                     ForEach(decks, id: \.self) { deck in
                         VStack {
                             HStack {
-                                Text("Deck name")
+                                Text(deck.wrappedName)
                                     .padding(.leading, 20)
                                     .font(.system(size: 20, weight: .semibold))
                                     .foregroundColor(.grayFont)
@@ -33,7 +31,7 @@ struct Dictionary: View {
                             }.padding(.top, 20)
                             ScrollView(.horizontal, showsIndicators: false) {
                                 VStack {
-                                    DeckView()
+                                    DeckView(deck: deck)
                                 }
                             }
                         }
