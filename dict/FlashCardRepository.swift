@@ -20,7 +20,6 @@ class FlashCardRepository {
     func save(deck: Deck, word: String, translation: String) {
         
         let newFlashCard = FlashCard(context: self.moc)
-//        newFlashCard.origin = deck
         newFlashCard.word = word
         newFlashCard.translation = translation
         newFlashCard.createdAt = Date()

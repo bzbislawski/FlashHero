@@ -19,6 +19,7 @@ struct Dictionary: View {
     ]) var decks: FetchedResults<Deck>
     @State private var showSheet = false
     @State private var activeSheet: ActiveSheet = .first
+    @State private var activeDeck: Deck = Deck()
     
     var body: some View {
         NavigationView {
@@ -40,6 +41,7 @@ struct Dictionary: View {
                                     Button("Add") {
                                         self.showSheet.toggle()
                                         self.activeSheet = .second
+                                        self.activeDeck = deck
                                     }
                                 }
                             }
@@ -61,7 +63,7 @@ struct Dictionary: View {
                     if self.activeSheet == .first {
                         DeckFormView().environmentObject(self.gameStatus)
                     } else {
-                        FlashCardFormView().environmentObject(self.gameStatus)
+                        FlashCardFormView(deck: self.activeDeck).environmentObject(self.gameStatus)
                     }
                 }
             )
