@@ -32,7 +32,7 @@ struct DeckFormView: View {
                     .padding(.bottom, 50)
                     
                     HStack {
-                        Text("Deck name")
+                        Text("Name")
                             .foregroundColor(Color("GreenFont"))
                             .font(.system(size: 18, weight: .semibold))
                         Spacer()
