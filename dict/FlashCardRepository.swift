@@ -43,7 +43,7 @@ class FlashCardRepository {
         
         do {
             fetchedResults = try  self.moc.fetch(fetchRequest)
-            response = fetchedResults[0].flashCardArray
+            response = fetchedResults.count > 0 ? fetchedResults[0].flashCardArray : Array<FlashCard>()
         } catch let fetchError as NSError {
             print("retrieveById error: \(fetchError.localizedDescription)")
             response = Array<FlashCard>()
