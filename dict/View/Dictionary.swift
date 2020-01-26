@@ -9,7 +9,7 @@
 import SwiftUI
 
 enum ActiveSheet {
-    case first, second
+    case deckForm, flashCardForm, flashCardEditForm
 }
 
 struct Dictionary: View {
@@ -18,15 +18,16 @@ struct Dictionary: View {
         NSSortDescriptor(keyPath: \Deck.createdAt, ascending: true)
     ]) var decks: FetchedResults<Deck>
     @State private var showSheet = false
-    @State private var activeSheet: ActiveSheet = .first
+    @State private var activeSheet: ActiveSheet = .deckForm
     @State private var activeDeck: Deck = Deck()
+    @State private var activeFlashCard: FlashCard = FlashCard()
     
     var body: some View {
         NavigationView {
             VStack {
                 ScrollView(.vertical, showsIndicators: false) {
                     ForEach(decks, id: \.self) { deck in
-                        DeckView(showSheet: self.$showSheet, activeSheet: self.$activeSheet, activeDeck: self.$activeDeck, deck: deck)
+                        DeckView(showSheet: self.$showSheet, activeSheet: self.$activeSheet, activeDeck: self.$activeDeck, activeFlashCard: self.$activeFlashCard, deck: deck)
                     }
                 }
             }
@@ -34,17 +35,19 @@ struct Dictionary: View {
             .navigationBarItems(
                 trailing: Button(action: {
                     self.showSheet.toggle()
-                    self.activeSheet = .first
+                    self.activeSheet = .deckForm
                 }, label: {
                     Image(systemName: "plus.app")
                         .frame(width: 44, height: 44)
                         .font(.system(size: 26, weight: .semibold))
                         .foregroundColor(Color.firstColor)
                 }).sheet(isPresented: $showSheet) {
-                    if self.activeSheet == .first {
+                    if self.activeSheet == .deckForm {
                         DeckFormView().environmentObject(self.gameStatus)
-                    } else {
+                    } else if (self.activeSheet == .flashCardForm) {
                         FlashCardFormView(deck: self.activeDeck).environmentObject(self.gameStatus)
+                    } else {
+                        FlashCardEditFormView(flashCard: self.activeFlashCard)
                     }
                 }
             )

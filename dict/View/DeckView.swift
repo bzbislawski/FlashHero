@@ -13,6 +13,7 @@ struct DeckView: View {
     @Binding var showSheet: Bool
     @Binding var activeSheet: ActiveSheet
     @Binding var activeDeck: Deck
+    @Binding var activeFlashCard: FlashCard
     var deck: Deck
     
     var flashCards: [FlashCard] {
@@ -31,30 +32,18 @@ struct DeckView: View {
                 HStack {
                     HStack {
                         ForEach(self.flashCards, id: \.self) { flashCard in
-                            ZStack {
-                                Image("rectangle")
-                                    .resizable()
-                                    .cornerRadius(10)
-                                    .frame(width: 160, height: 100)
-                                    .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color.white, lineWidth: 4))
-                                    .shadow(radius: 5, x: 0, y: 4)
-                                
-                                Text(flashCard.wrappedWord)
-                                    .bold()
-                                    .font(.system(size: 22))
-                                    .foregroundColor(Color.white)
-                                    .frame(maxWidth: 280)
-                                    .shadow(radius: 10)
+                            Button(action: {
+                                self.showSheet.toggle()
+                                self.activeSheet = .flashCardEditForm
+                                self.activeDeck = self.deck
+                                self.activeFlashCard = flashCard
+                            }) {
+                                MiniFlashCardView(flashCard: flashCard)
                             }
-                            .padding(.top, 5)
-                            .padding(.bottom)
-                            .padding(.trailing, 20)
-                            .padding(.leading, 20)
-                            
                         }
                         Button(action: {
                             self.showSheet.toggle()
-                            self.activeSheet = .second
+                            self.activeSheet = .flashCardForm
                             self.activeDeck = self.deck
                         }) {
                             Image(systemName: "plus.app")

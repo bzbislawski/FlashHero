@@ -1,5 +1,5 @@
 //
-//  FormEditView.swift
+//  FlashCardEditFormView.swift
 //  dict
 //
 //  Created by Bartosz Zbislawski on 21/11/2019.
@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct FormEditView: View {
+struct FlashCardEditFormView: View {
     @EnvironmentObject var gameStatus: GameStatus
     @Environment(\.presentationMode) var presentationMode
     @ObservedObject var flashCard: FlashCard
@@ -49,11 +49,11 @@ struct FormEditView: View {
     }
 }
 
-struct FormEditView_Previews: PreviewProvider {
+struct FlashCardEditFormView_Previews: PreviewProvider {
     static var previews: some View {
         let flashCard = FlashCard()
         flashCard.word = "word"
         flashCard.translation = "trans"
-        return FormEditView(flashCard: flashCard)
+        return FlashCardEditFormView(flashCard: flashCard)
     }
 }
