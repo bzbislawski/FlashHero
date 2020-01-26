@@ -42,21 +42,19 @@ struct Dictionary: View {
                                         self.activeSheet = .second
                                         self.activeDeck = deck
                                     }) {
-                                        HStack {
-                                            Image(systemName: "plus.app")
-                                                .font(.system(size: 38, weight: .semibold))
-                                        }
+                                        Image(systemName: "plus.app")
+                                            .font(.system(size: 38, weight: .semibold))
+                                            .frame(width: 100, height: 100)
+                                            .overlay(
+                                                RoundedRectangle(cornerRadius: 8)
+                                                    .strokeBorder(style: StrokeStyle(lineWidth: 5, dash: [10, 5]))
+                                            )
+                                            .foregroundColor(.grayFont)
+                                            .padding(.top, 5)
+                                            .padding(.bottom)
+                                            .padding(.trailing, 20)
+                                            .padding(.leading, 20)
                                     }
-                                    .frame(width: 100, height: 100)
-                                    .overlay(
-                                        RoundedRectangle(cornerRadius: 8)
-                                            .strokeBorder(style: StrokeStyle(lineWidth: 5, dash: [15]))
-                                    )
-                                    .foregroundColor(.grayFont)
-                                    .padding(.top, 5)
-                                    .padding(.bottom)
-                                    .padding(.trailing, 20)
-                                    .padding(.leading, 20)
                                 }
                             }
                         }
