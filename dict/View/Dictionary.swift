@@ -26,20 +26,7 @@ struct Dictionary: View {
             VStack {
                 ScrollView(.vertical, showsIndicators: false) {
                     ForEach(decks, id: \.self) { deck in
-                        VStack {
-                            HStack {
-                                Text(deck.wrappedName)
-                                    .padding(.leading, 20)
-                                    .font(.system(size: 20, weight: .semibold))
-                                    .foregroundColor(.lightGrayFont)
-                                Spacer()
-                            }.padding(.top, 20)
-                            ScrollView(.horizontal, showsIndicators: false) {
-                                HStack {
-                                    DeckView(showSheet: self.$showSheet, activeSheet: self.$activeSheet, activeDeck: self.$activeDeck, deck: deck)
-                                }
-                            }
-                        }
+                        DeckView(showSheet: self.$showSheet, activeSheet: self.$activeSheet, activeDeck: self.$activeDeck, deck: deck)
                     }
                 }
             }
