@@ -25,7 +25,6 @@ struct DeckView: View {
                 Text(deck.wrappedName)
                     .padding(.leading, 20)
                     .font(.system(size: 20, weight: .semibold))
-                    .foregroundColor(.lightGrayFont)
                 Spacer()
             }.padding(.top, 20)
             ScrollView(.horizontal, showsIndicators: false) {
@@ -65,7 +64,7 @@ struct DeckView: View {
                                     RoundedRectangle(cornerRadius: 8)
                                         .strokeBorder(style: StrokeStyle(lineWidth: 5, dash: [10, 5]))
                             )
-                                .foregroundColor(.grayFont)
+                                .foregroundColor(.secondaryBackgroundColor)
                                 .padding(.top, 5)
                                 .padding(.bottom)
                                 .padding(.trailing, 20)
