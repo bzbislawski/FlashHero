@@ -36,32 +36,14 @@ struct Dictionary: View {
                             }.padding(.top, 20)
                             ScrollView(.horizontal, showsIndicators: false) {
                                 HStack {
-                                    DeckView(deck: deck)
-                                    Button(action: {
-                                        self.showSheet.toggle()
-                                        self.activeSheet = .second
-                                        self.activeDeck = deck
-                                    }) {
-                                        Image(systemName: "plus.app")
-                                            .font(.system(size: 38, weight: .semibold))
-                                            .frame(width: 100, height: 100)
-                                            .overlay(
-                                                RoundedRectangle(cornerRadius: 8)
-                                                    .strokeBorder(style: StrokeStyle(lineWidth: 5, dash: [10, 5]))
-                                            )
-                                            .foregroundColor(.grayFont)
-                                            .padding(.top, 5)
-                                            .padding(.bottom)
-                                            .padding(.trailing, 20)
-                                            .padding(.leading, 20)
-                                    }
+                                    DeckView(showSheet: self.$showSheet, activeSheet: self.$activeSheet, activeDeck: self.$activeDeck, deck: deck)
                                 }
                             }
                         }
                     }
                 }
             }
-            .navigationBarTitle(Text("Dictionary").foregroundColor(Color.blackFont))
+            .navigationBarTitle("Dictionary")
             .navigationBarItems(
                 trailing: Button(action: {
                     self.showSheet.toggle()

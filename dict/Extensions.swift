@@ -16,13 +16,14 @@ extension Color {
     static let backgroundColor = Color.rgb(r: 216, g: 216, b: 216)
     static let secondaryBackgroundColor = Color.rgb(r: 200, g: 200, b: 200)
     static let firstColor = Color.rgb(r: 10, g: 94, b: 74)
-    static let blackFont = Color.rgb(r: 55, g: 55, b: 55)
+    static let blackFont = Color.rgb(r: 71, g: 71, b: 71)
     static let grayFont = Color.rgb(r: 124, g: 124, b: 124)
     static let lightGrayFont = Color.rgb(r: 80, g: 80, b: 80)
-
+    
 }
 
 extension UIColor {
-    static let backgroundColor = UIColor(red:216/255, green:216/255, blue:216/255, alpha:1.0)
-    static let secondaryBackgroundColor = UIColor(red:0.6, green:0.6, blue:0.6, alpha:1.0)
+    static let backgroundColor = UIColor(red:216/255, green:216/255, blue:216/255, alpha: 1.0)
+    static let secondaryBackgroundColor = UIColor(red:0.6, green:0.6, blue:0.6, alpha: 1.0)
+    static let blackFont = UIColor(red: 71, green: 71, blue: 71, alpha: 1.0)
 }
