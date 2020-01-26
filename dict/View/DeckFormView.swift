@@ -17,7 +17,7 @@ struct DeckFormView: View {
     var body: some View {
         NavigationView {
             ZStack {
-                VStack(spacing: 15) {
+                VStack(spacing: 5) {
                     VStack {
                         Image(systemName: "square.stack.3d.down.right")
                             .frame(width: 32, height: 32)
@@ -28,7 +28,7 @@ struct DeckFormView: View {
                             .font(.system(size: 32, weight: .bold))
                     }
                     .padding(.top, 60)
-                    .padding(.bottom, 50)
+                    .padding(.bottom, 20)
                     
                     HStack {
                         Text("Name")
