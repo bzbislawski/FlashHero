@@ -9,7 +9,6 @@
 import SwiftUI
 
 struct FlashCardView: View {
-    @Environment(\.colorScheme) var colorScheme: ColorScheme
     @EnvironmentObject var gameStatus: GameStatus
     @State private var showAnswer = false
     @State private var goAway = false
@@ -54,7 +53,7 @@ struct FlashCardView: View {
                 .resizable()
                 .cornerRadius(10)
                 .frame(width: 320, height: 200)
-                .overlay(RoundedRectangle(cornerRadius: 10).stroke(self.colorScheme == .light ? Color.white : Color.gray, lineWidth: 4))
+                .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color.white, lineWidth: 4))
                 .shadow(radius: 20, x: 0, y: self.showAnswer ? -20 : 20)
                 .offset(x: self.currentPosition.width, y: self.currentPosition.height)
                 .rotation3DEffect(.degrees(self.showAnswer ? 180 : 0), axis: (x: 1, y: 0, z: 0))

@@ -13,8 +13,8 @@ extension Color {
         return Color(red: r / 255, green: g / 255, blue: b / 255)
     }
     
-    static let backgroundColor = Color.rgb(r: 216, g: 216, b: 216)
-    static let secondaryBackgroundColor = Color.rgb(r: 200, g: 200, b: 200)
+    static let backgroundColor = Color.rgb(r: 241, g: 242, b: 244)
+    static let secondaryBackgroundColor = Color.rgb(r: 209, g: 214, b: 217)
     static let firstColor = Color.rgb(r: 10, g: 94, b: 74)
     static let blackFont = Color.rgb(r: 71, g: 71, b: 71)
     static let grayFont = Color.rgb(r: 124, g: 124, b: 124)

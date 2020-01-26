@@ -53,7 +53,7 @@ struct Scoreboard: View {
         .frame(width: 280)
         .background(winGame ? Color("Success") : Color("Failure"))
         .cornerRadius(40)
-        .overlay(RoundedRectangle(cornerRadius: 40).stroke(self.colorScheme == .light ? Color.white : Color.gray, lineWidth: 4))
+        .overlay(RoundedRectangle(cornerRadius: 40).stroke(Color.white, lineWidth: 4))
         .shadow(radius: 20, x: 0, y: 20)
         .foregroundColor(Color("Gray"))
         .opacity(dim ? 1.0 : 0.5)

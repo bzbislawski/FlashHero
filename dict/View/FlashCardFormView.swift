@@ -19,7 +19,6 @@ struct FlashCardFormView: View {
     var body: some View {
         NavigationView {
             ZStack {
-                Color.secondaryBackgroundColor.edgesIgnoringSafeArea(.all)
                 VStack(spacing: 15) {
                     VStack {
                         Image(systemName: "doc")
@@ -42,7 +41,7 @@ struct FlashCardFormView: View {
                     ZStack {
                         TextField("", text: $word)
                             .frame(width: 250, height: 40)
-                            .background(Color.white)
+                            .background(Color.backgroundColor)
                             .cornerRadius(5)
                         HStack {
                             Spacer()
@@ -52,7 +51,7 @@ struct FlashCardFormView: View {
                             })
                             {
                                 Image(systemName: "xmark.circle.fill")
-                                    .foregroundColor(Color.backgroundColor)
+                                    .foregroundColor(Color.secondaryBackgroundColor)
                             }
                             .padding(.trailing, 8)
                         }.frame(width: 250)
@@ -68,7 +67,7 @@ struct FlashCardFormView: View {
                     ZStack {
                         TextField("", text: $translation)
                             .frame(width: 250, height: 40)
-                            .background(Color.white)
+                            .background(Color.backgroundColor)
                             .cornerRadius(5)
                         HStack {
                             Spacer()
@@ -78,13 +77,13 @@ struct FlashCardFormView: View {
                             })
                             {
                                 Image(systemName: "xmark.circle.fill")
-                                    .foregroundColor(Color.backgroundColor)
+                                    .foregroundColor(Color.secondaryBackgroundColor)
                             }
                             .padding(.trailing, 8)
                         }.frame(width: 250)
                     }
                     Button(action: {
-                        self.gameStatus.save(deck: self.deck, word: self.word, translation: "default")
+                        self.gameStatus.save(deck: self.deck, word: self.word, translation: self.translation)
                         self.presentationMode.wrappedValue.dismiss()
                     }) {
                         VStack {

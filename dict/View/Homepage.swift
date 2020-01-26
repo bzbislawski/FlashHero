@@ -11,11 +11,8 @@ import SwiftUI
 struct Homepage: View {
     @EnvironmentObject var gameStatus: GameStatus
     
-    
-    
     var body: some View {
         ZStack {
-            Color.backgroundColor.edgesIgnoringSafeArea(.all)
             TabView {
                 Game()
                     .tabItem {
@@ -39,40 +36,6 @@ struct Homepage: View {
             .accentColor(.firstColor)
             
         }
-    }
-}
-
-extension UINavigationController {
-    override open func viewDidLoad() {
-        super.viewDidLoad()
-        
-        let standardAppearance = UINavigationBarAppearance()
-        standardAppearance.shadowColor = .clear
-        standardAppearance.backgroundColor = .backgroundColor
-        
-        let compactAppearance = UINavigationBarAppearance()
-        compactAppearance.shadowColor = .clear
-        compactAppearance.backgroundColor = .backgroundColor
-        
-        let scrollEdgeAppearance = UINavigationBarAppearance()
-        scrollEdgeAppearance.shadowColor = .clear
-        scrollEdgeAppearance.backgroundColor = .backgroundColor
-        
-        navigationBar.standardAppearance = standardAppearance
-        navigationBar.compactAppearance = compactAppearance
-        navigationBar.scrollEdgeAppearance = scrollEdgeAppearance
-    }
-}
-
-extension UITabBarController {
-    override open func viewDidLoad() {
-        super.viewDidLoad()
-        
-        let standardAppearance = UITabBarAppearance()
-        
-        standardAppearance.backgroundColor = .backgroundColor
-        
-        tabBar.standardAppearance = standardAppearance
     }
 }
 

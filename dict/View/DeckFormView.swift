@@ -17,7 +17,6 @@ struct DeckFormView: View {
     var body: some View {
         NavigationView {
             ZStack {
-                Color.secondaryBackgroundColor.edgesIgnoringSafeArea(.all)
                 VStack(spacing: 15) {
                     VStack {
                         Image(systemName: "square.stack.3d.down.right")
@@ -41,14 +40,14 @@ struct DeckFormView: View {
                     ZStack {
                         TextField("", text: $name)
                             .frame(width: 250, height: 40)
-                            .background(Color.white)
+                            .background(Color.backgroundColor)
                             .cornerRadius(5)
                         HStack {
                             Spacer()
                             Button(action: { self.name = "" })
                             {
                                 Image(systemName: "xmark.circle.fill")
-                                    .foregroundColor(Color.backgroundColor)
+                                    .foregroundColor(Color.secondaryBackgroundColor)
                             }
                             .padding(.trailing, 8)
                         }.frame(width: 250)

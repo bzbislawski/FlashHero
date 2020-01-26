@@ -9,7 +9,6 @@
 import SwiftUI
 
 struct Game: View {
-    @Environment(\.colorScheme) var colorScheme: ColorScheme
     @EnvironmentObject var gameStatus: GameStatus
     
     var flashCards: Array<FlashCard> {
