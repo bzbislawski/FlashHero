@@ -47,7 +47,7 @@ struct Dictionary: View {
                     } else if (self.activeSheet == .flashCardForm) {
                         FlashCardFormView(deck: self.activeDeck).environmentObject(self.gameStatus)
                     } else {
-                        FlashCardEditFormView(flashCard: self.activeFlashCard)
+                        FlashCardFormView(deck: self.activeDeck, flashCard: self.activeFlashCard).environmentObject(self.gameStatus)
                     }
                 }
             )

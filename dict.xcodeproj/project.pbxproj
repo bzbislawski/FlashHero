@@ -31,7 +31,6 @@
 		D64D51152385CCA30075AD3D /* Homepage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64D51142385CCA30075AD3D /* Homepage.swift */; };
 		D64D51172385E0BF0075AD3D /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64D51162385E0BF0075AD3D /* Game.swift */; };
 		D66668252386D311008421AB /* Dictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = D66668242386D311008421AB /* Dictionary.swift */; };
-		D66668272386FDE2008421AB /* FlashCardEditFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D66668262386FDE2008421AB /* FlashCardEditFormView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -61,7 +60,6 @@
 		D64D51142385CCA30075AD3D /* Homepage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Homepage.swift; sourceTree = "<group>"; };
 		D64D51162385E0BF0075AD3D /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		D66668242386D311008421AB /* Dictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dictionary.swift; sourceTree = "<group>"; };
-		D66668262386FDE2008421AB /* FlashCardEditFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashCardEditFormView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,7 +124,6 @@
 				D63B466123D517EC008370C7 /* DeckView.swift */,
 				D63B466F23D79865008370C7 /* DeckFormView.swift */,
 				D64D51042385CA900075AD3D /* FlashCardFormView.swift */,
-				D66668262386FDE2008421AB /* FlashCardEditFormView.swift */,
 				D64D51162385E0BF0075AD3D /* Game.swift */,
 				D60F038023B3E0A5007F1F74 /* Scoreboard.swift */,
 				D6412B802388367000EA3758 /* FlashCardView.swift */,
@@ -235,7 +232,6 @@
 				D64D50FE2385CA900075AD3D /* AppDelegate.swift in Sources */,
 				D66668252386D311008421AB /* Dictionary.swift in Sources */,
 				BA50F35223DB11FA005D624B /* Deck+CoreDataClass.swift in Sources */,
-				D66668272386FDE2008421AB /* FlashCardEditFormView.swift in Sources */,
 				BA89D8B6239AAC9200D97AC2 /* SettingsView.swift in Sources */,
 				BA50F35123DB11FA005D624B /* FlashCard+CoreDataProperties.swift in Sources */,
 				D6412B812388367000EA3758 /* FlashCardView.swift in Sources */,

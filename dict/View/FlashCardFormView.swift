@@ -13,7 +13,7 @@ struct FlashCardFormView: View {
     @State private var word: String = ""
     @State private var translation: String = ""
     var deck: Deck
-    
+    var flashCard: FlashCard?
     @EnvironmentObject var gameStatus: GameStatus
     
     var body: some View {
@@ -83,7 +83,13 @@ struct FlashCardFormView: View {
                         }.frame(width: 250)
                     }
                     Button(action: {
-                        self.gameStatus.save(deck: self.deck, word: self.word, translation: self.translation)
+                        if (self.flashCard != nil) {
+                            self.flashCard!.word = self.word
+                            self.flashCard?.translation = self.translation
+                            self.gameStatus.save(deck: self.deck, flashCard: self.flashCard!)
+                        } else {
+                            self.gameStatus.save(deck: self.deck, word: self.word, translation: self.translation)
+                        }
                         self.presentationMode.wrappedValue.dismiss()
                     }) {
                         VStack {
@@ -95,6 +101,21 @@ struct FlashCardFormView: View {
                         .background(Color.firstColor)
                         .cornerRadius(5)
                     }.padding(.top, 25)
+                    if (self.flashCard != nil) {
+                        Button(action: {
+                            self.gameStatus.delete(flashCard: self.flashCard!)
+                            self.presentationMode.wrappedValue.dismiss()
+                        }) {
+                            VStack {
+                                Text("Delete")
+                                    .frame(width: 250, height: 40)
+                                    .font(.system(size: 16, weight: .medium))
+                                    .foregroundColor(Color.white)
+                            }
+                            .background(Color.red)
+                            .cornerRadius(5)
+                        }.padding(.top, 25)
+                    }
                     Spacer()
                     
                 }.navigationBarTitle("", displayMode: .inline)
@@ -105,6 +126,10 @@ struct FlashCardFormView: View {
                         leading:
                         Button(action: { self.presentationMode.wrappedValue.dismiss() }) { Text("Cancel").foregroundColor(Color.firstColor).font(.system(size: 16, weight: .semibold)) }
                 )
+                    .onAppear {
+                        self.word = self.flashCard?.wrappedWord ?? self.word
+                        self.translation = self.flashCard?.translation ?? self.translation
+                }
                 
             }
         }

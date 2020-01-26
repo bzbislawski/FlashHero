@@ -29,6 +29,12 @@ class FlashCardRepository {
         try? self.moc.save()
     }
     
+    func save(deck: Deck, flashCard: FlashCard) {
+        deck.addToFlashCard(flashCard)
+        
+        try? self.moc.save()
+    }
+    
     func delete(flashCard: FlashCard) {
         self.moc.delete(flashCard)
         try? self.moc.save()
