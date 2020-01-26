@@ -24,16 +24,16 @@ struct FlashCardFormView: View {
                         Image(systemName: "doc")
                             .frame(width: 32, height: 32)
                             .font(.system(size: 32, weight: .bold))
-                            .foregroundColor(Color("GreenFont"))
+                            .foregroundColor(.firstColor)
                         Text("Flash Card")
-                            .foregroundColor(Color("GreenFont"))
+                            .foregroundColor(.firstColor)
                             .font(.system(size: 32, weight: .bold))
                     }
                     .padding(.top, 60)
                     .padding(.bottom, 50)
                     HStack {
                         Text("Word")
-                            .foregroundColor(Color("GreenFont"))
+                            .foregroundColor(.firstColor)
                             .font(.system(size: 18, weight: .semibold))
                         Spacer()
                     }.frame(width: 250)
@@ -51,7 +51,7 @@ struct FlashCardFormView: View {
                             })
                             {
                                 Image(systemName: "xmark.circle.fill")
-                                    .foregroundColor(Color.secondaryBackgroundColor)
+                                    .foregroundColor(.tertiaryBackgroundColor)
                             }
                             .padding(.trailing, 8)
                         }.frame(width: 250)
@@ -59,7 +59,7 @@ struct FlashCardFormView: View {
                     
                     HStack {
                         Text("Translation")
-                            .foregroundColor(Color("GreenFont"))
+                            .foregroundColor(.firstColor)
                             .font(.system(size: 18, weight: .semibold))
                         Spacer()
                     }.frame(width: 250)
@@ -77,7 +77,7 @@ struct FlashCardFormView: View {
                             })
                             {
                                 Image(systemName: "xmark.circle.fill")
-                                    .foregroundColor(Color.secondaryBackgroundColor)
+                                    .foregroundColor(.tertiaryBackgroundColor)
                             }
                             .padding(.trailing, 8)
                         }.frame(width: 250)

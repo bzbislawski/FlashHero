@@ -22,9 +22,9 @@ struct DeckFormView: View {
                         Image(systemName: "square.stack.3d.down.right")
                             .frame(width: 32, height: 32)
                             .font(.system(size: 32, weight: .bold))
-                            .foregroundColor(Color("GreenFont"))
+                            .foregroundColor(.firstColor)
                         Text("Deck")
-                            .foregroundColor(Color("GreenFont"))
+                            .foregroundColor(.firstColor)
                             .font(.system(size: 32, weight: .bold))
                     }
                     .padding(.top, 60)
@@ -32,7 +32,7 @@ struct DeckFormView: View {
                     
                     HStack {
                         Text("Name")
-                            .foregroundColor(Color("GreenFont"))
+                            .foregroundColor(.firstColor)
                             .font(.system(size: 18, weight: .semibold))
                         Spacer()
                     }.frame(width: 250)
@@ -47,7 +47,7 @@ struct DeckFormView: View {
                             Button(action: { self.name = "" })
                             {
                                 Image(systemName: "xmark.circle.fill")
-                                    .foregroundColor(Color.secondaryBackgroundColor)
+                                    .foregroundColor(.tertiaryBackgroundColor)
                             }
                             .padding(.trailing, 8)
                         }.frame(width: 250)

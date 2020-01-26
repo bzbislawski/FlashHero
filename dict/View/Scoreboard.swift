@@ -44,7 +44,7 @@ struct Scoreboard: View {
                     Text("Restart the game")
                         .frame(width: 160, height: 40)
                         .font(.system(size: 16, weight: .medium))
-                        .foregroundColor(Color("GreenFont"))
+                        .foregroundColor(.firstColor)
                 }
                 .background(Color("Gray"))
                 .cornerRadius(5)
