@@ -18,6 +18,8 @@ extension Color {
     static let firstColor = Color.rgb(r: 10, g: 94, b: 74)
     static let blackFont = Color.rgb(r: 55, g: 55, b: 55)
     static let grayFont = Color.rgb(r: 124, g: 124, b: 124)
+    static let lightGrayFont = Color.rgb(r: 80, g: 80, b: 80)
+
 }
 
 extension UIColor {

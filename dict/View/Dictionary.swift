@@ -31,18 +31,32 @@ struct Dictionary: View {
                                 Text(deck.wrappedName)
                                     .padding(.leading, 20)
                                     .font(.system(size: 20, weight: .semibold))
-                                    .foregroundColor(.grayFont)
-                                
+                                    .foregroundColor(.lightGrayFont)
                                 Spacer()
                             }.padding(.top, 20)
                             ScrollView(.horizontal, showsIndicators: false) {
                                 HStack {
                                     DeckView(deck: deck)
-                                    Button("Add") {
+                                    Button(action: {
                                         self.showSheet.toggle()
                                         self.activeSheet = .second
                                         self.activeDeck = deck
+                                    }) {
+                                        HStack {
+                                            Image(systemName: "plus.app")
+                                                .font(.system(size: 38, weight: .semibold))
+                                        }
                                     }
+                                    .frame(width: 100, height: 100)
+                                    .overlay(
+                                        RoundedRectangle(cornerRadius: 8)
+                                            .strokeBorder(style: StrokeStyle(lineWidth: 5, dash: [15]))
+                                    )
+                                    .foregroundColor(.grayFont)
+                                    .padding(.top, 5)
+                                    .padding(.bottom)
+                                    .padding(.trailing, 20)
+                                    .padding(.leading, 20)
                                 }
                             }
                         }
@@ -58,7 +72,7 @@ struct Dictionary: View {
                     Image(systemName: "plus.app")
                         .frame(width: 44, height: 44)
                         .font(.system(size: 26, weight: .semibold))
-                        .foregroundColor(Color("GreenFont"))
+                        .foregroundColor(Color.firstColor)
                 }).sheet(isPresented: $showSheet) {
                     if self.activeSheet == .first {
                         DeckFormView().environmentObject(self.gameStatus)
