@@ -38,6 +38,10 @@ class GameStatus: ObservableObject {
         deckRepository.save(name: name, color: color)
     }
     
+    func save(deck: Deck, name: String, color: String) {
+        deckRepository.save(deck: deck, name: name, color: color)
+    }
+    
     func resetGame() {
         self.flashCards = flashCardRepository.getAll()
         self.correctAnswers = 0

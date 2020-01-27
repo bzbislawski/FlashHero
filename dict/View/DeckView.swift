@@ -23,9 +23,19 @@ struct DeckView: View {
     var body: some View {
         VStack {
             HStack {
-                Text(deck.wrappedName)
+                Button(action: {
+                    self.showSheet.toggle()
+                    self.activeSheet = .deckEditForm
+                    self.activeDeck = self.deck
+                }) {
+                    HStack {
+                        Image(systemName: "folder")
+                        Text(deck.wrappedName).font(.system(size: 20, weight: .semibold))
+                    }
                     .padding(.leading, 20)
-                    .font(.system(size: 20, weight: .semibold))
+                    .foregroundColor(.black)
+                }
+                
                 Spacer()
             }.padding(.top, 20)
             ScrollView(.horizontal, showsIndicators: false) {

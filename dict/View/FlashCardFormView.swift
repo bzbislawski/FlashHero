@@ -85,7 +85,7 @@ struct FlashCardFormView: View {
                     Button(action: {
                         if (self.flashCard != nil) {
                             self.flashCard!.word = self.word
-                            self.flashCard?.translation = self.translation
+                            self.flashCard!.translation = self.translation
                             self.gameStatus.save(deck: self.deck, flashCard: self.flashCard!)
                         } else {
                             self.gameStatus.save(deck: self.deck, word: self.word, translation: self.translation)

@@ -9,7 +9,7 @@
 import SwiftUI
 
 enum ActiveSheet {
-    case deckForm, flashCardForm, flashCardEditForm
+    case deckForm, flashCardForm, deckEditForm, flashCardEditForm
 }
 
 struct Dictionary: View {
@@ -40,13 +40,14 @@ struct Dictionary: View {
                     Image(systemName: "plus.app")
                         .frame(width: 44, height: 44)
                         .font(.system(size: 26, weight: .semibold))
-                        .foregroundColor(Color.firstColor)
                 }).sheet(isPresented: $showSheet) {
                     if self.activeSheet == .deckForm {
                         DeckFormView().environmentObject(self.gameStatus)
+                    } else if (self.activeSheet == .deckEditForm) {
+                        DeckFormView(deck: self.activeDeck).environmentObject(self.gameStatus)
                     } else if (self.activeSheet == .flashCardForm) {
                         FlashCardFormView(deck: self.activeDeck).environmentObject(self.gameStatus)
-                    } else {
+                    } else if (self.activeSheet == .flashCardEditForm) {
                         FlashCardFormView(deck: self.activeDeck, flashCard: self.activeFlashCard).environmentObject(self.gameStatus)
                     }
                 }

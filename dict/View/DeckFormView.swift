@@ -11,6 +11,7 @@ import SwiftUI
 struct DeckFormView: View {
     @Environment (\.presentationMode) var presentationMode
     @State private var name: String = ""
+    var deck: Deck?
     
     @EnvironmentObject var gameStatus: GameStatus
     
@@ -54,7 +55,11 @@ struct DeckFormView: View {
                     }
                     
                     Button(action: {
-                        self.gameStatus.save(name: self.name, color: "default")
+                        if (self.deck == nil) {
+                            self.gameStatus.save(name: self.name, color: "default")
+                        } else {
+                            self.gameStatus.save(deck: self.deck!, name: self.name, color: "default")
+                        }
                         self.presentationMode.wrappedValue.dismiss()
                     }) {
                         VStack {
@@ -76,6 +81,9 @@ struct DeckFormView: View {
                         leading:
                         Button(action: { self.presentationMode.wrappedValue.dismiss() }) { Text("Cancel").foregroundColor(Color.firstColor).font(.system(size: 16, weight: .semibold)) }
                 )
+                    .onAppear {
+                        self.name = self.deck?.wrappedName ?? self.name
+                }
                 
             }
         }

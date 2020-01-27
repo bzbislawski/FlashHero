@@ -24,4 +24,11 @@ class DeckRepository {
         
         try? self.moc.save()
     }
+    
+    func save(deck: Deck, name: String, color: String) {
+        deck.name = name
+        deck.color = color
+        
+        try? self.moc.save()
+    }
 }
