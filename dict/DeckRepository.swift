@@ -31,4 +31,9 @@ class DeckRepository {
         
         try? self.moc.save()
     }
+    
+    func delete(deck: Deck) {
+        self.moc.delete(deck)
+        try? self.moc.save()
+    }
 }
