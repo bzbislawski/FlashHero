@@ -28,9 +28,9 @@ struct Homepage: View {
                 }
                 SettingsView()
                     .tabItem {
-                        Image(systemName: "info.circle")
+                        Image(systemName: "gear")
                             .font(Font.title.weight(.light))
-                        Text("About")
+                        Text("Settings")
                 }
             }
             .accentColor(.firstColor)
