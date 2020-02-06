@@ -15,6 +15,8 @@ struct DeckView: View {
     @Binding var activeDeck: Deck
     @Binding var activeFlashCard: FlashCard
     var deck: Deck
+    @State private var currentPosition: CGSize = .zero
+    @State private var newPosition: CGSize = .zero
     
     var flashCards: [FlashCard] {
         return deck.flashCardArray
@@ -41,6 +43,22 @@ struct DeckView: View {
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack {
                     HStack {
+                        ZStack {
+                            Color.firstColor
+                            VStack {
+                                Image(systemName: "play.fill")
+                                Text("Play")
+                            }.frame(width: 100, height: 10)
+                        }.gesture(DragGesture()
+                                .onChanged { value in
+                                    self.currentPosition = CGSize(width: value.translation.width + self.newPosition.width, height: value.translation.height + self.newPosition.height)
+                            }   // 4.
+                                .onEnded { value in
+                                    self.currentPosition = CGSize(width: value.translation.width + self.newPosition.width, height: value.translation.height + self.newPosition.height)
+                                    print(self.newPosition.width)
+                                    self.newPosition = self.currentPosition
+                                }
+                        )
                         ForEach(self.flashCards, id: \.self) { flashCard in
                             Button(action: {
                                 self.showSheet.toggle()
