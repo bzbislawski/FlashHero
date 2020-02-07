@@ -44,20 +44,21 @@ struct DeckView: View {
                 HStack {
                     HStack {
                         ZStack {
-                            Color.firstColor
+                            Color(UIColor.systemGreen)
                             VStack {
                                 Image(systemName: "play.fill")
                                 Text("Play")
-                            }.frame(width: 100, height: 10)
-                        }.gesture(DragGesture()
-                                .onChanged { value in
-                                    self.currentPosition = CGSize(width: value.translation.width + self.newPosition.width, height: value.translation.height + self.newPosition.height)
-                            }   // 4.
-                                .onEnded { value in
-                                    self.currentPosition = CGSize(width: value.translation.width + self.newPosition.width, height: value.translation.height + self.newPosition.height)
-                                    print(self.newPosition.width)
-                                    self.newPosition = self.currentPosition
-                                }
+                            }.frame(width: 100, height: 10).foregroundColor(.white)
+                        }
+                        .gesture(DragGesture()
+                        .onChanged { value in
+                            self.currentPosition = CGSize(width: value.translation.width + self.newPosition.width, height: value.translation.height + self.newPosition.height)
+                        }   // 4.
+                            .onEnded { value in
+                                self.currentPosition = CGSize(width: value.translation.width + self.newPosition.width, height: value.translation.height + self.newPosition.height)
+                                print(self.newPosition.width)
+                                self.newPosition = self.currentPosition
+                            }
                         )
                         ForEach(self.flashCards, id: \.self) { flashCard in
                             Button(action: {
@@ -90,6 +91,7 @@ struct DeckView: View {
                     }
                 }
             }
+            .padding(.leading, -100)
         }
     }
 }
