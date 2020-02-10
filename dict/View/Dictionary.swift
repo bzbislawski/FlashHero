@@ -25,6 +25,14 @@ struct Dictionary: View {
     var body: some View {
         NavigationView {
             VStack {
+                HStack {
+                    Text("Swipe left to play a deck")
+                        .italic()
+                        .font(.subheadline)
+                        .fontWeight(.ultraLight)
+                        .padding(.leading, 20)
+                    Spacer()
+                }
                 ScrollView(.vertical, showsIndicators: false) {
                     ForEach(decks, id: \.self) { deck in
                         DeckView(showSheet: self.$showSheet, activeSheet: self.$activeSheet, activeDeck: self.$activeDeck, activeFlashCard: self.$activeFlashCard, deck: deck)
