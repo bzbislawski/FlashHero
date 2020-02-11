@@ -90,6 +90,7 @@ struct DeckView: View {
             if (self.currentPosition.width > 15) {
                 self.showPlayButton = true
                 print("GRAMY")
+                self.gameStatus.currentDeck = self.deck
             }
             
             if (self.showPlayButton == true && self.currentPosition.width < -1) {

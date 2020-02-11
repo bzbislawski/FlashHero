@@ -21,6 +21,7 @@ class DeckRepository {
         deck.name = name
         deck.color = color
         deck.createdAt = Date()
+        deck.id = UUID()
         
         try? self.moc.save()
     }
