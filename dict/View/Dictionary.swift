@@ -26,7 +26,7 @@ struct Dictionary: View {
         NavigationView {
             VStack {
                 HStack {
-                    Text("Swipe left to play a deck")
+                    Text("Swipe right to play a deck")
                         .italic()
                         .font(.subheadline)
                         .fontWeight(.ultraLight)

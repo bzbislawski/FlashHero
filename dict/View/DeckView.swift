@@ -23,6 +23,31 @@ struct DeckView: View {
         return deck.flashCardArray
     }
     
+    var drag: some Gesture {
+        DragGesture()
+            .onChanged { value in
+                self.currentPosition = CGSize(width: value.translation.width + self.newPosition.width, height: value.translation.height + self.newPosition.height)
+                if (self.currentPosition.width > 15) {
+                    self.showPlayButton = true
+                    print("GRAMY")
+                    self.gameStatus.currentDeck = self.deck
+                }
+                
+                if (self.showPlayButton == true && self.currentPosition.width < -1) {
+                    self.showPlayButton = false
+                    print("NIE GRAMY")
+                }
+                
+                //            print(self.currentPosition.width)
+                //            print(self.newPosition.width)
+                
+            }
+            .onEnded { value in
+                
+                //            print(self.newPosition.width)
+            }
+    }
+    
     var body: some View {
         VStack {
             HStack {
@@ -82,30 +107,9 @@ struct DeckView: View {
                 }
             }
             .padding(.leading, self.showPlayButton ? -100 : -200)
-            //            .animation(Animation.spring())
         }
-        .gesture(DragGesture()
-        .onChanged { value in
-            self.currentPosition = CGSize(width: value.translation.width + self.newPosition.width, height: value.translation.height + self.newPosition.height)
-            if (self.currentPosition.width > 15) {
-                self.showPlayButton = true
-                print("GRAMY")
-                self.gameStatus.currentDeck = self.deck
-            }
-            
-            if (self.showPlayButton == true && self.currentPosition.width < -1) {
-                self.showPlayButton = false
-                print("NIE GRAMY")
-            }
-            
-            //            print(self.currentPosition.width)
-            //            print(self.newPosition.width)
-            
-        }
-        .onEnded { value in
-            
-            //            print(self.newPosition.width)
-        })
+        .gesture(drag)
+
     }
     
 }
