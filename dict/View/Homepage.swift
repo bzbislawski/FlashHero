@@ -14,18 +14,18 @@ struct Homepage: View {
     var body: some View {
         ZStack {
             TabView {
-                Game()
-                    .tabItem {
-                        Image(systemName: "gamecontroller").font(Font.title.weight(.light))
-                        Text("Game")
-                }
-                .onAppear{ self.gameStatus.resetGame()}
                 Dictionary()
                     .tabItem {
                         Image(systemName: "book")
                             .font(Font.title.weight(.light))
                         Text("Dictionary")
                 }
+                Game()
+                    .tabItem {
+                        Image(systemName: "gamecontroller").font(Font.title.weight(.light))
+                        Text("Game")
+                }
+                .onAppear{ self.gameStatus.resetGame()}
                 SettingsView()
                     .tabItem {
                         Image(systemName: "gear")
