@@ -12,7 +12,6 @@ import CoreData
 class GameStatus: ObservableObject {
     @Published var correctAnswers: Int = 0
     @Published var wrongAnswers: Int = 0
-    @Published var currentDeck: Deck?
     @Published var flashCards: Array<FlashCard> = []
     
     private var flashCardRepository: FlashCardRepository
@@ -36,9 +35,6 @@ class GameStatus: ObservableObject {
     }
     
     func delete(deck: Deck) {
-        if (self.currentDeck != nil && self.currentDeck!.id == deck.id) {
-            self.currentDeck = nil
-        }
         deckRepository.delete(deck: deck)
     }
     
@@ -51,7 +47,7 @@ class GameStatus: ObservableObject {
     }
     
     func resetGame() {
-        self.flashCards = flashCardRepository.getAll(deck: self.currentDeck)
+        self.flashCards = flashCardRepository.getAll()
         self.correctAnswers = 0
         self.wrongAnswers = 0
     }

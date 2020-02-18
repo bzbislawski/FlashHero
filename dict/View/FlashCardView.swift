@@ -20,6 +20,11 @@ struct FlashCardView: View {
         Animation.interpolatingSpring(mass: 1, stiffness: 80, damping: 10, initialVelocity: 0)
     }
     
+//    var deckColor: DeckColor {
+////        print(self.gameStatus.currentDeck)
+//        return deckColors.first{$0.name == self.gameStatus.currentDeck?.color}!
+//    }
+    
     func textView(text: String, isAnswer: Bool) -> some View {
         Text(text)
             .bold()
@@ -49,8 +54,8 @@ struct FlashCardView: View {
             self.textView(text: self.flashCard.wrappedTranslation, isAnswer: true)
                 .zIndex(self.showAnswer ? 1 : 0)
             
-            Image("rectangle")
-                .resizable()
+            Rectangle()
+                .fill(Color.red)//LinearGradient(gradient: Gradient(colors: [self.deckColor.colorOne, self.deckColor.colorTwo]), startPoint: .topLeading, endPoint: .bottomTrailing))
                 .cornerRadius(10)
                 .frame(width: 320, height: 200)
                 .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color.white, lineWidth: 4))

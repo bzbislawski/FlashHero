@@ -40,17 +40,13 @@ class FlashCardRepository {
         try? self.moc.save()
     }
     
-    func getAll(deck: Deck?) -> Array<FlashCard> {
+    func getAll() -> Array<FlashCard> {
         var fetchedResults: Array<Deck> = Array<Deck>()
         
         let response: Array<FlashCard>
         
         let deckFetchRequest : NSFetchRequest<Deck> = Deck.fetchRequest()
         deckFetchRequest.fetchLimit = 1
-        
-        if (deck != nil ) {
-            deckFetchRequest.predicate = NSPredicate(format: "id == %@", deck!.id! as CVarArg)
-        }
         
         do {
             fetchedResults = try self.moc.fetch(deckFetchRequest)
