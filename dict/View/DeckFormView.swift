@@ -52,6 +52,21 @@ struct DeckFormView: View {
                             }
                             .padding(.trailing, 8)
                         }.frame(width: 250)
+                    }.padding(.bottom, 20)
+                    
+                    HStack {
+                        Text("Color")
+                            .foregroundColor(.firstColor)
+                            .font(.system(size: 18, weight: .semibold))
+                        Spacer()
+                    }.frame(width: 250)
+                    
+                    HStack {
+                        ForEach(0 ..< deckColors.count) { value in
+                            Circle()
+                                .fill(deckColors[value].colorOne)
+                                .frame(width: 22, height: 22)
+                        }
                     }
                     
                     Button(action: {
