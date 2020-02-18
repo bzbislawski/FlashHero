@@ -11,6 +11,7 @@ import SwiftUI
 struct DeckFormView: View {
     @Environment (\.presentationMode) var presentationMode
     @State private var name: String = ""
+    @State private var color: String = ""
     var deck: Deck?
     
     @EnvironmentObject var gameStatus: GameStatus
@@ -59,21 +60,34 @@ struct DeckFormView: View {
                             .foregroundColor(.firstColor)
                             .font(.system(size: 18, weight: .semibold))
                         Spacer()
-                    }.frame(width: 250)
+                    }
+                    .frame(width: 250)
+                    .padding(.bottom, 15)
                     
                     HStack {
                         ForEach(0 ..< deckColors.count) { value in
-                            Circle()
-                                .fill(deckColors[value].colorOne)
-                                .frame(width: 22, height: 22)
+                            Button(action:
+                            {
+                                self.color = deckColors[value].name
+                            })
+                            {
+                                Circle()
+                                    .fill(deckColors[value].colorOne)
+                                    .overlay(
+                                        RoundedRectangle(cornerRadius: 16)
+                                            .stroke(Color.tertiaryBackgroundColor, lineWidth: self.color == deckColors[value].name ? 4 : 1)
+                                    )
+                                    .frame(width: 22, height: 22)
+                                    
+                            }.frame(width: 44, height: 44)
                         }
                     }
                     
                     Button(action: {
                         if (self.deck == nil) {
-                            self.gameStatus.save(name: self.name, color: "default")
+                            self.gameStatus.save(name: self.name, color: self.color)
                         } else {
-                            self.gameStatus.save(deck: self.deck!, name: self.name, color: "default")
+                            self.gameStatus.save(deck: self.deck!, name: self.name, color: self.color)
                         }
                         self.presentationMode.wrappedValue.dismiss()
                     }) {
@@ -114,8 +128,8 @@ struct DeckFormView: View {
                 )
                     .onAppear {
                         self.name = self.deck?.wrappedName ?? self.name
+                        self.color = self.deck?.wrappedColor ?? self.color
                 }
-                
             }
         }
     }
