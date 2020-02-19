@@ -25,8 +25,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Create the SwiftUI view and set the context as the value for the managedObjectContext environment keyPath.
         // Add `@Environment(\.managedObjectContext)` in the views that will need the context.
         let view = Homepage().environment(\.managedObjectContext, context)
+        let flashCardRepository = FlashCardRepository(moc: context)
+        let gameStatus = GameStatus(flashCardRepository: flashCardRepository, deckRepository: DeckRepository(moc: context))
         
-        let gameStatus = GameStatus(flashCardRepository: FlashCardRepository(moc: context), deckRepository: DeckRepository(moc: context))
+        let decks = flashCardRepository.getAll()
+        if (!decks.isEmpty) {
+            gameStatus.flashCards = decks[0].flashCardArray
+        }
 
         // Use a UIHostingController as window root view controller.
         if let windowScene = scene as? UIWindowScene {

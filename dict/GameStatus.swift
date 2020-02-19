@@ -47,7 +47,6 @@ class GameStatus: ObservableObject {
     }
     
     func resetGame() {
-        self.flashCards = flashCardRepository.getAll()
         self.correctAnswers = 0
         self.wrongAnswers = 0
     }

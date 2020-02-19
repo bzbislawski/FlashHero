@@ -40,22 +40,16 @@ class FlashCardRepository {
         try? self.moc.save()
     }
     
-    func getAll() -> Array<FlashCard> {
+    func getAll() -> Array<Deck> {
         var fetchedResults: Array<Deck> = Array<Deck>()
-        
-        let response: Array<FlashCard>
-        
         let deckFetchRequest : NSFetchRequest<Deck> = Deck.fetchRequest()
-        deckFetchRequest.fetchLimit = 1
         
         do {
             fetchedResults = try self.moc.fetch(deckFetchRequest)
-            response = fetchedResults.count > 0 ? fetchedResults[0].flashCardArray : Array<FlashCard>()
         } catch let fetchError as NSError {
             print("retrieveById error: \(fetchError.localizedDescription)")
-            response = Array<FlashCard>()
         }
         
-        return response
+        return fetchedResults
     }
 }
