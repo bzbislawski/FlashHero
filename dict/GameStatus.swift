@@ -12,6 +12,7 @@ import CoreData
 class GameStatus: ObservableObject {
     @Published var correctAnswers: Int = 0
     @Published var wrongAnswers: Int = 0
+    @Published var deck: Deck?
     @Published var flashCards: Array<FlashCard> = []
     
     private var flashCardRepository: FlashCardRepository
@@ -36,6 +37,11 @@ class GameStatus: ObservableObject {
     
     func delete(deck: Deck) {
         deckRepository.delete(deck: deck)
+        if let currentDeck = self.deck {
+            if currentDeck.id == deck.id {
+                restackDeck()
+            }
+        }
     }
     
     func save(name: String, color: String) {
@@ -44,6 +50,17 @@ class GameStatus: ObservableObject {
     
     func save(deck: Deck, name: String, color: String) {
         deckRepository.save(deck: deck, name: name, color: color)
+    }
+    
+    func restackDeck() {
+        let decks = flashCardRepository.getAll()
+        if (!decks.isEmpty) {
+            self.deck = decks[0]
+            self.flashCards = decks[0].flashCardArray
+        } else {
+            self.deck = nil
+            self.flashCards = Array<FlashCard>()
+        }
     }
     
     func resetGame() {

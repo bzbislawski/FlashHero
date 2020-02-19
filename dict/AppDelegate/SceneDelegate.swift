@@ -27,11 +27,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let view = Homepage().environment(\.managedObjectContext, context)
         let flashCardRepository = FlashCardRepository(moc: context)
         let gameStatus = GameStatus(flashCardRepository: flashCardRepository, deckRepository: DeckRepository(moc: context))
+        gameStatus.restackDeck()
         
-        let decks = flashCardRepository.getAll()
-        if (!decks.isEmpty) {
-            gameStatus.flashCards = decks[0].flashCardArray
-        }
 
         // Use a UIHostingController as window root view controller.
         if let windowScene = scene as? UIWindowScene {

@@ -25,9 +25,6 @@ struct Homepage: View {
                         Image(systemName: "gamecontroller").font(Font.title.weight(.light))
                         Text("Game")
                 }
-                .onAppear{
-                    self.gameStatus.resetGame()
-                }
                 SettingsView()
                     .tabItem {
                         Image(systemName: "gear")
