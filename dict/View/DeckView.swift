@@ -12,8 +12,8 @@ struct DeckView: View {
     @EnvironmentObject var gameStatus: GameStatus
     @Binding var showSheet: Bool
     @Binding var activeSheet: ActiveSheet
-    @Binding var activeDeck: Deck
-    @Binding var activeFlashCard: FlashCard
+    @Binding var activeDeck: Deck?
+    @Binding var activeFlashCard: FlashCard?
     var deck: Deck
     @State private var currentPosition: CGSize = .zero
     @State private var newPosition: CGSize = .zero

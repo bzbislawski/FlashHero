@@ -19,8 +19,8 @@ struct Dictionary: View {
     ]) var decks: FetchedResults<Deck>
     @State private var showSheet = false
     @State private var activeSheet: ActiveSheet = .deckForm
-    @State private var activeDeck: Deck = Deck()
-    @State private var activeFlashCard: FlashCard = FlashCard()
+    @State private var activeDeck: Deck?
+    @State private var activeFlashCard: FlashCard?
     
     var body: some View {
         NavigationView {
@@ -54,9 +54,9 @@ struct Dictionary: View {
                     } else if (self.activeSheet == .deckEditForm) {
                         DeckFormView(deck: self.activeDeck).environmentObject(self.gameStatus)
                     } else if (self.activeSheet == .flashCardForm) {
-                        FlashCardFormView(deck: self.activeDeck).environmentObject(self.gameStatus)
+                        FlashCardFormView(deck: self.activeDeck!).environmentObject(self.gameStatus)
                     } else if (self.activeSheet == .flashCardEditForm) {
-                        FlashCardFormView(deck: self.activeDeck, flashCard: self.activeFlashCard).environmentObject(self.gameStatus)
+                        FlashCardFormView(deck: self.activeDeck!, flashCard: self.activeFlashCard).environmentObject(self.gameStatus)
                     }
                 }
             )
