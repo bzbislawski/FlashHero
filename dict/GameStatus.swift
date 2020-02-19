@@ -25,6 +25,10 @@ class GameStatus: ObservableObject {
     
     func save(deck: Deck, word: String, translation: String) {
         flashCardRepository.save(deck: deck, word: word, translation: translation)
+        if self.deck == nil {
+            self.deck = deck
+            self.flashCards = deck.flashCardArray
+        }
     }
     
     func save(deck: Deck, flashCard: FlashCard) {
