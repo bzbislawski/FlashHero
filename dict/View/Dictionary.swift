@@ -24,19 +24,47 @@ struct Dictionary: View {
     
     var body: some View {
         NavigationView {
-            VStack {
-                HStack {
-                    Text("List of your saved decks.")
-                        .italic()
-                        .font(.subheadline)
-                        .fontWeight(.ultraLight)
-                        .padding(.leading, 20)
+            ZStack {
+                VStack {
+                    HStack {
+                        Text("List of your saved decks.")
+                            .italic()
+                            .font(.subheadline)
+                            .fontWeight(.ultraLight)
+                            .padding(.leading, 20)
+                        Spacer()
+                    }
                     Spacer()
                 }
-                ScrollView(.vertical, showsIndicators: false) {
-                    ForEach(decks, id: \.self) { deck in
-                        DeckView(showSheet: self.$showSheet, activeSheet: self.$activeSheet, activeDeck: self.$activeDeck, activeFlashCard: self.$activeFlashCard, deck: deck)
+                if decks.isEmpty {
+                    VStack {
+                        Text("""
+                        Oops, there are no decks here.
+                        Try adding some to your dictionary...
+                        """)
+                            .italic()
+                            .fixedSize(horizontal: false, vertical: true)
+                            
+                            .multilineTextAlignment(.center)
+                            .padding(.bottom, 50)
+                        ZStack {
+                            Circle()
+                            .fill(Color.white)
+                            .frame(width: 64, height: 44)
+                            .opacity(1)
+                            .shadow(color: .gray, radius: 8, x: 0, y: 30)
+                        Image(systemName: "questionmark.diamond.fill")
+                            .frame(width: 44, height: 44)
+                            .font(.system(size: 60, weight: .bold))
+                            .foregroundColor(.firstColor)
+                        }
                     }
+                } else {
+                    ScrollView(.vertical, showsIndicators: false) {
+                        ForEach(decks, id: \.self) { deck in
+                            DeckView(showSheet: self.$showSheet, activeSheet: self.$activeSheet, activeDeck: self.$activeDeck, activeFlashCard: self.$activeFlashCard, deck: deck)
+                        }
+                    }.padding(.top, 30)
                 }
             }
             .navigationBarTitle("Dictionary")
