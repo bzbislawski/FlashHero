@@ -23,5 +23,3 @@ let deckColors = [
     DeckColor(name: "purple", colorOne: Color.rgb(r: 172, g: 81, b: 218), colorTwo: Color.rgb(r: 115, g: 53, b: 146)),
     DeckColor(name: "red ", colorOne: Color.rgb(r: 251, g: 58, b: 48), colorTwo: Color.rgb(r: 149, g: 35, b: 29)),
 ]
-
-//LinearGradient(gradient: Gradient(colors: [Color.rgb(r: 10, g: 94, b: 74), Color.rgb(r: 10, g: 94, b: 74)]), startPoint: .topLeading, endPoint: .bottomTrailing)

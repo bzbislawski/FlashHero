@@ -20,10 +20,9 @@ struct FlashCardView: View {
         Animation.interpolatingSpring(mass: 1, stiffness: 80, damping: 10, initialVelocity: 0)
     }
     
-//    var deckColor: DeckColor {
-////        print(self.gameStatus.currentDeck)
-//        return deckColors.first{$0.name == self.gameStatus.currentDeck?.color}!
-//    }
+    var deckColor: DeckColor? {
+        return deckColors.filter({return $0.name == self.gameStatus.deck?.color}).first
+    }
     
     func textView(text: String, isAnswer: Bool) -> some View {
         Text(text)
@@ -55,7 +54,7 @@ struct FlashCardView: View {
                 .zIndex(self.showAnswer ? 1 : 0)
             
             Rectangle()
-                .fill(Color.red)//LinearGradient(gradient: Gradient(colors: [self.deckColor.colorOne, self.deckColor.colorTwo]), startPoint: .topLeading, endPoint: .bottomTrailing))
+                .fill(LinearGradient(gradient: Gradient(colors: [deckColor!.colorOne, deckColor!.colorTwo]), startPoint: .topLeading, endPoint: .bottomTrailing))
                 .cornerRadius(10)
                 .frame(width: 320, height: 200)
                 .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color.white, lineWidth: 4))

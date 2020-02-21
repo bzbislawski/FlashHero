@@ -18,7 +18,7 @@ struct Game: View {
     var body: some View {
         NavigationView {
             VStack {
-                if self.gameStatus.flashCards.count == 0 {
+                if flashCards.count == 0 {
                     Scoreboard()
                 } else {
                     ScrollView(.vertical, showsIndicators: false) {
