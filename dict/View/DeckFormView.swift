@@ -12,6 +12,7 @@ struct DeckFormView: View {
     @Environment (\.presentationMode) var presentationMode
     @State private var name: String = ""
     @State private var color: String = ""
+    @State private var showingValidationAlert = false
     var deck: Deck?
     
     @EnvironmentObject var gameStatus: GameStatus
@@ -67,8 +68,8 @@ struct DeckFormView: View {
                     HStack {
                         ForEach(0 ..< deckColors.count) { value in
                             Button(action:
-                            {
-                                self.color = deckColors[value].name
+                                {
+                                    self.color = deckColors[value].name
                             })
                             {
                                 Circle()
@@ -76,9 +77,9 @@ struct DeckFormView: View {
                                     .overlay(
                                         RoundedRectangle(cornerRadius: 16)
                                             .stroke(Color.tertiaryBackgroundColor, lineWidth: self.color == deckColors[value].name ? 4 : 1)
-                                    )
+                                )
                                     .frame(width: 22, height: 22)
-                                    
+                                
                             }.frame(width: 44, height: 44)
                         }
                     }
@@ -86,10 +87,15 @@ struct DeckFormView: View {
                     Button(action: {
                         if (self.deck == nil) {
                             self.gameStatus.save(name: self.name, color: self.color)
+                            self.presentationMode.wrappedValue.dismiss()
+                            return
+                        }
+                        if self.name == "" {
+                            self.showingValidationAlert = true
                         } else {
                             self.gameStatus.save(deck: self.deck!, name: self.name, color: self.color)
+                            self.presentationMode.wrappedValue.dismiss()
                         }
-                        self.presentationMode.wrappedValue.dismiss()
                     }) {
                         VStack {
                             Text("Save")
@@ -99,7 +105,11 @@ struct DeckFormView: View {
                         }
                         .background(Color.firstColor)
                         .cornerRadius(5)
-                    }.padding(.top, 25)
+                    }
+                    .alert(isPresented: $showingValidationAlert) {
+                        Alert(title: Text("Error"), message: Text("Name can not be empty"), dismissButton: .default(Text("Got it!")))
+                    }
+                    .padding(.top, 25)
                     
                     if (self.deck != nil) {
                         Button(action: {

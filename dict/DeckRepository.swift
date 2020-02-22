@@ -17,9 +17,13 @@ class DeckRepository {
     }
     
     func save(name: String, color: String) {
+        if name == "" {
+            return
+        }
+        
         let deck = Deck(context: self.moc)
         deck.name = name
-        deck.color = color
+        deck.color = color != "" ? color : "blue"
         deck.createdAt = Date()
         deck.id = UUID()
         
