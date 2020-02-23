@@ -24,6 +24,14 @@ class GameStatus: ObservableObject {
         self.deckRepository = deckRepository
     }
     
+    func save(name: String, color: String) {
+        deckRepository.save(name: name, color: color)
+    }
+    
+    func save(deck: Deck, name: String, color: String) {
+        deckRepository.save(deck: deck, name: name, color: color)
+    }
+    
     func save(deck: Deck, word: String, translation: String) {
         flashCardRepository.save(deck: deck, word: word, translation: translation)
         if self.deck == nil {
@@ -48,14 +56,6 @@ class GameStatus: ObservableObject {
                 loadGame()
             }
         }
-    }
-    
-    func save(name: String, color: String) {
-        deckRepository.save(name: name, color: color)
-    }
-    
-    func save(deck: Deck, name: String, color: String) {
-        deckRepository.save(deck: deck, name: name, color: color)
     }
     
     func loadDictionary() {
