@@ -79,11 +79,13 @@ struct DeckFormView: View {
                                             .stroke(Color.tertiaryBackgroundColor, lineWidth: self.color == deckColors[value].name ? 4 : 1)
                                 )
                                     .frame(width: 22, height: 22)
-                                
-                            }.frame(width: 44, height: 44)
+                            }
+                            if value != deckColors.count - 1 {
+                                Spacer()
+                            }
                         }
-                    }
-                                        
+                    }.frame(maxWidth: 250)
+                    
                     if (self.deck != nil) {
                         Button(action: {
                             self.gameStatus.delete(deck: self.deck!)
