@@ -107,7 +107,7 @@ struct DeckFormView: View {
                     })
                     .navigationBarItems(
                         leading:
-                        Button(action: { self.presentationMode.wrappedValue.dismiss() }) { Text("Cancel").foregroundColor(Color.firstColor).font(.system(size: 16, weight: .semibold)) },
+                        Button(action: { self.presentationMode.wrappedValue.dismiss() }) { Text("Cancel").foregroundColor(Color.firstColor).font(.system(size: 18, weight: .semibold)) },
                         trailing: Button(action: {
                             if (self.deck == nil) {
                                 self.gameStatus.save(name: self.name, color: self.color)
@@ -120,7 +120,7 @@ struct DeckFormView: View {
                                 self.gameStatus.save(deck: self.deck!, name: self.name, color: self.color)
                                 self.presentationMode.wrappedValue.dismiss()
                             }
-                        }) { Text("Done").foregroundColor(Color.firstColor).font(.system(size: 16, weight: .semibold)) }
+                        }) { Text("Done").foregroundColor(Color.firstColor).font(.system(size: 18, weight: .semibold)) }
                 )
                     .alert(isPresented: $showingValidationAlert) {
                         Alert(title: Text("Error"), message: Text("Name can not be empty"), dismissButton: .default(Text("Got it!")))

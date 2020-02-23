@@ -106,7 +106,7 @@ struct FlashCardFormView: View {
                     })
                     .navigationBarItems(
                         leading:
-                        Button(action: { self.presentationMode.wrappedValue.dismiss() }) { Text("Cancel").foregroundColor(Color.firstColor).font(.system(size: 16, weight: .semibold)) },
+                        Button(action: { self.presentationMode.wrappedValue.dismiss() }) { Text("Cancel").foregroundColor(Color.firstColor).font(.system(size: 18, weight: .semibold)) },
                         trailing: Button(action: {
                             if (self.flashCard != nil) {
                                 self.flashCard!.word = self.word
@@ -116,7 +116,7 @@ struct FlashCardFormView: View {
                                 self.gameStatus.save(deck: self.deck, word: self.word, translation: self.translation)
                             }
                             self.presentationMode.wrappedValue.dismiss()
-                        }) { Text("Done").foregroundColor(Color.firstColor).font(.system(size: 16, weight: .semibold)) }
+                        }) { Text("Done").foregroundColor(Color.firstColor).font(.system(size: 18, weight: .semibold)) }
                 )
                     .onAppear {
                         self.word = self.flashCard?.wrappedWord ?? self.word
