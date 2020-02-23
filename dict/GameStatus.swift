@@ -26,10 +26,12 @@ class GameStatus: ObservableObject {
     
     func save(name: String, color: String) {
         deckRepository.save(name: name, color: color)
+        loadDictionary()
     }
     
     func save(deck: Deck, name: String, color: String) {
         deckRepository.save(deck: deck, name: name, color: color)
+        loadDictionary()
     }
     
     func save(deck: Deck, word: String, translation: String) {
