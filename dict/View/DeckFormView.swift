@@ -87,6 +87,7 @@ struct DeckFormView: View {
                     Button(action: {
                         if (self.deck == nil) {
                             self.gameStatus.save(name: self.name, color: self.color)
+//                            self.gameStatus.loadDictionary()
                             self.presentationMode.wrappedValue.dismiss()
                             return
                         }
@@ -94,6 +95,7 @@ struct DeckFormView: View {
                             self.showingValidationAlert = true
                         } else {
                             self.gameStatus.save(deck: self.deck!, name: self.name, color: self.color)
+//                            self.gameStatus.loadDictionary()
                             self.presentationMode.wrappedValue.dismiss()
                         }
                     }) {

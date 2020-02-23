@@ -9,12 +9,22 @@
 import SwiftUI
 
 struct MiniFlashCardView: View {
+    @EnvironmentObject var gameStatus: GameStatus
+    var deck: Deck
     var flashCard: FlashCard
+    
+    var miniFlashCardColor: String {
+        return self.gameStatus.decks.filter({ return $0.id == deck.id }).first?.color ?? ""
+    }
+    
+    var deckColor: DeckColor? {
+        return deckColors.filter({return $0.name == self.miniFlashCardColor}).first
+    }
     
     var body: some View {
         ZStack {
-            Image("rectangle")
-                .resizable()
+            Rectangle()
+                .fill(LinearGradient(gradient: Gradient(colors: [deckColor!.colorOne, deckColor!.colorTwo]), startPoint: .topLeading, endPoint: .bottomTrailing))
                 .cornerRadius(10)
                 .frame(width: 160, height: 100)
                 .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color.white, lineWidth: 4))
@@ -36,6 +46,6 @@ struct MiniFlashCardView: View {
 
 struct MiniFlashCardView_Previews: PreviewProvider {
     static var previews: some View {
-        MiniFlashCardView(flashCard: FlashCard())
+        MiniFlashCardView(deck: Deck(), flashCard: FlashCard())
     }
 }

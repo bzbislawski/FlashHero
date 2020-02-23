@@ -14,9 +14,6 @@ enum ActiveSheet {
 
 struct Dictionary: View {
     @EnvironmentObject var gameStatus: GameStatus
-    @FetchRequest(entity: Deck.entity(), sortDescriptors: [
-        NSSortDescriptor(keyPath: \Deck.createdAt, ascending: true)
-    ]) var decks: FetchedResults<Deck>
     @State private var showSheet = false
     @State private var activeSheet: ActiveSheet = .deckForm
     @State private var activeDeck: Deck?
@@ -36,7 +33,7 @@ struct Dictionary: View {
                     }
                     Spacer()
                 }
-                if decks.isEmpty {
+                if self.gameStatus.decks.isEmpty {
                     VStack {
                         Text("""
                         Oops, there are no decks here.
@@ -61,7 +58,7 @@ struct Dictionary: View {
                     }
                 } else {
                     ScrollView(.vertical, showsIndicators: false) {
-                        ForEach(decks, id: \.self) { deck in
+                        ForEach(self.gameStatus.decks, id: \.self) { deck in
                             DeckView(showSheet: self.$showSheet, activeSheet: self.$activeSheet, activeDeck: self.$activeDeck, activeFlashCard: self.$activeFlashCard, deck: deck)
                         }
                     }.padding(.top, 30)

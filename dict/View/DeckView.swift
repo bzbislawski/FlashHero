@@ -44,7 +44,7 @@ struct DeckView: View {
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack {
                     ForEach(self.flashCards, id: \.self) { flashCard in
-                        MiniFlashCardView(flashCard: flashCard).onTapGesture {
+                        MiniFlashCardView(deck: self.deck, flashCard: flashCard).onTapGesture {
                             self.showSheet.toggle()
                             self.activeSheet = .flashCardEditForm
                             self.activeDeck = self.deck
