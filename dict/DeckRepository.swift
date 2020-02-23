@@ -41,4 +41,17 @@ class DeckRepository {
         self.moc.delete(deck)
         try? self.moc.save()
     }
+    
+    func getAll() -> Array<Deck> {
+        var fetchedResults: Array<Deck> = Array<Deck>()
+        let deckFetchRequest : NSFetchRequest<Deck> = Deck.fetchRequest()
+        
+        do {
+            fetchedResults = try self.moc.fetch(deckFetchRequest)
+        } catch let fetchError as NSError {
+            print("retrieveById error: \(fetchError.localizedDescription)")
+        }
+        
+        return fetchedResults
+    }
 }

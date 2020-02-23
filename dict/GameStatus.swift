@@ -59,7 +59,7 @@ class GameStatus: ObservableObject {
     }
     
     func loadDictionary() {
-        self.decks = flashCardRepository.getAll()
+        self.decks = deckRepository.getAll()
     }
     
     func loadGame() {
