@@ -9,12 +9,12 @@
 import SwiftUI
 
 struct FlashCardFormView: View {
+    @EnvironmentObject var gameStatus: GameStatus
     @Environment(\.presentationMode) var presentationMode
     @State private var word: String = ""
     @State private var translation: String = ""
     var deck: Deck
     var flashCard: FlashCard?
-    @EnvironmentObject var gameStatus: GameStatus
     
     var body: some View {
         NavigationView {
@@ -82,25 +82,7 @@ struct FlashCardFormView: View {
                             .padding(.trailing, 8)
                         }.frame(width: 250)
                     }
-                    Button(action: {
-                        if (self.flashCard != nil) {
-                            self.flashCard!.word = self.word
-                            self.flashCard!.translation = self.translation
-                            self.gameStatus.save(deck: self.deck, flashCard: self.flashCard!)
-                        } else {
-                            self.gameStatus.save(deck: self.deck, word: self.word, translation: self.translation)
-                        }
-                        self.presentationMode.wrappedValue.dismiss()
-                    }) {
-                        VStack {
-                            Text("Save")
-                                .frame(width: 250, height: 40)
-                                .font(.system(size: 16, weight: .medium))
-                                .foregroundColor(Color.white)
-                        }
-                        .background(Color.firstColor)
-                        .cornerRadius(5)
-                    }.padding(.top, 25)
+                    
                     if (self.flashCard != nil) {
                         Button(action: {
                             self.gameStatus.delete(flashCard: self.flashCard!)
@@ -124,7 +106,17 @@ struct FlashCardFormView: View {
                     })
                     .navigationBarItems(
                         leading:
-                        Button(action: { self.presentationMode.wrappedValue.dismiss() }) { Text("Cancel").foregroundColor(Color.firstColor).font(.system(size: 16, weight: .semibold)) }
+                        Button(action: { self.presentationMode.wrappedValue.dismiss() }) { Text("Cancel").foregroundColor(Color.firstColor).font(.system(size: 16, weight: .semibold)) },
+                        trailing: Button(action: {
+                            if (self.flashCard != nil) {
+                                self.flashCard!.word = self.word
+                                self.flashCard!.translation = self.translation
+                                self.gameStatus.save(deck: self.deck, flashCard: self.flashCard!)
+                            } else {
+                                self.gameStatus.save(deck: self.deck, word: self.word, translation: self.translation)
+                            }
+                            self.presentationMode.wrappedValue.dismiss()
+                        }) { Text("Done").foregroundColor(Color.firstColor).font(.system(size: 16, weight: .semibold)) }
                 )
                     .onAppear {
                         self.word = self.flashCard?.wrappedWord ?? self.word

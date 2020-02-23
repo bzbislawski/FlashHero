@@ -83,34 +83,7 @@ struct DeckFormView: View {
                             }.frame(width: 44, height: 44)
                         }
                     }
-                    
-                    Button(action: {
-                        if (self.deck == nil) {
-                            self.gameStatus.save(name: self.name, color: self.color)
-                            self.presentationMode.wrappedValue.dismiss()
-                            return
-                        }
-                        if self.name == "" {
-                            self.showingValidationAlert = true
-                        } else {
-                            self.gameStatus.save(deck: self.deck!, name: self.name, color: self.color)
-                            self.presentationMode.wrappedValue.dismiss()
-                        }
-                    }) {
-                        VStack {
-                            Text("Save")
-                                .frame(width: 250, height: 40)
-                                .font(.system(size: 16, weight: .medium))
-                                .foregroundColor(Color.white)
-                        }
-                        .background(Color.firstColor)
-                        .cornerRadius(5)
-                    }
-                    .alert(isPresented: $showingValidationAlert) {
-                        Alert(title: Text("Error"), message: Text("Name can not be empty"), dismissButton: .default(Text("Got it!")))
-                    }
-                    .padding(.top, 25)
-                    
+                                        
                     if (self.deck != nil) {
                         Button(action: {
                             self.gameStatus.delete(deck: self.deck!)
@@ -134,11 +107,27 @@ struct DeckFormView: View {
                     })
                     .navigationBarItems(
                         leading:
-                        Button(action: { self.presentationMode.wrappedValue.dismiss() }) { Text("Cancel").foregroundColor(Color.firstColor).font(.system(size: 16, weight: .semibold)) }
+                        Button(action: { self.presentationMode.wrappedValue.dismiss() }) { Text("Cancel").foregroundColor(Color.firstColor).font(.system(size: 16, weight: .semibold)) },
+                        trailing: Button(action: {
+                            if (self.deck == nil) {
+                                self.gameStatus.save(name: self.name, color: self.color)
+                                self.presentationMode.wrappedValue.dismiss()
+                                return
+                            }
+                            if self.name == "" {
+                                self.showingValidationAlert = true
+                            } else {
+                                self.gameStatus.save(deck: self.deck!, name: self.name, color: self.color)
+                                self.presentationMode.wrappedValue.dismiss()
+                            }
+                        }) { Text("Done").foregroundColor(Color.firstColor).font(.system(size: 16, weight: .semibold)) }
                 )
-                    .onAppear {
-                        self.name = self.deck?.wrappedName ?? self.name
-                        self.color = self.deck?.wrappedColor ?? self.color
+                    .alert(isPresented: $showingValidationAlert) {
+                        Alert(title: Text("Error"), message: Text("Name can not be empty"), dismissButton: .default(Text("Got it!")))
+                }
+                .onAppear {
+                    self.name = self.deck?.wrappedName ?? self.name
+                    self.color = self.deck?.wrappedColor ?? self.color
                 }
             }
         }

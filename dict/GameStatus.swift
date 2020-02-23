@@ -35,6 +35,9 @@ class GameStatus: ObservableObject {
     }
     
     func save(deck: Deck, word: String, translation: String) {
+        if word.isEmpty {
+            return
+        }
         flashCardRepository.save(deck: deck, word: word, translation: translation)
         if self.deck == nil {
             self.deck = deck
