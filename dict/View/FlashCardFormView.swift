@@ -90,15 +90,12 @@ struct FlashCardFormView: View {
                             self.gameStatus.delete(flashCard: self.flashCard!)
                             self.presentationMode.wrappedValue.dismiss()
                         }) {
-                            VStack {
-                                Image(systemName: "trash")
-                                    .font(.system(size: 24, weight: .light))
-                                    .foregroundColor(Color.white)
-                                    .frame(width: 64, height: 64)
-                                    .background(Color.red)
-                            }
-                            .background(Color.red)
-                            .cornerRadius(5)
+                            Image(systemName: "trash")
+                                .font(.system(size: 24, weight: .light))
+                                .foregroundColor(Color.white)
+                                .frame(width: 64, height: 64)
+                                .background(Color.red)
+                                .cornerRadius(5)
                         }.padding(.bottom, 50)
                     }
                     

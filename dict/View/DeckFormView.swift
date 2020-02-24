@@ -13,6 +13,7 @@ struct DeckFormView: View {
     @State private var name: String = ""
     @State private var color: String = ""
     @State private var showingValidationAlert = false
+    @State private var showingDeleteAlert = false
     var deck: Deck?
     
     @EnvironmentObject var gameStatus: GameStatus
@@ -90,18 +91,14 @@ struct DeckFormView: View {
                     
                     if (self.deck != nil) {
                         Button(action: {
-                            self.gameStatus.delete(deck: self.deck!)
-                            self.presentationMode.wrappedValue.dismiss()
+                            self.showingDeleteAlert = true
                         }) {
-                            VStack {
-                                Image(systemName: "trash")
-                                    .font(.system(size: 24, weight: .light))
-                                    .foregroundColor(Color.white)
-                                    .frame(width: 64, height: 64)
-                                    .background(Color.red)
-                            }
-                            .background(Color.red)
-                            .cornerRadius(5)
+                            Image(systemName: "trash")
+                                .font(.system(size: 24, weight: .light))
+                                .foregroundColor(Color.white)
+                                .frame(width: 64, height: 64)
+                                .background(Color.red)
+                                .cornerRadius(5)
                         }.padding(.bottom, 50)
                     }
                     
@@ -128,6 +125,14 @@ struct DeckFormView: View {
                 )
                     .alert(isPresented: $showingValidationAlert) {
                         Alert(title: Text("Error"), message: Text("Name can not be empty"), dismissButton: .default(Text("Got it!")))
+                }
+                .alert(isPresented: $showingDeleteAlert) { () -> Alert in
+                    Alert(title: Text("Are you sure?"), message: Text("Deck and its flashcards will be deleted permanently."),
+                          primaryButton: .default(Text("Yes"), action: {
+                            self.gameStatus.delete(deck: self.deck!)
+                            self.presentationMode.wrappedValue.dismiss()
+                          }),
+                          secondaryButton: .default(Text("Cancel")))
                 }
                 .onAppear {
                     self.name = self.deck?.wrappedName ?? self.name
