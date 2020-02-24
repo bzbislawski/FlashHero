@@ -86,22 +86,24 @@ struct DeckFormView: View {
                         }
                     }.frame(maxWidth: 250)
                     
+                    Spacer()
+                    
                     if (self.deck != nil) {
                         Button(action: {
                             self.gameStatus.delete(deck: self.deck!)
                             self.presentationMode.wrappedValue.dismiss()
                         }) {
                             VStack {
-                                Text("Delete")
-                                    .frame(width: 250, height: 40)
-                                    .font(.system(size: 16, weight: .medium))
+                                Image(systemName: "trash")
+                                    .font(.system(size: 24, weight: .light))
                                     .foregroundColor(Color.white)
+                                    .frame(width: 64, height: 64)
+                                    .background(Color.red)
                             }
                             .background(Color.red)
                             .cornerRadius(5)
-                        }.padding(.top, 25)
+                        }.padding(.bottom, 50)
                     }
-                    Spacer()
                     
                 }.navigationBarTitle("", displayMode: .inline)
                     .background(NavigationConfigurator { nc in
