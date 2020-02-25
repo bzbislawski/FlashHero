@@ -50,6 +50,11 @@ struct DeckView: View {
                             self.activeDeck = self.deck
                             self.activeFlashCard = flashCard
                         }
+                        .frame(width: 160, height: 100)
+                        .padding(.top, 5)
+                        .padding(.bottom)
+                        .padding(.trailing, 20)
+                        .padding(.leading, 20)
                     }
                     Button(action: {
                         self.showSheet.toggle()

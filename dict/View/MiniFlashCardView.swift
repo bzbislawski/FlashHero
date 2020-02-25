@@ -11,10 +11,10 @@ import SwiftUI
 struct MiniFlashCardView: View {
     @EnvironmentObject var gameStatus: GameStatus
     var deck: Deck
-    var flashCard: FlashCard
+    var flashCard: FlashCard?
     
     var miniFlashCardColor: String {
-        return self.gameStatus.decks.filter({ return $0.id == deck.id }).first?.color ?? ""
+        return self.gameStatus.decks.filter({ return $0.id == deck.id }).first?.wrappedColor ?? ""
     }
     
     var deckColor: DeckColor? {
@@ -26,21 +26,16 @@ struct MiniFlashCardView: View {
             Rectangle()
                 .fill(LinearGradient(gradient: Gradient(colors: [deckColor!.colorOne, deckColor!.colorTwo]), startPoint: .topLeading, endPoint: .bottomTrailing))
                 .cornerRadius(10)
-                .frame(width: 160, height: 100)
                 .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color.white, lineWidth: 4))
                 .shadow(radius: 5, x: 0, y: 4)
             
-            Text(flashCard.wrappedWord)
+            Text(flashCard != nil ? flashCard!.wrappedWord : "")
                 .bold()
                 .font(.system(size: 22))
                 .foregroundColor(Color.white)
                 .frame(maxWidth: 280)
                 .shadow(radius: 10)
         }
-        .padding(.top, 5)
-        .padding(.bottom)
-        .padding(.trailing, 20)
-        .padding(.leading, 20)
     }
 }
 
