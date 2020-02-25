@@ -20,7 +20,7 @@ struct Homepage: View {
                             .font(Font.title.weight(.light))
                         Text("Dictionary")
                 }
-                Game()
+                GameView()
                     .tabItem {
                         Image(systemName: "gamecontroller").font(Font.title.weight(.light))
                         Text("Game")

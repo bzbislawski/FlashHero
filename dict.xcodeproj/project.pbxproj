@@ -17,6 +17,7 @@
 		BAFA0EA5238EB7F60077D574 /* FlashCardRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAFA0EA4238EB7F60077D574 /* FlashCardRepository.swift */; };
 		D601A6C62389CB6A00FFE9FC /* GameStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = D601A6C52389CB6A00FFE9FC /* GameStatus.swift */; };
 		D60F038123B3E0A5007F1F74 /* Scoreboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = D60F038023B3E0A5007F1F74 /* Scoreboard.swift */; };
+		D62940BD2405D7C800554C66 /* GameSheetRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D62940BC2405D7C800554C66 /* GameSheetRowView.swift */; };
 		D63B466223D517EC008370C7 /* DeckView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D63B466123D517EC008370C7 /* DeckView.swift */; };
 		D63B467023D79865008370C7 /* DeckFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D63B466F23D79865008370C7 /* DeckFormView.swift */; };
 		D63B467223D79F8A008370C7 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D63B467123D79F8A008370C7 /* Extensions.swift */; };
@@ -31,7 +32,7 @@
 		D64D510A2385CA920075AD3D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D64D51092385CA920075AD3D /* Preview Assets.xcassets */; };
 		D64D510D2385CA920075AD3D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D64D510B2385CA920075AD3D /* LaunchScreen.storyboard */; };
 		D64D51152385CCA30075AD3D /* Homepage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64D51142385CCA30075AD3D /* Homepage.swift */; };
-		D64D51172385E0BF0075AD3D /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64D51162385E0BF0075AD3D /* Game.swift */; };
+		D64D51172385E0BF0075AD3D /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64D51162385E0BF0075AD3D /* GameView.swift */; };
 		D66668252386D311008421AB /* Dictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = D66668242386D311008421AB /* Dictionary.swift */; };
 /* End PBXBuildFile section */
 
@@ -46,6 +47,7 @@
 		BAFA0EA4238EB7F60077D574 /* FlashCardRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashCardRepository.swift; sourceTree = "<group>"; };
 		D601A6C52389CB6A00FFE9FC /* GameStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameStatus.swift; sourceTree = "<group>"; };
 		D60F038023B3E0A5007F1F74 /* Scoreboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scoreboard.swift; sourceTree = "<group>"; };
+		D62940BC2405D7C800554C66 /* GameSheetRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSheetRowView.swift; sourceTree = "<group>"; };
 		D63B466123D517EC008370C7 /* DeckView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckView.swift; sourceTree = "<group>"; };
 		D63B466F23D79865008370C7 /* DeckFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckFormView.swift; sourceTree = "<group>"; };
 		D63B467123D79F8A008370C7 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
@@ -62,7 +64,7 @@
 		D64D510C2385CA920075AD3D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D64D510E2385CA920075AD3D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D64D51142385CCA30075AD3D /* Homepage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Homepage.swift; sourceTree = "<group>"; };
-		D64D51162385E0BF0075AD3D /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
+		D64D51162385E0BF0075AD3D /* GameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
 		D66668242386D311008421AB /* Dictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dictionary.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -77,6 +79,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D62940BE2405DF3100554C66 /* Game */ = {
+			isa = PBXGroup;
+			children = (
+				D6412B802388367000EA3758 /* FlashCardView.swift */,
+				D64D51162385E0BF0075AD3D /* GameView.swift */,
+				BA8C74A6240533610021C19C /* GameSheetView.swift */,
+				D62940BC2405D7C800554C66 /* GameSheetRowView.swift */,
+			);
+			path = Game;
+			sourceTree = "<group>";
+		};
 		D64D50F12385CA900075AD3D = {
 			isa = PBXGroup;
 			children = (
@@ -124,15 +137,13 @@
 		D6666177238701A000D1CB8A /* View */ = {
 			isa = PBXGroup;
 			children = (
+				D62940BE2405DF3100554C66 /* Game */,
 				D64D51142385CCA30075AD3D /* Homepage.swift */,
 				D66668242386D311008421AB /* Dictionary.swift */,
 				D63B466123D517EC008370C7 /* DeckView.swift */,
 				D63B466F23D79865008370C7 /* DeckFormView.swift */,
 				D64D51042385CA900075AD3D /* FlashCardFormView.swift */,
-				D64D51162385E0BF0075AD3D /* Game.swift */,
-				BA8C74A6240533610021C19C /* GameSheetView.swift */,
 				D60F038023B3E0A5007F1F74 /* Scoreboard.swift */,
-				D6412B802388367000EA3758 /* FlashCardView.swift */,
 				D63B467723DE421B008370C7 /* MiniFlashCardView.swift */,
 				BA89D8B5239AAC9200D97AC2 /* SettingsView.swift */,
 			);
@@ -234,7 +245,7 @@
 				BA50F35323DB11FA005D624B /* Deck+CoreDataProperties.swift in Sources */,
 				BA8C74A7240533610021C19C /* GameSheetView.swift in Sources */,
 				D64D51032385CA900075AD3D /* dict.xcdatamodeld in Sources */,
-				D64D51172385E0BF0075AD3D /* Game.swift in Sources */,
+				D64D51172385E0BF0075AD3D /* GameView.swift in Sources */,
 				D63B467423D7B51C008370C7 /* DeckRepository.swift in Sources */,
 				D64D50FE2385CA900075AD3D /* AppDelegate.swift in Sources */,
 				D66668252386D311008421AB /* Dictionary.swift in Sources */,
@@ -253,6 +264,7 @@
 				D64D51002385CA900075AD3D /* SceneDelegate.swift in Sources */,
 				BA50F35023DB11FA005D624B /* FlashCard+CoreDataClass.swift in Sources */,
 				D60F038123B3E0A5007F1F74 /* Scoreboard.swift in Sources */,
+				D62940BD2405D7C800554C66 /* GameSheetRowView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

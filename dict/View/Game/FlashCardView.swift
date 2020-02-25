@@ -96,6 +96,6 @@ struct FlashCardView: View {
 struct FlashCardView_Previews: PreviewProvider {
     @Binding var param: Bool
     static var previews: some View {
-        Game()
+        GameView()
     }
 }
