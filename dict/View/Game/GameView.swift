@@ -10,7 +10,7 @@ import SwiftUI
 
 struct GameView: View {
     @EnvironmentObject var gameStatus: GameStatus
-    @State var selectedDecks: [Deck] = []
+    @EnvironmentObject var gamePlay: GamePlay
     @State var showSheet: Bool = false
     
     var flashCards: Array<FlashCard> {
@@ -42,7 +42,7 @@ struct GameView: View {
                 //            }
                 .navigationBarTitle("Swipe game")
                 .sheet(isPresented: $showSheet) {
-                    GameSheetView().environmentObject(self.gameStatus)
+                    GameSheetView().environmentObject(self.gameStatus).environmentObject(self.gamePlay)
             }
         }
     }

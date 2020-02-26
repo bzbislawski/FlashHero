@@ -27,6 +27,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let view = Homepage().environment(\.managedObjectContext, context)
         let flashCardRepository = FlashCardRepository(moc: context)
         let gameStatus = GameStatus(flashCardRepository: flashCardRepository, deckRepository: DeckRepository(moc: context))
+        let gamePlay = GamePlay()
         gameStatus.loadDictionary()
         gameStatus.loadGame()
         
@@ -34,7 +35,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Use a UIHostingController as window root view controller.
         if let windowScene = scene as? UIWindowScene {
             let window = UIWindow(windowScene: windowScene)
-            window.rootViewController = UIHostingController(rootView: view.environmentObject(gameStatus))
+            window.rootViewController = UIHostingController(rootView: view.environmentObject(gameStatus).environmentObject(gamePlay))
             self.window = window
             window.makeKeyAndVisible()
         }

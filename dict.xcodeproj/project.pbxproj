@@ -18,6 +18,7 @@
 		D601A6C62389CB6A00FFE9FC /* GameStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = D601A6C52389CB6A00FFE9FC /* GameStatus.swift */; };
 		D60F038123B3E0A5007F1F74 /* Scoreboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = D60F038023B3E0A5007F1F74 /* Scoreboard.swift */; };
 		D62940BD2405D7C800554C66 /* GameSheetRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D62940BC2405D7C800554C66 /* GameSheetRowView.swift */; };
+		D62940C02405E01900554C66 /* GamePlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = D62940BF2405E01900554C66 /* GamePlay.swift */; };
 		D63B466223D517EC008370C7 /* DeckView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D63B466123D517EC008370C7 /* DeckView.swift */; };
 		D63B467023D79865008370C7 /* DeckFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D63B466F23D79865008370C7 /* DeckFormView.swift */; };
 		D63B467223D79F8A008370C7 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D63B467123D79F8A008370C7 /* Extensions.swift */; };
@@ -48,6 +49,7 @@
 		D601A6C52389CB6A00FFE9FC /* GameStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameStatus.swift; sourceTree = "<group>"; };
 		D60F038023B3E0A5007F1F74 /* Scoreboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scoreboard.swift; sourceTree = "<group>"; };
 		D62940BC2405D7C800554C66 /* GameSheetRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSheetRowView.swift; sourceTree = "<group>"; };
+		D62940BF2405E01900554C66 /* GamePlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamePlay.swift; sourceTree = "<group>"; };
 		D63B466123D517EC008370C7 /* DeckView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckView.swift; sourceTree = "<group>"; };
 		D63B466F23D79865008370C7 /* DeckFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckFormView.swift; sourceTree = "<group>"; };
 		D63B467123D79F8A008370C7 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
@@ -114,6 +116,7 @@
 				D63B467323D7B51C008370C7 /* DeckRepository.swift */,
 				BAFA0EA4238EB7F60077D574 /* FlashCardRepository.swift */,
 				D601A6C52389CB6A00FFE9FC /* GameStatus.swift */,
+				D62940BF2405E01900554C66 /* GamePlay.swift */,
 				D6666179238701F300D1CB8A /* Entity */,
 				D6666178238701D800D1CB8A /* AppDelegate */,
 				D6666177238701A000D1CB8A /* View */,
@@ -257,6 +260,7 @@
 				BAA3D9B523FC33B1006AC3A1 /* DeckColor.swift in Sources */,
 				D601A6C62389CB6A00FFE9FC /* GameStatus.swift in Sources */,
 				D63B467823DE421B008370C7 /* MiniFlashCardView.swift in Sources */,
+				D62940C02405E01900554C66 /* GamePlay.swift in Sources */,
 				D64D51152385CCA30075AD3D /* Homepage.swift in Sources */,
 				BAFA0EA5238EB7F60077D574 /* FlashCardRepository.swift in Sources */,
 				D63B467223D79F8A008370C7 /* Extensions.swift in Sources */,
