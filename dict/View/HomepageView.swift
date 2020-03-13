@@ -25,13 +25,11 @@ struct HomepageView: View {
                 Spacer()
                 
                 HStack {
+                    Spacer()
                     Image(systemName: "book.fill")
                         .resizable()
                         .aspectRatio(contentMode: .fit)
-                        .padding(.top, 15)
-                        .padding(.bottom, 30)
-                        .padding(.leading, 15)
-                        .padding(.trailing, 15)
+                        .frame(width: geometry.size.width/5, height: 32)
                         .foregroundColor(self.viewRouter.currentView == Homepapge.dictionary ? .firstColor : .gray)
                         .onTapGesture {
                             self.viewRouter.currentView = Homepapge.dictionary
@@ -40,11 +38,8 @@ struct HomepageView: View {
                     Image(systemName: "gamecontroller.fill")
                         .resizable()
                         .aspectRatio(contentMode: .fit)
-                        .padding(.top, 15)
-                        .padding(.bottom, 30)
-                        .padding(.leading, 15)
-                        .padding(.trailing, 15)
-                        .font(Font.title.weight(.bold))
+                        .frame(width: geometry.size.width/5, height: 32)
+
                         .foregroundColor(self.viewRouter.currentView == Homepapge.game ? .firstColor : .gray)
                         .onTapGesture {
                             self.viewRouter.currentView = Homepapge.game
@@ -53,14 +48,13 @@ struct HomepageView: View {
                     Image(systemName: "gear")
                         .resizable()
                         .aspectRatio(contentMode: .fit)
-                        .padding(.top, 15)
-                        .padding(.bottom, 30)
-                        .padding(.leading, 15)
-                        .padding(.trailing, 15)
+                        .frame(width: geometry.size.width/5, height: 32)
                         .foregroundColor(self.viewRouter.currentView == Homepapge.settings ? .firstColor : .gray)
                         .onTapGesture {
                             self.viewRouter.currentView = Homepapge.settings
                     }
+                    
+                    Spacer()
                 }
                 .frame(width: geometry.size.width, height: geometry.size.height/10)
                 .background(Color.white.shadow(radius: 2))
