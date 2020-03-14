@@ -18,7 +18,7 @@ struct GameView: View {
     }
     
     var body: some View {
-        NavigationView {
+        GeometryReader { geometry in
             ZStack {
                 Rectangle()
                     .fill(Color.secondColor)
@@ -61,19 +61,64 @@ struct GameView: View {
                         .fill(Color.white)
                         .cornerRadius(8)
                         .frame(height: 47)
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 8)
+                                .stroke(Color.secondaryBackgroundColor, lineWidth: 1)
+                    )
                         .padding(.leading, 60)
                         .padding(.trailing, 60)
-
+                        
                         .onTapGesture {
                             self.showSheet = true
                     }
                     
+                    HStack {
+                        Text("Word Order")
+                            .italic()
+                            .padding(.leading, 60)
+                            .foregroundColor(.white)
+                            .font(.system(size: 36, weight: .thin))
+                        
+                        Spacer()
+                    }
+                    
+                    HStack {
+                        Text("Choose order of words displayed")
+                            .italic()
+                            .padding(.leading, 60)
+                            .foregroundColor(.white)
+                        Spacer()
+                    }
+                    Rectangle()
+                        .fill(Color.white)
+                        .cornerRadius(8)
+                        .frame(height: 47)
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 8)
+                                .stroke(Color.secondaryBackgroundColor, lineWidth: 1)
+                    )
+                        .padding(.leading, 60)
+                        .padding(.trailing, 60)
+                    
                     Spacer()
                     
-                    
+                    Button(action: {}) {
+                        RoundedRectangle(cornerRadius: 8)
+                            .stroke(Color.secondaryBackgroundColor, lineWidth: 1)
+                            .background(Color.white)
+                            .cornerRadius(8)
+                            .frame(height: 47)
+                            .overlay(
+                                Text("Start Game")
+                                    .foregroundColor(Color.quaternaryBackgroundColor)
+                                    .font(.system(size: 17, weight: .semibold))
+                        )
+                            .padding(.leading, 60)
+                            .padding(.trailing, 60)
+                            .padding(.bottom, 80)
+                    }
                 }
             }
-            //.navigationBarTitle("Swipe game")
         }
         .sheet(isPresented: $showSheet) {
             GameSheetView().environmentObject(self.gameStatus).environmentObject(self.gamePlay)
