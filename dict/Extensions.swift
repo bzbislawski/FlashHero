@@ -20,6 +20,7 @@ extension Color {
     
     // Green
     static let firstColor = Color.rgb(r: 10, g: 94, b: 74)
+    static let secondColor = Color.rgb(r: 25, g: 180, b: 139)
 }
 
 extension UIColor {

@@ -19,31 +19,64 @@ struct GameView: View {
     
     var body: some View {
         NavigationView {
-            Button(action: {self.showSheet = true}) {
-                Text("Open sheet")
-            }
+            ZStack {
+                Rectangle()
+                    .fill(Color.secondColor)
+                    .cornerRadius(25)
+                    .padding(.all, 30)
+                    .overlay (
+                        Circle()
+                            .fill(Color.backgroundColor)
+                            .frame(width: 1300, height: 1300)
+                            .offset(x: 80, y: -800)
+                            .opacity(0.3)
+                )
                 
-                //            VStack {
-                //                if flashCards.count == 0 {
-                //                    Scoreboard()
-                //                } else {
-                //                    ScrollView(.vertical, showsIndicators: false) {
-                //                        ForEach(flashCards, id: \.self) { flashCard in
-                //                            FlashCardView(flashCard: flashCard)
-                //                                .animation(.spring())
-                //                                .padding(.top, 15)
-                //                                .padding(.bottom, 15)
-                //                                .padding(.leading, 300)
-                //                                .padding(.trailing, 300)
-                //                        }
-                //                        Spacer()
-                //                    }
-                //                }
-                //            }
-                .navigationBarTitle("Swipe game")
-                .sheet(isPresented: $showSheet) {
-                    GameSheetView().environmentObject(self.gameStatus).environmentObject(self.gamePlay)
+                VStack {
+                    Image(systemName: "gamecontroller")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 64, height: 64)
+                        .foregroundColor(.white)
+                        .padding(100)
+                    
+                    HStack {
+                        Text("Vocabulary")
+                            .italic()
+                            .padding(.leading, 60)
+                            .foregroundColor(.white)
+                            .font(.system(size: 36, weight: .thin))
+                        
+                        Spacer()
+                    }
+                    
+                    HStack {
+                        Text("Choose decks you want to play")
+                            .italic()
+                            .padding(.leading, 60)
+                            .foregroundColor(.white)
+                        Spacer()
+                    }
+                    Rectangle()
+                        .fill(Color.white)
+                        .cornerRadius(8)
+                        .frame(height: 47)
+                        .padding(.leading, 60)
+                        .padding(.trailing, 60)
+
+                        .onTapGesture {
+                            self.showSheet = true
+                    }
+                    
+                    Spacer()
+                    
+                    
+                }
             }
+            //.navigationBarTitle("Swipe game")
+        }
+        .sheet(isPresented: $showSheet) {
+            GameSheetView().environmentObject(self.gameStatus).environmentObject(self.gamePlay)
         }
     }
 }
