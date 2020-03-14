@@ -18,104 +18,112 @@ struct GameView: View {
     }
     
     var body: some View {
-        GeometryReader { geometry in
-            ZStack {
-                Rectangle()
-                    .fill(Color.secondColor)
-                    .cornerRadius(25)
-                    .padding(.all, 30)
-                    .overlay (
-                        Circle()
-                            .fill(Color.backgroundColor)
-                            .frame(width: 1300, height: 1300)
-                            .offset(x: 80, y: -800)
-                            .opacity(0.3)
-                )
+        ScrollView {
+            VStack {
+                Text("Swipe Game")
+                    .font(.system(size: 44, weight: .thin))
                 
-                VStack {
-                    Image(systemName: "gamecontroller")
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width: 64, height: 64)
-                        .foregroundColor(.white)
-                        .padding(100)
-                    
-                    HStack {
-                        Text("Vocabulary")
-                            .italic()
-                            .padding(.leading, 60)
-                            .foregroundColor(.white)
-                            .font(.system(size: 36, weight: .thin))
-                        
-                        Spacer()
-                    }
-                    
-                    HStack {
-                        Text("Choose decks you want to play")
-                            .italic()
-                            .padding(.leading, 60)
-                            .foregroundColor(.white)
-                        Spacer()
-                    }
+                ZStack {
                     Rectangle()
-                        .fill(Color.white)
-                        .cornerRadius(8)
-                        .frame(height: 47)
-                        .overlay(
-                            RoundedRectangle(cornerRadius: 8)
-                                .stroke(Color.secondaryBackgroundColor, lineWidth: 1)
+                        .fill(Color.secondColor)
+                        .cornerRadius(25)
+                        .padding(.leading, 30)
+                        .padding(.trailing, 30)
+                        .overlay (
+                            Circle()
+                                .fill(Color.backgroundColor)
+                                .frame(width: 1300, height: 1300)
+                                .offset(x: 80, y: -800)
+                                .opacity(0.3)
                     )
-                        .padding(.leading, 60)
-                        .padding(.trailing, 60)
-                        
-                        .onTapGesture {
-                            self.showSheet = true
-                    }
                     
-                    HStack {
-                        Text("Word Order")
-                            .italic()
-                            .padding(.leading, 60)
+                    VStack {
+                        Image(systemName: "gamecontroller")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .font(.system(size: 56, weight: .bold))
+                            .frame(width: 100, height: 100)
                             .foregroundColor(.white)
-                            .font(.system(size: 36, weight: .thin))
+                            .padding(.top, 60)
                         
-                        Spacer()
-                    }
-                    
-                    HStack {
-                        Text("Choose order of words displayed")
-                            .italic()
-                            .padding(.leading, 60)
-                            .foregroundColor(.white)
-                        Spacer()
-                    }
-                    Rectangle()
-                        .fill(Color.white)
-                        .cornerRadius(8)
-                        .frame(height: 47)
-                        .overlay(
-                            RoundedRectangle(cornerRadius: 8)
-                                .stroke(Color.secondaryBackgroundColor, lineWidth: 1)
-                    )
-                        .padding(.leading, 60)
-                        .padding(.trailing, 60)
-                    
-                    Spacer()
-                    
-                    Button(action: {}) {
-                        RoundedRectangle(cornerRadius: 8)
-                            .stroke(Color.secondaryBackgroundColor, lineWidth: 1)
-                            .background(Color.white)
+                        HStack {
+                            Text("Vocabulary")
+                                .italic()
+                                .padding(.leading, 60)
+                                .foregroundColor(.white)
+                                .font(.system(size: 36, weight: .thin))
+                            
+                            Spacer()
+                        }
+                        
+                        HStack {
+                            Text("Choose decks you want to play")
+                                .italic()
+                                .padding(.leading, 60)
+                                .foregroundColor(.white)
+                            Spacer()
+                        }
+                        Rectangle()
+                            .fill(Color.white)
                             .cornerRadius(8)
                             .frame(height: 47)
                             .overlay(
-                                Text("Start Game")
-                                    .foregroundColor(Color.quaternaryBackgroundColor)
-                                    .font(.system(size: 17, weight: .semibold))
+                                RoundedRectangle(cornerRadius: 8)
+                                    .stroke(Color.secondaryBackgroundColor, lineWidth: 1)
                         )
                             .padding(.leading, 60)
                             .padding(.trailing, 60)
-                            .padding(.bottom, 80)
+                            
+                            .onTapGesture {
+                                self.showSheet = true
+                        }
+                        
+                        HStack {
+                            Text("Word Order")
+                                .italic()
+                                .padding(.leading, 60)
+                                .foregroundColor(.white)
+                                .font(.system(size: 36, weight: .thin))
+                            
+                            Spacer()
+                        }
+                        
+                        HStack {
+                            Text("Choose order of words displayed")
+                                .italic()
+                                .padding(.leading, 60)
+                                .foregroundColor(.white)
+                            Spacer()
+                        }
+                        Rectangle()
+                            .fill(Color.white)
+                            .cornerRadius(8)
+                            .frame(height: 47)
+                            .overlay(
+                                RoundedRectangle(cornerRadius: 8)
+                                    .stroke(Color.secondaryBackgroundColor, lineWidth: 1)
+                        )
+                            .padding(.leading, 60)
+                            .padding(.trailing, 60)
+                        
+                        Spacer()
+                        
+                        Button(action: {}) {
+                            RoundedRectangle(cornerRadius: 8)
+                                .stroke(Color.secondaryBackgroundColor, lineWidth: 1)
+                                .background(Color.white)
+                                .cornerRadius(8)
+                                .frame(height: 47)
+                                .overlay(
+                                    Text("Start Game")
+                                        .foregroundColor(Color.quaternaryBackgroundColor)
+                                        .font(.system(size: 17, weight: .semibold))
+                            )
+                                .padding(.leading, 60)
+                                .padding(.trailing, 60)
+                                .padding(.top, 80)
+                                .padding(.bottom, 80)
+                        }
                     }
                 }
             }
