@@ -29,13 +29,23 @@ struct GameView: View {
                         .cornerRadius(25)
                         .padding(.leading, 30)
                         .padding(.trailing, 30)
-                        .overlay (
+                        .shadow(color: .gray, radius: 12, x: 0, y: 4)
+                    
+                    Rectangle()
+                        .fill(Color.white)
+                        .opacity(0.2)
+                        .cornerRadius(25)
+                        .frame(width: 400, height: 700)
+                        //                        .padding(.leading, 10)
+                        //                        .padding(.trailing, 10)
+                        .mask (
                             Circle()
                                 .fill(Color.backgroundColor)
-                                .frame(width: 1300, height: 1300)
-                                .offset(x: 80, y: -800)
-                                .opacity(0.3)
+                                .offset(x: 80, y: -400)
                     )
+                    
+                    
+                    
                     
                     VStack {
                         Image(systemName: "gamecontroller")
