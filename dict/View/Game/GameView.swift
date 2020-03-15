@@ -18,7 +18,7 @@ struct GameView: View {
     }
     
     var body: some View {
-        ScrollView {
+        GeometryReader { geometry in
             VStack {
                 Text("Swipe Game")
                     .font(.system(size: 44, weight: .thin))
@@ -26,115 +26,107 @@ struct GameView: View {
                 ZStack {
                     Rectangle()
                         .fill(Color.secondColor)
-                        .cornerRadius(25)
-                        .padding(.leading, 30)
-                        .padding(.trailing, 30)
-                        .shadow(color: .gray, radius: 12, x: 0, y: 4)
-                    
-                    Rectangle()
-                        .fill(Color.white)
-                        .opacity(0.2)
-                        .cornerRadius(25)
-                        .frame(width: 400, height: 700)
-                        //                        .padding(.leading, 10)
-                        //                        .padding(.trailing, 10)
-                        .mask (
+                        .overlay(GeometryReader { proxy in
                             Circle()
-                                .fill(Color.backgroundColor)
-                                .offset(x: 80, y: -400)
-                    )
-                    
-                    
-                    
-                    
-                    VStack {
-                        Image(systemName: "gamecontroller")
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .font(.system(size: 56, weight: .bold))
-                            .frame(width: 100, height: 100)
-                            .foregroundColor(.white)
-                            .padding(.top, 60)
-                        
-                        HStack {
-                            Text("Vocabulary")
-                                .italic()
-                                .padding(.leading, 60)
-                                .foregroundColor(.white)
-                                .font(.system(size: 36, weight: .thin))
+                                .fill(Color.white)
+                                .frame(width: proxy.size.width + 1000, height: proxy.size.height + 1000)
+                                .offset(x: (proxy.size.width + 1000) * 0.05, y: -(proxy.size.height + 1000) * 0.50)
+                                .opacity(0.15)
                             
-                            Spacer()
-                        }
-                        
-                        HStack {
-                            Text("Choose decks you want to play")
-                                .italic()
-                                .padding(.leading, 60)
-                                .foregroundColor(.white)
-                            Spacer()
-                        }
-                        Rectangle()
-                            .fill(Color.white)
-                            .cornerRadius(8)
-                            .frame(height: 47)
-                            .overlay(
-                                RoundedRectangle(cornerRadius: 8)
-                                    .stroke(Color.secondaryBackgroundColor, lineWidth: 1)
-                        )
-                            .padding(.leading, 60)
-                            .padding(.trailing, 60)
-                            
-                            .onTapGesture {
-                                self.showSheet = true
-                        }
-                        
-                        HStack {
-                            Text("Word Order")
-                                .italic()
-                                .padding(.leading, 60)
-                                .foregroundColor(.white)
-                                .font(.system(size: 36, weight: .thin))
-                            
-                            Spacer()
-                        }
-                        
-                        HStack {
-                            Text("Choose order of words displayed")
-                                .italic()
-                                .padding(.leading, 60)
-                                .foregroundColor(.white)
-                            Spacer()
-                        }
-                        Rectangle()
-                            .fill(Color.white)
-                            .cornerRadius(8)
-                            .frame(height: 47)
-                            .overlay(
-                                RoundedRectangle(cornerRadius: 8)
-                                    .stroke(Color.secondaryBackgroundColor, lineWidth: 1)
-                        )
-                            .padding(.leading, 60)
-                            .padding(.trailing, 60)
-                        
-                        Spacer()
-                        
-                        Button(action: {}) {
-                            RoundedRectangle(cornerRadius: 8)
-                                .stroke(Color.secondaryBackgroundColor, lineWidth: 1)
-                                .background(Color.white)
-                                .cornerRadius(8)
-                                .frame(height: 47)
-                                .overlay(
-                                    Text("Start Game")
-                                        .foregroundColor(Color.quaternaryBackgroundColor)
-                                        .font(.system(size: 17, weight: .semibold))
-                            )
-                                .padding(.leading, 60)
-                                .padding(.trailing, 60)
-                                .padding(.top, 80)
-                                .padding(.bottom, 80)
-                        }
-                    }
+                        })
+                        .frame(width: geometry.size.width * 0.8, height: geometry.size.height * 0.8)
+                        .cornerRadius(5).shadow(radius:5)
+                    
+                    
+                    
+                    //                    VStack {
+                    //                        Image(systemName: "gamecontroller")
+                    //                            .resizable()
+                    //                            .aspectRatio(contentMode: .fit)
+                    //                            .font(.system(size: 56, weight: .bold))
+                    //                            .frame(width: 100, height: 100)
+                    //                            .foregroundColor(.white)
+                    //                            .padding(.top, 60)
+                    //
+                    //                        HStack {
+                    //                            Text("Vocabulary")
+                    //                                .italic()
+                    //                                .padding(.leading, 30)
+                    //                                .foregroundColor(.white)
+                    //                                .font(.system(size: 36, weight: .thin))
+                    //
+                    //                            Spacer()
+                    //                        }
+                    //
+                    //                        HStack {
+                    //                            Text("Choose decks you want to play")
+                    //                                .italic()
+                    //                                .padding(.leading, 30)
+                    //                                .foregroundColor(.white)
+                    //                            Spacer()
+                    //                        }
+                    //                        Rectangle()
+                    //                            .fill(Color.white)
+                    //                            .cornerRadius(8)
+                    //                            .frame(height: 47)
+                    //                            .overlay(
+                    //                                RoundedRectangle(cornerRadius: 8)
+                    //                                    .stroke(Color.secondaryBackgroundColor, lineWidth: 1)
+                    //                        )
+                    //                            .padding(.leading, 30)
+                    //                            .padding(.trailing, 30)
+                    //
+                    //                            .onTapGesture {
+                    //                                self.showSheet = true
+                    //                        }
+                    //
+                    //                        HStack {
+                    //                            Text("Word Order")
+                    //                                .italic()
+                    //                                .padding(.leading, 30)
+                    //                                .foregroundColor(.white)
+                    //                                .font(.system(size: 36, weight: .thin))
+                    //
+                    //                            Spacer()
+                    //                        }
+                    //
+                    //                        HStack {
+                    //                            Text("Choose order of words displayed")
+                    //                                .italic()
+                    //                                .padding(.leading, 30)
+                    //                                .foregroundColor(.white)
+                    //                            Spacer()
+                    //                        }
+                    //                        Rectangle()
+                    //                            .fill(Color.white)
+                    //                            .cornerRadius(8)
+                    //                            .frame(height: 47)
+                    //                            .overlay(
+                    //                                RoundedRectangle(cornerRadius: 8)
+                    //                                    .stroke(Color.secondaryBackgroundColor, lineWidth: 1)
+                    //                        )
+                    //                            .padding(.leading, 30)
+                    //                            .padding(.trailing, 30)
+                    //
+                    //                        Spacer()
+                    //
+                    //                        Button(action: {}) {
+                    //                            RoundedRectangle(cornerRadius: 8)
+                    //                                .stroke(Color.secondaryBackgroundColor, lineWidth: 1)
+                    //                                .background(Color.white)
+                    //                                .cornerRadius(8)
+                    //                                .frame(height: 47)
+                    //                                .overlay(
+                    //                                    Text("Start Game")
+                    //                                        .foregroundColor(Color.quaternaryBackgroundColor)
+                    //                                        .font(.system(size: 17, weight: .semibold))
+                    //                            )
+                    //                                .padding(.leading, 60)
+                    //                                .padding(.trailing, 60)
+                    //                                .padding(.top, 80)
+                    //                                .padding(.bottom, 80)
+                    //                        }
+                    //                    }
                 }
             }
         }
