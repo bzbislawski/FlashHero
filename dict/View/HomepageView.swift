@@ -14,7 +14,6 @@ struct HomepageView: View {
     var body: some View {
         GeometryReader { geometry in
             VStack {
-                Spacer()
                 if self.viewRouter.currentView == Homepapge.dictionary {
                     Dictionary()
                 } else if self.viewRouter.currentView == Homepapge.game {
@@ -22,7 +21,7 @@ struct HomepageView: View {
                 } else if self.viewRouter.currentView == Homepapge.settings {
                     SettingsView()
                 }
-                Spacer()
+                Divider()
                 
                 HStack {
                     Spacer()
@@ -57,7 +56,6 @@ struct HomepageView: View {
                     Spacer()
                 }
                 .frame(width: geometry.size.width, height: geometry.size.height/10)
-                .background(Color.white.shadow(radius: 2))
             }
             .edgesIgnoringSafeArea(.bottom)
             .accentColor(.firstColor)
