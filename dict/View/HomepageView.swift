@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct HomepageView: View {
-    @ObservedObject var viewRouter = ViewRouter()
+    @EnvironmentObject var viewRouter: ViewRouter
     
     var body: some View {
         GeometryReader { geometry in
@@ -21,41 +21,7 @@ struct HomepageView: View {
                 } else if self.viewRouter.currentView == Homepapge.settings {
                     SettingsView()
                 }
-                Divider()
-                
-                HStack {
-                    Spacer()
-                    Image(systemName: "book.fill")
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width: geometry.size.width/5, height: 32)
-                        .foregroundColor(self.viewRouter.currentView == Homepapge.dictionary ? .firstColor : .gray)
-                        .onTapGesture {
-                            self.viewRouter.currentView = Homepapge.dictionary
-                    }
-                    
-                    Image(systemName: "gamecontroller.fill")
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width: geometry.size.width/5, height: 32)
-
-                        .foregroundColor(self.viewRouter.currentView == Homepapge.game ? .firstColor : .gray)
-                        .onTapGesture {
-                            self.viewRouter.currentView = Homepapge.game
-                    }
-                    
-                    Image(systemName: "gear")
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width: geometry.size.width/5, height: 32)
-                        .foregroundColor(self.viewRouter.currentView == Homepapge.settings ? .firstColor : .gray)
-                        .onTapGesture {
-                            self.viewRouter.currentView = Homepapge.settings
-                    }
-                    
-                    Spacer()
-                }
-                .frame(width: geometry.size.width, height: geometry.size.height/10)
+                TabView(geometry: geometry)
             }
             .edgesIgnoringSafeArea(.bottom)
             .accentColor(.firstColor)

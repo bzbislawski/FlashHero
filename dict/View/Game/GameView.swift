@@ -150,45 +150,12 @@ struct GameView: View {
 
 struct Game_Previews: PreviewProvider {
     static var previews: some View {
-        GeometryReader { geometry in
+        let env = ViewRouter()
+        return GeometryReader { geometry in
             VStack {
-                Spacer()
-                
                 GameView()
-                
-                Spacer()
-                
-                HStack {
-                    Spacer()
-                    Image(systemName: "book.fill")
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width: geometry.size.width/5, height: 32)
-                        .foregroundColor(.firstColor)
-                    
-                    
-                    Image(systemName: "gamecontroller.fill")
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width: geometry.size.width/5, height: 32)
-                        
-                        .foregroundColor(.firstColor)
-                    
-                    
-                    Image(systemName: "gear")
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width: geometry.size.width/5, height: 32)
-                        .foregroundColor(.gray)
-                    
-                    
-                    Spacer()
-                }
-                .frame(width: geometry.size.width, height: geometry.size.height/10)
-                .background(Color.white.shadow(radius: 2))
+                TabView(geometry: geometry).environmentObject(env)
             }
-            .edgesIgnoringSafeArea(.bottom)
-            .accentColor(.firstColor)
         }
     }
 }
