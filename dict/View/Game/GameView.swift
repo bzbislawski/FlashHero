@@ -8,11 +8,17 @@
 
 import SwiftUI
 
+enum ActiveStartGameSheet {
+    case vocabulary, cardsOrder
+}
+
 struct GameView: View {
     @EnvironmentObject var gameStatus: GameStatus
     @EnvironmentObject var gamePlay: GamePlay
     @State var showSheet: Bool = false
-    
+    @State var sheetType: ActiveStartGameSheet = .vocabulary
+    @State private var cardsOrderOption = "Default"
+
     var flashCards: Array<FlashCard> {
         return self.gameStatus.flashCards
     }
@@ -75,6 +81,7 @@ struct GameView: View {
                             
                             .onTapGesture {
                                 self.showSheet = true
+                                self.sheetType = .vocabulary
                         }
                     }.padding(.bottom, geometry.size.height * 0.03)
                     
@@ -106,6 +113,10 @@ struct GameView: View {
                         )
                             .padding(.leading, 30)
                             .padding(.trailing, 30)
+                            .onTapGesture {
+                                self.showSheet = true
+                                self.sheetType = .cardsOrder
+                        }
                     }
                     
                     Spacer()
@@ -128,7 +139,11 @@ struct GameView: View {
             }
         }
         .sheet(isPresented: $showSheet) {
-            GameSheetView().environmentObject(self.gameStatus).environmentObject(self.gamePlay)
+            if self.sheetType == .vocabulary {
+                GameSheetView().environmentObject(self.gameStatus).environmentObject(self.gamePlay)
+            } else if self.sheetType == .cardsOrder {
+                CardsOrderView(cardsOrderOption: self.$cardsOrderOption)
+            }
         }
     }
 }
