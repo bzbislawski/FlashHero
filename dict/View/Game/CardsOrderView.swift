@@ -21,6 +21,7 @@ struct CardsOrderView: View {
             List(self.cardsOrder, id: \.self) { type in
                 Button(action: {
                     self.cardsOrderOption = type
+                    self.presentationMode.wrappedValue.dismiss()
                 }) {
                     HStack {
                         Text(type)

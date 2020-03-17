@@ -18,7 +18,7 @@ struct GameView: View {
     @State var showSheet: Bool = false
     @State var sheetType: ActiveStartGameSheet = .vocabulary
     @State private var cardsOrderOption = "Default"
-
+    
     var flashCards: Array<FlashCard> {
         return self.gameStatus.flashCards
     }
@@ -68,21 +68,25 @@ struct GameView: View {
                                 .foregroundColor(.white)
                             Spacer()
                         }
-                        Rectangle()
-                            .fill(Color.white)
-                            .cornerRadius(8)
-                            .frame(height: 47)
-                            .overlay(
-                                RoundedRectangle(cornerRadius: 8)
-                                    .stroke(Color.secondaryBackgroundColor, lineWidth: 1)
-                        )
-                            .padding(.leading, 30)
-                            .padding(.trailing, 30)
-                            
-                            .onTapGesture {
-                                self.showSheet = true
-                                self.sheetType = .vocabulary
+                        ZStack {
+                            Rectangle()
+                                .fill(Color.white)
+                                .cornerRadius(8)
+                                .frame(height: 47)
+                                .overlay(
+                                    RoundedRectangle(cornerRadius: 8)
+                                        .stroke(Color.secondaryBackgroundColor, lineWidth: 1)
+                            )
+                                .padding(.leading, 30)
+                                .padding(.trailing, 30)
+                                
+                                .onTapGesture {
+                                    self.showSheet = true
+                                    self.sheetType = .vocabulary
+                            }
+                            Text("Selected decks: \(self.gamePlay.selectedDecks.count)").font(.system(size: 17, weight: .semibold))
                         }
+                        
                     }.padding(.bottom, geometry.size.height * 0.03)
                     
                     VStack {
@@ -103,19 +107,22 @@ struct GameView: View {
                                 .foregroundColor(.white)
                             Spacer()
                         }
-                        Rectangle()
-                            .fill(Color.white)
-                            .cornerRadius(8)
-                            .frame(height: 47)
-                            .overlay(
-                                RoundedRectangle(cornerRadius: 8)
-                                    .stroke(Color.secondaryBackgroundColor, lineWidth: 1)
-                        )
-                            .padding(.leading, 30)
-                            .padding(.trailing, 30)
-                            .onTapGesture {
-                                self.showSheet = true
-                                self.sheetType = .cardsOrder
+                        ZStack {
+                            Rectangle()
+                                .fill(Color.white)
+                                .cornerRadius(8)
+                                .frame(height: 47)
+                                .overlay(
+                                    RoundedRectangle(cornerRadius: 8)
+                                        .stroke(Color.secondaryBackgroundColor, lineWidth: 1)
+                            )
+                                .padding(.leading, 30)
+                                .padding(.trailing, 30)
+                                .onTapGesture {
+                                    self.showSheet = true
+                                    self.sheetType = .cardsOrder
+                            }
+                            Text("\(self.cardsOrderOption)").font(.system(size: 17, weight: .semibold))
                         }
                     }
                     
@@ -151,9 +158,10 @@ struct GameView: View {
 struct Game_Previews: PreviewProvider {
     static var previews: some View {
         let env = ViewRouter()
+        let gamePlay = GamePlay()
         return GeometryReader { geometry in
             VStack {
-                GameView()
+                GameView().environmentObject(gamePlay)
                 TabView(geometry: geometry).environmentObject(env)
             }
         }
