@@ -20,8 +20,8 @@ struct FlashCardView: View {
         Animation.interpolatingSpring(mass: 1, stiffness: 80, damping: 10, initialVelocity: 0)
     }
     
-    var deckColor: DeckColor? {
-        return deckColors.filter({return $0.name == self.gameStatus.deck?.color}).first
+    var deckColor: DeckColor {
+        return deckColors.filter({return $0.name == self.gameStatus.deck?.color}).first ?? deckColors.first!
     }
     
     func textView(text: String, isAnswer: Bool) -> some View {
@@ -54,7 +54,7 @@ struct FlashCardView: View {
                 .zIndex(self.showAnswer ? 1 : 0)
             
             Rectangle()
-                .fill(LinearGradient(gradient: Gradient(colors: [deckColor!.colorOne, deckColor!.colorTwo]), startPoint: .topLeading, endPoint: .bottomTrailing))
+                .fill(LinearGradient(gradient: Gradient(colors: [deckColor.colorOne, deckColor.colorTwo]), startPoint: .topLeading, endPoint: .bottomTrailing))
                 .cornerRadius(10)
                 .frame(width: 320, height: 200)
                 .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color.white, lineWidth: 4))
@@ -94,8 +94,22 @@ struct FlashCardView: View {
 }
 
 struct FlashCardView_Previews: PreviewProvider {
-    @Binding var param: Bool
     static var previews: some View {
-        GameView()
+        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        let repository = FlashCardRepository(moc: context)
+        let repository2 = DeckRepository(moc: context)
+        let gameStatus = GameStatus(flashCardRepository: repository, deckRepository: repository2)
+
+        let deck = Deck(context: context)
+        deck.name = "Deck name"
+        deck.color = "blue"
+
+        let flashCard = FlashCard(context: context)
+        flashCard.word = "Kitchen"
+        flashCard.translation = "Kuchnia"
+        deck.addToFlashCard(flashCard)
+        try? context.save()
+        
+        return FlashCardView(flashCard: flashCard).environmentObject(gameStatus)
     }
 }

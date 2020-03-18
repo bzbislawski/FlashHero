@@ -13,9 +13,7 @@ struct TabView: View {
     var geometry: GeometryProxy
     
     var body: some View {
-        VStack {
-            Divider()
-            
+        VStack {            
             HStack {
                 Spacer()
                 Image(systemName: "book.fill")
@@ -48,7 +46,7 @@ struct TabView: View {
                 
                 Spacer()
             }
-            .frame(width: self.geometry.size.width, height: self.geometry.size.height/10)
+            .padding(.bottom, 10)
         }
     }
 }
@@ -56,8 +54,6 @@ struct TabView: View {
 struct TabView_Previews: PreviewProvider {
     static var previews: some View {
         let env = ViewRouter()
-        return GeometryReader { geometry in
-            TabView(geometry: geometry).environmentObject(env)
-        }
+        return HomepageView().environmentObject(env)
     }
 }

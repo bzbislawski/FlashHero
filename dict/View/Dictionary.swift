@@ -89,10 +89,15 @@ struct Dictionary: View {
     }
 }
 
-//#if debug
+#if debug
 struct Dictionary_Previews: PreviewProvider {
     static var previews: some View {
-        Dictionary()
+        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        let repository = FlashCardRepository(moc: context)
+        let repository2 = DeckRepository(moc: context)
+        let gameStatus = GameStatus(flashCardRepository: repository, deckRepository: repository2)
+        
+        return Dictionary().environmentObject(gameStatus)
     }
 }
-//#endif
+#endif

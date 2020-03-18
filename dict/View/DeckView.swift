@@ -82,7 +82,37 @@ struct DeckView: View {
 }
 
 struct DeckView_Previews: PreviewProvider {
+    struct DeckViewWrapper: View {
+        @State var showSheet = true
+        @State var activeSheet: ActiveSheet = ActiveSheet.deckForm
+        @State var activeDeck: Deck? = nil
+        @State var activeFlashCard: FlashCard? =  nil
+        var body: some View {
+            let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+            let repository = FlashCardRepository(moc: context)
+            let repository2 = DeckRepository(moc: context)
+            let gameStatus = GameStatus(flashCardRepository: repository, deckRepository: repository2)
+            
+            let deck = Deck(context: context)
+            deck.name = "Deck name"
+            deck.color = "blue"
+            
+            let flashCard = FlashCard(context: context)
+            flashCard.word = "Kitchen"
+            flashCard.translation = "Kuchnia"
+            deck.addToFlashCard(flashCard)
+            
+            try? context.save()
+            return DeckView(
+                showSheet: self.$showSheet,
+                activeSheet: self.$activeSheet,
+                activeDeck: self.$activeDeck,
+                activeFlashCard: self.$activeFlashCard, deck: deck
+            ).environmentObject(gameStatus)
+        }
+    }
+    
     static var previews: some View {
-        Dictionary()
+        DeckViewWrapper()
     }
 }

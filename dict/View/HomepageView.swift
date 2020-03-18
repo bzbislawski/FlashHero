@@ -21,7 +21,9 @@ struct HomepageView: View {
                 } else if self.viewRouter.currentView == Homepapge.settings {
                     SettingsView()
                 }
+                Divider()
                 TabView(geometry: geometry)
+                    .frame(height: geometry.size.height * 0.1)
             }
             .edgesIgnoringSafeArea(.bottom)
             .accentColor(.firstColor)
@@ -45,6 +47,11 @@ struct NavigationConfigurator: UIViewControllerRepresentable {
 
 struct HomepageView_Previews: PreviewProvider {
     static var previews: some View {
-        HomepageView()
+        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        let repository = FlashCardRepository(moc: context)
+        let repository2 = DeckRepository(moc: context)
+        let gameStatus = GameStatus(flashCardRepository: repository, deckRepository: repository2)
+        let env = ViewRouter()
+        return HomepageView().environmentObject(env).environmentObject(gameStatus)
     }
 }

@@ -10,4 +10,9 @@ import Foundation
 
 class GamePlay: ObservableObject {
     @Published var selectedDecks: [Deck] = []
+    @Published var isGameStarted: Bool = false
+    
+    func start() -> Void {
+        self.isGameStarted = true
+    }
 }
