@@ -10,12 +10,33 @@ import SwiftUI
 
 struct GameView: View {
     @EnvironmentObject var gamePlay: GamePlay
-    
+    @EnvironmentObject var gameStatus: GameStatus
+    @State var selectedDecks: [Deck] = []
+    @State var showSheet: Bool = false
+
+    var flashCards: Array<FlashCard> {
+        return self.gameStatus.flashCards
+    }
+
     var body: some View {
         return GeometryReader { geometry in
             VStack {
                 if self.gamePlay.isGameStarted {
-                    Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+                    if self.flashCards.count == 0 {
+                        Scoreboard()
+                    } else {
+                        ScrollView(.vertical, showsIndicators: false) {
+                            ForEach(self.flashCards, id: \.self) { flashCard in
+                                FlashCardView(flashCard: flashCard)
+                                    .animation(.spring())
+                                    .padding(.top, 15)
+                                    .padding(.bottom, 15)
+                                    .padding(.leading, 300)
+                                    .padding(.trailing, 300)
+                            }
+                            Spacer()
+                        }
+                    }
                 } else {
                     StartGameView()
                 }
