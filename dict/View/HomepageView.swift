@@ -15,7 +15,7 @@ struct HomepageView: View {
         GeometryReader { geometry in
             VStack {
                 if self.viewRouter.currentView == Homepapge.dictionary {
-                    Dictionary()
+                    DictionaryView()
                 } else if self.viewRouter.currentView == Homepapge.game {
                     GameView()
                 } else if self.viewRouter.currentView == Homepapge.settings {

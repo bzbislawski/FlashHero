@@ -21,7 +21,7 @@ struct FlashCardView: View {
     }
     
     var deckColor: DeckColor {
-        return deckColors.filter({return $0.name == "aasdadasd"}).first ?? deckColors.first!
+        return deckColors.filter({return $0.name == self.flashCard.origin!.color}).first ?? deckColors.first!
     }
     
     func textView(text: String, isAnswer: Bool) -> some View {

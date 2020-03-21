@@ -12,7 +12,7 @@ enum ActiveSheet {
     case deckForm, flashCardForm, deckEditForm, flashCardEditForm
 }
 
-struct Dictionary: View {
+struct DictionaryView: View {
     @EnvironmentObject var gameStatus: GameStatus
     @State private var showSheet = false
     @State private var activeSheet: ActiveSheet = .deckForm

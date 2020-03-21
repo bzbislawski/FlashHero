@@ -14,7 +14,6 @@ struct GameView: View {
     @State var showSheet: Bool = false
 
     var flashCards: Array<FlashCard> {
-        print(self.gamePlay.flashCards.count)
         return self.gamePlay.flashCards
     }
 
