@@ -14,7 +14,7 @@ struct MiniFlashCardView: View {
     var flashCard: FlashCard?
     
     var miniFlashCardColor: String {
-        return self.gameStatus.decks.filter({ return $0.id == deck.id }).first?.wrappedColor ?? ""
+        return self.gameStatus.loadDictionary().filter({ return $0.id == deck.id }).first?.wrappedColor ?? ""
     }
     
     var deckColor: DeckColor {

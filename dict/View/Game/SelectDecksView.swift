@@ -15,7 +15,7 @@ struct SelectDecksView: View {
     
     var body: some View {
         NavigationView {
-            List(self.gameStatus.decks, id: \.self) { deck in
+            List(self.gameStatus.loadDictionary(), id: \.self) { deck in
                 GameSheetRowView(deck: deck, isSelected: self.gamePlay.selectedDecks.contains(deck)) {
                     if self.gamePlay.selectedDecks.contains(deck) {
                         self.gamePlay.selectedDecks.removeAll(where: { $0 == deck })
@@ -47,10 +47,6 @@ struct GameSheetView_Previews: PreviewProvider {
         
         let gs = GameStatus(flashCardRepository: repository, deckRepository: repository2)
         
-        let decks = gs.decks
-        for deck in decks {
-            gs.delete(deck: deck)
-        }
         gs.save(name: "Kitchen", color: "yellow")
         try! context.save()
         

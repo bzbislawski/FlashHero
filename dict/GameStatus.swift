@@ -10,10 +10,6 @@ import Foundation
 import CoreData
 
 class GameStatus: ObservableObject {
-    @Published var deck: Deck?
-    @Published var decks: Array<Deck> = []
-    @Published var flashCards: Array<FlashCard> = []
-    
     private var flashCardRepository: FlashCardRepository
     private var deckRepository: DeckRepository
 
@@ -24,12 +20,10 @@ class GameStatus: ObservableObject {
     
     func save(name: String, color: String) {
         deckRepository.save(name: name, color: color)
-        loadDictionary()
     }
     
     func save(deck: Deck, name: String, color: String) {
         deckRepository.save(deck: deck, name: name, color: color)
-        loadDictionary()
     }
     
     func save(deck: Deck, word: String, translation: String) {
@@ -37,10 +31,6 @@ class GameStatus: ObservableObject {
             return
         }
         flashCardRepository.save(deck: deck, word: word, translation: translation)
-        if self.deck == nil {
-            self.deck = deck
-            self.flashCards = deck.flashCardArray
-        }
     }
     
     func save(deck: Deck, flashCard: FlashCard) {
@@ -52,11 +42,10 @@ class GameStatus: ObservableObject {
     }
     
     func delete(deck: Deck) {
-        self.decks = self.decks.filter { $0 != deck }
         deckRepository.delete(deck: deck)
     }
     
-    func loadDictionary() {
-        self.decks = deckRepository.getAll()
+    func loadDictionary() -> [Deck] {
+        return deckRepository.getAll();
     }
 }

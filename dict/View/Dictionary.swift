@@ -33,7 +33,7 @@ struct Dictionary: View {
                     }
                     Spacer()
                 }
-                if self.gameStatus.decks.isEmpty {
+                if self.gameStatus.loadDictionary().isEmpty {
                     VStack {
                         Text("""
                         Oops, there are no decks here.
@@ -58,7 +58,7 @@ struct Dictionary: View {
                     }
                 } else {
                     ScrollView(.vertical, showsIndicators: false) {
-                        ForEach(self.gameStatus.decks, id: \.self) { deck in
+                        ForEach(self.gameStatus.loadDictionary(), id: \.self) { deck in
                             DeckView(showSheet: self.$showSheet, activeSheet: self.$activeSheet, activeDeck: self.$activeDeck, activeFlashCard: self.$activeFlashCard, deck: deck)
                         }
                     }.padding(.top, 30)
