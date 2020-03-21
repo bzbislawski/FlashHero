@@ -52,7 +52,7 @@ struct StartGameView: View {
                                 HStack {
                                     Text("Vocabulary")
                                         .italic()
-                                        .padding(.leading, 60)
+                                        .padding(.leading, 40)
                                         .foregroundColor(.white)
                                         .font(.system(size: 36, weight: .thin))
                                     
@@ -62,7 +62,7 @@ struct StartGameView: View {
                                 HStack {
                                     Text("Choose decks you want to play")
                                         .italic()
-                                        .padding(.leading, 60)
+                                        .padding(.leading, 40)
                                         .foregroundColor(.white)
                                     Spacer()
                                 }
@@ -75,14 +75,16 @@ struct StartGameView: View {
                                             RoundedRectangle(cornerRadius: 8)
                                                 .stroke(Color.secondaryBackgroundColor, lineWidth: 1)
                                     )
-                                        .padding(.leading, 60)
-                                        .padding(.trailing, 60)
+                                        .padding(.leading, 40)
+                                        .padding(.trailing, 40)
                                         
                                         .onTapGesture {
                                             self.showSheet = true
                                             self.sheetType = .vocabulary
                                     }
-                                    Text("Selected decks: \(self.gamePlay.selectedDecks.count)").font(.system(size: 17, weight: .semibold))
+                                    Text("Selected decks: \(self.gamePlay.selectedDecks.count)")
+                                        .font(.system(size: 17, weight: .semibold))
+                                        .foregroundColor(Color.quaternaryBackgroundColor)
                                 }
                                 
                             }.padding(.bottom, geometry.size.height * 0.04)
@@ -91,7 +93,7 @@ struct StartGameView: View {
                                 HStack {
                                     Text("Word Order")
                                         .italic()
-                                        .padding(.leading, 60)
+                                        .padding(.leading, 40)
                                         .foregroundColor(.white)
                                         .font(.system(size: 36, weight: .thin))
                                     
@@ -101,7 +103,7 @@ struct StartGameView: View {
                                 HStack {
                                     Text("Choose order of words displayed")
                                         .italic()
-                                        .padding(.leading, 60)
+                                        .padding(.leading, 40)
                                         .foregroundColor(.white)
                                     Spacer()
                                 }
@@ -114,13 +116,15 @@ struct StartGameView: View {
                                             RoundedRectangle(cornerRadius: 8)
                                                 .stroke(Color.secondaryBackgroundColor, lineWidth: 1)
                                     )
-                                        .padding(.leading, 60)
-                                        .padding(.trailing, 60)
+                                        .padding(.leading, 40)
+                                        .padding(.trailing, 40)
                                         .onTapGesture {
                                             self.showSheet = true
                                             self.sheetType = .cardsOrder
                                     }
-                                    Text("\(self.cardsOrderOption)").font(.system(size: 17, weight: .semibold))
+                                    Text("\(self.cardsOrderOption)")
+                                        .font(.system(size: 17, weight: .semibold))
+                                        .foregroundColor(Color.quaternaryBackgroundColor)
                                 }
                             }.padding(.bottom, 50)
                             
@@ -139,12 +143,12 @@ struct StartGameView: View {
                                             .foregroundColor(Color.quaternaryBackgroundColor)
                                             .font(.system(size: 17, weight: .semibold))
                                 )
-                                    .padding(.leading, 60)
-                                    .padding(.trailing, 60)
+                                    .padding(.leading, 40)
+                                    .padding(.trailing, 40)
                                     .padding(.bottom, 40)
                             }
                         }
-                    )
+                )
                     .frame(width: geometry.size.width * 0.9, height: geometry.size.height * 0.96)
                     .cornerRadius(25)
                     .shadow(color: .gray, radius: 12, x: 0, y: 4)
