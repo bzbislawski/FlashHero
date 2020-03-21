@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct GameSheetView: View {
+struct SelectDecksView: View {
     @Environment (\.presentationMode) var presentationMode
     @EnvironmentObject var gameStatus: GameStatus
     @EnvironmentObject var gamePlay: GamePlay
@@ -54,7 +54,7 @@ struct GameSheetView_Previews: PreviewProvider {
         gs.save(name: "Kitchen", color: "yellow")
         try! context.save()
         
-        return GameSheetView().environmentObject(gs)
+        return SelectDecksView().environmentObject(gs)
         
     }
 }

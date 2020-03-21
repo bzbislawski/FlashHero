@@ -13,7 +13,7 @@
 		BA50F35223DB11FA005D624B /* Deck+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA50F34E23DB11FA005D624B /* Deck+CoreDataClass.swift */; };
 		BA50F35323DB11FA005D624B /* Deck+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA50F34F23DB11FA005D624B /* Deck+CoreDataProperties.swift */; };
 		BA89D8B6239AAC9200D97AC2 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA89D8B5239AAC9200D97AC2 /* SettingsView.swift */; };
-		BA8C74A7240533610021C19C /* GameSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA8C74A6240533610021C19C /* GameSheetView.swift */; };
+		BA8C74A7240533610021C19C /* SelectDecksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA8C74A6240533610021C19C /* SelectDecksView.swift */; };
 		BAA3D9B523FC33B1006AC3A1 /* DeckColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAA3D9B423FC33B1006AC3A1 /* DeckColor.swift */; };
 		BADE723E24201BA5003E7EB1 /* CardsOrderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BADE723D24201BA5003E7EB1 /* CardsOrderView.swift */; };
 		BADE724024202712003E7EB1 /* TabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BADE723F24202712003E7EB1 /* TabView.swift */; };
@@ -48,7 +48,7 @@
 		BA50F34E23DB11FA005D624B /* Deck+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Deck+CoreDataClass.swift"; sourceTree = "<group>"; };
 		BA50F34F23DB11FA005D624B /* Deck+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Deck+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		BA89D8B5239AAC9200D97AC2 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
-		BA8C74A6240533610021C19C /* GameSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSheetView.swift; sourceTree = "<group>"; };
+		BA8C74A6240533610021C19C /* SelectDecksView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectDecksView.swift; sourceTree = "<group>"; };
 		BAA3D9B423FC33B1006AC3A1 /* DeckColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckColor.swift; sourceTree = "<group>"; };
 		BADE723D24201BA5003E7EB1 /* CardsOrderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardsOrderView.swift; sourceTree = "<group>"; };
 		BADE723F24202712003E7EB1 /* TabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabView.swift; sourceTree = "<group>"; };
@@ -95,7 +95,7 @@
 				BA1760EC242193C900695ECB /* GameView.swift */,
 				D6412B802388367000EA3758 /* FlashCardView.swift */,
 				D64D51162385E0BF0075AD3D /* StartGameView.swift */,
-				BA8C74A6240533610021C19C /* GameSheetView.swift */,
+				BA8C74A6240533610021C19C /* SelectDecksView.swift */,
 				D62940BC2405D7C800554C66 /* GameSheetRowView.swift */,
 				BADE723D24201BA5003E7EB1 /* CardsOrderView.swift */,
 			);
@@ -258,7 +258,7 @@
 			files = (
 				D63B466223D517EC008370C7 /* DeckView.swift in Sources */,
 				BA50F35323DB11FA005D624B /* Deck+CoreDataProperties.swift in Sources */,
-				BA8C74A7240533610021C19C /* GameSheetView.swift in Sources */,
+				BA8C74A7240533610021C19C /* SelectDecksView.swift in Sources */,
 				D6EB4EC72418472B00654307 /* ViewRouter.swift in Sources */,
 				D64D51032385CA900075AD3D /* dict.xcdatamodeld in Sources */,
 				D64D51172385E0BF0075AD3D /* StartGameView.swift in Sources */,

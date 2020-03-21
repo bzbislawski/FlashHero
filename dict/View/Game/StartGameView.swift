@@ -19,10 +19,6 @@ struct StartGameView: View {
     @State var sheetType: ActiveStartGameSheet = .vocabulary
     @State private var cardsOrderOption = "Default"
     
-    var flashCards: Array<FlashCard> {
-        return self.gameStatus.flashCards
-    }
-    
     var body: some View {
         GeometryReader { geometry in
             ZStack {
@@ -161,7 +157,7 @@ struct StartGameView: View {
         }
         .sheet(isPresented: $showSheet) {
             if self.sheetType == .vocabulary {
-                GameSheetView().environmentObject(self.gameStatus).environmentObject(self.gamePlay)
+                SelectDecksView().environmentObject(self.gameStatus).environmentObject(self.gamePlay)
             } else if self.sheetType == .cardsOrder {
                 CardsOrderView(cardsOrderOption: self.$cardsOrderOption)
             }
