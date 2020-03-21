@@ -10,12 +10,12 @@ import SwiftUI
 
 struct GameView: View {
     @EnvironmentObject var gamePlay: GamePlay
-    @EnvironmentObject var gameStatus: GameStatus
     @State var selectedDecks: [Deck] = []
     @State var showSheet: Bool = false
 
     var flashCards: Array<FlashCard> {
-        return self.gameStatus.flashCards
+        print(self.gamePlay.flashCards.count)
+        return self.gamePlay.flashCards
     }
 
     var body: some View {

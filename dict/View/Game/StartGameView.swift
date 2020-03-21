@@ -148,18 +148,13 @@ struct StartGameView: View {
                     .frame(width: geometry.size.width * 0.9, height: geometry.size.height * 0.96)
                     .cornerRadius(25)
                     .shadow(color: .gray, radius: 12, x: 0, y: 4)
-                
-                
-                
-                
-                
             }
         }
         .sheet(isPresented: $showSheet) {
             if self.sheetType == .vocabulary {
                 SelectDecksView().environmentObject(self.gameStatus).environmentObject(self.gamePlay)
             } else if self.sheetType == .cardsOrder {
-                CardsOrderView(cardsOrderOption: self.$cardsOrderOption)
+                CardsOrderView(cardsOrderOption: self.$cardsOrderOption).environmentObject(self.gamePlay)
             }
         }
     }

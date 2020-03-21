@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct FlashCardView: View {
-    @EnvironmentObject var gameStatus: GameStatus
+    @EnvironmentObject var gamePlay: GamePlay
     @State private var showAnswer = false
     @State private var goAway = false
     @State private var currentPosition: CGSize = .zero
@@ -21,7 +21,7 @@ struct FlashCardView: View {
     }
     
     var deckColor: DeckColor {
-        return deckColors.filter({return $0.name == self.gameStatus.deck?.color}).first ?? deckColors.first!
+        return deckColors.filter({return $0.name == "aasdadasd"}).first ?? deckColors.first!
     }
     
     func textView(text: String, isAnswer: Bool) -> some View {
@@ -79,11 +79,11 @@ struct FlashCardView: View {
                     self.newPosition = self.currentPosition
                 } else {
                     if self.currentPosition.width > 0 {
-                        self.gameStatus.correctAnswers += 1
+                        self.gamePlay.correctAnswers += 1
                     } else {
-                        self.gameStatus.wrongAnswers += 1
+                        self.gamePlay.wrongAnswers += 1
                     }
-                    self.gameStatus.flashCards.removeAll(where: { $0 == self.flashCard })
+                    self.gamePlay.flashCards.removeAll(where: { $0 == self.flashCard })
                 }
             })
             

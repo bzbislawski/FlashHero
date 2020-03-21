@@ -10,7 +10,7 @@ import SwiftUI
 
 struct Scoreboard: View {
     @Environment(\.colorScheme) var colorScheme: ColorScheme
-    @EnvironmentObject var gameStatus: GameStatus
+    @EnvironmentObject var gamePlay: GamePlay
     @State private var dim = false
     
     var animation: Animation {
@@ -18,8 +18,8 @@ struct Scoreboard: View {
     }
     
     var body: some View {
-        let totalScore = self.gameStatus.correctAnswers + self.gameStatus.wrongAnswers
-        let score = Float(self.gameStatus.correctAnswers) / Float(totalScore)
+        let totalScore = self.gamePlay.correctAnswers + self.gamePlay.wrongAnswers
+        let score = Float(self.gamePlay.correctAnswers) / Float(totalScore)
         let winGame = score > 0.6
         return VStack {
             Text(winGame ? "Congrats!" : "Whoops!")
@@ -33,12 +33,12 @@ struct Scoreboard: View {
             Text("Score:")
                 .padding(.top)
             
-            Text(String(self.gameStatus.correctAnswers) + "/" + String(totalScore))
+            Text(String(self.gamePlay.correctAnswers) + "/" + String(totalScore))
                 .font(.system(size: 32, weight: .medium))
                 .padding(.bottom)
             
             Button(action: {
-                self.gameStatus.resetGame()
+                self.gamePlay.stop()
             }) {
                 VStack {
                     Text("Restart the game")
@@ -74,8 +74,6 @@ struct Scoreboard_Previews: PreviewProvider {
         let repository2 = DeckRepository(moc: context)
         let gs = GameStatus(flashCardRepository: repository, deckRepository: repository2)
         let gs2 = GameStatus(flashCardRepository: repository, deckRepository: repository2)
-        gs.correctAnswers = 5
-        gs2.correctAnswers = 0
         return VStack {
             Scoreboard().environmentObject(gs)
             Spacer()

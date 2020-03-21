@@ -30,7 +30,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let gamePlay = GamePlay()
         let viewRouter = ViewRouter()
         gameStatus.loadDictionary()
-        gameStatus.loadGame()
         
         
         // Use a UIHostingController as window root view controller.

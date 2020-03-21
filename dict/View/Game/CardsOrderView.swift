@@ -10,17 +10,15 @@ import SwiftUI
 
 struct CardsOrderView: View {
     @Environment (\.presentationMode) var presentationMode
+    @EnvironmentObject var gamePlay: GamePlay
     @Binding var cardsOrderOption: String
-    
-    var cardsOrder: Array<String> {
-        return ["Default", "Alphabetical", "Random"]
-    }
     
     var body: some View {
         NavigationView {
-            List(self.cardsOrder, id: \.self) { type in
+            List(self.gamePlay.cardsOrder, id: \.self) { type in
                 Button(action: {
                     self.cardsOrderOption = type
+                    self.gamePlay.selectedCardsOrder = type
                     self.presentationMode.wrappedValue.dismiss()
                 }) {
                     HStack {

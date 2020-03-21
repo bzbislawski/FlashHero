@@ -10,8 +10,6 @@ import Foundation
 import CoreData
 
 class GameStatus: ObservableObject {
-    @Published var correctAnswers: Int = 0
-    @Published var wrongAnswers: Int = 0
     @Published var deck: Deck?
     @Published var decks: Array<Deck> = []
     @Published var flashCards: Array<FlashCard> = []
@@ -56,27 +54,9 @@ class GameStatus: ObservableObject {
     func delete(deck: Deck) {
         self.decks = self.decks.filter { $0 != deck }
         deckRepository.delete(deck: deck)
-        if let currentDeck = self.deck {
-            if currentDeck.id == deck.id {
-                loadGame()
-            }
-        }
     }
     
     func loadDictionary() {
         self.decks = deckRepository.getAll()
-    }
-    
-    func loadGame() {
-        if (!self.decks.isEmpty) {
-            self.deck = decks[0]
-            self.flashCards = decks[0].flashCardArray
-        }
-    }
-    
-    func resetGame() {
-        self.correctAnswers = 0
-        self.wrongAnswers = 0
-        self.flashCards = self.deck?.flashCardArray ?? Array<FlashCard>()
     }
 }
