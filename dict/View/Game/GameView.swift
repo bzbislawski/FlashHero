@@ -18,7 +18,7 @@ struct GameView: View {
     }
 
     var body: some View {
-        return GeometryReader { geometry in
+        GeometryReader { geometry in
             VStack {
                 if self.gamePlay.isGameStarted {
                     if self.flashCards.count == 0 {

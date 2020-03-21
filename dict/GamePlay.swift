@@ -36,4 +36,9 @@ class GamePlay: ObservableObject {
         self.correctAnswers = 0
         self.wrongAnswers = 0
     }
+    
+    func reset() {
+        self.selectedDecks = []
+        self.selectedCardsOrder = "Default"
+    }
 }

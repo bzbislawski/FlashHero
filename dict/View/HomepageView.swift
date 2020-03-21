@@ -10,6 +10,7 @@ import SwiftUI
 
 struct HomepageView: View {
     @EnvironmentObject var viewRouter: ViewRouter
+    @EnvironmentObject var gamePlay: GamePlay
     
     var body: some View {
         GeometryReader { geometry in
@@ -17,7 +18,9 @@ struct HomepageView: View {
                 if self.viewRouter.currentView == Homepapge.dictionary {
                     DictionaryView()
                 } else if self.viewRouter.currentView == Homepapge.game {
-                    GameView()
+                    GameView().onAppear {
+                        self.gamePlay.reset()
+                    }
                 } else if self.viewRouter.currentView == Homepapge.settings {
                     SettingsView()
                 }

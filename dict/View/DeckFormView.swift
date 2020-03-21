@@ -99,7 +99,16 @@ struct DeckFormView: View {
                                 .frame(width: 64, height: 64)
                                 .background(Color.red)
                                 .cornerRadius(5)
-                        }.padding(.bottom, 50)
+                        }
+                        .padding(.bottom, 50)
+                        .alert(isPresented: $showingDeleteAlert) { () -> Alert in
+                            Alert(title: Text("Are you sure?"), message: Text("Deck and its flashcards will be deleted permanently."),
+                                  primaryButton: .default(Text("Yes"), action: {
+                                    self.gameStatus.delete(deck: self.deck!)
+                                    self.presentationMode.wrappedValue.dismiss()
+                                  }),
+                                  secondaryButton: .default(Text("Cancel")))
+                        }
                     }
                     
                 }.navigationBarTitle("", displayMode: .inline)
@@ -121,22 +130,22 @@ struct DeckFormView: View {
                                 self.gameStatus.save(deck: self.deck!, name: self.name, color: self.color)
                                 self.presentationMode.wrappedValue.dismiss()
                             }
-                        }) { Text("Done").foregroundColor(Color.firstColor).font(.system(size: 18, weight: .semibold)) }
+                        }) {
+                            Text("Done")
+                                .foregroundColor(Color.firstColor)
+                                .font(.system(size: 18, weight: .semibold))
+                                .alert(isPresented: $showingValidationAlert) {
+                                    Alert(
+                                        title: Text("Error"),
+                                        message: Text("Name can not be empty"),
+                                        dismissButton: .default(Text("Got it!"))
+                                    )
+                            }
+                        }
                 )
-                    .alert(isPresented: $showingValidationAlert) {
-                        Alert(title: Text("Error"), message: Text("Name can not be empty"), dismissButton: .default(Text("Got it!")))
-                }
-                .alert(isPresented: $showingDeleteAlert) { () -> Alert in
-                    Alert(title: Text("Are you sure?"), message: Text("Deck and its flashcards will be deleted permanently."),
-                          primaryButton: .default(Text("Yes"), action: {
-                            self.gameStatus.delete(deck: self.deck!)
-                            self.presentationMode.wrappedValue.dismiss()
-                          }),
-                          secondaryButton: .default(Text("Cancel")))
-                }
-                .onAppear {
-                    self.name = self.deck?.wrappedName ?? self.name
-                    self.color = self.deck?.wrappedColor ?? self.color
+                    .onAppear {
+                        self.name = self.deck?.wrappedName ?? self.name
+                        self.color = self.deck?.wrappedColor ?? self.color
                 }
             }
         }
