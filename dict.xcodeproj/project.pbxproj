@@ -109,6 +109,7 @@
 				BA8C74A6240533610021C19C /* SelectDecksView.swift */,
 				D62940BC2405D7C800554C66 /* GameSheetRowView.swift */,
 				BADE723D24201BA5003E7EB1 /* CardsOrderView.swift */,
+				D60F038023B3E0A5007F1F74 /* Scoreboard.swift */,
 			);
 			path = Game;
 			sourceTree = "<group>";
@@ -165,7 +166,6 @@
 				BA776E482428098700EEC11D /* Dictionary */,
 				D62940BE2405DF3100554C66 /* Game */,
 				D64D51142385CCA30075AD3D /* HomepageView.swift */,
-				D60F038023B3E0A5007F1F74 /* Scoreboard.swift */,
 				D63B467723DE421B008370C7 /* MiniFlashCardView.swift */,
 				BA89D8B5239AAC9200D97AC2 /* SettingsView.swift */,
 				BADE723F24202712003E7EB1 /* TabView.swift */,
