@@ -18,6 +18,7 @@ struct StartGameView: View {
     @State var showSheet: Bool = false
     @State var sheetType: ActiveStartGameSheet = .vocabulary
     @State private var cardsOrderOption = "Default"
+    @State var showsAlert = false
     
     var body: some View {
         GeometryReader { geometry in
@@ -127,7 +128,11 @@ struct StartGameView: View {
                             Spacer()
                             
                             Button(action: {
-                                self.gamePlay.start()
+                                if (self.gamePlay.selectedDecks.count == 0) {
+                                    self.showsAlert = true
+                                } else {
+                                    self.gamePlay.start()
+                                }
                             }) {
                                 RoundedRectangle(cornerRadius: 8)
                                     .stroke(Color.secondaryBackgroundColor, lineWidth: 1)
@@ -142,6 +147,12 @@ struct StartGameView: View {
                                     .padding(.leading, 40)
                                     .padding(.trailing, 40)
                                     .padding(.bottom, 40)
+                            }
+                            .alert(isPresented: self.$showsAlert) {
+                                Alert(
+                                    title: Text("Oops!"),
+                                    message: Text("Select decks to start a game.")
+                                )
                             }
                         }
                 )
