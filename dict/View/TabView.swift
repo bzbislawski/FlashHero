@@ -34,6 +34,8 @@ struct TabView: View {
                         .foregroundColor(self.viewRouter.currentView == Homepapge.dictionary ? .firstColor : .gray)
                 })
                 
+                Spacer()
+                
                 Button(action: {
                     self.viewRouter.updateView(tabName: Homepapge.game)
                 }, label: {
