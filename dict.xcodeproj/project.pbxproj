@@ -89,6 +89,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BA776E482428098700EEC11D /* Dictionary */ = {
+			isa = PBXGroup;
+			children = (
+				D66668242386D311008421AB /* DictionaryView.swift */,
+				D63B466123D517EC008370C7 /* DeckView.swift */,
+				D63B466F23D79865008370C7 /* DeckFormView.swift */,
+				D64D51042385CA900075AD3D /* FlashCardFormView.swift */,
+			);
+			path = Dictionary;
+			sourceTree = "<group>";
+		};
 		D62940BE2405DF3100554C66 /* Game */ = {
 			isa = PBXGroup;
 			children = (
@@ -151,12 +162,9 @@
 		D6666177238701A000D1CB8A /* View */ = {
 			isa = PBXGroup;
 			children = (
+				BA776E482428098700EEC11D /* Dictionary */,
 				D62940BE2405DF3100554C66 /* Game */,
 				D64D51142385CCA30075AD3D /* HomepageView.swift */,
-				D66668242386D311008421AB /* DictionaryView.swift */,
-				D63B466123D517EC008370C7 /* DeckView.swift */,
-				D63B466F23D79865008370C7 /* DeckFormView.swift */,
-				D64D51042385CA900075AD3D /* FlashCardFormView.swift */,
 				D60F038023B3E0A5007F1F74 /* Scoreboard.swift */,
 				D63B467723DE421B008370C7 /* MiniFlashCardView.swift */,
 				BA89D8B5239AAC9200D97AC2 /* SettingsView.swift */,
