@@ -16,4 +16,8 @@ enum Homepapge {
 class ViewRouter: ObservableObject {
     
     @Published var currentView: Homepapge = .dictionary
+    
+    func updateView(tabName: Homepapge) {
+        self.currentView = tabName
+    }
 }

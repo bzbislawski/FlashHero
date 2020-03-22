@@ -16,13 +16,17 @@ struct HomepageView: View {
         GeometryReader { geometry in
             VStack {
                 if self.viewRouter.currentView == Homepapge.dictionary {
-                    DictionaryView()
-                } else if self.viewRouter.currentView == Homepapge.game {
-                    GameView().onAppear {
+                    DictionaryView().onAppear() {
+                        self.gamePlay.stop()
                         self.gamePlay.reset()
                     }
+                } else if self.viewRouter.currentView == Homepapge.game {
+                    GameView()
                 } else if self.viewRouter.currentView == Homepapge.settings {
-                    SettingsView()
+                    SettingsView().onAppear() {
+                        self.gamePlay.stop()
+                        self.gamePlay.reset()
+                    }
                 }
                 Divider()
                 TabView(geometry: geometry)
