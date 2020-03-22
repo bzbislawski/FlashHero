@@ -10,7 +10,7 @@ import Foundation
 import SwiftUI
 
 enum Homepapge {
-    case dictionary, game, settings
+    case dictionary, game
 }
 
 class ViewRouter: ObservableObject {

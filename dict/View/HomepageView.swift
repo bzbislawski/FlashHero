@@ -22,11 +22,6 @@ struct HomepageView: View {
                     }
                 } else if self.viewRouter.currentView == Homepapge.game {
                     GameView()
-                } else if self.viewRouter.currentView == Homepapge.settings {
-                    SettingsView().onAppear() {
-                        self.gamePlay.stop()
-                        self.gamePlay.reset()
-                    }
                 }
                 Divider()
                 TabView(geometry: geometry)

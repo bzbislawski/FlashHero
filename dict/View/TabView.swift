@@ -44,21 +44,6 @@ struct TabView: View {
                         .foregroundColor(self.viewRouter.currentView == Homepapge.game ? .firstColor : .gray)
                 })
                 
-                Button(action: {
-                    if self.gamePlay.isGameStarted {
-                        self.showsAlert = true
-                        self.redirectTo = Homepapge.settings
-                    } else {
-                        self.viewRouter.updateView(tabName: Homepapge.settings)
-                    }
-                }, label: {
-                    Image(systemName: "gear")
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width: self.geometry.size.width/5, height: 32)
-                        .foregroundColor(self.viewRouter.currentView == Homepapge.settings ? .firstColor : .gray)
-                })
-                
                 Spacer()
             }
             .padding(.bottom, 10)
