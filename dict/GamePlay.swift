@@ -28,7 +28,15 @@ class GamePlay: ObservableObject {
         selectedDecks.forEach {
             flashCards += $0.flashCardArray
         }
-        self.flashCards = flashCards
+        
+        switch self.selectedCardsOrder {
+        case "Alphabetical":
+            self.flashCards = flashCards.sorted {$0.wrappedWord < $1.wrappedWord }
+        case "Random":
+            self.flashCards = flashCards.shuffled()
+        default:
+            self.flashCards = flashCards
+        }
     }
     
     func stop() {
