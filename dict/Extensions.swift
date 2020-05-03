@@ -13,6 +13,10 @@ extension Color {
         return Color(red: r / 255, green: g / 255, blue: b / 255)
     }
     
+    // Accent color
+    static let accentColor = Color.rgb(r: 79, g: 198, b: 233)
+    static let accentGray = Color.rgb(r: 134, g: 131, b: 154)
+    
     // Gray colors
     static let backgroundColor = Color.rgb(r: 241, g: 242, b: 244)
     static let secondaryBackgroundColor = Color.rgb(r: 209, g: 214, b: 217)
