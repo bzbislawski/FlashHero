@@ -14,10 +14,7 @@ struct TabView: View {
     var geometry: GeometryProxy
     @State var showsAlert = false
     @State var redirectTo = Homepapge.dictionary
-    
-    static let borderColor = Color.rgb(r: 214, g: 211, b: 221)
-    static let backgroundColor = Color.rgb(r: 246, g: 245, b: 248)
-    
+        
     var body: some View {
         VStack {            
             HStack {
@@ -34,7 +31,7 @@ struct TabView: View {
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .frame(width: self.geometry.size.width/5, height: 32)
-                        .foregroundColor(self.viewRouter.currentView == Homepapge.dictionary ? .accentColor : .accentGray)
+                        .foregroundColor(self.viewRouter.currentView == Homepapge.dictionary ? .iconActive : .iconInactive)
                 })
                 
                 Spacer()
@@ -46,7 +43,7 @@ struct TabView: View {
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .frame(width: self.geometry.size.width/5, height: 32)
-                        .foregroundColor(self.viewRouter.currentView == Homepapge.game ? .accentColor : .accentGray)
+                        .foregroundColor(self.viewRouter.currentView == Homepapge.game ? .iconActive : .iconInactive)
                 })
                 
                 Spacer()

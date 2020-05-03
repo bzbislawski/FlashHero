@@ -14,15 +14,15 @@ extension Color {
     }
     
     // Accent color
-    static let accentColor = Color.rgb(r: 79, g: 198, b: 233)
-    static let accentGray = Color.rgb(r: 134, g: 131, b: 154)
+    static let iconActive = Color.rgb(r: 79, g: 198, b: 233)
+    static let iconInactive = Color.rgb(r: 134, g: 131, b: 154)
+    static let borderColor = Color.rgb(r: 214, g: 211, b: 221)
     
     // Gray colors
     static let backgroundColor = Color.rgb(r: 241, g: 242, b: 244)
     static let secondaryBackgroundColor = Color.rgb(r: 209, g: 214, b: 217)
     static let tertiaryBackgroundColor = Color.rgb(r: 142, g: 141, b: 146)
     static let quaternaryBackgroundColor = Color.rgb(r: 79, g: 78, b: 78)
-
     
     // Green
     static let firstColor = Color.rgb(r: 10, g: 94, b: 74)

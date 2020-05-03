@@ -15,9 +15,6 @@ struct HomepageView: View {
     var body: some View {
         GeometryReader { geometry in
             VStack {
-                
-                Spacer()
-                
                 if self.viewRouter.currentView == Homepapge.dictionary {
                     DictionaryView().onAppear() {
                         self.gamePlay.stop()
@@ -31,10 +28,10 @@ struct HomepageView: View {
                 
                 TabView(geometry: geometry)
                     .frame(height: geometry.size.height * 0.1)
-                    .border(TabView.borderColor)
-                    .background(TabView.backgroundColor)
+                    .border(Color.borderColor)
+                    .background(Color.backgroundColor)
             }
-            .edgesIgnoringSafeArea(.bottom)
+            .edgesIgnoringSafeArea(.all)
         }
     }
 }
