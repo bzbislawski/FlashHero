@@ -17,6 +17,7 @@ extension Color {
     static let iconActive = Color.rgb(r: 79, g: 198, b: 233)
     static let iconInactive = Color.rgb(r: 134, g: 131, b: 154)
     static let borderColor = Color.rgb(r: 214, g: 211, b: 221)
+    static let fontColor = Color.rgb(r: 52, g: 92, b: 157)
     
     // Gray colors
     static let backgroundColor = Color.rgb(r: 241, g: 242, b: 244)
