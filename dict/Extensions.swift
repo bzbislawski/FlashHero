@@ -20,7 +20,7 @@ extension Color {
     static let fontColor = Color.rgb(r: 52, g: 92, b: 157)
     
     // Gray colors
-    static let backgroundColor = Color.rgb(r: 241, g: 242, b: 244)
+    static let backgroundColor = Color.rgb(r: 244, g: 243, b: 248)
     static let secondaryBackgroundColor = Color.rgb(r: 209, g: 214, b: 217)
     static let tertiaryBackgroundColor = Color.rgb(r: 142, g: 141, b: 146)
     static let quaternaryBackgroundColor = Color.rgb(r: 79, g: 78, b: 78)

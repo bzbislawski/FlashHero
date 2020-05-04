@@ -14,22 +14,26 @@ struct HomepageView: View {
     
     var body: some View {
         GeometryReader { geometry in
-            VStack {
-                if self.viewRouter.currentView == Homepapge.dictionary {
-                    DictionaryView().onAppear() {
-                        self.gamePlay.stop()
-                        self.gamePlay.reset()
+            ZStack{
+                Color.backgroundColor
+                
+                VStack {
+                    if self.viewRouter.currentView == Homepapge.dictionary {
+                        DictionaryView().onAppear() {
+                            self.gamePlay.stop()
+                            self.gamePlay.reset()
+                        }
+                    } else if self.viewRouter.currentView == Homepapge.game {
+                        GameView()
                     }
-                } else if self.viewRouter.currentView == Homepapge.game {
-                    GameView()
+                    
+                    Spacer()
+                    
+                    TabView(geometry: geometry)
+                        .frame(height: geometry.size.height * 0.1)
+                        .border(Color.borderColor)
+                        .background(Color.backgroundColor)
                 }
-                
-                Spacer()
-                
-                TabView(geometry: geometry)
-                    .frame(height: geometry.size.height * 0.1)
-                    .border(Color.borderColor)
-                    .background(Color.backgroundColor)
             }
             .edgesIgnoringSafeArea(.all)
         }

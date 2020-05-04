@@ -14,49 +14,48 @@ struct TabView: View {
     var geometry: GeometryProxy
     @State var showsAlert = false
     @State var redirectTo = Homepapge.dictionary
-        
+    
     var body: some View {
-        VStack {            
-            HStack {
-                Spacer()
-                Button(action: {
-                    if self.gamePlay.isGameStarted {
-                        self.showsAlert = true
-                        self.redirectTo = Homepapge.dictionary
-                    } else {
-                        self.viewRouter.updateView(tabName: Homepapge.dictionary)
-                    }
-                }, label: {
-                    Image(systemName: "book.fill")
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width: self.geometry.size.width/5, height: 32)
-                        .foregroundColor(self.viewRouter.currentView == Homepapge.dictionary ? .iconActive : .iconInactive)
-                })
-                
-                Spacer()
-                
-                Button(action: {
-                    self.viewRouter.updateView(tabName: Homepapge.game)
-                }, label: {
-                    Image(systemName: "gamecontroller.fill")
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width: self.geometry.size.width/5, height: 32)
-                        .foregroundColor(self.viewRouter.currentView == Homepapge.game ? .iconActive : .iconInactive)
-                })
-                
-                Spacer()
-            }
-            .padding(.bottom, 10)
-            .alert(isPresented: $showsAlert, content: { () -> Alert in
-                Alert(title: Text("Leave the game?"), message: Text("All the progress will not be saved."),
-                      primaryButton: .default(Text("Yes"), action: {
-                        self.viewRouter.updateView(tabName: self.redirectTo)
-                      }),
-                      secondaryButton: .default(Text("Cancel")))
+        
+        HStack {
+            Spacer()
+            Button(action: {
+                if self.gamePlay.isGameStarted {
+                    self.showsAlert = true
+                    self.redirectTo = Homepapge.dictionary
+                } else {
+                    self.viewRouter.updateView(tabName: Homepapge.dictionary)
+                }
+            }, label: {
+                Image(systemName: "book.fill")
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: self.geometry.size.width/5, height: 32)
+                    .foregroundColor(self.viewRouter.currentView == Homepapge.dictionary ? .iconActive : .iconInactive)
             })
+            
+            Spacer()
+            
+            Button(action: {
+                self.viewRouter.updateView(tabName: Homepapge.game)
+            }, label: {
+                Image(systemName: "gamecontroller.fill")
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: self.geometry.size.width/5, height: 32)
+                    .foregroundColor(self.viewRouter.currentView == Homepapge.game ? .iconActive : .iconInactive)
+            })
+            
+            Spacer()
         }
+        .padding(.bottom, 10)
+        .alert(isPresented: $showsAlert, content: { () -> Alert in
+            Alert(title: Text("Leave the game?"), message: Text("All the progress will not be saved."),
+                  primaryButton: .default(Text("Yes"), action: {
+                    self.viewRouter.updateView(tabName: self.redirectTo)
+                  }),
+                  secondaryButton: .default(Text("Cancel")))
+        })
     }
 }
 

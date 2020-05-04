@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct BackgroundView: View {
-    let gradient = Gradient(colors: [Color.rgb(r: 190, g: 232, b: 241), .white])
+    let gradient = Gradient(colors: [Color.rgb(r: 190, g: 232, b: 241), Color.backgroundColor])
     
     var body: some View {
         GeometryReader { geometry in
