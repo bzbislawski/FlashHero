@@ -22,50 +22,58 @@ struct DictionaryView: View {
     var body: some View {
         ZStack {
             BackgroundView()
-            ZStack {
-                VStack {
-                    HStack {
-                        Text("Dictionary")
-                            .foregroundColor(.fontColor)
-                            .font(.system(size: 32, weight: .bold))
-                            .padding(.leading, 30)
-                            .padding(.top, 70)
-                        Spacer()
+            VStack {
+                HStack {
+                    Text("Dictionary")
+                        .foregroundColor(.fontColor)
+                        .font(.system(size: 32, weight: .bold))
+                        .padding(.leading, 30)
+                        .padding(.top, 70)
+                    Spacer()
+                    
+                    ZStack {
+                        Circle()
+                            .fill(Color.white)
+                            .frame(width: 44, height: 44)
                         
-                        ZStack {
-                            Circle()
-                                .fill(Color.white)
-                                .frame(width: 44, height: 44)
-                            
-                            Button(action: {
-                                self.showSheet.toggle()
-                                self.activeSheet = .deckForm
-                            }, label: {
-                                Image(systemName: "plus.circle")
-                                    .foregroundColor(Color.iconActive)
-                                    .padding(.trailing, 30)
-                                    .padding(.top, 70)
-                                    .font(.system(size: 24, weight: .bold))
-                            })
-                                .sheet(isPresented: $showSheet) {
-                                    if self.activeSheet == .deckForm {
-                                        DeckFormView().environmentObject(self.gameStatus)
-                                    } else if (self.activeSheet == .deckEditForm) {
-                                        DeckFormView(deck: self.activeDeck).environmentObject(self.gameStatus)
-                                    } else if (self.activeSheet == .flashCardForm) {
-                                        FlashCardFormView(deck: self.activeDeck!).environmentObject(self.gameStatus)
-                                    } else if (self.activeSheet == .flashCardEditForm) {
-                                        FlashCardFormView(deck: self.activeDeck!, flashCard: self.activeFlashCard).environmentObject(self.gameStatus)
-                                    }
-                            }
+                        Button(action: {
+                            self.showSheet.toggle()
+                            self.activeSheet = .deckForm
+                        }, label: {
+                            Image(systemName: "plus.circle")
+                                .foregroundColor(Color.iconActive)
+                                .padding(.trailing, 30)
+                                .padding(.top, 70)
+                                .font(.system(size: 24, weight: .bold))
+                        })
+                            .sheet(isPresented: $showSheet) {
+                                if self.activeSheet == .deckForm {
+                                    DeckFormView().environmentObject(self.gameStatus)
+                                } else if (self.activeSheet == .deckEditForm) {
+                                    DeckFormView(deck: self.activeDeck).environmentObject(self.gameStatus)
+                                } else if (self.activeSheet == .flashCardForm) {
+                                    FlashCardFormView(deck: self.activeDeck!).environmentObject(self.gameStatus)
+                                } else if (self.activeSheet == .flashCardEditForm) {
+                                    FlashCardFormView(deck: self.activeDeck!, flashCard: self.activeFlashCard).environmentObject(self.gameStatus)
+                                }
                         }
                     }
-                    Spacer()
                 }
-                VStack {
-                Image("dictionary_empty")
-                    Text("Hey! It's empty here!")
-                        .foregroundColor(.fontColor)
+                
+                if self.gameStatus.loadDictionary().isEmpty {
+                    Spacer()
+                    VStack {
+                        Image("dictionary_empty")
+                        Text("Hey! It's empty here!")
+                            .foregroundColor(.fontColor)
+                    }
+                    Spacer()
+                } else {
+                    ScrollView(.vertical, showsIndicators: false) {
+                        ForEach(self.gameStatus.loadDictionary(), id: \.self) { deck in
+                            DeckView(showSheet: self.$showSheet, activeSheet: self.$activeSheet, activeDeck: self.$activeDeck, activeFlashCard: self.$activeFlashCard, deck: deck)
+                        }
+                    }
                 }
             }
         }
