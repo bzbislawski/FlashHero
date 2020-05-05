@@ -27,38 +27,39 @@ struct DictionaryView: View {
                     Text("Dictionary")
                         .foregroundColor(.fontColor)
                         .font(.system(size: 32, weight: .bold))
-                        .padding(.leading, 30)
-                        .padding(.top, 70)
+                    
                     Spacer()
                     
-                    ZStack {
+                    Button(action: {
+                        self.showSheet.toggle()
+                        self.activeSheet = .deckForm
+                    }, label: {
                         Circle()
                             .fill(Color.white)
                             .frame(width: 44, height: 44)
-                        
-                        Button(action: {
-                            self.showSheet.toggle()
-                            self.activeSheet = .deckForm
-                        }, label: {
-                            Image(systemName: "plus.circle")
-                                .foregroundColor(Color.iconActive)
-                                .padding(.trailing, 30)
-                                .padding(.top, 70)
-                                .font(.system(size: 24, weight: .bold))
-                        })
-                            .sheet(isPresented: $showSheet) {
-                                if self.activeSheet == .deckForm {
-                                    DeckFormView().environmentObject(self.gameStatus)
-                                } else if (self.activeSheet == .deckEditForm) {
-                                    DeckFormView(deck: self.activeDeck).environmentObject(self.gameStatus)
-                                } else if (self.activeSheet == .flashCardForm) {
-                                    FlashCardFormView(deck: self.activeDeck!).environmentObject(self.gameStatus)
-                                } else if (self.activeSheet == .flashCardEditForm) {
-                                    FlashCardFormView(deck: self.activeDeck!, flashCard: self.activeFlashCard).environmentObject(self.gameStatus)
-                                }
-                        }
+                            .overlay(
+                                Image(systemName: "plus.circle")
+                                    .foregroundColor(Color.iconActive)
+                                    .padding(.trailing, 30)
+                                    .padding(.top, 70)
+                                    .font(.system(size: 24, weight: .bold))
+                        )
+                    })
+                        .sheet(isPresented: $showSheet) {
+                            if self.activeSheet == .deckForm {
+                                DeckFormView().environmentObject(self.gameStatus)
+                            } else if (self.activeSheet == .deckEditForm) {
+                                DeckFormView(deck: self.activeDeck).environmentObject(self.gameStatus)
+                            } else if (self.activeSheet == .flashCardForm) {
+                                FlashCardFormView(deck: self.activeDeck!).environmentObject(self.gameStatus)
+                            } else if (self.activeSheet == .flashCardEditForm) {
+                                FlashCardFormView(deck: self.activeDeck!, flashCard: self.activeFlashCard).environmentObject(self.gameStatus)
+                            }
                     }
-                }
+                    
+                }.padding(.leading, 30)
+                    .padding(.trailing, 30)
+                    .padding(.top, 70)
                 
                 if self.gameStatus.loadDictionary().isEmpty {
                     Spacer()
