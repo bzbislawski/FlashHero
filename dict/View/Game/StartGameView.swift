@@ -23,24 +23,36 @@ struct StartGameView: View {
     var body: some View {
         GeometryReader { geometry in
             BackgroundView()
+            
             VStack {
+                HStack {
+                    Text("New Game")
+                        .foregroundColor(.fontColor)
+                        .font(.system(size: 32, weight: .bold))
+                    Spacer()
+                }
+                .frame(maxHeight: 44)
+                .padding(.leading, 30)
+                .padding(.trailing, 30)
+                .padding(.top, 60)
+                
                 ZStack {
                     Circle()
                         .fill(Color.rgb(r: 62, g: 208, b: 242))
                         .frame(height:156)
-                    Image("game_start")   
-                }.padding(.top, 60)
+                    Image("game_start")
+                }.padding(.top, 10)
                 
                 Spacer()
                 
                 VStack {
                     HStack {
                         ZStack {
-                        Text("Vocabulary")
-                            .italic()
-                            .padding(.leading, 40)
-                            .foregroundColor(Color.iconActive)
-                            .font(.system(size: 36, weight: .bold))
+                            Text("Vocabulary")
+                                .italic()
+                                .padding(.leading, 40)
+                                .foregroundColor(Color.iconActive)
+                                .font(.system(size: 36, weight: .bold))
                         }
                         Spacer()
                     }

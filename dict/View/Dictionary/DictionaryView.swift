@@ -37,7 +37,7 @@ struct DictionaryView: View {
                         ZStack{
                             Circle()
                                 .fill(Color.white)
-                                .frame(width: 44, height: 44)
+                                .frame(width: 44)
                                 .shadow(color: .fontColor, radius: 4, x: 3, y: 3)
                                 .shadow(color: .white, radius: 4, x: -3, y: -3)
                             Image(systemName: "plus.circle")
@@ -58,6 +58,7 @@ struct DictionaryView: View {
                     }
                     
                 }
+                .frame(maxHeight: 44)
                 .padding(.leading, 30)
                 .padding(.trailing, 30)
                 .padding(.top, 60)
