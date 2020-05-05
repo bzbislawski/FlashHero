@@ -24,25 +24,29 @@ struct StartGameView: View {
         GeometryReader { geometry in
             BackgroundView()
             VStack {
-                Image("game_start")
-                    .padding(.top, 60)
+                ZStack {
+                    Circle()
+                        .fill(Color.rgb(r: 62, g: 208, b: 242))
+                        .frame(height:156)
+                    Image("game_start")   
+                }.padding(.top, 60)
                 
                 Spacer()
                 
                 VStack {
                     HStack {
+                        ZStack {
                         Text("Vocabulary")
                             .italic()
                             .padding(.leading, 40)
-                            .foregroundColor(Color.fontColor)
-                            .font(.system(size: 36, weight: .thin))
-                        
+                            .foregroundColor(Color.iconActive)
+                            .font(.system(size: 36, weight: .bold))
+                        }
                         Spacer()
                     }
                     
                     HStack {
                         Text("Choose decks you want to play")
-                            .italic()
                             .padding(.leading, 40)
                             .foregroundColor(Color.fontColor)
                         Spacer()
@@ -75,15 +79,14 @@ struct StartGameView: View {
                         Text("Word Order")
                             .italic()
                             .padding(.leading, 40)
-                            .foregroundColor(Color.fontColor)
-                            .font(.system(size: 36, weight: .thin))
+                            .foregroundColor(Color.iconActive)
+                            .font(.system(size: 36, weight: .bold))
                         
                         Spacer()
                     }
                     
                     HStack {
                         Text("Choose order of words displayed")
-                            .italic()
                             .padding(.leading, 40)
                             .foregroundColor(Color.fontColor)
                         Spacer()
@@ -120,12 +123,12 @@ struct StartGameView: View {
                 }) {
                     RoundedRectangle(cornerRadius: 8)
                         .stroke(Color.secondaryBackgroundColor, lineWidth: 1)
-                        .background(Color.white)
+                        .background(Color.rgb(r: 28, g: 65, b: 116))
                         .cornerRadius(8)
                         .frame(height: 47)
                         .overlay(
                             Text("Start Game")
-                                .foregroundColor(Color.quaternaryBackgroundColor)
+                                .foregroundColor(Color.backgroundColor)
                                 .font(.system(size: 17, weight: .semibold))
                     )
                         .padding(.leading, 40)
