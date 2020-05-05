@@ -26,7 +26,7 @@ extension Color {
     static let quaternaryBackgroundColor = Color.rgb(r: 79, g: 78, b: 78)
     
     // Green
-    static let firstColor = Color.rgb(r: 10, g: 94, b: 74)
+    static let firstColor = Color.rgb(r: 52, g: 92, b: 157)
     static let secondColor = Color.rgb(r: 25, g: 180, b: 139)
 }
 

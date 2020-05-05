@@ -34,16 +34,16 @@ struct DictionaryView: View {
                         self.showSheet.toggle()
                         self.activeSheet = .deckForm
                     }, label: {
-                        Circle()
-                            .fill(Color.white)
-                            .frame(width: 44, height: 44)
-                            .overlay(
-                                Image(systemName: "plus.circle")
-                                    .foregroundColor(Color.iconActive)
-                                    .padding(.trailing, 30)
-                                    .padding(.top, 70)
-                                    .font(.system(size: 24, weight: .bold))
-                        )
+                        ZStack{
+                            Circle()
+                                .fill(Color.white)
+                                .frame(width: 44, height: 44)
+                                .shadow(color: .fontColor, radius: 4, x: 3, y: 3)
+                                .shadow(color: .white, radius: 4, x: -3, y: -3)
+                            Image(systemName: "plus.circle")
+                                .foregroundColor(Color.iconActive)
+                                .font(.system(size: 24, weight: .bold))
+                        }
                     })
                         .sheet(isPresented: $showSheet) {
                             if self.activeSheet == .deckForm {
@@ -57,9 +57,10 @@ struct DictionaryView: View {
                             }
                     }
                     
-                }.padding(.leading, 30)
-                    .padding(.trailing, 30)
-                    .padding(.top, 70)
+                }
+                .padding(.leading, 30)
+                .padding(.trailing, 30)
+                .padding(.top, 60)
                 
                 if self.gameStatus.loadDictionary().isEmpty {
                     Spacer()
