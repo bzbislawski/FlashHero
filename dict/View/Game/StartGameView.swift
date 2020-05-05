@@ -22,150 +22,122 @@ struct StartGameView: View {
     
     var body: some View {
         GeometryReader { geometry in
-            ZStack {
-                Rectangle()
-                    .fill(Color.secondColor)
-                    .overlay(GeometryReader { proxy in
-                        Circle()
-                            .fill(Color.white)
-                            .frame(width: proxy.size.width + 1000, height: proxy.size.height + 1000)
-                            .offset(x: (proxy.size.width + 1000) * 0.05, y: -(proxy.size.height + 1000) * 0.52)
-                            .opacity(0.15)
+            BackgroundView()
+            VStack {
+                Image("game_start")
+                    .padding(.top, 60)
+                
+                Spacer()
+                
+                VStack {
+                    HStack {
+                        Text("Vocabulary")
+                            .italic()
+                            .padding(.leading, 40)
+                            .foregroundColor(Color.fontColor)
+                            .font(.system(size: 36, weight: .thin))
                         
-                    })
-                    .overlay(
-                        VStack {
-                            Image(systemName: "gamecontroller")
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
-                                .font(.system(size: 56, weight: .bold))
-                                .frame(width: geometry.size.width * 0.2, height: geometry.size.height * 0.2)
-                                .foregroundColor(.white)
-                                .padding(.top, 30)
-                            
-                            Spacer()
-                            
-                            VStack {
-                                HStack {
-                                    Text("Vocabulary")
-                                        .italic()
-                                        .padding(.leading, 40)
-                                        .foregroundColor(.white)
-                                        .font(.system(size: 36, weight: .thin))
-                                    
-                                    Spacer()
-                                }
-                                
-                                HStack {
-                                    Text("Choose decks you want to play")
-                                        .italic()
-                                        .padding(.leading, 40)
-                                        .foregroundColor(.white)
-                                    Spacer()
-                                }
-                                ZStack {
-                                    Rectangle()
-                                        .fill(Color.white)
-                                        .cornerRadius(8)
-                                        .frame(height: 47)
-                                        .overlay(
-                                            RoundedRectangle(cornerRadius: 8)
-                                                .stroke(Color.secondaryBackgroundColor, lineWidth: 1)
-                                    )
-                                        .padding(.leading, 40)
-                                        .padding(.trailing, 40)
-                                        
-                                        .onTapGesture {
-                                            self.showSheet = true
-                                            self.sheetType = .vocabulary
-                                    }
-                                    Text("Selected decks: \(self.gamePlay.selectedDecks.count)")
-                                        .font(.system(size: 17, weight: .semibold))
-                                        .foregroundColor(Color.quaternaryBackgroundColor)
-                                }
-                                
-                            }.padding(.bottom, geometry.size.height * 0.04)
-                            
-                            VStack {
-                                HStack {
-                                    Text("Word Order")
-                                        .italic()
-                                        .padding(.leading, 40)
-                                        .foregroundColor(.white)
-                                        .font(.system(size: 36, weight: .thin))
-                                    
-                                    Spacer()
-                                }
-                                
-                                HStack {
-                                    Text("Choose order of words displayed")
-                                        .italic()
-                                        .padding(.leading, 40)
-                                        .foregroundColor(.white)
-                                    Spacer()
-                                }
-                                ZStack {
-                                    Rectangle()
-                                        .fill(Color.white)
-                                        .cornerRadius(8)
-                                        .frame(height: 47)
-                                        .overlay(
-                                            RoundedRectangle(cornerRadius: 8)
-                                                .stroke(Color.secondaryBackgroundColor, lineWidth: 1)
-                                    )
-                                        .padding(.leading, 40)
-                                        .padding(.trailing, 40)
-                                        .onTapGesture {
-                                            self.showSheet = true
-                                            self.sheetType = .cardsOrder
-                                    }
-                                    Text("\(self.cardsOrderOption)")
-                                        .font(.system(size: 17, weight: .semibold))
-                                        .foregroundColor(Color.quaternaryBackgroundColor)
-                                }
-                            }.padding(.bottom, 50)
-                            
-                            Spacer()
-                            
-                            Button(action: {
-                                if (self.gamePlay.selectedDecks.count == 0) {
-                                    self.showsAlert = true
-                                } else {
-                                    self.gamePlay.start()
-                                }
-                            }) {
+                        Spacer()
+                    }
+                    
+                    HStack {
+                        Text("Choose decks you want to play")
+                            .italic()
+                            .padding(.leading, 40)
+                            .foregroundColor(Color.fontColor)
+                        Spacer()
+                    }
+                    ZStack {
+                        Rectangle()
+                            .fill(Color.white)
+                            .cornerRadius(8)
+                            .frame(height: 47)
+                            .overlay(
                                 RoundedRectangle(cornerRadius: 8)
                                     .stroke(Color.secondaryBackgroundColor, lineWidth: 1)
-                                    .background(Color.white)
-                                    .cornerRadius(8)
-                                    .frame(height: 47)
-                                    .overlay(
-                                        Text("Start Game")
-                                            .foregroundColor(Color.quaternaryBackgroundColor)
-                                            .font(.system(size: 17, weight: .semibold))
-                                )
-                                    .padding(.leading, 40)
-                                    .padding(.trailing, 40)
-                                    .padding(.bottom, 40)
-                            }
-                            .alert(isPresented: self.$showsAlert) {
-                                Alert(
-                                    title: Text("Oops!"),
-                                    message: Text("Select decks to start a game.")
-                                )
-                            }
+                        )
+                            .padding(.leading, 40)
+                            .padding(.trailing, 40)
+                            
+                            .onTapGesture {
+                                self.showSheet = true
+                                self.sheetType = .vocabulary
                         }
-                )
-                    .frame(width: geometry.size.width * 0.9, height: geometry.size.height * 0.96)
-                    .cornerRadius(25)
-                    .shadow(color: .gray, radius: 12, x: 0, y: 4)
-            }
-        }
-        .sheet(isPresented: $showSheet) {
-            if self.sheetType == .vocabulary {
-                SelectDecksView().environmentObject(self.gameStatus).environmentObject(self.gamePlay)
-            } else if self.sheetType == .cardsOrder {
-                CardsOrderView(cardsOrderOption: self.$cardsOrderOption).environmentObject(self.gamePlay)
+                        Text("Selected decks: \(self.gamePlay.selectedDecks.count)")
+                            .font(.system(size: 17, weight: .semibold))
+                            .foregroundColor(Color.quaternaryBackgroundColor)
+                    }
+                    
+                }.padding(.bottom, geometry.size.height * 0.04)
+                
+                VStack {
+                    HStack {
+                        Text("Word Order")
+                            .italic()
+                            .padding(.leading, 40)
+                            .foregroundColor(Color.fontColor)
+                            .font(.system(size: 36, weight: .thin))
+                        
+                        Spacer()
+                    }
+                    
+                    HStack {
+                        Text("Choose order of words displayed")
+                            .italic()
+                            .padding(.leading, 40)
+                            .foregroundColor(Color.fontColor)
+                        Spacer()
+                    }
+                    ZStack {
+                        Rectangle()
+                            .fill(Color.white)
+                            .cornerRadius(8)
+                            .frame(height: 47)
+                            .overlay(
+                                RoundedRectangle(cornerRadius: 8)
+                                    .stroke(Color.secondaryBackgroundColor, lineWidth: 1)
+                        )
+                            .padding(.leading, 40)
+                            .padding(.trailing, 40)
+                            .onTapGesture {
+                                self.showSheet = true
+                                self.sheetType = .cardsOrder
+                        }
+                        Text("\(self.cardsOrderOption)")
+                            .font(.system(size: 17, weight: .semibold))
+                            .foregroundColor(Color.quaternaryBackgroundColor)
+                    }
+                }.padding(.bottom, 50)
+                
+                Spacer()
+                
+                Button(action: {
+                    if (self.gamePlay.selectedDecks.count == 0) {
+                        self.showsAlert = true
+                    } else {
+                        self.gamePlay.start()
+                    }
+                }) {
+                    RoundedRectangle(cornerRadius: 8)
+                        .stroke(Color.secondaryBackgroundColor, lineWidth: 1)
+                        .background(Color.white)
+                        .cornerRadius(8)
+                        .frame(height: 47)
+                        .overlay(
+                            Text("Start Game")
+                                .foregroundColor(Color.quaternaryBackgroundColor)
+                                .font(.system(size: 17, weight: .semibold))
+                    )
+                        .padding(.leading, 40)
+                        .padding(.trailing, 40)
+                        .padding(.bottom, 40)
+                }
+                .alert(isPresented: self.$showsAlert) {
+                    Alert(
+                        title: Text("Oops!"),
+                        message: Text("Select decks to start a game.")
+                    )
+                }
             }
         }
     }
