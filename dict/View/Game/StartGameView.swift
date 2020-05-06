@@ -155,6 +155,13 @@ struct StartGameView: View {
                 }
             }
         }
+        .sheet(isPresented: $showSheet) {
+            if self.sheetType == .vocabulary {
+                SelectDecksView().environmentObject(self.gameStatus).environmentObject(self.gamePlay)
+            } else if self.sheetType == .cardsOrder {
+                CardsOrderView(cardsOrderOption: self.$cardsOrderOption).environmentObject(self.gamePlay)
+            }
+        }
     }
 }
 
