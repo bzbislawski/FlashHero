@@ -1,5 +1,5 @@
 //
-//  Scoreboard.swift
+//  ScoreboardView.swift
 //  dict
 //
 //  Created by Bartosz Zbislawski on 25/12/2019.
@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct Scoreboard: View {
+struct ScoreboardView: View {
     @Environment(\.colorScheme) var colorScheme: ColorScheme
     @EnvironmentObject var gamePlay: GamePlay
     @State private var dim = false
@@ -67,17 +67,9 @@ struct Scoreboard: View {
     }
 }
 
-struct Scoreboard_Previews: PreviewProvider {
+struct ScoreboardView_Previews: PreviewProvider {
     static var previews: some View {
-        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-        let repository = FlashCardRepository(moc: context)
-        let repository2 = DeckRepository(moc: context)
-        let gs = GameStatus(flashCardRepository: repository, deckRepository: repository2)
-        let gs2 = GameStatus(flashCardRepository: repository, deckRepository: repository2)
-        return VStack {
-            Scoreboard().environmentObject(gs)
-            Spacer()
-            Scoreboard().environmentObject(gs2)
-        }
+        let gs = GamePlay()
+        return ScoreboardView().environmentObject(gs)
     }
 }

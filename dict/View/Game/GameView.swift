@@ -22,7 +22,7 @@ struct GameView: View {
             VStack {
                 if self.gamePlay.isGameStarted {
                     if self.flashCards.count == 0 {
-                        Scoreboard()
+                        ScoreboardView()
                     } else {
                         ScrollView(.vertical, showsIndicators: false) {
                             ForEach(self.flashCards, id: \.self) { flashCard in
