@@ -22,9 +22,9 @@ struct HomepageView: View {
                         DictionaryView().onAppear() {
                             self.gamePlay.stop()
                             self.gamePlay.reset()
-                        }
+                        }.frame(height: geometry.size.height * 0.9)
                     } else if self.viewRouter.currentView == Homepapge.game {
-                        GameView()
+                        GameView().frame(height: geometry.size.height * 0.9)
                     }
                     
                     Spacer()

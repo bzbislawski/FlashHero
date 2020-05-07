@@ -41,19 +41,16 @@ struct StartGameView: View {
                         .fill(Color.rgb(r: 62, g: 208, b: 242))
                         .frame(height:156)
                     Image("game_start")
-                }.padding(.top, 10)
-                
+                }
                 Spacer()
                 
                 VStack {
                     HStack {
-                        ZStack {
-                            Text("Vocabulary")
-                                .italic()
-                                .padding(.leading, 40)
-                                .foregroundColor(Color.iconActive)
-                                .font(.system(size: 36, weight: .bold))
-                        }
+                        Text("Vocabulary")
+                            .italic()
+                            .padding(.leading, 40)
+                            .foregroundColor(Color.iconActive)
+                            .font(.system(size: 36, weight: .bold))
                         Spacer()
                     }
                     
@@ -83,10 +80,7 @@ struct StartGameView: View {
                             .font(.system(size: 17, weight: .semibold))
                             .foregroundColor(Color.quaternaryBackgroundColor)
                     }
-                    
-                }.padding(.bottom, geometry.size.height * 0.04)
                 
-                VStack {
                     HStack {
                         Text("Word Order")
                             .italic()
@@ -122,7 +116,7 @@ struct StartGameView: View {
                             .font(.system(size: 17, weight: .semibold))
                             .foregroundColor(Color.quaternaryBackgroundColor)
                     }
-                }.padding(.bottom, 50)
+                }
                 
                 Spacer()
                 
@@ -145,7 +139,6 @@ struct StartGameView: View {
                     )
                         .padding(.leading, 40)
                         .padding(.trailing, 40)
-                        .padding(.bottom, 40)
                 }
                 .alert(isPresented: self.$showsAlert) {
                     Alert(
@@ -173,7 +166,7 @@ struct StartGame_Previews: PreviewProvider {
             VStack {
                 StartGameView().environmentObject(gamePlay)
                 TabView(geometry: geometry).environmentObject(env)
-            }
+            }.edgesIgnoringSafeArea(.all)
         }
     }
 }
