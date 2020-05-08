@@ -8,6 +8,12 @@
 
 import Foundation
 
+enum Medal {
+    static let FIRSRT_PRIZE = 1
+    static let SECOND_PRIZE = 2
+    static let THIRD_PRIZE = 3
+}
+
 class GamePlay: ObservableObject {
     @Published var selectedDecks: [Deck] = []
     @Published var selectedCardsOrder: String = "Default"
@@ -48,5 +54,21 @@ class GamePlay: ObservableObject {
     func reset() {
         self.selectedDecks = []
         self.selectedCardsOrder = "Default"
+    }
+    
+    func getMedal() -> Int {
+        let score = Float(self.correctAnswers) / Float(self.getTotalScore())
+        
+        if score >= 0.9 {
+            return Medal.FIRSRT_PRIZE
+        } else if score >= 0.6 {
+            return Medal.SECOND_PRIZE
+        } else {
+            return Medal.THIRD_PRIZE
+        }
+    }
+    
+    func getTotalScore() -> Int {
+        return self.correctAnswers + self.wrongAnswers
     }
 }

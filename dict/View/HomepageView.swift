@@ -29,10 +29,12 @@ struct HomepageView: View {
                     
                     Spacer()
                     
+                    if (!self.gamePlay.isGameStarted) {
                     TabView(geometry: geometry)
                         .frame(height: geometry.size.height * 0.1)
                         .border(Color.borderColor)
                         .background(Color.backgroundColor)
+                    }
                 }
             }
             .edgesIgnoringSafeArea(.all)

@@ -38,8 +38,8 @@ struct StartGameView: View {
                 
                 ZStack {
                     Circle()
-                        .fill(Color.rgb(r: 62, g: 208, b: 242))
-                        .frame(height:156)
+                        .fill(Color.lightBlue)
+                        .frame(height: 156)
                     Image("game_start")
                 }
                 Spacer()

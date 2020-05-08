@@ -18,50 +18,86 @@ struct ScoreboardView: View {
     }
     
     var body: some View {
-        let totalScore = self.gamePlay.correctAnswers + self.gamePlay.wrongAnswers
-        let score = Float(self.gamePlay.correctAnswers) / Float(totalScore)
-        let winGame = score > 0.6
-        return VStack {
-            Text(winGame ? "Congrats!" : "Whoops!")
-                .font(.system(size: 26, weight: .bold))
-                .padding(.all)
-                .frame(width: 240)
-            
-            Image(systemName: winGame ? "checkmark.seal.fill" : "xmark.seal.fill")
-                .font(.system(size: 46, weight: .medium))
-            
-            Text("Score:")
-                .padding(.top)
-            
-            Text(String(self.gamePlay.correctAnswers) + "/" + String(totalScore))
-                .font(.system(size: 32, weight: .medium))
-                .padding(.bottom)
-            
-            Button(action: {
-                self.gamePlay.stop()
-            }) {
-                VStack {
-                    Text("Restart the game")
-                        .frame(width: 160, height: 40)
-                        .font(.system(size: 16, weight: .medium))
-                        .foregroundColor(.firstColor)
+        ZStack {
+            BackgroundView()
+            VStack{
+                HStack {
+                    Text("Scoreboard")
+                        .foregroundColor(.fontColor)
+                        .font(.system(size: 32, weight: .bold))
+                    Spacer()
                 }
-                .background(Color("Gray"))
-                .cornerRadius(5)
-            }.padding(.bottom, 25)
-        }
-        .frame(width: 280)
-        .background(winGame ? Color("Success") : Color("Failure"))
-        .cornerRadius(40)
-        .overlay(RoundedRectangle(cornerRadius: 40).stroke(Color.white, lineWidth: 4))
-        .shadow(radius: 20, x: 0, y: 20)
-        .foregroundColor(Color("Gray"))
-        .opacity(dim ? 1.0 : 0.5)
-        .offset(y: dim ? 0 : 120)
-        .animation(self.animation)
-        .onAppear {
-            withAnimation(.easeOut(duration: 0.4)) {
-                self.dim.toggle()
+                .frame(maxHeight: 44)
+                .padding(.leading, 30)
+                .padding(.trailing, 30)
+                .padding(.top, 60)
+                
+                Spacer()
+                
+                VStack {
+                    Text("Well done 🥳")
+                        .font(.system(size: 30, weight: .semibold))
+                        .foregroundColor(Color.rgb(r: 39, g: 130, b: 20))
+                        .padding(.bottom, 20)
+                    
+                    Image("scoreboard_first")
+                        .frame(height: 150)
+                        .padding(.bottom, 20)
+                    
+                    Text("""
+                        You’ve done very well. You
+                        are a total learning beast.
+                        The score is amazing!
+                        """)
+                        .fixedSize()
+                        .multilineTextAlignment(.center)
+                        .font(.system(size: 16, weight: .semibold))
+                        .foregroundColor(Color.rgb(r: 28, g: 65, b: 116))
+                        .padding(.bottom, 20)
+                    
+                    Text("\(self.gamePlay.correctAnswers) / \(self.gamePlay.getTotalScore()) ")
+                        .font(.system(size: 30, weight: .black))
+                        .foregroundColor(Color.rgb(r: 62, g: 102, b: 171))
+                }
+                .padding(.bottom, 60)
+                .padding(.top, 100)
+                
+                Spacer()
+                
+                Button(action: {
+                    self.gamePlay.stop()
+                }) {
+                    RoundedRectangle(cornerRadius: 8)
+                        .stroke(Color.secondaryBackgroundColor, lineWidth: 1)
+                        .background(Color.lightBlue)
+                        .cornerRadius(8)
+                        .frame(height: 47)
+                        .overlay(
+                            Text("Restart")
+                                .foregroundColor(Color.backgroundColor)
+                                .font(.system(size: 17, weight: .semibold))
+                    )
+                        .padding(.leading, 40)
+                        .padding(.trailing, 40)
+                }.padding(.bottom, 20)
+                
+                Button(action: {
+                    self.gamePlay.stop()
+                }) {
+                    RoundedRectangle(cornerRadius: 8)
+                        .stroke(Color.secondaryBackgroundColor, lineWidth: 1)
+                        .background(Color.rgb(r: 28, g: 65, b: 116))
+                        .cornerRadius(8)
+                        .frame(height: 47)
+                        .overlay(
+                            Text("Start Game")
+                                .foregroundColor(Color.backgroundColor)
+                                .font(.system(size: 17, weight: .semibold))
+                    )
+                        .padding(.leading, 40)
+                        .padding(.trailing, 40)
+                }
+                Spacer()
             }
         }
     }
@@ -70,6 +106,8 @@ struct ScoreboardView: View {
 struct ScoreboardView_Previews: PreviewProvider {
     static var previews: some View {
         let gs = GamePlay()
-        return ScoreboardView().environmentObject(gs)
+        return ScoreboardView()
+            .edgesIgnoringSafeArea(.all)
+            .environmentObject(gs)
     }
 }
