@@ -70,6 +70,7 @@ struct ScoreboardView: View {
                 
                 Button(action: {
                     self.gamePlay.stop()
+                    self.gamePlay.start()
                 }) {
                     ButtonView(text: "Restart", backgroundColor: Color.lightBlue)
                 }.padding(.bottom, 20)
@@ -78,7 +79,7 @@ struct ScoreboardView: View {
                     self.gamePlay.stop()
                     self.gamePlay.reset()
                 }) {
-                    ButtonView(text: "New Game", backgroundColor: Color.darkBlue)
+                    ButtonView(text: "Exit", backgroundColor: Color.darkBlue)
                 }
                 Spacer()
             }
