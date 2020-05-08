@@ -59,8 +59,8 @@ struct ScoreboardView: View {
                         .font(.system(size: 30, weight: .black))
                         .foregroundColor(Color.rgb(r: 62, g: 102, b: 171))
                 }
-                .padding(.bottom, 60)
-                .padding(.top, 100)
+                .padding(.bottom, 15)
+                .padding(.top, 25)
                 
                 Spacer()
                 
@@ -90,7 +90,7 @@ struct ScoreboardView: View {
                         .cornerRadius(8)
                         .frame(height: 47)
                         .overlay(
-                            Text("Start Game")
+                            Text("New Game")
                                 .foregroundColor(Color.backgroundColor)
                                 .font(.system(size: 17, weight: .semibold))
                     )

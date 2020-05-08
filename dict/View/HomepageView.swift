@@ -24,7 +24,8 @@ struct HomepageView: View {
                             self.gamePlay.reset()
                         }.frame(height: geometry.size.height * 0.9)
                     } else if self.viewRouter.currentView == Homepapge.game {
-                        GameView().frame(height: geometry.size.height * 0.9)
+                        GameView()
+                            .frame(height: geometry.size.height * (self.gamePlay.isGameStarted ? 1 : 0.9 ))
                     }
                     
                     Spacer()
