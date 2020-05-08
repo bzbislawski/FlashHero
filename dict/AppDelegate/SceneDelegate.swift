@@ -28,7 +28,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let flashCardRepository = FlashCardRepository(moc: context)
         let gameStatus = GameStatus(flashCardRepository: flashCardRepository, deckRepository: DeckRepository(moc: context))
         let gamePlay = GamePlay()
-        let viewRouter = ViewRouter()        
+        let viewRouter = ViewRouter()
         
         // Use a UIHostingController as window root view controller.
         if let windowScene = scene as? UIWindowScene {

@@ -35,20 +35,16 @@ struct ScoreboardView: View {
                 Spacer()
                 
                 VStack {
-                    Text("Well done 🥳")
+                    Text(self.gamePlay.getScoreboardData().text)
                         .font(.system(size: 30, weight: .semibold))
-                        .foregroundColor(Color.rgb(r: 39, g: 130, b: 20))
+                        .foregroundColor(self.gamePlay.getScoreboardData().color)
                         .padding(.bottom, 20)
                     
-                    Image("scoreboard_first")
+                    Image(self.gamePlay.getScoreboardData().image)
                         .frame(height: 150)
                         .padding(.bottom, 20)
                     
-                    Text("""
-                        You’ve done very well. You
-                        are a total learning beast.
-                        The score is amazing!
-                        """)
+                    Text(self.gamePlay.getScoreboardData().sentence)
                         .fixedSize()
                         .multilineTextAlignment(.center)
                         .font(.system(size: 16, weight: .semibold))
@@ -72,6 +68,7 @@ struct ScoreboardView: View {
                 
                 Button(action: {
                     self.gamePlay.stop()
+                    self.gamePlay.reset()
                 }) {
                     ButtonView(text: "New Game", backgroundColor: Color.darkBlue)
                 }
