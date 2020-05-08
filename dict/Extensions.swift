@@ -19,6 +19,7 @@ extension Color {
     static let borderColor = Color.rgb(r: 214, g: 211, b: 221)
     static let fontColor = Color.rgb(r: 52, g: 92, b: 157)
     static let lightBlue = Color.rgb(r: 62, g: 208, b: 242)
+    static let darkBlue = Color.rgb(r: 28, g: 65, b: 116)
     
     // Gray colors
     static let backgroundColor = Color.rgb(r: 244, g: 243, b: 248)

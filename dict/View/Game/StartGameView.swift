@@ -127,18 +127,7 @@ struct StartGameView: View {
                         self.gamePlay.start()
                     }
                 }) {
-                    RoundedRectangle(cornerRadius: 8)
-                        .stroke(Color.secondaryBackgroundColor, lineWidth: 1)
-                        .background(Color.rgb(r: 28, g: 65, b: 116))
-                        .cornerRadius(8)
-                        .frame(height: 47)
-                        .overlay(
-                            Text("Start Game")
-                                .foregroundColor(Color.backgroundColor)
-                                .font(.system(size: 17, weight: .semibold))
-                    )
-                        .padding(.leading, 40)
-                        .padding(.trailing, 40)
+                    ButtonView(text: "Start Game", backgroundColor: Color.darkBlue)
                 }
                 .alert(isPresented: self.$showsAlert) {
                     Alert(

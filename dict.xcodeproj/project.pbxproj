@@ -38,6 +38,7 @@
 		D64D51152385CCA30075AD3D /* HomepageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64D51142385CCA30075AD3D /* HomepageView.swift */; };
 		D64D51172385E0BF0075AD3D /* StartGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64D51162385E0BF0075AD3D /* StartGameView.swift */; };
 		D66668252386D311008421AB /* DictionaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D66668242386D311008421AB /* DictionaryView.swift */; };
+		D6BC6CF52464E323007D754A /* ButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6BC6CF42464E323007D754A /* ButtonView.swift */; };
 		D6EB4EC72418472B00654307 /* ViewRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6EB4EC62418472B00654307 /* ViewRouter.swift */; };
 /* End PBXBuildFile section */
 
@@ -75,6 +76,7 @@
 		D64D51142385CCA30075AD3D /* HomepageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomepageView.swift; sourceTree = "<group>"; };
 		D64D51162385E0BF0075AD3D /* StartGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartGameView.swift; sourceTree = "<group>"; };
 		D66668242386D311008421AB /* DictionaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryView.swift; sourceTree = "<group>"; };
+		D6BC6CF42464E323007D754A /* ButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonView.swift; sourceTree = "<group>"; };
 		D6EB4EC62418472B00654307 /* ViewRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewRouter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -163,6 +165,7 @@
 		D6666177238701A000D1CB8A /* View */ = {
 			isa = PBXGroup;
 			children = (
+				D6BC6CF32464E2FB007D754A /* ViewSubComponent */,
 				BA776E482428098700EEC11D /* Dictionary */,
 				D62940BE2405DF3100554C66 /* Game */,
 				D64D51142385CCA30075AD3D /* HomepageView.swift */,
@@ -191,6 +194,14 @@
 				BA50F34F23DB11FA005D624B /* Deck+CoreDataProperties.swift */,
 			);
 			path = Entity;
+			sourceTree = "<group>";
+		};
+		D6BC6CF32464E2FB007D754A /* ViewSubComponent */ = {
+			isa = PBXGroup;
+			children = (
+				D6BC6CF42464E323007D754A /* ButtonView.swift */,
+			);
+			path = ViewSubComponent;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -266,6 +277,7 @@
 			files = (
 				D63B466223D517EC008370C7 /* DeckView.swift in Sources */,
 				BA50F35323DB11FA005D624B /* Deck+CoreDataProperties.swift in Sources */,
+				D6BC6CF52464E323007D754A /* ButtonView.swift in Sources */,
 				BA8C74A7240533610021C19C /* SelectDecksView.swift in Sources */,
 				D6EB4EC72418472B00654307 /* ViewRouter.swift in Sources */,
 				D64D51032385CA900075AD3D /* dict.xcdatamodeld in Sources */,

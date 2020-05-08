@@ -52,7 +52,7 @@ struct ScoreboardView: View {
                         .fixedSize()
                         .multilineTextAlignment(.center)
                         .font(.system(size: 16, weight: .semibold))
-                        .foregroundColor(Color.rgb(r: 28, g: 65, b: 116))
+                        .foregroundColor(Color.darkBlue)
                         .padding(.bottom, 20)
                     
                     Text("\(self.gamePlay.correctAnswers) / \(self.gamePlay.getTotalScore()) ")
@@ -67,35 +67,13 @@ struct ScoreboardView: View {
                 Button(action: {
                     self.gamePlay.stop()
                 }) {
-                    RoundedRectangle(cornerRadius: 8)
-                        .stroke(Color.secondaryBackgroundColor, lineWidth: 1)
-                        .background(Color.lightBlue)
-                        .cornerRadius(8)
-                        .frame(height: 47)
-                        .overlay(
-                            Text("Restart")
-                                .foregroundColor(Color.backgroundColor)
-                                .font(.system(size: 17, weight: .semibold))
-                    )
-                        .padding(.leading, 40)
-                        .padding(.trailing, 40)
+                    ButtonView(text: "Restart", backgroundColor: Color.lightBlue)
                 }.padding(.bottom, 20)
                 
                 Button(action: {
                     self.gamePlay.stop()
                 }) {
-                    RoundedRectangle(cornerRadius: 8)
-                        .stroke(Color.secondaryBackgroundColor, lineWidth: 1)
-                        .background(Color.rgb(r: 28, g: 65, b: 116))
-                        .cornerRadius(8)
-                        .frame(height: 47)
-                        .overlay(
-                            Text("New Game")
-                                .foregroundColor(Color.backgroundColor)
-                                .font(.system(size: 17, weight: .semibold))
-                    )
-                        .padding(.leading, 40)
-                        .padding(.trailing, 40)
+                    ButtonView(text: "New Game", backgroundColor: Color.darkBlue)
                 }
                 Spacer()
             }
