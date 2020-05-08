@@ -57,6 +57,14 @@ struct ScoreboardView: View {
                 }
                 .padding(.bottom, 15)
                 .padding(.top, 25)
+                .opacity(dim ? 1.0 : 0.5)
+                .offset(y: dim ? 0 : 120)
+                .animation(self.animation)
+                .onAppear {
+                    withAnimation(.easeOut(duration: 0.4)) {
+                        self.dim.toggle()
+                    }
+                }
                 
                 Spacer()
                 
