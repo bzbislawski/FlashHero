@@ -68,7 +68,15 @@ struct DictionaryView: View {
                     VStack {
                         Image("dictionary_empty")
                         Text("Hey! It's empty here!")
-                            .foregroundColor(.fontColor)
+                            .font(.system(size: 22, weight: .heavy))
+                            .foregroundColor(Color.fontColor)
+                            .padding(.top, 20)
+                        Text("You haven’t added any decks\nyet. Add some decks and\nflashcards!")
+                            .fixedSize()
+                            .multilineTextAlignment(.center)
+                            .font(.system(size: 16, weight: .semibold))
+                            .foregroundColor(Color.fontColor)
+                            .padding(.top, 20)
                     }
                     Spacer()
                 } else {
