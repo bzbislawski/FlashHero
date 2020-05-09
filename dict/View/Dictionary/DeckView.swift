@@ -36,7 +36,7 @@ struct DeckView: View {
                         Text(deck.wrappedName).font(.system(size: 20, weight: .semibold))
                     }
                     .padding(.leading, 20)
-                    .foregroundColor(.black)
+                    .foregroundColor(Color.darkBlue)
                 }
                 
                 Spacer()
