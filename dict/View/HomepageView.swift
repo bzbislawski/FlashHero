@@ -11,6 +11,7 @@ import SwiftUI
 struct HomepageView: View {
     @EnvironmentObject var viewRouter: ViewRouter
     @EnvironmentObject var gamePlay: GamePlay
+    @EnvironmentObject var activeSheetHandler: ActiveSheetHandler
     
     var body: some View {
         GeometryReader { geometry in
@@ -30,12 +31,27 @@ struct HomepageView: View {
                     
                     Spacer()
                     
-                    if (!self.gamePlay.isGameStarted) {
-                    TabView(geometry: geometry)
-                        .frame(height: geometry.size.height * 0.1)
-                        .border(Color.borderColor)
-                        .background(Color.backgroundColor)
+                    if !self.gamePlay.isGameStarted {
+                        TabView(geometry: geometry)
+                            .frame(height: geometry.size.height * 0.1)
+                            .border(Color.borderColor)
+                            .background(Color.backgroundColor)
                     }
+                }
+                
+                if self.activeSheetHandler.showSheet {
+                    Color.gray.opacity(0.7).onTapGesture {
+                        self.activeSheetHandler.showSheet.toggle()
+                    }
+                }
+                
+                VStack {
+                    Spacer()
+                    ActiveSheetView()
+                        .frame(width: UIScreen.main.bounds.size.width)
+                        .background(Color.backgroundColor)
+                        .offset(y: self.activeSheetHandler.showSheet ? 0 : UIScreen.main.bounds.height).animation(.default)
+                        .cornerRadius(25, corners: [.topLeft, .topRight])
                 }
             }
             .edgesIgnoringSafeArea(.all)

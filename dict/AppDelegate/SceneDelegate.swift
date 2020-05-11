@@ -29,6 +29,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let gameStatus = GameStatus(flashCardRepository: flashCardRepository, deckRepository: DeckRepository(moc: context))
         let gamePlay = GamePlay()
         let viewRouter = ViewRouter()
+        let activeSheetHandler = ActiveSheetHandler()
         
         // Use a UIHostingController as window root view controller.
         if let windowScene = scene as? UIWindowScene {
@@ -38,6 +39,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                     .environmentObject(gameStatus)
                     .environmentObject(gamePlay)
                     .environmentObject(viewRouter)
+                    .environmentObject(activeSheetHandler)
             )
             self.window = window
             window.makeKeyAndVisible()

@@ -8,16 +8,9 @@
 
 import SwiftUI
 
-enum ActiveSheet {
-    case deckForm, flashCardForm, deckEditForm, flashCardEditForm
-}
-
 struct DictionaryView: View {
     @EnvironmentObject var gameStatus: GameStatus
-    @State private var showSheet = false
-    @State private var activeSheet: ActiveSheet = .deckForm
-    @State private var activeDeck: Deck?
-    @State private var activeFlashCard: FlashCard?    
+    @EnvironmentObject var activeSheetHandler: ActiveSheetHandler
     
     var body: some View {
         ZStack {
@@ -31,8 +24,8 @@ struct DictionaryView: View {
                     Spacer()
                     
                     Button(action: {
-                        self.showSheet.toggle()
-                        self.activeSheet = .deckForm
+                        self.activeSheetHandler.showSheet.toggle()
+                        self.activeSheetHandler.activeSheet = .deckForm
                     }, label: {
                         ZStack{
                             Circle()
@@ -45,18 +38,6 @@ struct DictionaryView: View {
                                 .font(.system(size: 24, weight: .bold))
                         }
                     })
-                        .sheet(isPresented: $showSheet) {
-                            if self.activeSheet == .deckForm {
-                                DeckFormView().environmentObject(self.gameStatus)
-                            } else if (self.activeSheet == .deckEditForm) {
-                                DeckFormView(deck: self.activeDeck).environmentObject(self.gameStatus)
-                            } else if (self.activeSheet == .flashCardForm) {
-                                FlashCardFormView(deck: self.activeDeck!).environmentObject(self.gameStatus)
-                            } else if (self.activeSheet == .flashCardEditForm) {
-                                FlashCardFormView(deck: self.activeDeck!, flashCard: self.activeFlashCard).environmentObject(self.gameStatus)
-                            }
-                    }
-                    
                 }
                 .frame(maxHeight: 44)
                 .padding(.leading, 30)
@@ -82,7 +63,7 @@ struct DictionaryView: View {
                 } else {
                     ScrollView(.vertical, showsIndicators: false) {
                         ForEach(self.gameStatus.loadDictionary(), id: \.self) { deck in
-                            DeckView(showSheet: self.$showSheet, activeSheet: self.$activeSheet, activeDeck: self.$activeDeck, activeFlashCard: self.$activeFlashCard, deck: deck)
+                            DeckView(deck: deck)
                         }
                     }
                 }
@@ -91,8 +72,8 @@ struct DictionaryView: View {
     }
 }
 
-#if debug
-struct Dictionary_Previews: PreviewProvider {
+//#if debug
+struct DictionaryView_Previews: PreviewProvider {
     static var previews: some View {
         let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
         let repository = FlashCardRepository(moc: context)
@@ -102,4 +83,4 @@ struct Dictionary_Previews: PreviewProvider {
         return DictionaryView().environmentObject(gameStatus)
     }
 }
-#endif
+//#endif

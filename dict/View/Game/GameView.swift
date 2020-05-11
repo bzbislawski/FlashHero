@@ -11,7 +11,6 @@ import SwiftUI
 struct GameView: View {
     @EnvironmentObject var gamePlay: GamePlay
     @State var selectedDecks: [Deck] = []
-    @State var showSheet: Bool = false
 
     var flashCards: Array<FlashCard> {
         return self.gamePlay.flashCards

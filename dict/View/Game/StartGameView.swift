@@ -8,10 +8,6 @@
 
 import SwiftUI
 
-enum ActiveStartGameSheet {
-    case vocabulary, cardsOrder
-}
-
 struct StartGameView: View {
     @EnvironmentObject var gameStatus: GameStatus
     @EnvironmentObject var gamePlay: GamePlay

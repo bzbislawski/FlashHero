@@ -22,6 +22,7 @@
 		D62940BD2405D7C800554C66 /* GameSheetRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D62940BC2405D7C800554C66 /* GameSheetRowView.swift */; };
 		D62940C02405E01900554C66 /* GamePlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = D62940BF2405E01900554C66 /* GamePlay.swift */; };
 		D62D3AD9245F78BD0069B249 /* BackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D62D3AD8245F78BD0069B249 /* BackgroundView.swift */; };
+		D6343FB724684FE400502085 /* ActiveSheetHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6343FB624684FE400502085 /* ActiveSheetHandler.swift */; };
 		D63B466223D517EC008370C7 /* DeckView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D63B466123D517EC008370C7 /* DeckView.swift */; };
 		D63B467023D79865008370C7 /* DeckFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D63B466F23D79865008370C7 /* DeckFormView.swift */; };
 		D63B467223D79F8A008370C7 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D63B467123D79F8A008370C7 /* Extensions.swift */; };
@@ -39,6 +40,7 @@
 		D64D51172385E0BF0075AD3D /* StartGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64D51162385E0BF0075AD3D /* StartGameView.swift */; };
 		D66668252386D311008421AB /* DictionaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D66668242386D311008421AB /* DictionaryView.swift */; };
 		D6BC6CF52464E323007D754A /* ButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6BC6CF42464E323007D754A /* ButtonView.swift */; };
+		D6BC6CF724672800007D754A /* ActiveSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6BC6CF624672800007D754A /* ActiveSheetView.swift */; };
 		D6EB4EC72418472B00654307 /* ViewRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6EB4EC62418472B00654307 /* ViewRouter.swift */; };
 /* End PBXBuildFile section */
 
@@ -58,6 +60,7 @@
 		D62940BC2405D7C800554C66 /* GameSheetRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSheetRowView.swift; sourceTree = "<group>"; };
 		D62940BF2405E01900554C66 /* GamePlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamePlay.swift; sourceTree = "<group>"; };
 		D62D3AD8245F78BD0069B249 /* BackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundView.swift; sourceTree = "<group>"; };
+		D6343FB624684FE400502085 /* ActiveSheetHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveSheetHandler.swift; sourceTree = "<group>"; };
 		D63B466123D517EC008370C7 /* DeckView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckView.swift; sourceTree = "<group>"; };
 		D63B466F23D79865008370C7 /* DeckFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckFormView.swift; sourceTree = "<group>"; };
 		D63B467123D79F8A008370C7 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
@@ -77,6 +80,7 @@
 		D64D51162385E0BF0075AD3D /* StartGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartGameView.swift; sourceTree = "<group>"; };
 		D66668242386D311008421AB /* DictionaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryView.swift; sourceTree = "<group>"; };
 		D6BC6CF42464E323007D754A /* ButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonView.swift; sourceTree = "<group>"; };
+		D6BC6CF624672800007D754A /* ActiveSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveSheetView.swift; sourceTree = "<group>"; };
 		D6EB4EC62418472B00654307 /* ViewRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewRouter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -135,6 +139,7 @@
 		D64D50FC2385CA900075AD3D /* dict */ = {
 			isa = PBXGroup;
 			children = (
+				D6343FB624684FE400502085 /* ActiveSheetHandler.swift */,
 				BAA3D9B423FC33B1006AC3A1 /* DeckColor.swift */,
 				D63B467123D79F8A008370C7 /* Extensions.swift */,
 				D63B467323D7B51C008370C7 /* DeckRepository.swift */,
@@ -172,6 +177,7 @@
 				D62D3AD8245F78BD0069B249 /* BackgroundView.swift */,
 				D63B467723DE421B008370C7 /* MiniFlashCardView.swift */,
 				BADE723F24202712003E7EB1 /* TabView.swift */,
+				D6BC6CF624672800007D754A /* ActiveSheetView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -281,11 +287,13 @@
 				BA8C74A7240533610021C19C /* SelectDecksView.swift in Sources */,
 				D6EB4EC72418472B00654307 /* ViewRouter.swift in Sources */,
 				D64D51032385CA900075AD3D /* dict.xcdatamodeld in Sources */,
+				D6343FB724684FE400502085 /* ActiveSheetHandler.swift in Sources */,
 				D64D51172385E0BF0075AD3D /* StartGameView.swift in Sources */,
 				D63B467423D7B51C008370C7 /* DeckRepository.swift in Sources */,
 				D64D50FE2385CA900075AD3D /* AppDelegate.swift in Sources */,
 				D66668252386D311008421AB /* DictionaryView.swift in Sources */,
 				D62D3AD9245F78BD0069B249 /* BackgroundView.swift in Sources */,
+				D6BC6CF724672800007D754A /* ActiveSheetView.swift in Sources */,
 				BA50F35223DB11FA005D624B /* Deck+CoreDataClass.swift in Sources */,
 				BA50F35123DB11FA005D624B /* FlashCard+CoreDataProperties.swift in Sources */,
 				BADE723E24201BA5003E7EB1 /* CardsOrderView.swift in Sources */,
