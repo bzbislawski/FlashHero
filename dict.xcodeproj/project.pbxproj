@@ -170,7 +170,7 @@
 		D6666177238701A000D1CB8A /* View */ = {
 			isa = PBXGroup;
 			children = (
-				D6BC6CF32464E2FB007D754A /* ViewSubComponent */,
+				D6BC6CF32464E2FB007D754A /* Component */,
 				BA776E482428098700EEC11D /* Dictionary */,
 				D62940BE2405DF3100554C66 /* Game */,
 				D64D51142385CCA30075AD3D /* HomepageView.swift */,
@@ -202,12 +202,12 @@
 			path = Entity;
 			sourceTree = "<group>";
 		};
-		D6BC6CF32464E2FB007D754A /* ViewSubComponent */ = {
+		D6BC6CF32464E2FB007D754A /* Component */ = {
 			isa = PBXGroup;
 			children = (
 				D6BC6CF42464E323007D754A /* ButtonView.swift */,
 			);
-			path = ViewSubComponent;
+			path = Component;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
