@@ -68,7 +68,7 @@ struct HomepageView: View {
     }
     
     private func delayHideView() {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.15) {
             self.activeSheetHandler.showSheet = false
         }
     }
