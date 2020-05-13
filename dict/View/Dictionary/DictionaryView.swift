@@ -26,6 +26,7 @@ struct DictionaryView: View {
                     Button(action: {
                         self.activeSheetHandler.showSheet.toggle()
                         self.activeSheetHandler.activeSheet = .deckForm
+                        self.activeSheetHandler.activeDeck = nil
                     }, label: {
                         ZStack{
                             Circle()

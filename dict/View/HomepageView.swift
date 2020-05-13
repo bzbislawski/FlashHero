@@ -12,6 +12,7 @@ struct HomepageView: View {
     @EnvironmentObject var viewRouter: ViewRouter
     @EnvironmentObject var gamePlay: GamePlay
     @EnvironmentObject var activeSheetHandler: ActiveSheetHandler
+    @State var show = false
     
     var body: some View {
         GeometryReader { geometry in
@@ -41,20 +42,34 @@ struct HomepageView: View {
                 
                 if self.activeSheetHandler.showSheet {
                     Color.gray.opacity(0.7).onTapGesture {
-                        self.activeSheetHandler.showSheet.toggle()
+                        self.show = false
+                        self.delayHideView()
                     }
                 }
-                
-                VStack {
-                    Spacer()
-                    ActiveSheetView()
-                        .frame(width: UIScreen.main.bounds.size.width)
-                        .background(Color.backgroundColor)
-                        .offset(y: self.activeSheetHandler.showSheet ? 0 : UIScreen.main.bounds.height).animation(.default)
+
+                if self.activeSheetHandler.showSheet {
+                    VStack {
+                        Spacer()
+                        ActiveSheetView()
+                            .frame(width: UIScreen.main.bounds.size.width)
+                            .background(Color.backgroundColor)
+                            .onAppear {
+                                self.show = true
+                        }
+                        .offset(y: self.show ? 0 : UIScreen.main.bounds.height)
+                        .animation(Animation.default)
                         .cornerRadius(25, corners: [.topLeft, .topRight])
+                        
+                    }.animation(.easeInOut(duration: 1.0))
                 }
             }
             .edgesIgnoringSafeArea(.all)
+        }
+    }
+    
+    private func delayHideView() {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+            self.activeSheetHandler.showSheet = false
         }
     }
 }
@@ -81,10 +96,10 @@ extension View {
 
 
 struct RoundedCorner: Shape {
-
+    
     var radius: CGFloat = .infinity
     var corners: UIRectCorner = .allCorners
-
+    
     func path(in rect: CGRect) -> Path {
         let path = UIBezierPath(roundedRect: rect, byRoundingCorners: corners, cornerRadii: CGSize(width: radius, height: radius))
         return Path(path.cgPath)
