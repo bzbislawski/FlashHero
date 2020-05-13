@@ -25,6 +25,8 @@ struct DeckFormView: View {
             Divider()
             ZStack {
                 TextField("", text: $name)
+                    .padding(.leading, 10)
+                    .padding(.trailing, 10)
                     .frame(height: 40)
                     .background(Color.secondaryBackgroundColor)
                     .cornerRadius(15)
