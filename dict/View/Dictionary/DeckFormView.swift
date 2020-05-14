@@ -19,9 +19,29 @@ struct DeckFormView: View {
     
     var body: some View {
         VStack{
+            ZStack {
+                Rectangle()
+                .fill(Color.secondaryBackgroundColor)
+                .frame(width: UIScreen.main.bounds.width / 6, height: 4)
+                .cornerRadius(2)
+                .padding(.top, 10)
+                
+                HStack {
+                    HStack {
+                        Image(systemName: "trash")
+                        Text("Delete")
+                    }
+                    .padding(.leading, 15)
+                    .offset(y: 15)
+                    Spacer()
+                }
+            }
+            
             Text("Dictionary")
                 .font(.system(size: 18, weight: .semibold))
                 .foregroundColor(Color.rgb(r: 53, g: 54, b: 67))
+//                .padding(.top, 15)
+                .padding(.bottom, 15)
             Divider()
             ZStack {
                 TextField("", text: $name)
@@ -42,8 +62,10 @@ struct DeckFormView: View {
             }
             .padding(.leading, 50)
             .padding(.trailing, 50)
+            .padding(.bottom, 15)
+            .padding(.top, 15)
             
-            Divider()
+            Divider().padding(.bottom, 15)
             
             HStack {
                 ForEach(0 ..< deckColors.count) { value in
@@ -67,7 +89,7 @@ struct DeckFormView: View {
             }
             .padding(.leading, 50)
             .padding(.trailing, 50)
-            
+            .padding(.bottom, 15)
             
             Button(action: {
                 print(self.name)
@@ -85,11 +107,7 @@ struct DeckFormView: View {
                 }
             }) {
                 ButtonView(text: "Save", backgroundColor: Color.darkBlue)
-                
-                //
             }
-            
-            .padding(.top, 25)
         }
         .onAppear {
             self.name = self.activeSheetHandler.activeDeck?.wrappedName ?? self.name
@@ -107,6 +125,7 @@ struct DeckFormView: View {
 
 struct DeckFormView_Previews: PreviewProvider {
     static var previews: some View {
-        DeckFormView()
+        let env = ActiveSheetHandler()
+        return DeckFormView().environmentObject(env)
     }
 }
