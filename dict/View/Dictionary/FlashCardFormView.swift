@@ -9,11 +9,11 @@
 import SwiftUI
 
 struct FlashCardFormView: View {
+    @EnvironmentObject var activeSheetHandler: ActiveSheetHandler
     @EnvironmentObject var gameStatus: GameStatus
     @Environment(\.presentationMode) var presentationMode
     @State private var word: String = ""
     @State private var translation: String = ""
-    var deck: Deck
     var flashCard: FlashCard?
     
     var body: some View {
@@ -110,9 +110,9 @@ struct FlashCardFormView: View {
                             if (self.flashCard != nil) {
                                 self.flashCard!.word = self.word
                                 self.flashCard!.translation = self.translation
-                                self.gameStatus.save(deck: self.deck, flashCard: self.flashCard!)
+                                self.gameStatus.save(deck: self.activeSheetHandler.activeDeck!, flashCard: self.flashCard!)
                             } else {
-                                self.gameStatus.save(deck: self.deck, word: self.word, translation: self.translation)
+                                self.gameStatus.save(deck: self.activeSheetHandler.activeDeck!, word: self.word, translation: self.translation)
                             }
                             self.presentationMode.wrappedValue.dismiss()
                         }) { Text("Done").foregroundColor(Color.firstColor).font(.system(size: 18, weight: .semibold)) }
@@ -129,6 +129,6 @@ struct FlashCardFormView: View {
 
 struct FlashCardFormView_Previews: PreviewProvider {
     static var previews: some View {
-        FlashCardFormView(deck: Deck())
+        FlashCardFormView()
     }
 }

@@ -10,16 +10,12 @@ import Foundation
 import SwiftUI
 
 enum ActiveSheet {
-    case deckForm, flashCardForm, deckEditForm, flashCardEditForm
-}
-
-enum ActiveStartGameSheet {
-    case vocabulary, cardsOrder
+    case deckForm, flashCardForm, vocabulary, cardsOrder
 }
 
 class ActiveSheetHandler: ObservableObject {
     @Published var showSheet = false
-    @Published var activeSheet: ActiveSheet = .deckForm
+    @Published var activeSheet: ActiveSheet?
     @Published var activeDeck: Deck?
     @Published var activeFlashCard: FlashCard?
 }

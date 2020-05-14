@@ -12,20 +12,13 @@ struct ActiveSheetView: View {
     @EnvironmentObject var activeSheetHandler: ActiveSheetHandler
     
     var body: some View {
-        VStack {
-            
-            DeckFormView()
+        return VStack {
+            if (self.activeSheetHandler.activeSheet == .deckForm) {
+                DeckFormView()
+            } else {
+                FlashCardFormView()
+            }
         }.padding(.bottom, (UIApplication.shared.windows.last?.safeAreaInsets.bottom)! + 10)
-        
-//        if self.activeSheetHandler.activeSheet == .deckForm {
-//            return DeckFormView()
-//        } else if (self.activeSheetHandler.activeSheet == .deckEditForm) {
-//            return DeckFormView(deck: self.activeSheetHandler.activeDeck)
-//        } else if (self.activeSheetHandler.activeSheet == .flashCardForm) {
-//            return FlashCardFormView(deck: self.activeSheetHandler.activeDeck!)
-//        } else if (self.activeSheetHandler.activeSheet == .flashCardEditForm) {
-//            return FlashCardFormView(deck: self.activeSheetHandler.activeDeck!, flashCard: self.activeSheetHandler.activeFlashCard)
-//        }
     }
 }
 

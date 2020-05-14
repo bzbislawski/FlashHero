@@ -12,7 +12,7 @@ struct StartGameView: View {
     @EnvironmentObject var gameStatus: GameStatus
     @EnvironmentObject var gamePlay: GamePlay
     @State var showSheet: Bool = false
-    @State var sheetType: ActiveStartGameSheet = .vocabulary
+    @State var sheetType: ActiveSheet = .vocabulary
     @State private var cardsOrderOption = "Default"
     @State var showsAlert = false
     

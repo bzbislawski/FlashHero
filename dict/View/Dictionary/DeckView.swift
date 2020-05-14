@@ -25,7 +25,7 @@ struct DeckView: View {
             HStack {
                 Button(action: {
                     self.activeSheetHandler.showSheet.toggle()
-                    self.activeSheetHandler.activeSheet = .deckEditForm
+                    self.activeSheetHandler.activeSheet = .deckForm
                     self.activeSheetHandler.activeDeck = self.deck
                 }) {
                     HStack {
@@ -43,7 +43,7 @@ struct DeckView: View {
                     ForEach(self.flashCards, id: \.self) { flashCard in
                         MiniFlashCardView(deck: self.deck, flashCard: flashCard).onTapGesture {
                             self.activeSheetHandler.showSheet.toggle()
-                            self.activeSheetHandler.activeSheet = .flashCardEditForm
+                            self.activeSheetHandler.activeSheet = .flashCardForm
                             self.activeSheetHandler.activeDeck = self.deck
                             self.activeSheetHandler.activeFlashCard = flashCard
                         }
