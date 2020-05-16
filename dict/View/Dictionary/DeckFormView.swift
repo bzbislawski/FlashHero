@@ -92,6 +92,7 @@ struct DeckFormView: View {
                                         .stroke(Color.lightBlue, lineWidth: self.color == deckColors[value].name ? 3 : 0)
                                 }
                         )
+                            .animation(Animation.easeInOut(duration: 0.1))
                             .frame(width: 44, height: 44)
                         Spacer()
                     }
