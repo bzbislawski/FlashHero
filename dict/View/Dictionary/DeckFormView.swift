@@ -11,6 +11,7 @@ import SwiftUI
 struct DeckFormView: View {
     @EnvironmentObject var gameStatus: GameStatus
     @EnvironmentObject var activeSheetHandler: ActiveSheetHandler
+    @Binding var showSheet: Bool
     @State private var name: String = ""
     @State private var color: String = ""
     @State private var showingValidationAlert = false
@@ -102,18 +103,18 @@ struct DeckFormView: View {
             .padding(.top, 15)
             
             Button(action: {
-                print(self.name)
-                print(self.color)
                 if (self.activeSheetHandler.activeDeck == nil) {
                     self.gameStatus.save(name: self.name, color: self.color)
-                    self.activeSheetHandler.showSheet.toggle()
+                    self.showSheet.toggle()
+                    self.activeSheetHandler.delayHideView()
                     return
                 }
                 if self.name == "" {
                     self.showingValidationAlert = true
                 } else {
                     self.gameStatus.save(deck: self.activeSheetHandler.activeDeck!, name: self.name, color: self.color)
-                    self.activeSheetHandler.showSheet.toggle()
+                    self.showSheet.toggle()
+                    self.activeSheetHandler.delayHideView()
                 }
             }) {
                 ButtonView(text: "Save", backgroundColor: Color.darkBlue, horizontalPadding: 20)
@@ -134,7 +135,8 @@ struct DeckFormView: View {
             Alert(title: Text("Are you sure?"), message: Text("Deck and its flashcards will be deleted permanently."),
                   primaryButton: .default(Text("Yes"), action: {
                     self.gameStatus.delete(deck: self.activeSheetHandler.activeDeck!)
-                    self.activeSheetHandler.showSheet.toggle()
+                    self.showSheet.toggle()
+                    self.activeSheetHandler.delayHideView()
                   }),
                   secondaryButton: .default(Text("Cancel")))
         }
@@ -142,8 +144,15 @@ struct DeckFormView: View {
 }
 
 struct DeckFormView_Previews: PreviewProvider {
+    struct Wrapper: View {
+        @State var show: Bool = true
+        var body: some View {
+            let env = ActiveSheetHandler()
+            return DeckFormView(showSheet: self.$show).environmentObject(env)
+        }
+    }
+    
     static var previews: some View {
-        let env = ActiveSheetHandler()
-        return DeckFormView().environmentObject(env)
+        Wrapper()
     }
 }

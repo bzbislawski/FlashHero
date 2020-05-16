@@ -10,15 +10,35 @@ import SwiftUI
 
 struct ActiveSheetView: View {
     @EnvironmentObject var activeSheetHandler: ActiveSheetHandler
+    @State private var showSheet = false
     
     var body: some View {
-        return VStack {
-            if (self.activeSheetHandler.activeSheet == .deckForm) {
-                DeckFormView()
-            } else {
-                FlashCardFormView()
+        ZStack {
+            Color.gray.opacity(0.7).onTapGesture {
+                self.showSheet = false
+                self.activeSheetHandler.delayHideView()
             }
-        }.padding(.bottom, (UIApplication.shared.windows.last?.safeAreaInsets.bottom)! + 10)
+            
+            VStack {
+                Spacer()
+                VStack {
+                    if (self.activeSheetHandler.activeSheet == .deckForm) {
+                        DeckFormView(showSheet: self.$showSheet)
+                    } else {
+                        FlashCardFormView()
+                    }
+                }
+                .padding(.bottom, (UIApplication.shared.windows.last?.safeAreaInsets.bottom)! + 10)
+                .frame(width: UIScreen.main.bounds.size.width)
+                .background(Color.backgroundColor)
+                .offset(y: self.showSheet ? 0 : UIScreen.main.bounds.height)
+                .cornerRadius(25, corners: [.topLeft, .topRight])
+                .animation(Animation.default)
+            }
+        }
+        .onAppear {
+            self.showSheet = true
+        }
     }
 }
 

@@ -12,9 +12,6 @@ struct DeckView: View {
     @EnvironmentObject var gameStatus: GameStatus
     @EnvironmentObject var activeSheetHandler: ActiveSheetHandler
     var deck: Deck
-    @State private var currentPosition: CGSize = .zero
-    @State private var newPosition: CGSize = .zero
-    @State private var showPlayButton = false
     
     var flashCards: [FlashCard] {
         return deck.flashCardArray
