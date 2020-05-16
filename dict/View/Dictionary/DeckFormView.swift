@@ -21,10 +21,10 @@ struct DeckFormView: View {
         VStack{
             ZStack {
                 Rectangle()
-                .fill(Color.secondaryBackgroundColor)
-                .frame(width: UIScreen.main.bounds.width / 6, height: 4)
-                .cornerRadius(2)
-                .padding(.top, 10)
+                    .fill(Color.secondaryBackgroundColor)
+                    .frame(width: UIScreen.main.bounds.width / 6, height: 4)
+                    .cornerRadius(2)
+                    .padding(.top, 10)
                 
                 HStack {
                     HStack {
@@ -40,7 +40,6 @@ struct DeckFormView: View {
             Text("Dictionary")
                 .font(.system(size: 18, weight: .semibold))
                 .foregroundColor(Color.rgb(r: 53, g: 54, b: 67))
-//                .padding(.top, 15)
                 .padding(.bottom, 15)
             Divider()
             ZStack {
@@ -60,15 +59,16 @@ struct DeckFormView: View {
                     .padding(.trailing, 8)
                 }
             }
-            .padding(.leading, 50)
-            .padding(.trailing, 50)
+            .padding(.leading, 40)
+            .padding(.trailing, 40)
             .padding(.bottom, 15)
             .padding(.top, 15)
             
-            Divider().padding(.bottom, 15)
+            Divider()
             
             HStack {
                 ForEach(0 ..< deckColors.count) { value in
+                    
                     Button(action:
                         {
                             self.color = deckColors[value].name
@@ -87,9 +87,10 @@ struct DeckFormView: View {
                     }
                 }
             }
-            .padding(.leading, 50)
-            .padding(.trailing, 50)
+            .padding(.leading, 40)
+            .padding(.trailing, 40)
             .padding(.bottom, 15)
+            .padding(.top, 15)
             
             Button(action: {
                 print(self.name)
