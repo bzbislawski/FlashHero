@@ -11,6 +11,7 @@ import SwiftUI
 struct ButtonView: View {
     let text: String
     let backgroundColor: Color
+    var horizontalPadding = 40
     
     var body: some View {
         RoundedRectangle(cornerRadius: 8)
@@ -23,8 +24,8 @@ struct ButtonView: View {
                     .foregroundColor(Color.backgroundColor)
                     .font(.system(size: 17, weight: .semibold))
         )
-            .padding(.leading, 40)
-            .padding(.trailing, 40)
+            .padding(.leading, CGFloat(self.horizontalPadding))
+            .padding(.trailing, CGFloat(self.horizontalPadding))
     }
 }
 

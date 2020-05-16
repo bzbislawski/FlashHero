@@ -15,7 +15,6 @@ struct DeckFormView: View {
     @State private var color: String = ""
     @State private var showingValidationAlert = false
     @State private var showingDeleteAlert = false
-    var deck: Deck?
     
     var body: some View {
         VStack{
@@ -25,23 +24,30 @@ struct DeckFormView: View {
                     .frame(width: UIScreen.main.bounds.width / 6, height: 4)
                     .cornerRadius(2)
                     .padding(.top, 10)
-                
-                HStack {
-                    HStack {
-                        Image(systemName: "trash")
-                        Text("Delete")
-                    }
-                    .padding(.leading, 15)
-                    .offset(y: 15)
-                    Spacer()
-                }
             }
             
-            Text("Dictionary")
-                .font(.system(size: 18, weight: .semibold))
-                .foregroundColor(Color.rgb(r: 53, g: 54, b: 67))
-                .padding(.bottom, 15)
+            ZStack {
+                HStack {
+                    Button(action:
+                    {
+                        self.showingDeleteAlert = true
+                    })
+                    {
+                        Image(systemName:"trash").foregroundColor(Color.backgroundColor)
+                    }
+                    .frame(width: 44, height: 44)
+                    .background(Color.red)
+                    .cornerRadius(8)
+                    Spacer()
+                }.padding(.leading, 20)
+                
+                Text("Dictionary")
+                    .font(.system(size: 18, weight: .semibold))
+                    .foregroundColor(Color.rgb(r: 53, g: 54, b: 67))
+            }
+            
             Divider()
+            
             ZStack {
                 TextField("", text: $name)
                     .padding(.leading, 10)
@@ -59,8 +65,8 @@ struct DeckFormView: View {
                     .padding(.trailing, 8)
                 }
             }
-            .padding(.leading, 40)
-            .padding(.trailing, 40)
+            .padding(.leading, 20)
+            .padding(.trailing, 20)
             .padding(.bottom, 15)
             .padding(.top, 15)
             
@@ -79,10 +85,10 @@ struct DeckFormView: View {
                             .fill(deckColors[value].colorOne)
                             .overlay(
                                 ZStack {
-                                RoundedRectangle(cornerRadius: .infinity)
-                                .strokeBorder(Color.white, lineWidth: self.color == deckColors[value].name ? 4 : 0)
-                                RoundedRectangle(cornerRadius: .infinity)
-                                .stroke(Color.lightBlue, lineWidth: self.color == deckColors[value].name ? 3 : 0)
+                                    RoundedRectangle(cornerRadius: .infinity)
+                                        .strokeBorder(Color.white, lineWidth: self.color == deckColors[value].name ? 4 : 0)
+                                    RoundedRectangle(cornerRadius: .infinity)
+                                        .stroke(Color.lightBlue, lineWidth: self.color == deckColors[value].name ? 3 : 0)
                                 }
                         )
                             .frame(width: 44, height: 44)
@@ -90,8 +96,8 @@ struct DeckFormView: View {
                     }
                 }
             }
-            .padding(.leading, 40)
-            .padding(.trailing, 40)
+            .padding(.leading, 20)
+            .padding(.trailing, 20)
             .padding(.bottom, 15)
             .padding(.top, 15)
             
@@ -110,7 +116,7 @@ struct DeckFormView: View {
                     self.activeSheetHandler.showSheet.toggle()
                 }
             }) {
-                ButtonView(text: "Save", backgroundColor: Color.darkBlue)
+                ButtonView(text: "Save", backgroundColor: Color.darkBlue, horizontalPadding: 20)
             }
         }
         .onAppear {
@@ -123,6 +129,14 @@ struct DeckFormView: View {
                 message: Text("Name can not be empty"),
                 dismissButton: .default(Text("Got it!"))
             )
+        }
+        .alert(isPresented: $showingDeleteAlert) { () -> Alert in
+            Alert(title: Text("Are you sure?"), message: Text("Deck and its flashcards will be deleted permanently."),
+                  primaryButton: .default(Text("Yes"), action: {
+                    self.gameStatus.delete(deck: self.activeSheetHandler.activeDeck!)
+                    self.activeSheetHandler.showSheet.toggle()
+                  }),
+                  secondaryButton: .default(Text("Cancel")))
         }
     }
 }
