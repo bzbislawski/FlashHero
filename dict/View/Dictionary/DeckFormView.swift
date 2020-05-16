@@ -74,15 +74,18 @@ struct DeckFormView: View {
                             self.color = deckColors[value].name
                     })
                     {
+                        Spacer()
                         Circle()
                             .fill(deckColors[value].colorOne)
                             .overlay(
-                                RoundedRectangle(cornerRadius: 16)
-                                    .stroke(Color.tertiaryBackgroundColor, lineWidth: self.color == deckColors[value].name ? 4 : 1)
+                                ZStack {
+                                RoundedRectangle(cornerRadius: .infinity)
+                                .strokeBorder(Color.white, lineWidth: self.color == deckColors[value].name ? 4 : 0)
+                                RoundedRectangle(cornerRadius: .infinity)
+                                .stroke(Color.lightBlue, lineWidth: self.color == deckColors[value].name ? 3 : 0)
+                                }
                         )
-                            .frame(width: 22, height: 22)
-                    }
-                    if value != deckColors.count - 1 {
+                            .frame(width: 44, height: 44)
                         Spacer()
                     }
                 }
