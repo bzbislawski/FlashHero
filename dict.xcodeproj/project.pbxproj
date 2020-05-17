@@ -39,6 +39,7 @@
 		D64D51152385CCA30075AD3D /* HomepageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64D51142385CCA30075AD3D /* HomepageView.swift */; };
 		D64D51172385E0BF0075AD3D /* StartGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64D51162385E0BF0075AD3D /* StartGameView.swift */; };
 		D66668252386D311008421AB /* DictionaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D66668242386D311008421AB /* DictionaryView.swift */; };
+		D66E508A2470BB76006B055C /* KeyboardGuardian.swift in Sources */ = {isa = PBXBuildFile; fileRef = D66E50892470BB76006B055C /* KeyboardGuardian.swift */; };
 		D6BC6CF52464E323007D754A /* ButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6BC6CF42464E323007D754A /* ButtonView.swift */; };
 		D6BC6CF724672800007D754A /* ActiveSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6BC6CF624672800007D754A /* ActiveSheetView.swift */; };
 		D6EB4EC72418472B00654307 /* ViewRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6EB4EC62418472B00654307 /* ViewRouter.swift */; };
@@ -79,6 +80,7 @@
 		D64D51142385CCA30075AD3D /* HomepageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomepageView.swift; sourceTree = "<group>"; };
 		D64D51162385E0BF0075AD3D /* StartGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartGameView.swift; sourceTree = "<group>"; };
 		D66668242386D311008421AB /* DictionaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryView.swift; sourceTree = "<group>"; };
+		D66E50892470BB76006B055C /* KeyboardGuardian.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardGuardian.swift; sourceTree = "<group>"; };
 		D6BC6CF42464E323007D754A /* ButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonView.swift; sourceTree = "<group>"; };
 		D6BC6CF624672800007D754A /* ActiveSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveSheetView.swift; sourceTree = "<group>"; };
 		D6EB4EC62418472B00654307 /* ViewRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewRouter.swift; sourceTree = "<group>"; };
@@ -140,6 +142,7 @@
 			isa = PBXGroup;
 			children = (
 				D6343FB624684FE400502085 /* ActiveSheetHandler.swift */,
+				D66E50892470BB76006B055C /* KeyboardGuardian.swift */,
 				BAA3D9B423FC33B1006AC3A1 /* DeckColor.swift */,
 				D63B467123D79F8A008370C7 /* Extensions.swift */,
 				D63B467323D7B51C008370C7 /* DeckRepository.swift */,
@@ -285,6 +288,7 @@
 				BA50F35323DB11FA005D624B /* Deck+CoreDataProperties.swift in Sources */,
 				D6BC6CF52464E323007D754A /* ButtonView.swift in Sources */,
 				BA8C74A7240533610021C19C /* SelectDecksView.swift in Sources */,
+				D66E508A2470BB76006B055C /* KeyboardGuardian.swift in Sources */,
 				D6EB4EC72418472B00654307 /* ViewRouter.swift in Sources */,
 				D64D51032385CA900075AD3D /* dict.xcdatamodeld in Sources */,
 				D6343FB724684FE400502085 /* ActiveSheetHandler.swift in Sources */,
