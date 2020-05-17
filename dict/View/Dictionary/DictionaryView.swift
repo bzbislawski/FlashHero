@@ -17,7 +17,7 @@ struct DictionaryView: View {
             BackgroundView()
             VStack {
                 HStack {
-                    Text("Dictionary")
+                    Text("All decks")
                         .foregroundColor(.fontColor)
                         .font(.system(size: 32, weight: .bold))
                     
