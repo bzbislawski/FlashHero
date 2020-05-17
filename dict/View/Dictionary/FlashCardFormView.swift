@@ -11,124 +11,122 @@ import SwiftUI
 struct FlashCardFormView: View {
     @EnvironmentObject var activeSheetHandler: ActiveSheetHandler
     @EnvironmentObject var gameStatus: GameStatus
-    @Environment(\.presentationMode) var presentationMode
+    @Binding var showSheet: Bool
     @State private var word: String = ""
     @State private var translation: String = ""
-    var flashCard: FlashCard?
     
     var body: some View {
-        NavigationView {
+        VStack{
             ZStack {
-                VStack(spacing: 5) {
-                    VStack {
-                        Image(systemName: "doc")
-                            .frame(width: 32, height: 32)
-                            .font(.system(size: 32, weight: .bold))
-                            .foregroundColor(.firstColor)
-                        Text("Flash Card")
-                            .foregroundColor(.firstColor)
-                            .font(.system(size: 32, weight: .bold))
-                    }
-                    .padding(.top, 60)
-                    .padding(.bottom, 20)
-                    HStack {
-                        Text("Word")
-                            .foregroundColor(.firstColor)
-                            .font(.system(size: 18, weight: .semibold))
-                        Spacer()
-                    }.frame(width: 250)
-                    
-                    ZStack {
-                        TextField("", text: $word)
-                            .frame(width: 250, height: 40)
-                            .background(Color.backgroundColor)
-                            .cornerRadius(5)
-                        HStack {
-                            Spacer()
-                            Button(action:
-                                {
-                                    self.word = ""
-                            })
-                            {
-                                Image(systemName: "xmark.circle.fill")
-                                    .foregroundColor(.tertiaryBackgroundColor)
-                            }
-                            .padding(.trailing, 8)
-                        }.frame(width: 250)
-                    }.padding(.bottom, 20)
-                    
-                    HStack {
-                        Text("Translation")
-                            .foregroundColor(.firstColor)
-                            .font(.system(size: 18, weight: .semibold))
-                        Spacer()
-                    }.frame(width: 250)
-                    
-                    ZStack {
-                        TextField("", text: $translation)
-                            .frame(width: 250, height: 40)
-                            .background(Color.backgroundColor)
-                            .cornerRadius(5)
-                        HStack {
-                            Spacer()
-                            Button(action:
-                                {
-                                    self.translation = ""
-                            })
-                            {
-                                Image(systemName: "xmark.circle.fill")
-                                    .foregroundColor(.tertiaryBackgroundColor)
-                            }
-                            .padding(.trailing, 8)
-                        }.frame(width: 250)
-                    }
-                    
-                    Spacer()
-                    
-                    if (self.flashCard != nil) {
-                        Button(action: {
-                            self.gameStatus.delete(flashCard: self.flashCard!)
-                            self.presentationMode.wrappedValue.dismiss()
-                        }) {
-                            Image(systemName: "trash")
-                                .font(.system(size: 24, weight: .light))
-                                .foregroundColor(Color.white)
-                                .frame(width: 64, height: 64)
-                                .background(Color.red)
-                                .cornerRadius(5)
-                        }.padding(.bottom, 50)
-                    }
-                    
-                }.navigationBarTitle("", displayMode: .inline)
-                    .background(NavigationConfigurator { nc in
-                        nc.navigationBar.barTintColor = UIColor.backgroundColor
+                Rectangle()
+                    .fill(Color.secondaryBackgroundColor)
+                    .frame(width: UIScreen.main.bounds.width / 6, height: 4)
+                    .cornerRadius(2)
+                    .padding(.top, 10)
+            }
+            
+            ZStack {
+                HStack {
+                    Button(action:
+                        {
+                            self.gameStatus.delete(flashCard: self.activeSheetHandler.activeFlashCard!)
+                            self.showSheet.toggle()
+                            self.activeSheetHandler.delayHideView()
                     })
-                    .navigationBarItems(
-                        leading:
-                        Button(action: { self.presentationMode.wrappedValue.dismiss() }) { Text("Cancel").foregroundColor(Color.firstColor).font(.system(size: 18, weight: .semibold)) },
-                        trailing: Button(action: {
-                            if (self.flashCard != nil) {
-                                self.flashCard!.word = self.word
-                                self.flashCard!.translation = self.translation
-                                self.gameStatus.save(deck: self.activeSheetHandler.activeDeck!, flashCard: self.flashCard!)
-                            } else {
-                                self.gameStatus.save(deck: self.activeSheetHandler.activeDeck!, word: self.word, translation: self.translation)
-                            }
-                            self.presentationMode.wrappedValue.dismiss()
-                        }) { Text("Done").foregroundColor(Color.firstColor).font(.system(size: 18, weight: .semibold)) }
-                )
-                    .onAppear {
-                        self.word = self.flashCard?.wrappedWord ?? self.word
-                        self.translation = self.flashCard?.translation ?? self.translation
-                }
+                    {
+                        Image(systemName:"trash").foregroundColor(Color.backgroundColor)
+                    }
+                    .frame(width: 44, height: 44)
+                    .background(Color.red)
+                    .cornerRadius(8)
+                    Spacer()
+                }.padding(.leading, 20)
                 
+                Text("Flashcard")
+                    .font(.system(size: 18, weight: .semibold))
+                    .foregroundColor(Color.rgb(r: 53, g: 54, b: 67))
+            }
+            
+            Divider()
+            
+            ZStack {
+                TextField("", text: $word)
+                    .padding(.leading, 10)
+                    .padding(.trailing, 30)
+                    .frame(height: 40)
+                    .background(Color.secondaryBackgroundColor)
+                    .cornerRadius(15)
+                HStack {
+                    Spacer()
+                    Button(action: { self.word = "" })
+                    {
+                        Image(systemName: "xmark.circle.fill")
+                            .foregroundColor(.tertiaryBackgroundColor)
+                    }
+                    .padding(.trailing, 8)
+                }
+            }
+            .padding(.leading, 20)
+            .padding(.trailing, 20)
+            .padding(.bottom, 15)
+            .padding(.top, 15)
+            
+            Divider()
+            
+            
+            ZStack {
+                TextField("", text: $translation)
+                    .padding(.leading, 10)
+                    .padding(.trailing, 30)
+                    .frame(height: 40)
+                    .background(Color.secondaryBackgroundColor)
+                    .cornerRadius(15)
+                HStack {
+                    Spacer()
+                    Button(action: { self.word = "" })
+                    {
+                        Image(systemName: "xmark.circle.fill")
+                            .foregroundColor(.tertiaryBackgroundColor)
+                    }
+                    .padding(.trailing, 8)
+                }
+            }
+            .padding(.leading, 20)
+            .padding(.trailing, 20)
+            .padding(.bottom, 15)
+            .padding(.top, 15)
+            
+            Button(action: {
+                if (self.activeSheetHandler.activeFlashCard != nil) {
+                    self.activeSheetHandler.activeFlashCard!.word = self.word
+                    self.activeSheetHandler.activeFlashCard!.translation = self.translation
+                    self.gameStatus.save(deck: self.activeSheetHandler.activeDeck!, flashCard: self.activeSheetHandler.activeFlashCard!)
+                } else {
+                    self.gameStatus.save(deck: self.activeSheetHandler.activeDeck!, word: self.word, translation: self.translation)
+                }
+                self.showSheet.toggle()
+                self.activeSheetHandler.delayHideView()
+            }) {
+                ButtonView(text: "Save", backgroundColor: Color.darkBlue, horizontalPadding: 20)
+            }
+            .onAppear {
+                self.word = self.activeSheetHandler.activeFlashCard?.wrappedWord ?? self.word
+                self.translation = self.activeSheetHandler.activeFlashCard?.translation ?? self.translation
             }
         }
     }
 }
 
 struct FlashCardFormView_Previews: PreviewProvider {
+    struct Wrapper: View {
+        @State var show: Bool = true
+        var body: some View {
+            let env = ActiveSheetHandler()
+            return FlashCardFormView(showSheet: self.$show).environmentObject(env)
+        }
+    }
+    
     static var previews: some View {
-        FlashCardFormView()
+        Wrapper()
     }
 }

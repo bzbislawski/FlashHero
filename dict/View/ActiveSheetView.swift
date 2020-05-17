@@ -28,7 +28,7 @@ struct ActiveSheetView: View {
                     if (self.activeSheetHandler.activeSheet == .deckForm) {
                         DeckFormView(showSheet: self.$showSheet)
                     } else {
-                        FlashCardFormView()
+                        FlashCardFormView(showSheet: self.$showSheet)
                     }
                 }
                 .padding(.bottom, (UIApplication.shared.windows.last?.safeAreaInsets.bottom)! + 10)
