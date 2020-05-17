@@ -26,21 +26,23 @@ struct FlashCardFormView: View {
             }
             
             ZStack {
-                HStack {
-                    Button(action:
+                if self.activeSheetHandler.activeFlashCard != nil {
+                    HStack {
+                        Button(action:
+                            {
+                                self.gameStatus.delete(flashCard: self.activeSheetHandler.activeFlashCard!)
+                                self.showSheet.toggle()
+                                self.activeSheetHandler.delayHideView()
+                        })
                         {
-                            self.gameStatus.delete(flashCard: self.activeSheetHandler.activeFlashCard!)
-                            self.showSheet.toggle()
-                            self.activeSheetHandler.delayHideView()
-                    })
-                    {
-                        Image(systemName:"trash").foregroundColor(Color.backgroundColor)
-                    }
-                    .frame(width: 44, height: 44)
-                    .background(Color.red)
-                    .cornerRadius(8)
-                    Spacer()
-                }.padding(.leading, 20)
+                            Image(systemName:"trash").foregroundColor(Color.backgroundColor)
+                        }
+                        .frame(width: 44, height: 44)
+                        .background(Color.red)
+                        .cornerRadius(8)
+                        Spacer()
+                    }.padding(.leading, 20)
+                }
                 
                 Text("Flashcard")
                     .font(.system(size: 18, weight: .semibold))

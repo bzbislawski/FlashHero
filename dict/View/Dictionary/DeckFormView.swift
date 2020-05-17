@@ -28,20 +28,21 @@ struct DeckFormView: View {
             }
             
             ZStack {
-                HStack {
-                    Button(action:
-                    {
-                        self.showingDeleteAlert = true
-                    })
-                    {
-                        Image(systemName:"trash").foregroundColor(Color.backgroundColor)
-                    }
-                    .frame(width: 44, height: 44)
-                    .background(Color.red)
-                    .cornerRadius(8)
-                    Spacer()
-                }.padding(.leading, 20)
-                
+                if self.activeSheetHandler.activeDeck != nil {
+                    HStack {
+                        Button(action:
+                        {
+                            self.showingDeleteAlert = true
+                        })
+                        {
+                            Image(systemName:"trash").foregroundColor(Color.backgroundColor)
+                        }
+                        .frame(width: 44, height: 44)
+                        .background(Color.red)
+                        .cornerRadius(8)
+                        Spacer()
+                    }.padding(.leading, 20)
+                }
                 Text("Dictionary")
                     .font(.system(size: 18, weight: .semibold))
                     .foregroundColor(Color.rgb(r: 53, g: 54, b: 67))
