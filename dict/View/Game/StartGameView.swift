@@ -14,7 +14,8 @@ struct StartGameView: View {
     @State var showSheet: Bool = false
     @State var sheetType: ActiveSheet = .vocabulary
     @State private var cardsOrderOption = "Default"
-    @State var showsAlert = false
+    @State var noSelectedDecksAlert = false
+    @State var emptyDecksAlert = false
     
     var body: some View {
         GeometryReader { geometry in            
@@ -65,7 +66,7 @@ struct StartGameView: View {
                             .font(.system(size: 17, weight: .semibold))
                             .foregroundColor(Color.quaternaryBackgroundColor)
                     }
-                
+                    
                     HStack {
                         Text("Word Order")
                             .italic()
@@ -106,18 +107,30 @@ struct StartGameView: View {
                 Spacer()
                 
                 Button(action: {
+                    let nonEmptyDecks = self.gamePlay.selectedDecks.filter {
+                        !$0.flashCardArray.isEmpty
+                    }.count
+                    
                     if (self.gamePlay.selectedDecks.count == 0) {
-                        self.showsAlert = true
+                        self.noSelectedDecksAlert = true
+                    } else if nonEmptyDecks == 0 {
+                        self.emptyDecksAlert = true
                     } else {
                         self.gamePlay.start()
                     }
                 }) {
                     ButtonView(text: "Start Game", backgroundColor: Color.darkBlue)
                 }
-                .alert(isPresented: self.$showsAlert) {
+                .alert(isPresented: self.$noSelectedDecksAlert) {
                     Alert(
                         title: Text("Oops!"),
                         message: Text("Select decks to start a game.")
+                    )
+                }
+                .alert(isPresented: self.$emptyDecksAlert) {
+                    Alert(
+                        title: Text("Oops!"),
+                        message: Text("Selected decks don't have any flashcards.")
                     )
                 }
                 
