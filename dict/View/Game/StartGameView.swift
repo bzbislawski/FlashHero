@@ -122,6 +122,8 @@ struct StartGameView: View {
                         message: Text("Select decks to start a game.")
                     )
                 }
+                
+                Spacer()
             }
         }
         .sheet(isPresented: $showSheet) {

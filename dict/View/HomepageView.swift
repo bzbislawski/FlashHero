@@ -23,17 +23,16 @@ struct HomepageView: View {
                         DictionaryView().onAppear() {
                             self.gamePlay.stop()
                             self.gamePlay.reset()
-                        }.frame(height: geometry.size.height * 0.9)
+                        }
                     } else if self.viewRouter.currentView == Homepapge.game {
                         GameView()
-                            .frame(height: geometry.size.height * (self.gamePlay.isGameStarted ? 1 : 0.9 ))
                     }
                     
                     Spacer()
                     
                     if !self.gamePlay.isGameStarted {
                         TabView(geometry: geometry)
-                            .frame(height: geometry.size.height * 0.1)
+                            .frame(height: UIScreen.main.bounds.height * 0.1)
                             .border(Color.borderColor)
                             .background(Color.backgroundColor)
                     }
