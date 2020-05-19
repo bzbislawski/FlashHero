@@ -54,6 +54,7 @@ struct DeckView: View {
                         self.activeSheetHandler.showSheet.toggle()
                         self.activeSheetHandler.activeSheet = .flashCardForm
                         self.activeSheetHandler.activeDeck = self.deck
+                        self.activeSheetHandler.activeFlashCard = nil
                     }) {
                         Image(systemName: "plus.app")
                             .font(.system(size: 38, weight: .semibold))
