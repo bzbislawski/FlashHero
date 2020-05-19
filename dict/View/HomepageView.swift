@@ -16,7 +16,7 @@ struct HomepageView: View {
     var body: some View {
         GeometryReader { geometry in
             ZStack{
-                Color.backgroundColor
+                BackgroundView()
                 
                 VStack {
                     if self.viewRouter.currentView == Homepapge.dictionary {

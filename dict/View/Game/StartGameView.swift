@@ -17,9 +17,7 @@ struct StartGameView: View {
     @State var showsAlert = false
     
     var body: some View {
-        GeometryReader { geometry in
-            BackgroundView()
-            
+        GeometryReader { geometry in            
             VStack {
                 Spacer()
                 

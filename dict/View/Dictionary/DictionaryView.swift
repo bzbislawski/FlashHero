@@ -13,63 +13,61 @@ struct DictionaryView: View {
     @EnvironmentObject var activeSheetHandler: ActiveSheetHandler
     
     var body: some View {
-        ZStack {
-            BackgroundView()
-            VStack {
-                HStack {
-                    Text("All decks")
-                        .foregroundColor(.fontColor)
-                        .font(.system(size: 32, weight: .bold))
-                    
-                    Spacer()
-                    
-                    Button(action: {
-                        self.activeSheetHandler.showSheet.toggle()
-                        self.activeSheetHandler.activeSheet = .deckForm
-                        self.activeSheetHandler.activeDeck = nil
-                    }, label: {
-                        ZStack{
-                            Circle()
-                                .fill(Color.white)
-                                .frame(width: 44)
-                                .shadow(color: .fontColor, radius: 4, x: 3, y: 3)
-                                .shadow(color: .white, radius: 4, x: -3, y: -3)
-                            Image(systemName: "plus.circle")
-                                .foregroundColor(Color.iconActive)
-                                .font(.system(size: 24, weight: .bold))
-                        }
-                    })
-                }
-                .frame(maxHeight: 44)
-                .padding(.leading, 30)
-                .padding(.trailing, 30)
-                .padding(.top, 60)
+        VStack {
+            HStack {
+                Text("All decks")
+                    .foregroundColor(.fontColor)
+                    .font(.system(size: 32, weight: .bold))
                 
-                if self.gameStatus.loadDictionary().isEmpty {
-                    Spacer()
-                    VStack {
-                        Image("dictionary_empty")
-                        Text("Hey! It's empty here!")
-                            .font(.system(size: 22, weight: .heavy))
-                            .foregroundColor(Color.fontColor)
-                            .padding(.top, 20)
-                        Text("You haven’t added any decks\nyet. Add some decks and\nflashcards!")
-                            .fixedSize()
-                            .multilineTextAlignment(.center)
-                            .font(.system(size: 16, weight: .semibold))
-                            .foregroundColor(Color.fontColor)
-                            .padding(.top, 20)
+                Spacer()
+                
+                Button(action: {
+                    self.activeSheetHandler.showSheet.toggle()
+                    self.activeSheetHandler.activeSheet = .deckForm
+                    self.activeSheetHandler.activeDeck = nil
+                }, label: {
+                    ZStack{
+                        Circle()
+                            .fill(Color.white)
+                            .frame(width: 44)
+                            .shadow(color: .fontColor, radius: 4, x: 3, y: 3)
+                            .shadow(color: .white, radius: 4, x: -3, y: -3)
+                        Image(systemName: "plus.circle")
+                            .foregroundColor(Color.iconActive)
+                            .font(.system(size: 24, weight: .bold))
                     }
-                    Spacer()
-                } else {
-                    ScrollView(.vertical, showsIndicators: false) {
-                        ForEach(self.gameStatus.loadDictionary(), id: \.self) { deck in
-                            DeckView(deck: deck)
-                        }
+                })
+            }
+            .frame(maxHeight: 44)
+            .padding(.leading, 30)
+            .padding(.trailing, 30)
+            .padding(.top, 60)
+            
+            if self.gameStatus.loadDictionary().isEmpty {
+                Spacer()
+                VStack {
+                    Image("dictionary_empty")
+                    Text("Hey! It's empty here!")
+                        .font(.system(size: 22, weight: .heavy))
+                        .foregroundColor(Color.fontColor)
+                        .padding(.top, 20)
+                    Text("You haven’t added any decks\nyet. Add some decks and\nflashcards!")
+                        .fixedSize()
+                        .multilineTextAlignment(.center)
+                        .font(.system(size: 16, weight: .semibold))
+                        .foregroundColor(Color.fontColor)
+                        .padding(.top, 20)
+                }
+                Spacer()
+            } else {
+                ScrollView(.vertical, showsIndicators: false) {
+                    ForEach(self.gameStatus.loadDictionary(), id: \.self) { deck in
+                        DeckView(deck: deck)
                     }
                 }
             }
         }
+        
     }
 }
 
