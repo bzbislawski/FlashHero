@@ -11,9 +11,7 @@ import SwiftUI
 struct ActiveSheetView: View {
     @EnvironmentObject var activeSheetHandler: ActiveSheetHandler
     @State private var showSheet = false
-    
     @ObservedObject private var keyboard = KeyboardResponder()
-       @State private var textFieldInput: String = ""
     
     var body: some View {
         ZStack {
