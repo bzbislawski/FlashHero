@@ -44,11 +44,10 @@ struct DeckView: View {
                             self.activeSheetHandler.activeDeck = self.deck
                             self.activeSheetHandler.activeFlashCard = flashCard
                         }
-                        .frame(width: 160, height: 100)
+                        .frame(width: UIScreen.main.bounds.width / 2.8 , height: 100)
                         .padding(.top, 5)
                         .padding(.bottom)
-                        .padding(.trailing, 20)
-                        .padding(.leading, 20)
+                        .padding(.trailing, 30)
                     }
                     Button(action: {
                         self.activeSheetHandler.showSheet.toggle()
@@ -66,10 +65,10 @@ struct DeckView: View {
                             .foregroundColor(.secondaryBackgroundColor)
                             .padding(.top, 5)
                             .padding(.bottom)
-                            .padding(.trailing, 20)
-                            .padding(.leading, 20)
                     }
                 }
+                .padding(.leading, 20)
+                .padding(.trailing, 20)
             }
         }
     }
