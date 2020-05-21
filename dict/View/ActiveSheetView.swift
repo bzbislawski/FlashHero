@@ -12,6 +12,7 @@ struct ActiveSheetView: View {
     @EnvironmentObject var activeSheetHandler: ActiveSheetHandler
     @State private var showSheet = false
     @ObservedObject private var keyboard = KeyboardResponder()
+    @State private var currentPosition: CGSize = .zero
     
     var body: some View {
         ZStack {
@@ -35,6 +36,21 @@ struct ActiveSheetView: View {
                 .offset(y: self.showSheet ? 0 : UIScreen.main.bounds.height)
                 .cornerRadius(25, corners: [.topLeft, .topRight])
                 .animation(Animation.default)
+                .offset(x: self.currentPosition.width, y: self.currentPosition.height)
+                .gesture(DragGesture()
+                .onChanged { value in
+                    if value.translation.height > 0 {
+                        self.currentPosition = CGSize(width: 0, height: value.translation.height)
+                    }
+                }
+                .onEnded { value in
+                    if value.translation.height < 100 {
+                        self.currentPosition = CGSize.zero
+                    } else {
+                        self.showSheet = false
+                        self.activeSheetHandler.delayHideView()
+                    }
+                })
             }
         }
         .padding(.bottom, keyboard.currentHeight)

@@ -20,7 +20,7 @@ class ActiveSheetHandler: ObservableObject {
     @Published var activeFlashCard: FlashCard?
     
     public func delayHideView() {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.15) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
             self.showSheet = false
         }
     }
