@@ -22,6 +22,7 @@ class GameStatus: ObservableObject {
     
     func save(name: String, color: String) {
         deckRepository.save(name: name, color: color)
+        self.dictionary = deckRepository.getAll()
     }
     
     func save(deck: Deck, name: String, color: String) {
@@ -47,9 +48,6 @@ class GameStatus: ObservableObject {
     
     func delete(deck: Deck) {
         deckRepository.delete(deck: deck)
-    }
-    
-    func loadDictionary() -> [Deck] {
-        return deckRepository.getAll()
+        self.dictionary = deckRepository.getAll()
     }
 }

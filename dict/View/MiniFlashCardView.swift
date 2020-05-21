@@ -14,11 +14,11 @@ struct MiniFlashCardView: View {
     var flashCard: FlashCard?
     
     var miniFlashCardColor: String {
-        return self.gameStatus.loadDictionary().filter({ return $0.id == deck.id }).first?.wrappedColor ?? ""
+        self.gameStatus.dictionary.filter({ return $0.id == deck.id }).first?.wrappedColor ?? ""
     }
     
     var deckColor: DeckColor {
-        return deckColors.filter({return $0.name == self.miniFlashCardColor}).first ?? deckColors.first!
+        deckColors.filter({return $0.name == self.miniFlashCardColor}).first ?? deckColors.first!
     }
     
     var body: some View {

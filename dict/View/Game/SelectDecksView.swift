@@ -15,7 +15,7 @@ struct SelectDecksView: View {
     
     var body: some View {
         NavigationView {
-            List(self.gameStatus.loadDictionary(), id: \.self) { deck in
+            List(self.gameStatus.dictionary, id: \.self) { deck in
                 GameSheetRowView(deck: deck, isSelected: self.gamePlay.selectedDecks.contains(deck)) {
                     if self.gamePlay.selectedDecks.contains(deck) {
                         self.gamePlay.selectedDecks.removeAll(where: { $0 == deck })

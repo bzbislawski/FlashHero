@@ -43,7 +43,7 @@ struct DictionaryView: View {
             .padding(.trailing, 30)
             .padding(.top, 60)
             
-            if self.gameStatus.loadDictionary().isEmpty {
+            if self.gameStatus.dictionary.isEmpty {
                 Spacer()
                 VStack {
                     Image("dictionary_empty")
