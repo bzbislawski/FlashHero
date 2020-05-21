@@ -12,6 +12,12 @@ struct SelectDecksView: View {
     @Environment (\.presentationMode) var presentationMode
     @EnvironmentObject var gameStatus: GameStatus
     @EnvironmentObject var gamePlay: GamePlay
+    @State var isLabelSelectAll: Bool = true
+    
+    private enum LeadingButtonLabel {
+        static let SELECT = "Select All"
+        static let DESELECT = "Deselect All"
+    }
     
     var body: some View {
         NavigationView {
@@ -19,14 +25,26 @@ struct SelectDecksView: View {
                 GameSheetRowView(deck: deck, isSelected: self.gamePlay.selectedDecks.contains(deck)) {
                     if self.gamePlay.selectedDecks.contains(deck) {
                         self.gamePlay.selectedDecks.removeAll(where: { $0 == deck })
-                    }
-                    else {
+                    } else {
                         self.gamePlay.selectedDecks.append(deck)
                     }
                 }
             }
             .navigationBarTitle("Select decks")
             .navigationBarItems(
+                leading: Button(action: {
+                    self.gamePlay.selectedDecks.removeAll()
+                    if self.isLabelSelectAll {
+                        self.gameStatus.dictionary.forEach { deck in
+                            self.gamePlay.selectedDecks.append(deck)
+                        }
+                    }
+                    self.isLabelSelectAll.toggle()
+                }, label: {
+                    Text(self.isLabelSelectAll ? LeadingButtonLabel.SELECT : LeadingButtonLabel.DESELECT)
+                        .foregroundColor(Color.firstColor)
+                        .font(.system(size: 18, weight: .semibold))
+                }),
                 trailing: Button(action: {
                     self.presentationMode.wrappedValue.dismiss()
                 }, label: {
