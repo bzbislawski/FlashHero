@@ -51,12 +51,10 @@ struct DeckFormView: View {
             Divider()
             
             ZStack {
-                TextField("", text: $name)
+                TextField("Name", text: $name)
                     .padding(.leading, 10)
                     .padding(.trailing, 30)
                     .frame(height: 40)
-                    .background(Color.secondaryBackgroundColor)
-                    .cornerRadius(15)
                 HStack {
                     Spacer()
                     Button(action: { self.name = "" })
@@ -64,9 +62,11 @@ struct DeckFormView: View {
                         Image(systemName: "xmark.circle.fill")
                             .foregroundColor(.tertiaryBackgroundColor)
                     }
-                    .padding(.trailing, 8)
+                    .padding(.trailing, 10)
                 }
             }
+            .background(Color.secondaryBackgroundColor)
+            .cornerRadius(15)
             .padding(.leading, 20)
             .padding(.trailing, 20)
             .padding(.bottom, 15)

@@ -52,7 +52,7 @@ struct FlashCardFormView: View {
             Divider()
             
             ZStack {
-                TextField("", text: $word)
+                TextField("Front text", text: $word)
                     .padding(.leading, 10)
                     .padding(.trailing, 30)
                     .frame(height: 40)
@@ -77,7 +77,7 @@ struct FlashCardFormView: View {
             
             
             ZStack {
-                TextField("", text: $translation)
+                TextField("Reverse", text: $translation)
                     .padding(.leading, 10)
                     .padding(.trailing, 30)
                     .frame(height: 40)
