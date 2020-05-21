@@ -14,7 +14,7 @@ struct DeckView: View {
     var deck: Deck
     
     var flashCards: [FlashCard] {
-        return deck.flashCardArray
+        deck.flashCardArray
     }
     
     var body: some View {

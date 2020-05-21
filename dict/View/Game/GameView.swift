@@ -13,7 +13,7 @@ struct GameView: View {
     @State var selectedDecks: [Deck] = []
 
     var flashCards: Array<FlashCard> {
-        return self.gamePlay.flashCards
+        self.gamePlay.flashCards
     }
 
     var body: some View {

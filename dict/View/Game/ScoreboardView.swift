@@ -22,23 +22,23 @@ struct ScoreboardView: View {
             Spacer()
             
             VStack {
-                Text(self.gamePlay.getScoreboardData().text)
+                Text(self.gamePlay.scoreboard.text)
                     .font(.system(size: 30, weight: .semibold))
-                    .foregroundColor(self.gamePlay.getScoreboardData().color)
+                    .foregroundColor(self.gamePlay.scoreboard.color)
                     .padding(.bottom, 20)
                 
-                Image(self.gamePlay.getScoreboardData().image)
+                Image(self.gamePlay.scoreboard.image)
                     .frame(height: 150)
                     .padding(.bottom, 20)
                 
-                Text(self.gamePlay.getScoreboardData().sentence)
+                Text(self.gamePlay.scoreboard.sentence)
                     .fixedSize()
                     .multilineTextAlignment(.center)
                     .font(.system(size: 16, weight: .semibold))
                     .foregroundColor(Color.darkBlue)
                     .padding(.bottom, 20)
                 
-                Text("\(self.gamePlay.correctAnswers) / \(self.gamePlay.getTotalScore()) ")
+                Text("\(self.gamePlay.correctAnswers) / \(self.gamePlay.totalScore) ")
                     .font(.system(size: 30, weight: .black))
                     .foregroundColor(Color.rgb(r: 62, g: 102, b: 171))
             }
