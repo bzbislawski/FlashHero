@@ -12,10 +12,12 @@ import CoreData
 class GameStatus: ObservableObject {
     private var flashCardRepository: FlashCardRepository
     private var deckRepository: DeckRepository
+    @Published var dictionary: [Deck] = []
 
     init(flashCardRepository: FlashCardRepository, deckRepository: DeckRepository) {
         self.flashCardRepository = flashCardRepository
         self.deckRepository = deckRepository
+        self.dictionary = deckRepository.getAll()
     }
     
     func save(name: String, color: String) {
@@ -24,6 +26,7 @@ class GameStatus: ObservableObject {
     
     func save(deck: Deck, name: String, color: String) {
         deckRepository.save(deck: deck, name: name, color: color)
+        self.dictionary = deckRepository.getAll()
     }
     
     func save(deck: Deck, word: String, translation: String) {
@@ -35,6 +38,7 @@ class GameStatus: ObservableObject {
     
     func save(deck: Deck, flashCard: FlashCard) {
         flashCardRepository.save(deck: deck, flashCard: flashCard)
+        self.dictionary = deckRepository.getAll()
     }
     
     func delete(flashCard: FlashCard) {
@@ -46,6 +50,6 @@ class GameStatus: ObservableObject {
     }
     
     func loadDictionary() -> [Deck] {
-        return deckRepository.getAll();
+        return deckRepository.getAll()
     }
 }

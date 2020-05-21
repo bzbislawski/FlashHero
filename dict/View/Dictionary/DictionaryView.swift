@@ -61,7 +61,7 @@ struct DictionaryView: View {
                 Spacer()
             } else {
                 ScrollView(.vertical, showsIndicators: false) {
-                    ForEach(self.gameStatus.loadDictionary(), id: \.self) { deck in
+                    ForEach(self.gameStatus.dictionary, id: \.self) { deck in
                         DeckView(deck: deck)
                     }
                 }
