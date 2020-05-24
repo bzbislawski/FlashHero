@@ -32,10 +32,6 @@ struct FlashCardView: View {
             .shadow(radius: 10)
             .rotation3DEffect(Angle(degrees: isAnswer ? 180 : 0), axis: (x: 1, y: 0, z: 0))
             .rotation3DEffect(.degrees(self.showAnswer ? 180 : 0), axis: (x: 1, y: 0, z: 0))
-            .animation(self.animation)
-            .onTapGesture {
-                self.showAnswer.toggle()
-        }
     }
     
     var body: some View {
@@ -50,17 +46,13 @@ struct FlashCardView: View {
                 .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color.white, lineWidth: 4))
                 .shadow(radius: 20, x: 0, y: self.showAnswer ? -20 : 20)
                 .rotation3DEffect(.degrees(self.showAnswer ? 180 : 0), axis: (x: 1, y: 0, z: 0))
-                .animation(self.animation)
-                .onTapGesture {
-                    self.showAnswer.toggle()
-            }
             
             self.textView(text: self.flashCard.wrappedWord, isAnswer: false)
                 .zIndex(self.showAnswer ? -1 : 0)
         }
         .frame(width: UIScreen.main.bounds.width)
         .offset(x: self.goAway ? UIScreen.main.bounds.width : self.currentPosition.width)
-        .animation(Animation.default)
+        .animation(self.animation)
         .gesture(DragGesture()
         .onChanged { value in
             self.currentPosition = CGSize(width: value.translation.width, height: 0)
@@ -80,6 +72,9 @@ struct FlashCardView: View {
                 }
             }
         })
+            .onTapGesture {
+                self.showAnswer.toggle()
+        }
     }
 }
 
