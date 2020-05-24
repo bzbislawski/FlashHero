@@ -11,9 +11,15 @@ import SwiftUI
 struct FlashCardView: View {
     @EnvironmentObject var gamePlay: GamePlay
     @State private var showAnswer = false
-    @State private var goAway = false
+    @State private var goAway = GoAway.UNANSWERED
     @State private var currentPosition: CGSize = .zero
     var flashCard: FlashCard
+    
+    private enum GoAway {
+        static let CORRECT = 1
+        static let WRONG = -1
+        static let UNANSWERED = 0
+    }
     
     var animation: Animation {
         Animation.interpolatingSpring(mass: 1, stiffness: 80, damping: 10, initialVelocity: 0)
@@ -51,7 +57,7 @@ struct FlashCardView: View {
                 .zIndex(self.showAnswer ? -1 : 0)
         }
         .frame(width: UIScreen.main.bounds.width)
-        .offset(x: self.goAway ? UIScreen.main.bounds.width : self.currentPosition.width)
+        .offset(x: self.goAway != GoAway.UNANSWERED ? CGFloat(self.goAway) * UIScreen.main.bounds.width : self.currentPosition.width)
         .animation(self.animation)
         .gesture(DragGesture()
         .onChanged { value in
@@ -61,13 +67,14 @@ struct FlashCardView: View {
             if value.translation.width < 180 && value.translation.width > -180 {
                 self.currentPosition = CGSize.zero
             } else {
-                self.goAway.toggle()
                 if self.currentPosition.width > 0 {
                     self.gamePlay.correctAnswers += 1
+                    self.goAway = GoAway.CORRECT
                 } else {
                     self.gamePlay.wrongAnswers += 1
+                    self.goAway = GoAway.WRONG
                 }
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
                     self.gamePlay.flashCards.removeAll(where: { $0 == self.flashCard })
                 }
             }
