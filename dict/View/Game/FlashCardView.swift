@@ -11,9 +11,12 @@ import SwiftUI
 struct FlashCardView: View {
     @EnvironmentObject var gamePlay: GamePlay
     @State private var showAnswer = false
+    @State private var showFrontText = true
+    @State private var showReverseText = false
     @State private var goAway = GoAway.UNANSWERED
     @State private var currentPosition: CGSize = .zero
     var flashCard: FlashCard
+    var animationDuration = 0.25
     
     private enum GoAway {
         static let CORRECT = 1
@@ -21,30 +24,21 @@ struct FlashCardView: View {
         static let UNANSWERED = 0
     }
     
-    var animation: Animation {
-        Animation.interpolatingSpring(mass: 1, stiffness: 80, damping: 10, initialVelocity: 0)
-    }
-    
     var deckColor: DeckColor {
         deckColors.filter({return $0.name == self.flashCard.origin!.color}).first ?? deckColors.first!
     }
     
-    func textView(text: String, isAnswer: Bool) -> some View {
+    func textView(text: String) -> some View {
         Text(text)
             .bold()
             .font(.title)
             .foregroundColor(Color.white)
             .frame(maxWidth: 280)
             .shadow(radius: 10)
-            .rotation3DEffect(Angle(degrees: isAnswer ? 180 : 0), axis: (x: 1, y: 0, z: 0))
-            .rotation3DEffect(.degrees(self.showAnswer ? 180 : 0), axis: (x: 1, y: 0, z: 0))
     }
     
     var body: some View {
         ZStack {
-            self.textView(text: self.flashCard.wrappedTranslation, isAnswer: true)
-                .zIndex(self.showAnswer ? 1 : 0)
-            
             Rectangle()
                 .fill(LinearGradient(gradient: Gradient(colors: [deckColor.colorOne, deckColor.colorTwo]), startPoint: .topLeading, endPoint: .bottomTrailing))
                 .cornerRadius(10)
@@ -52,13 +46,21 @@ struct FlashCardView: View {
                 .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color.white, lineWidth: 4))
                 .shadow(radius: 20, x: 0, y: self.showAnswer ? -20 : 20)
                 .rotation3DEffect(.degrees(self.showAnswer ? 180 : 0), axis: (x: 1, y: 0, z: 0))
+                .animation(.linear(duration: self.animationDuration))
             
-            self.textView(text: self.flashCard.wrappedWord, isAnswer: false)
-                .zIndex(self.showAnswer ? -1 : 0)
+            self.textView(text: self.flashCard.wrappedWord)
+                .rotation3DEffect(.degrees(self.showAnswer ? 180 : 0), axis: (x: 1, y: 0, z: 0))
+                .animation(.linear(duration: self.animationDuration))
+                .opacity(self.showFrontText ? 1 : 0)
+            
+            self.textView(text: self.flashCard.wrappedTranslation)
+                .rotation3DEffect(.degrees(self.showAnswer ? 0 : -180), axis: (x: 1, y: 0, z: 0))
+                .animation(.linear(duration: self.animationDuration))
+                .opacity(self.showReverseText ? 1 : 0)
         }
         .frame(width: UIScreen.main.bounds.width)
         .offset(x: self.goAway != GoAway.UNANSWERED ? CGFloat(self.goAway) * UIScreen.main.bounds.width : self.currentPosition.width)
-        .animation(self.animation)
+            
         .gesture(DragGesture()
         .onChanged { value in
             self.currentPosition = CGSize(width: value.translation.width, height: 0)
@@ -81,7 +83,13 @@ struct FlashCardView: View {
         })
             .onTapGesture {
                 self.showAnswer.toggle()
+                
+                DispatchQueue.main.asyncAfter(deadline: .now() + self.animationDuration / 2) {
+                    self.showFrontText.toggle()
+                    self.showReverseText.toggle()
+                }
         }
+        
     }
 }
 
