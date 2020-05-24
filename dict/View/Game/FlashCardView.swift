@@ -13,7 +13,6 @@ struct FlashCardView: View {
     @State private var showAnswer = false
     @State private var goAway = false
     @State private var currentPosition: CGSize = .zero
-    @State private var newPosition: CGSize = .zero
     var flashCard: FlashCard
     
     var animation: Animation {
@@ -21,7 +20,7 @@ struct FlashCardView: View {
     }
     
     var deckColor: DeckColor {
-        return deckColors.filter({return $0.name == self.flashCard.origin!.color}).first ?? deckColors.first!
+        deckColors.filter({return $0.name == self.flashCard.origin!.color}).first ?? deckColors.first!
     }
     
     func textView(text: String, isAnswer: Bool) -> some View {
@@ -32,20 +31,11 @@ struct FlashCardView: View {
             .frame(maxWidth: 280)
             .shadow(radius: 10)
             .rotation3DEffect(Angle(degrees: isAnswer ? 180 : 0), axis: (x: 1, y: 0, z: 0))
-            .offset(x: self.currentPosition.width, y: self.currentPosition.height)
             .rotation3DEffect(.degrees(self.showAnswer ? 180 : 0), axis: (x: 1, y: 0, z: 0))
+            .animation(self.animation)
             .onTapGesture {
                 self.showAnswer.toggle()
         }
-        .animation(self.animation)
-        .gesture(DragGesture()
-        .onChanged { value in
-            self.currentPosition = CGSize(width: value.translation.width + self.newPosition.width, height: self.showAnswer ? -1 * value.translation.height : value.translation.height + self.newPosition.height)
-        }
-        .onEnded { value in
-            self.currentPosition = CGSize.zero
-            self.newPosition = self.currentPosition
-        })
     }
     
     var body: some View {
@@ -59,37 +49,37 @@ struct FlashCardView: View {
                 .frame(width: 320, height: 200)
                 .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color.white, lineWidth: 4))
                 .shadow(radius: 20, x: 0, y: self.showAnswer ? -20 : 20)
-                .offset(x: self.currentPosition.width, y: self.currentPosition.height)
                 .rotation3DEffect(.degrees(self.showAnswer ? 180 : 0), axis: (x: 1, y: 0, z: 0))
+                .animation(self.animation)
                 .onTapGesture {
                     self.showAnswer.toggle()
             }
-            .animation(self.animation)
-            .gesture(DragGesture()
-            .onChanged { value in
-                self.currentPosition = CGSize(width: value.translation.width + self.newPosition.width, height: self.showAnswer ? -1 * value.translation.height : value.translation.height + self.newPosition.height)
-                if self.currentPosition.width >= 180 || self.currentPosition.width <= -180 {
-                    self.goAway = true
-                    self.currentPosition.width *= 8
-                }
-            }
-            .onEnded { value in
-                if (!self.goAway) {
-                    self.currentPosition = CGSize.zero
-                    self.newPosition = self.currentPosition
-                } else {
-                    if self.currentPosition.width > 0 {
-                        self.gamePlay.correctAnswers += 1
-                    } else {
-                        self.gamePlay.wrongAnswers += 1
-                    }
-                    self.gamePlay.flashCards.removeAll(where: { $0 == self.flashCard })
-                }
-            })
             
             self.textView(text: self.flashCard.wrappedWord, isAnswer: false)
                 .zIndex(self.showAnswer ? -1 : 0)
         }
+        .frame(width: UIScreen.main.bounds.width)
+        .offset(x: self.goAway ? UIScreen.main.bounds.width : self.currentPosition.width)
+        .animation(Animation.default)
+        .gesture(DragGesture()
+        .onChanged { value in
+            self.currentPosition = CGSize(width: value.translation.width, height: 0)
+        }
+        .onEnded { value in
+            if value.translation.width < 180 && value.translation.width > -180 {
+                self.currentPosition = CGSize.zero
+            } else {
+                self.goAway.toggle()
+                if self.currentPosition.width > 0 {
+                    self.gamePlay.correctAnswers += 1
+                } else {
+                    self.gamePlay.wrongAnswers += 1
+                }
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
+                    self.gamePlay.flashCards.removeAll(where: { $0 == self.flashCard })
+                }
+            }
+        })
     }
 }
 
@@ -99,11 +89,11 @@ struct FlashCardView_Previews: PreviewProvider {
         let repository = FlashCardRepository(moc: context)
         let repository2 = DeckRepository(moc: context)
         let gameStatus = GameStatus(flashCardRepository: repository, deckRepository: repository2)
-
+        
         let deck = Deck(context: context)
         deck.name = "Deck name"
         deck.color = "blue"
-
+        
         let flashCard = FlashCard(context: context)
         flashCard.word = "Kitchen"
         flashCard.translation = "Kuchnia"

@@ -33,10 +33,9 @@ struct ActiveSheetView: View {
                 .padding(.bottom, (UIApplication.shared.windows.last?.safeAreaInsets.bottom)! + 10)
                 .frame(width: UIScreen.main.bounds.size.width)
                 .background(Color.backgroundColor)
-                .offset(y: self.showSheet ? 0 : UIScreen.main.bounds.height)
                 .cornerRadius(25, corners: [.topLeft, .topRight])
+                .offset(y: self.showSheet ? self.currentPosition.height : UIScreen.main.bounds.height)
                 .animation(Animation.default)
-                .offset(x: self.currentPosition.width, y: self.currentPosition.height)
                 .gesture(DragGesture()
                 .onChanged { value in
                     if value.translation.height > 0 {
