@@ -16,7 +16,7 @@ struct FlashCardView: View {
     @State private var goAway = GoAway.UNANSWERED
     @State private var currentPosition: CGSize = .zero
     var flashCard: FlashCard
-    var animationDuration = 0.25
+    var animationDuration = 0.3
     
     private enum GoAway {
         static let CORRECT = 1
@@ -47,16 +47,26 @@ struct FlashCardView: View {
                 .shadow(radius: 20, x: 0, y: self.showAnswer ? -20 : 20)
                 .rotation3DEffect(.degrees(self.showAnswer ? 180 : 0), axis: (x: 1, y: 0, z: 0))
                 .animation(.linear(duration: self.animationDuration))
+                .onTapGesture {
+                    self.showAnswer.toggle()
+            }
             
             self.textView(text: self.flashCard.wrappedWord)
+                .opacity(self.showAnswer ? 0 : 1)
+                .animation(Animation.linear(duration: self.animationDuration / 2).delay(self.showAnswer ? 0 : self.animationDuration / 2))
                 .rotation3DEffect(.degrees(self.showAnswer ? 180 : 0), axis: (x: 1, y: 0, z: 0))
                 .animation(.linear(duration: self.animationDuration))
-                .opacity(self.showFrontText ? 1 : 0)
+                .onTapGesture {
+                    self.showAnswer.toggle()
+            }
             
-            self.textView(text: self.flashCard.wrappedTranslation)
-                .rotation3DEffect(.degrees(self.showAnswer ? 0 : -180), axis: (x: 1, y: 0, z: 0))
-                .animation(.linear(duration: self.animationDuration))
-                .opacity(self.showReverseText ? 1 : 0)
+            if self.showAnswer {
+                self.textView(text: self.flashCard.wrappedTranslation)
+                    .animation(.easeInOut(duration: 1.0))
+                    .transition(.asymmetric(
+                        insertion: AnyTransition.opacity.animation(Animation.easeInOut(duration: 0.5).delay(0.3)),
+                        removal: AnyTransition.opacity.animation(Animation.easeInOut(duration: 0.1))))
+            }
         }
         .frame(width: UIScreen.main.bounds.width)
         .offset(x: self.goAway != GoAway.UNANSWERED ? CGFloat(self.goAway) * UIScreen.main.bounds.width : self.currentPosition.width)
