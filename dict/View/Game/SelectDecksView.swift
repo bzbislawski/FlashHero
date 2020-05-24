@@ -14,7 +14,7 @@ struct SelectDecksView: View {
     @EnvironmentObject var gamePlay: GamePlay
     
     private enum LeadingButtonLabel {
-        static let SELECT = "Select All"
+        static let SELECT = "Select All     "
         static let DESELECT = "Deselect All"
     }
     
@@ -52,7 +52,7 @@ struct SelectDecksView: View {
                 trailing: Button(action: {
                     self.presentationMode.wrappedValue.dismiss()
                 }, label: {
-                    Text("Dismiss")
+                    Text("Done")
                         .foregroundColor(Color.firstColor)
                         .font(.system(size: 18, weight: .semibold))
                 })
