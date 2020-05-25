@@ -42,7 +42,8 @@ struct HomepageView: View {
                     ActiveSheetView()
                 }
             }
-            .edgesIgnoringSafeArea(.all)
+            // TODO: Figure this out
+            .edgesIgnoringSafeArea(self.gamePlay.isGameStarted ? Edge.Set.init() : Edge.Set.all)
         }
     }
 }

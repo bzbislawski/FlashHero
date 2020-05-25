@@ -41,7 +41,7 @@ struct DictionaryView: View {
             .frame(maxHeight: 44)
             .padding(.leading, 30)
             .padding(.trailing, 30)
-            .padding(.top, 60)
+            .padding(.top, 40)
             
             if self.gameStatus.dictionary.isEmpty {
                 Spacer()

@@ -38,7 +38,7 @@ struct ScoreboardView: View {
                     .foregroundColor(Color.darkBlue)
                     .padding(.bottom, 20)
                 
-                Text("\(self.gamePlay.correctAnswers) / \(self.gamePlay.totalScore) ")
+                Text("\(self.gamePlay.correctAnswers) / \(self.gamePlay.totalFlashCardCount) ")
                     .font(.system(size: 30, weight: .black))
                     .foregroundColor(Color.rgb(r: 62, g: 102, b: 171))
             }

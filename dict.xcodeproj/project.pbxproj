@@ -40,6 +40,7 @@
 		D64D51172385E0BF0075AD3D /* StartGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64D51162385E0BF0075AD3D /* StartGameView.swift */; };
 		D66668252386D311008421AB /* DictionaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D66668242386D311008421AB /* DictionaryView.swift */; };
 		D66E508A2470BB76006B055C /* KeyboardGuardian.swift in Sources */ = {isa = PBXBuildFile; fileRef = D66E50892470BB76006B055C /* KeyboardGuardian.swift */; };
+		D6A8CE42247B61850048AA21 /* GamePlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6A8CE41247B61850048AA21 /* GamePlayView.swift */; };
 		D6BC6CF52464E323007D754A /* ButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6BC6CF42464E323007D754A /* ButtonView.swift */; };
 		D6BC6CF724672800007D754A /* ActiveSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6BC6CF624672800007D754A /* ActiveSheetView.swift */; };
 		D6EB4EC72418472B00654307 /* ViewRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6EB4EC62418472B00654307 /* ViewRouter.swift */; };
@@ -81,6 +82,7 @@
 		D64D51162385E0BF0075AD3D /* StartGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartGameView.swift; sourceTree = "<group>"; };
 		D66668242386D311008421AB /* DictionaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryView.swift; sourceTree = "<group>"; };
 		D66E50892470BB76006B055C /* KeyboardGuardian.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardGuardian.swift; sourceTree = "<group>"; };
+		D6A8CE41247B61850048AA21 /* GamePlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamePlayView.swift; sourceTree = "<group>"; };
 		D6BC6CF42464E323007D754A /* ButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonView.swift; sourceTree = "<group>"; };
 		D6BC6CF624672800007D754A /* ActiveSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveSheetView.swift; sourceTree = "<group>"; };
 		D6EB4EC62418472B00654307 /* ViewRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewRouter.swift; sourceTree = "<group>"; };
@@ -118,6 +120,7 @@
 				D62940BC2405D7C800554C66 /* GameSheetRowView.swift */,
 				BADE723D24201BA5003E7EB1 /* CardsOrderView.swift */,
 				D60F038023B3E0A5007F1F74 /* ScoreboardView.swift */,
+				D6A8CE41247B61850048AA21 /* GamePlayView.swift */,
 			);
 			path = Game;
 			sourceTree = "<group>";
@@ -286,6 +289,7 @@
 			files = (
 				D63B466223D517EC008370C7 /* DeckView.swift in Sources */,
 				BA50F35323DB11FA005D624B /* Deck+CoreDataProperties.swift in Sources */,
+				D6A8CE42247B61850048AA21 /* GamePlayView.swift in Sources */,
 				D6BC6CF52464E323007D754A /* ButtonView.swift in Sources */,
 				BA8C74A7240533610021C19C /* SelectDecksView.swift in Sources */,
 				D66E508A2470BB76006B055C /* KeyboardGuardian.swift in Sources */,

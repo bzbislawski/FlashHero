@@ -22,6 +22,7 @@ class GamePlay: ObservableObject {
     @Published var isGameStarted: Bool = false
     @Published var flashCards: [FlashCard] = []
     
+    @Published var totalFlashCardCount: Int = 0
     @Published var correctAnswers: Int = 0
     @Published var wrongAnswers: Int = 0
     private var scoreboardCalculator = ScoreboardCalculator()
@@ -30,7 +31,7 @@ class GamePlay: ObservableObject {
         ["Default", "Alphabetical", "Random"]
     }
     
-    var totalScore: Int {
+    var answersCount: Int {
         self.correctAnswers + self.wrongAnswers
     }
     
@@ -46,6 +47,8 @@ class GamePlay: ObservableObject {
             flashCards += $0.flashCardArray
         }
         
+        self.totalFlashCardCount = flashCards.count
+        
         switch self.selectedCardsOrder {
         case "Alphabetical":
             self.flashCards = flashCards.sorted {$0.wrappedWord < $1.wrappedWord }
@@ -60,6 +63,7 @@ class GamePlay: ObservableObject {
         self.isGameStarted = false
         self.correctAnswers = 0
         self.wrongAnswers = 0
+        self.totalFlashCardCount = 0
     }
     
     func reset() {
