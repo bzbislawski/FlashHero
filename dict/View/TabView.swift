@@ -11,12 +11,10 @@ import SwiftUI
 struct TabView: View {
     @EnvironmentObject var gamePlay: GamePlay
     @EnvironmentObject var viewRouter: ViewRouter
-    var geometry: GeometryProxy
     @State var showsAlert = false
     @State var redirectTo = Homepapge.dictionary
     
     var body: some View {
-        
         HStack {
             Spacer()
             Button(action: {
@@ -30,7 +28,7 @@ struct TabView: View {
                 Image(systemName: "book.fill")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
-                    .frame(width: self.geometry.size.width/5, height: 32)
+                    .frame(width: UIScreen.main.bounds.width / 5, height: 32)
                     .foregroundColor(self.viewRouter.currentView == Homepapge.dictionary ? .iconActive : .iconInactive)
             })
             
@@ -42,7 +40,7 @@ struct TabView: View {
                 Image(systemName: "gamecontroller.fill")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
-                    .frame(width: self.geometry.size.width/5, height: 32)
+                    .frame(width: UIScreen.main.bounds.width / 5, height: 32)
                     .foregroundColor(self.viewRouter.currentView == Homepapge.game ? .iconActive : .iconInactive)
             })
             
@@ -52,6 +50,8 @@ struct TabView: View {
         .alert(isPresented: $showsAlert, content: { () -> Alert in
             Alert(title: Text("Leave the game?"), message: Text("All the progress will not be saved."),
                   primaryButton: .default(Text("Yes"), action: {
+                    self.gamePlay.stop()
+                    self.gamePlay.reset()
                     self.viewRouter.updateView(tabName: self.redirectTo)
                   }),
                   secondaryButton: .default(Text("Cancel")))

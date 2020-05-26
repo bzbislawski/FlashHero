@@ -10,19 +10,32 @@ import SwiftUI
 
 struct GameView: View {
     @EnvironmentObject var gamePlay: GamePlay
-
+    
     var body: some View {
-        GeometryReader { geometry in
-            VStack {
-                if self.gamePlay.isGameStarted {
-                    if self.gamePlay.flashCards.count == 0 {
+        VStack {
+            if self.gamePlay.isGameStarted {
+                if self.gamePlay.flashCards.count == 0 {
+                    ZStack {
+                        BackgroundView()
                         ScoreboardView()
-                    } else {
+                    }.edgesIgnoringSafeArea(.all)
+                } else {
+                    ZStack {
+                        BackgroundView()
                         GamePlayView()
                     }
-                } else {
-                    StartGameView()
                 }
+            } else {
+                ZStack {
+                    BackgroundView()
+                    VStack {
+                        StartGameView()
+                        Divider()
+                        TabView()
+                            .frame(height: UIScreen.main.bounds.height * 0.1)
+                            .background(Color.backgroundColor)
+                    }
+                }.edgesIgnoringSafeArea(.all)
             }
         }
     }

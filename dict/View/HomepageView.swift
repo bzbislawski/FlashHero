@@ -14,36 +14,27 @@ struct HomepageView: View {
     @EnvironmentObject var activeSheetHandler: ActiveSheetHandler
     
     var body: some View {
-        GeometryReader { geometry in
-            ZStack{
-                BackgroundView()
-                
-                VStack {
-                    if self.viewRouter.currentView == Homepapge.dictionary {
-                        DictionaryView().onAppear() {
-                            self.gamePlay.stop()
-                            self.gamePlay.reset()
-                        }
-                    } else if self.viewRouter.currentView == Homepapge.game {
-                        GameView()
-                    }
-                    
-                    Spacer()
-                    
-                    if !self.gamePlay.isGameStarted {
-                        TabView(geometry: geometry)
+        VStack {
+            if self.viewRouter.currentView == Homepapge.dictionary {
+                ZStack {
+                    BackgroundView()
+                    VStack {
+                        DictionaryView()
+                        
+                        Divider()
+                        
+                        TabView()
                             .frame(height: UIScreen.main.bounds.height * 0.1)
-                            .border(Color.borderColor)
                             .background(Color.backgroundColor)
                     }
+                    if self.activeSheetHandler.showSheet {
+                        ActiveSheetView()
+                    }
                 }
-
-                if self.activeSheetHandler.showSheet {
-                    ActiveSheetView()
-                }
+                .edgesIgnoringSafeArea(.all)
+            } else if self.viewRouter.currentView == Homepapge.game {
+                GameView()
             }
-            // TODO: Figure this out
-            .edgesIgnoringSafeArea(self.gamePlay.isGameStarted ? Edge.Set.init() : Edge.Set.all)
         }
     }
 }

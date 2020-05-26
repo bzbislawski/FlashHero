@@ -151,11 +151,11 @@ struct StartGame_Previews: PreviewProvider {
     static var previews: some View {
         let env = ViewRouter()
         let gamePlay = GamePlay()
-        return GeometryReader { geometry in
-            VStack {
-                StartGameView().environmentObject(gamePlay)
-                TabView(geometry: geometry).environmentObject(env)
-            }.edgesIgnoringSafeArea(.all)
-        }
+        
+        return VStack {
+            StartGameView().environmentObject(gamePlay)
+            Divider()
+            TabView().environmentObject(env)
+        }.edgesIgnoringSafeArea(.all)
     }
 }
