@@ -20,10 +20,7 @@ struct GameView: View {
                         ScoreboardView()
                     }.edgesIgnoringSafeArea(.all)
                 } else {
-                    ZStack {
-                        BackgroundView()
-                        GamePlayView()
-                    }
+                    GamePlayView().edgesIgnoringSafeArea(.all)
                 }
             } else {
                 ZStack {

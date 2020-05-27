@@ -42,6 +42,7 @@ struct DictionaryView: View {
             .padding(.leading, 30)
             .padding(.trailing, 30)
             .padding(.top, 40)
+            .padding(.bottom, 10)
             
             if self.gameStatus.dictionary.isEmpty {
                 Spacer()
@@ -60,7 +61,7 @@ struct DictionaryView: View {
                 }
                 Spacer()
             } else {
-                ScrollView(.vertical, showsIndicators: false) {
+                ScrollView(.vertical, showsIndicators: true) {
                     ForEach(self.gameStatus.dictionary, id: \.self) { deck in
                         DeckView(deck: deck)
                     }
