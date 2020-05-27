@@ -46,16 +46,14 @@ struct FlashCardView: View {
                 .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color.white, lineWidth: 4))
                 .shadow(radius: 20, x: 0, y: self.showAnswer ? -20 : 20)
                 .rotation3DEffect(.degrees(self.showAnswer ? 180 : 0), axis: (x: 1, y: 0, z: 0))
-                .animation(.linear(duration: self.animationDuration))
                 .onTapGesture {
                     self.showAnswer.toggle()
             }
             
             self.textView(text: self.flashCard.wrappedWord)
                 .opacity(self.showAnswer ? 0 : 1)
-                .animation(Animation.linear(duration: self.animationDuration / 2).delay(self.showAnswer ? 0 : self.animationDuration / 2))
+                .animation(Animation.linear(duration: self.animationDuration / 2))
                 .rotation3DEffect(.degrees(self.showAnswer ? 180 : 0), axis: (x: 1, y: 0, z: 0))
-                .animation(.linear(duration: self.animationDuration))
                 .onTapGesture {
                     self.showAnswer.toggle()
             }
