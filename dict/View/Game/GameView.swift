@@ -15,27 +15,18 @@ struct GameView: View {
         VStack {
             if self.gamePlay.isGameStarted {
                 if self.gamePlay.flashCards.count == 0 {
-                    ZStack {
-                        BackgroundView()
-                        ScoreboardView()
-                    }.edgesIgnoringSafeArea(.all)
+                    ScoreboardView()
                 } else {
-                    ZStack {
-                        BackgroundView()
-                        GamePlayView()
-                    }.edgesIgnoringSafeArea(.all)
+                    GamePlayView()
                 }
             } else {
-                ZStack {
-                    BackgroundView()
-                    VStack {
-                        StartGameView()
-                        Divider()
-                        TabView()
-                            .frame(height: UIScreen.main.bounds.height * 0.1)
-                            .background(Color.backgroundColor)
-                    }
-                }.edgesIgnoringSafeArea(.all)
+                VStack {
+                    StartGameView()
+                    Divider()
+                    TabView()
+                        .frame(height: UIScreen.main.bounds.height * 0.1)
+                        .background(Color.backgroundColor)
+                }
             }
         }
     }

@@ -14,28 +14,23 @@ struct HomepageView: View {
     @EnvironmentObject var activeSheetHandler: ActiveSheetHandler
     
     var body: some View {
-        VStack {
+        ZStack {
+            BackgroundView()
             if self.viewRouter.currentView == Homepapge.dictionary {
-                ZStack {
-                    BackgroundView()
-                    VStack {
-                        DictionaryView()
-                        
-                        Divider()
-                        
-                        TabView()
-                            .frame(height: UIScreen.main.bounds.height * 0.1)
-                            .background(Color.backgroundColor)
-                    }
-                    if self.activeSheetHandler.showSheet {
-                        ActiveSheetView()
-                    }
+                VStack {
+                    DictionaryView()
+                    Divider()
+                    TabView()
+                        .frame(height: UIScreen.main.bounds.height * 0.1)
+                        .background(Color.backgroundColor)
                 }
-                .edgesIgnoringSafeArea(.all)
+                if self.activeSheetHandler.showSheet {
+                    ActiveSheetView()
+                }
             } else if self.viewRouter.currentView == Homepapge.game {
                 GameView()
             }
-        }
+        }.edgesIgnoringSafeArea(.all)
     }
 }
 
