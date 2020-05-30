@@ -41,7 +41,17 @@ struct DeckFormView: View {
                         .background(Color.red)
                         .cornerRadius(8)
                         Spacer()
-                    }.padding(.leading, 20)
+                    }
+                    .padding(.leading, 20)
+                    .alert(isPresented: $showingDeleteAlert) { () -> Alert in
+                        Alert(title: Text("Are you sure?"), message: Text("Deck and its flashcards will be deleted permanently."),
+                              primaryButton: .default(Text("Yes"), action: {
+                                self.gameStatus.delete(deck: self.activeSheetHandler.activeDeck!)
+                                self.showSheet.toggle()
+                                self.activeSheetHandler.delayHideView()
+                              }),
+                              secondaryButton: .default(Text("Cancel")))
+                    }
                 }
                 Text("Dictionary")
                     .font(.system(size: 18, weight: .semibold))
@@ -121,26 +131,17 @@ struct DeckFormView: View {
             }) {
                 ButtonView(text: "Save", backgroundColor: Color.darkBlue, horizontalPadding: 20)
             }
+            .alert(isPresented: $showingValidationAlert) {
+                Alert(
+                    title: Text("Error"),
+                    message: Text("Name can not be empty"),
+                    dismissButton: .default(Text("Got it!"))
+                )
+            }
         }
         .onAppear {
             self.name = self.activeSheetHandler.activeDeck?.wrappedName ?? self.name
             self.color = self.activeSheetHandler.activeDeck?.wrappedColor ?? self.color
-        }
-        .alert(isPresented: $showingValidationAlert) {
-            Alert(
-                title: Text("Error"),
-                message: Text("Name can not be empty"),
-                dismissButton: .default(Text("Got it!"))
-            )
-        }
-        .alert(isPresented: $showingDeleteAlert) { () -> Alert in
-            Alert(title: Text("Are you sure?"), message: Text("Deck and its flashcards will be deleted permanently."),
-                  primaryButton: .default(Text("Yes"), action: {
-                    self.gameStatus.delete(deck: self.activeSheetHandler.activeDeck!)
-                    self.showSheet.toggle()
-                    self.activeSheetHandler.delayHideView()
-                  }),
-                  secondaryButton: .default(Text("Cancel")))
         }
     }
 }
