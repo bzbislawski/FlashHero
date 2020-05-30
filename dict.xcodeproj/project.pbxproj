@@ -69,7 +69,7 @@
 		D63B467323D7B51C008370C7 /* DeckRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckRepository.swift; sourceTree = "<group>"; };
 		D63B467723DE421B008370C7 /* MiniFlashCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniFlashCardView.swift; sourceTree = "<group>"; };
 		D6412B802388367000EA3758 /* FlashCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashCardView.swift; sourceTree = "<group>"; };
-		D64D50FA2385CA900075AD3D /* FlashCards.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlashCards.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D64D50FA2385CA900075AD3D /* FlashHero.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlashHero.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D64D50FD2385CA900075AD3D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D64D50FF2385CA900075AD3D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		D64D51022385CA900075AD3D /* dict.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = dict.xcdatamodel; sourceTree = "<group>"; };
@@ -136,7 +136,7 @@
 		D64D50FB2385CA900075AD3D /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				D64D50FA2385CA900075AD3D /* FlashCards.app */,
+				D64D50FA2385CA900075AD3D /* FlashHero.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -233,7 +233,7 @@
 			);
 			name = dict;
 			productName = dict;
-			productReference = D64D50FA2385CA900075AD3D /* FlashCards.app */;
+			productReference = D64D50FA2385CA900075AD3D /* FlashHero.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -465,8 +465,8 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = bzbislawski.FlashCards;
-				PRODUCT_NAME = FlashCards;
+				PRODUCT_BUNDLE_IDENTIFIER = bzbislawski.FlashHero;
+				PRODUCT_NAME = FlashHero;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -485,8 +485,8 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = bzbislawski.FlashCards;
-				PRODUCT_NAME = FlashCards;
+				PRODUCT_BUNDLE_IDENTIFIER = bzbislawski.FlashHero;
+				PRODUCT_NAME = FlashHero;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

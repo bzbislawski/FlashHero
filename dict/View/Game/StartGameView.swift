@@ -8,14 +8,18 @@
 
 import SwiftUI
 
+enum StartGameActiveAlert {
+    case noSelectedDecksAlert, emptyDecksAlert
+}
+
 struct StartGameView: View {
     @EnvironmentObject var gameStatus: GameStatus
     @EnvironmentObject var gamePlay: GamePlay
     @State var showSheet: Bool = false
     @State var sheetType: ActiveSheet = .vocabulary
     @State private var cardsOrderOption = "Default"
-    @State var noSelectedDecksAlert = false
-    @State var emptyDecksAlert = false
+    @State var showAlert = false
+    @State var activeAlert = StartGameActiveAlert.noSelectedDecksAlert
     
     var body: some View {
         GeometryReader { geometry in            
@@ -112,26 +116,30 @@ struct StartGameView: View {
                     }.count
                     
                     if (self.gamePlay.selectedDecks.count == 0) {
-                        self.noSelectedDecksAlert = true
+                        self.activeAlert = .noSelectedDecksAlert
+                        self.showAlert = true
                     } else if nonEmptyDecks == 0 {
-                        self.emptyDecksAlert = true
+                        self.activeAlert = .emptyDecksAlert
+                        self.showAlert = true
                     } else {
                         self.gamePlay.start()
                     }
                 }) {
                     ButtonView(text: "Start Game", backgroundColor: Color.darkBlue)
                 }
-                .alert(isPresented: self.$noSelectedDecksAlert) {
-                    Alert(
-                        title: Text("Oops!"),
-                        message: Text("Select decks to start a game.")
-                    )
-                }
-                .alert(isPresented: self.$emptyDecksAlert) {
-                    Alert(
-                        title: Text("Oops!"),
-                        message: Text("Selected decks don't have any flashcards.")
-                    )
+                .alert(isPresented: self.$showAlert) {
+                    switch self.activeAlert {
+                    case .noSelectedDecksAlert:
+                        return Alert(
+                            title: Text("Oops!"),
+                            message: Text("Select decks to start a game.")
+                        )
+                    case .emptyDecksAlert:
+                        return Alert(
+                            title: Text("Oops!"),
+                            message: Text("Selected decks don't have any flashcards.")
+                        )
+                    }
                 }
                 
                 Spacer()
