@@ -14,10 +14,10 @@ struct ButtonView: View {
     var horizontalPadding = 40
     
     var body: some View {
-        RoundedRectangle(cornerRadius: 8)
+        RoundedRectangle(cornerRadius: 12)
             .stroke(Color.secondaryBackgroundColor, lineWidth: 1)
             .background(self.backgroundColor)
-            .cornerRadius(8)
+            .cornerRadius(12)
             .frame(height: 47)
             .overlay(
                 Text(self.text)

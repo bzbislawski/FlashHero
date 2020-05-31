@@ -53,10 +53,10 @@ struct StartGameView: View {
                     ZStack {
                         Rectangle()
                             .fill(Color.white)
-                            .cornerRadius(8)
+                            .cornerRadius(12)
                             .frame(height: 47)
                             .overlay(
-                                RoundedRectangle(cornerRadius: 8)
+                                RoundedRectangle(cornerRadius: 12)
                                     .stroke(Color.secondaryBackgroundColor, lineWidth: 1)
                         )
                             .padding(.leading, 40)
@@ -90,10 +90,10 @@ struct StartGameView: View {
                     ZStack {
                         Rectangle()
                             .fill(Color.white)
-                            .cornerRadius(8)
+                            .cornerRadius(12)
                             .frame(height: 47)
                             .overlay(
-                                RoundedRectangle(cornerRadius: 8)
+                                RoundedRectangle(cornerRadius: 12)
                                     .stroke(Color.secondaryBackgroundColor, lineWidth: 1)
                         )
                             .padding(.leading, 40)

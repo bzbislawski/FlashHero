@@ -39,7 +39,7 @@ struct FlashCardFormView: View {
                         }
                         .frame(width: 44, height: 44)
                         .background(Color.red)
-                        .cornerRadius(8)
+                        .cornerRadius(12)
                         Spacer()
                     }.padding(.leading, 20)
                 }
@@ -55,9 +55,9 @@ struct FlashCardFormView: View {
                 TextField("Front text", text: $word)
                     .padding(.leading, 10)
                     .padding(.trailing, 30)
-                    .frame(height: 40)
+                    .frame(height: 47)
                     .background(Color.secondaryBackgroundColor)
-                    .cornerRadius(15)
+                    .cornerRadius(12)
                 HStack {
                     Spacer()
                     Button(action: { self.word = "" })
@@ -80,9 +80,9 @@ struct FlashCardFormView: View {
                 TextField("Reverse", text: $translation)
                     .padding(.leading, 10)
                     .padding(.trailing, 30)
-                    .frame(height: 40)
+                    .frame(height: 47)
                     .background(Color.secondaryBackgroundColor)
-                    .cornerRadius(15)
+                    .cornerRadius(12)
                 HStack {
                     Spacer()
                     Button(action: { self.word = "" })

@@ -39,7 +39,7 @@ struct DeckFormView: View {
                         }
                         .frame(width: 44, height: 44)
                         .background(Color.red)
-                        .cornerRadius(8)
+                        .cornerRadius(12)
                         Spacer()
                     }
                     .padding(.leading, 20)
@@ -64,7 +64,7 @@ struct DeckFormView: View {
                 TextField("Name", text: $name)
                     .padding(.leading, 10)
                     .padding(.trailing, 30)
-                    .frame(height: 40)
+                    .frame(height: 47)
                 HStack {
                     Spacer()
                     Button(action: { self.name = "" })
@@ -76,7 +76,7 @@ struct DeckFormView: View {
                 }
             }
             .background(Color.secondaryBackgroundColor)
-            .cornerRadius(15)
+            .cornerRadius(12)
             .padding(.leading, 20)
             .padding(.trailing, 20)
             .padding(.bottom, 15)

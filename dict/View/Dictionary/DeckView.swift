@@ -59,7 +59,7 @@ struct DeckView: View {
                             .font(.system(size: 38, weight: .semibold))
                             .frame(width: 100, height: 100)
                             .overlay(
-                                RoundedRectangle(cornerRadius: 8)
+                                RoundedRectangle(cornerRadius: 12)
                                     .strokeBorder(style: StrokeStyle(lineWidth: 5, dash: [10, 5]))
                         )
                             .foregroundColor(.secondaryBackgroundColor)
