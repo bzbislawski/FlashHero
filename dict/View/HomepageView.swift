@@ -16,7 +16,7 @@ struct HomepageView: View {
     var body: some View {
         ZStack {
             BackgroundView()
-            if self.viewRouter.currentView == Homepapge.dictionary {
+            if self.viewRouter.currentView == Homepage.dictionary {
                 VStack {
                     DictionaryView()
                     Divider()
@@ -27,8 +27,10 @@ struct HomepageView: View {
                 if self.activeSheetHandler.showSheet {
                     ActiveSheetView()
                 }
-            } else if self.viewRouter.currentView == Homepapge.game {
+            } else if self.viewRouter.currentView == Homepage.game {
                 GameView()
+            } else if self.viewRouter.currentView == Homepage.onboarding {
+                OnBoardingView()
             }
         }.edgesIgnoringSafeArea(.all)
     }

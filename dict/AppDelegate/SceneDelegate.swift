@@ -31,6 +31,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let gameStatus = GameStatus(flashCardRepository: flashCardRepository, deckRepository: DeckRepository(moc: context))
         let gamePlay = GamePlay()
         let viewRouter = ViewRouter()
+
+        if !UserDefaults.standard.bool(forKey: "didLaunchBefore") {
+            UserDefaults.standard.set(true, forKey: "didLaunchBefore")
+            viewRouter.updateView(tabName: .onboarding)
+        }
+        
         let activeSheetHandler = ActiveSheetHandler()
         
         // Use a UIHostingController as window root view controller.

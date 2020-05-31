@@ -9,15 +9,15 @@
 import Foundation
 import SwiftUI
 
-enum Homepapge {
-    case dictionary, game
+enum Homepage {
+    case dictionary, game, onboarding
 }
 
 class ViewRouter: ObservableObject {
     
-    @Published var currentView: Homepapge = .dictionary
+    @Published var currentView: Homepage = .dictionary
     
-    func updateView(tabName: Homepapge) {
+    func updateView(tabName: Homepage) {
         self.currentView = tabName
     }
 }

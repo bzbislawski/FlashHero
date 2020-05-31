@@ -12,7 +12,7 @@ struct TabView: View {
     @EnvironmentObject var gamePlay: GamePlay
     @EnvironmentObject var viewRouter: ViewRouter
     @State var showsAlert = false
-    @State var redirectTo = Homepapge.dictionary
+    @State var redirectTo = Homepage.dictionary
     
     var body: some View {
         HStack {
@@ -20,28 +20,28 @@ struct TabView: View {
             Button(action: {
                 if self.gamePlay.isGameStarted {
                     self.showsAlert = true
-                    self.redirectTo = Homepapge.dictionary
+                    self.redirectTo = Homepage.dictionary
                 } else {
-                    self.viewRouter.updateView(tabName: Homepapge.dictionary)
+                    self.viewRouter.updateView(tabName: Homepage.dictionary)
                 }
             }, label: {
                 Image(systemName: "book.fill")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .frame(width: UIScreen.main.bounds.width / 5, height: 32)
-                    .foregroundColor(self.viewRouter.currentView == Homepapge.dictionary ? .iconActive : .iconInactive)
+                    .foregroundColor(self.viewRouter.currentView == Homepage.dictionary ? .iconActive : .iconInactive)
             })
             
             Spacer()
             
             Button(action: {
-                self.viewRouter.updateView(tabName: Homepapge.game)
+                self.viewRouter.updateView(tabName: Homepage.game)
             }, label: {
                 Image(systemName: "gamecontroller.fill")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .frame(width: UIScreen.main.bounds.width / 5, height: 32)
-                    .foregroundColor(self.viewRouter.currentView == Homepapge.game ? .iconActive : .iconInactive)
+                    .foregroundColor(self.viewRouter.currentView == Homepage.game ? .iconActive : .iconInactive)
             })
             
             Spacer()
