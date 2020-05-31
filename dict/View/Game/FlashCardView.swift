@@ -10,6 +10,7 @@ import SwiftUI
 
 struct FlashCardView: View {
     @EnvironmentObject var gamePlay: GamePlay
+    @ObservedObject var timeCounter = Timer()
     @State private var showAnswer = false
     @State private var showFrontText = true
     @State private var showReverseText = false
@@ -71,10 +72,16 @@ struct FlashCardView: View {
             
         .gesture(DragGesture()
         .onChanged { value in
+            self.timeCounter.start()
             self.currentPosition = CGSize(width: value.translation.width, height: 0)
         }
         .onEnded { value in
-            if value.translation.width < 180 && value.translation.width > -180 {
+            let interval = self.timeCounter.stop()
+            let translation = abs(value.translation.width)
+            let allowMove = translation > 180 ||
+            (interval < 0.4 && translation > 50)
+            
+            if !allowMove {
                 self.currentPosition = CGSize.zero
             } else {
                 if self.currentPosition.width > 0 {

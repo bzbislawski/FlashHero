@@ -66,7 +66,7 @@ struct OnBoardingView: View {
             .opacity(animate ? 1.0 : 0)
         }
         .offset(y: animate ? 0 : 220)
-        .animation(.default)
+        .animation(Animation.linear(duration: 0.3).delay(0.3))
         .onAppear {
             withAnimation(.easeOut(duration: 5)) {
                 self.animate0.toggle()
