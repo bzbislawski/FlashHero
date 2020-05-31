@@ -28,7 +28,7 @@ class GamePlay: ObservableObject {
     private var scoreboardCalculator = ScoreboardCalculator()
     
     var cardsOrder: Array<String> {
-        ["Default", "Alphabetical", "Random"]
+        ["Default", "Alphabetical (A-Z)", "Alphabetical (Z-A)", "Random"]
     }
     
     var answersCount: Int {
@@ -50,8 +50,10 @@ class GamePlay: ObservableObject {
         self.totalFlashCardCount = flashCards.count
         
         switch self.selectedCardsOrder {
-        case "Alphabetical":
+        case "Alphabetical (A-Z)":
             self.flashCards = flashCards.sorted {$0.wrappedWord < $1.wrappedWord }
+        case "Alphabetical (Z-A)":
+            self.flashCards = flashCards.sorted {$0.wrappedWord > $1.wrappedWord }
         case "Random":
             self.flashCards = flashCards.shuffled()
         default:
