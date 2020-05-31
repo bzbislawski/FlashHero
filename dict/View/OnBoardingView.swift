@@ -15,9 +15,9 @@ struct OnboardingElement {
 }
 
 struct OnBoardingView: View {
+    @EnvironmentObject var viewRouter: ViewRouter
     @State private var animate0 = false
     @State private var animate = false
-    @State private var animate2 = false
     
     let elements = [
         OnboardingElement(image: Image("dictionary_icon"), title: "Create dictionaries", description: "Create decks that will have your flashcards!"),
@@ -35,8 +35,7 @@ struct OnBoardingView: View {
                 }
                 .font(.system(size: 40, weight: .heavy))
                 .padding(.bottom, 35)
-                .scaleEffect(animate0 ? 1 : 0.8)
-                .offset(y: animate ? 0 : 120)
+                .scaleEffect(animate0 ? 1 : 0.7)
                 
                 ForEach(0..<self.elements.count) { index in
                     HStack {
@@ -55,29 +54,24 @@ struct OnBoardingView: View {
                 }
                 .frame(width: UIScreen.main.bounds.width * 0.8)
                 .padding(.bottom, 20)
-                .opacity(animate2 ? 1.0 : 0)
-                .offset(y: animate2 ? 0 : 120)
-                
-                
+                .opacity(animate ? 1.0 : 0)
             }
+            
             Button(action: {
-                //
+                self.viewRouter.updateView(tabName: .dictionary)
             }) {
                 ButtonView(text: "CONTINUE", backgroundColor: Color.blue)
             }
             .padding(.top, 40)
-            .opacity(animate2 ? 1.0 : 0)
-            .offset(y: animate2 ? 0 : 120)
+            .opacity(animate ? 1.0 : 0)
         }
+        .offset(y: animate ? 0 : 220)
         .animation(.default)
         .onAppear {
             withAnimation(.easeOut(duration: 5)) {
                 self.animate0.toggle()
-                DispatchQueue.main.asyncAfter(deadline: .now() + 1.25) {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
                     self.animate.toggle()
-                }
-                DispatchQueue.main.asyncAfter(deadline: .now() + 1.25) {
-                    self.animate2 = true
                 }
             }
         }
