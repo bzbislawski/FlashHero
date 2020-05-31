@@ -43,6 +43,7 @@
 		D6A8CE42247B61850048AA21 /* GamePlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6A8CE41247B61850048AA21 /* GamePlayView.swift */; };
 		D6BC6CF52464E323007D754A /* ButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6BC6CF42464E323007D754A /* ButtonView.swift */; };
 		D6BC6CF724672800007D754A /* ActiveSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6BC6CF624672800007D754A /* ActiveSheetView.swift */; };
+		D6E7E21624833F14001481C7 /* OnBoardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6E7E21524833F14001481C7 /* OnBoardingView.swift */; };
 		D6EB4EC72418472B00654307 /* ViewRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6EB4EC62418472B00654307 /* ViewRouter.swift */; };
 /* End PBXBuildFile section */
 
@@ -85,6 +86,7 @@
 		D6A8CE41247B61850048AA21 /* GamePlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamePlayView.swift; sourceTree = "<group>"; };
 		D6BC6CF42464E323007D754A /* ButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonView.swift; sourceTree = "<group>"; };
 		D6BC6CF624672800007D754A /* ActiveSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveSheetView.swift; sourceTree = "<group>"; };
+		D6E7E21524833F14001481C7 /* OnBoardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingView.swift; sourceTree = "<group>"; };
 		D6EB4EC62418472B00654307 /* ViewRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewRouter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -184,6 +186,7 @@
 				D63B467723DE421B008370C7 /* MiniFlashCardView.swift */,
 				BADE723F24202712003E7EB1 /* TabView.swift */,
 				D6BC6CF624672800007D754A /* ActiveSheetView.swift */,
+				D6E7E21524833F14001481C7 /* OnBoardingView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -310,6 +313,7 @@
 				BAA3D9B523FC33B1006AC3A1 /* DeckColor.swift in Sources */,
 				D601A6C62389CB6A00FFE9FC /* GameStatus.swift in Sources */,
 				D63B467823DE421B008370C7 /* MiniFlashCardView.swift in Sources */,
+				D6E7E21624833F14001481C7 /* OnBoardingView.swift in Sources */,
 				BA1760ED242193C900695ECB /* GameView.swift in Sources */,
 				BADE724024202712003E7EB1 /* TabView.swift in Sources */,
 				D62940C02405E01900554C66 /* GamePlay.swift in Sources */,

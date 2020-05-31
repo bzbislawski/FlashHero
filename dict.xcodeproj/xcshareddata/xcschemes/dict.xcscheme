@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "D64D50F92385CA900075AD3D"
-               BuildableName = "FlashCards.app"
+               BuildableName = "FlashHero.app"
                BlueprintName = "dict"
                ReferencedContainer = "container:dict.xcodeproj">
             </BuildableReference>
@@ -45,7 +45,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "D64D50F92385CA900075AD3D"
-            BuildableName = "FlashCards.app"
+            BuildableName = "FlashHero.app"
             BlueprintName = "dict"
             ReferencedContainer = "container:dict.xcodeproj">
          </BuildableReference>
@@ -62,7 +62,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "D64D50F92385CA900075AD3D"
-            BuildableName = "FlashCards.app"
+            BuildableName = "FlashHero.app"
             BlueprintName = "dict"
             ReferencedContainer = "container:dict.xcodeproj">
          </BuildableReference>
