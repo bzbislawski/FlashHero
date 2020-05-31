@@ -46,14 +46,14 @@ struct SelectDecksView: View {
                     }
                 }, label: {
                     Text(self.allDecksAreSelected ? LeadingButtonLabel.DESELECT : LeadingButtonLabel.SELECT)
-                        .foregroundColor(Color.firstColor)
+                        .foregroundColor(Color.fontColor)
                         .font(.system(size: 18, weight: .semibold))
                 }),
                 trailing: Button(action: {
                     self.presentationMode.wrappedValue.dismiss()
                 }, label: {
                     Text("Done")
-                        .foregroundColor(Color.firstColor)
+                        .foregroundColor(Color.fontColor)
                         .font(.system(size: 18, weight: .semibold))
                 })
             )

@@ -26,10 +26,6 @@ extension Color {
     static let secondaryBackgroundColor = Color.rgb(r: 209, g: 214, b: 217)
     static let tertiaryBackgroundColor = Color.rgb(r: 142, g: 141, b: 146)
     static let quaternaryBackgroundColor = Color.rgb(r: 79, g: 78, b: 78)
-    
-    // Green
-    static let firstColor = Color.rgb(r: 52, g: 92, b: 157)
-    static let secondColor = Color.rgb(r: 25, g: 180, b: 139)
 }
 
 extension UIColor {

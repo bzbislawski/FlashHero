@@ -21,7 +21,7 @@ struct GameSheetRowView: View {
                 Spacer()
                 Image(systemName: "checkmark.circle")
                     .font(Font.title.weight(.light))
-                    .foregroundColor(self.isSelected ? Color.firstColor : Color.gray)
+                    .foregroundColor(self.isSelected ? Color.fontColor : Color.gray)
                     .padding(.trailing, 10)
             }
         }

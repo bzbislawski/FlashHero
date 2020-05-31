@@ -28,7 +28,7 @@ struct CardsOrderView: View {
                         if self.cardsOrderOption == type {
                             Image(systemName: "checkmark")
                                 .font(Font.title.weight(.light))
-                                .foregroundColor(Color.firstColor)
+                                .foregroundColor(Color.fontColor)
                                 .padding(.trailing, 10)
                         }
                     }
@@ -40,7 +40,7 @@ struct CardsOrderView: View {
                     self.presentationMode.wrappedValue.dismiss()
                 }, label: {
                     Text("Dismiss")
-                        .foregroundColor(Color.firstColor)
+                        .foregroundColor(Color.fontColor)
                         .font(.system(size: 18, weight: .semibold))
                 })
             )
