@@ -14,6 +14,7 @@ struct FlashCardFormView: View {
     @Binding var showSheet: Bool
     @State private var word: String = ""
     @State private var translation: String = ""
+    @State private var missingFrontTextAlert = false
     
     var body: some View {
         VStack{
@@ -99,6 +100,10 @@ struct FlashCardFormView: View {
             .padding(.top, 15)
             
             Button(action: {
+                if self.word == "" {
+                    self.missingFrontTextAlert.toggle()
+                    return
+                }
                 if (self.activeSheetHandler.activeFlashCard != nil) {
                     self.activeSheetHandler.activeFlashCard!.word = self.word
                     self.activeSheetHandler.activeFlashCard!.translation = self.translation
@@ -110,6 +115,12 @@ struct FlashCardFormView: View {
                 self.activeSheetHandler.delayHideView()
             }) {
                 ButtonView(text: "Save", backgroundColor: Color.darkBlue, horizontalPadding: 20)
+            }
+            .alert(isPresented: $missingFrontTextAlert) {
+                Alert(
+                    title: Text("Error"),
+                    message: Text("Front text can not be empty")
+                )
             }
             .onAppear {
                 self.word = self.activeSheetHandler.activeFlashCard?.wrappedWord ?? self.word
