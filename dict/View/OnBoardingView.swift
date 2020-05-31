@@ -15,6 +15,9 @@ struct OnboardingElement {
 }
 
 struct OnBoardingView: View {
+    @State private var animate0 = false
+    @State private var animate = false
+    @State private var animate2 = false
     
     let elements = [
         OnboardingElement(image: Image("dictionary_icon"), title: "Create dictionaries", description: "Create decks that will have your flashcards!"),
@@ -32,6 +35,8 @@ struct OnBoardingView: View {
                 }
                 .font(.system(size: 40, weight: .heavy))
                 .padding(.bottom, 35)
+                .scaleEffect(animate0 ? 1 : 0.8)
+                .offset(y: animate ? 0 : 120)
                 
                 ForEach(0..<self.elements.count) { index in
                     HStack {
@@ -40,7 +45,7 @@ struct OnBoardingView: View {
                             .scaledToFit()
                             .frame(width: 64, height: 64)
                             .padding(.trailing, 20)
-                        
+
                         VStack (alignment: .leading) {
                             Text(self.elements[index].title).font(.system(size: 20, weight: .bold))
                             Text(self.elements[index].description).font(.system(size: 16, weight: .medium)).foregroundColor(Color.quinaryBackgroundColor)
@@ -50,6 +55,8 @@ struct OnBoardingView: View {
                 }
                 .frame(width: UIScreen.main.bounds.width * 0.8)
                 .padding(.bottom, 20)
+                .opacity(animate2 ? 1.0 : 0)
+                .offset(y: animate2 ? 0 : 120)
                 
                 
             }
@@ -59,6 +66,20 @@ struct OnBoardingView: View {
                 ButtonView(text: "CONTINUE", backgroundColor: Color.blue)
             }
             .padding(.top, 40)
+            .opacity(animate2 ? 1.0 : 0)
+            .offset(y: animate2 ? 0 : 120)
+        }
+        .animation(.default)
+        .onAppear {
+            withAnimation(.easeOut(duration: 5)) {
+                self.animate0.toggle()
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1.25) {
+                    self.animate.toggle()
+                }
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1.25) {
+                    self.animate2 = true
+                }
+            }
         }
     }
 }
