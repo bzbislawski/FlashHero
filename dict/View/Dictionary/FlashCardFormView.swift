@@ -85,7 +85,7 @@ struct FlashCardFormView: View {
                     .cornerRadius(12)
                 HStack {
                     Spacer()
-                    Button(action: { self.word = "" })
+                    Button(action: { self.translation = "" })
                     {
                         Image(systemName: "xmark.circle.fill")
                             .foregroundColor(.tertiaryBackgroundColor)
