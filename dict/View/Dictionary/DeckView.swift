@@ -47,7 +47,7 @@ struct DeckView: View {
                         .frame(width: UIScreen.main.bounds.width / 2.8 , height: 100)
                         .padding(.top, 5)
                         .padding(.bottom)
-                        .padding(.trailing, 30)
+                        .padding(.trailing, 20)
                     }
                     Button(action: {
                         self.activeSheetHandler.showSheet.toggle()
@@ -75,38 +75,28 @@ struct DeckView: View {
     
 }
 
-//struct DeckView_Previews: PreviewProvider {
-//    struct DeckViewWrapper: View {
-//        @State var showSheet = true
-//        @State var activeSheet: ActiveSheet = ActiveSheet.deckForm
-//        @State var activeDeck: Deck? = nil
-//        @State var activeFlashCard: FlashCard? =  nil
-//        var body: some View {
-//            let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-//            let repository = FlashCardRepository(moc: context)
-//            let repository2 = DeckRepository(moc: context)
-//            let gameStatus = GameStatus(flashCardRepository: repository, deckRepository: repository2)
-//
-//            let deck = Deck(context: context)
-//            deck.name = "Deck name"
-//            deck.color = "blue"
-//
-//            let flashCard = FlashCard(context: context)
-//            flashCard.word = "Kitchen"
-//            flashCard.translation = "Kuchnia"
-//            deck.addToFlashCard(flashCard)
-//
-//            try? context.save()
-//            return DeckView(
-//                showSheet: self.$showSheet,
-//                activeSheet: self.$activeSheet,
-//                activeDeck: self.$activeDeck,
-//                activeFlashCard: self.$activeFlashCard, deck: deck
-//            ).environmentObject(gameStatus)
-//        }
-//    }
-//
-//    static var previews: some View {
-//        DeckViewWrapper()
-//    }
-//}
+struct DeckView_Previews: PreviewProvider {
+    static var previews: some View {
+        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        let repository = FlashCardRepository(moc: context)
+        let repository2 = DeckRepository(moc: context)
+        let gameStatus = GameStatus(flashCardRepository: repository, deckRepository: repository2)
+        
+        let deck = Deck(context: context)
+        deck.name = "Deck name"
+        deck.color = "blue"
+        
+        let flashCard = FlashCard(context: context)
+        flashCard.word = "Kitchen"
+        flashCard.translation = "Kuchnia"
+        deck.addToFlashCard(flashCard)
+        
+        let flashCard2 = FlashCard(context: context)
+        flashCard.word = "Room"
+        flashCard.translation = "Pokoj"
+        deck.addToFlashCard(flashCard2)
+        
+        try? context.save()
+        return DeckView(deck: deck).environmentObject(gameStatus)
+    }
+}
