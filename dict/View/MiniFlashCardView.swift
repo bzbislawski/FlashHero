@@ -26,8 +26,9 @@ struct MiniFlashCardView: View {
             Rectangle()
                 .fill(LinearGradient(gradient: Gradient(colors: [deckColor.colorOne, deckColor.colorTwo]), startPoint: .topLeading, endPoint: .bottomTrailing))
                 .cornerRadius(10)
-                .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color.white, lineWidth: 4))
-                .shadow(radius: 5, x: 0, y: 4)
+                // TODO: Delete?
+//                .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color.white, lineWidth: 4))
+//                .shadow(radius: 5, x: 0, y: 4)
             
             Text(flashCard != nil ? flashCard!.wrappedWord : "")
                 .bold()

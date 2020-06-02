@@ -12,7 +12,7 @@ struct GameView: View {
     @EnvironmentObject var gamePlay: GamePlay
     
     var body: some View {
-        VStack {
+        Group {
             if self.gamePlay.isGameStarted {
                 if self.gamePlay.flashCards.count == 0 {
                     ScoreboardView()
@@ -20,7 +20,7 @@ struct GameView: View {
                     GamePlayView()
                 }
             } else {
-                VStack {
+                Group {
                     StartGameView()
                     Divider()
                     TabView()

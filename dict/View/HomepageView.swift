@@ -22,7 +22,7 @@ struct HomepageView: View {
                 if self.viewRouter.currentView == Homepage.dictionary {
                     ZStack {
                         Color.backgroundColor
-                        VStack {
+                        VStack(spacing: 0) {
                             DictionaryView()
                             Divider()
                             TabView()
