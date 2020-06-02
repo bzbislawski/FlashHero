@@ -22,7 +22,7 @@ extension Color {
     static let darkBlue = Color.rgb(r: 28, g: 65, b: 116)
     
     // Gray colors
-    static let backgroundColor = Color.rgb(r: 244, g: 243, b: 248)
+    static let backgroundColor = Color.rgb(r: 244, g: 244, b: 244)
     static let secondaryBackgroundColor = Color.rgb(r: 209, g: 214, b: 217)
     static let tertiaryBackgroundColor = Color.rgb(r: 142, g: 141, b: 146)
     static let quaternaryBackgroundColor = Color.rgb(r: 79, g: 78, b: 78)

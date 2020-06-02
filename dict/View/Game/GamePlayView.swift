@@ -14,61 +14,60 @@ struct GamePlayView: View {
     
     var body: some View {
         GeometryReader { geometry in
-            
-                VStack(spacing: 0) {
-                    HStack {
-                        Text("\(self.gamePlay.answersCount)/\(self.gamePlay.totalFlashCardCount)")
-                            .foregroundColor(.fontColor)
-                            .font(.system(size: 32, weight: .bold))
-                        
-                        Spacer()
-                        
-                        Button(action: {
-                            self.showsAlert.toggle()
-                        }, label: {
-                            ZStack{
-                                Circle()
-                                    .fill(Color.white)
-                                    .frame(width: 44)
-                                    .shadow(color: .fontColor, radius: 4, x: 3, y: 3)
-                                    .shadow(color: .white, radius: 4, x: -3, y: -3)
-                                Image(systemName: "x.circle")
-                                    .foregroundColor(Color.iconActive)
-                                    .font(.system(size: 24, weight: .bold))
-                            }
-                        })
-                    }
-                    .frame(maxWidth: UIScreen.main.bounds.width - 60)
-                    .frame(maxHeight: 44)
-                    .padding(.leading, 30)
-                    .padding(.trailing, 30)
-                    .padding(.top, 40)
-                    .padding(.bottom, 20)
+            VStack {
+                HStack {
+                    Text("\(self.gamePlay.answersCount)/\(self.gamePlay.totalFlashCardCount)")
+                        .foregroundColor(.fontColor)
+                        .font(.system(size: 32, weight: .bold))
                     
-                    Divider()
+                    Spacer()
                     
-                    VStack {
-                        ScrollView(.vertical, showsIndicators: false) {
-                            ForEach(self.gamePlay.flashCards, id: \.self) { flashCard in
-                                FlashCardView(flashCard: flashCard)
-                                    .animation(.spring())
-                                    .padding(.top, 15)
-                                    .padding(.bottom, 15)
-                                    .padding(.leading, 300)
-                                    .padding(.trailing, 300)
-                            }
+                    Button(action: {
+                        self.showsAlert.toggle()
+                    }, label: {
+                        ZStack{
+                            Rectangle()
+                                .fill(Color.white)
+                                .frame(width: 44, height: 44)
+                                .cornerRadius(12)
+                            Image(systemName: "xmark")
+                                .foregroundColor(Color.darkBlue)
+                                .font(.system(size: 24, weight: .bold))
                         }
-                        .frame(width: geometry.size.width, height:geometry.size.height * 0.9, alignment: .bottom)
+                    })
+                }
+                .frame(maxWidth: UIScreen.main.bounds.width - 60)
+                .frame(maxHeight: 44)
+                .padding(.leading, 30)
+                .padding(.trailing, 30)
+                .padding(.top, 40)
+                
+                Divider()
+                
+                Spacer()
+                
+                VStack {
+                    ScrollView(.vertical, showsIndicators: false) {
+                        ForEach(self.gamePlay.flashCards, id: \.self) { flashCard in
+                            FlashCardView(flashCard: flashCard)
+                                .animation(.spring())
+                                .padding(.top, 15)
+                                .padding(.bottom, 15)
+                                .padding(.leading, 300)
+                                .padding(.trailing, 300)
+                        }
                     }
-                }.alert(isPresented: self.$showsAlert, content: { () -> Alert in
-                    Alert(title: Text("Leave the game?"), message: Text("All the progress will be lost."),
-                          primaryButton: .default(Text("Yes"), action: {
-                            self.gamePlay.stop()
-                            self.gamePlay.reset()
-                          }),
-                          secondaryButton: .default(Text("Cancel")))
-                })
-            }
+                    
+                }
+            }.alert(isPresented: self.$showsAlert, content: { () -> Alert in
+                Alert(title: Text("Leave the game?"), message: Text("All the progress will be lost."),
+                      primaryButton: .default(Text("Yes"), action: {
+                        self.gamePlay.stop()
+                        self.gamePlay.reset()
+                      }),
+                      secondaryButton: .default(Text("Cancel")))
+            })
+        }
         
     }
 }

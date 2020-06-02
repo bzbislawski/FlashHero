@@ -27,13 +27,12 @@ struct DictionaryView: View {
                     self.activeSheetHandler.activeDeck = nil
                 }, label: {
                     ZStack{
-                        Circle()
+                        Rectangle()
                             .fill(Color.white)
-                            .frame(width: 44)
-                            .shadow(color: .fontColor, radius: 4, x: 3, y: 3)
-                            .shadow(color: .white, radius: 4, x: -3, y: -3)
-                        Image(systemName: "plus.circle")
-                            .foregroundColor(Color.iconActive)
+                            .frame(width: 44, height: 44)
+                            .cornerRadius(12)
+                        Image(systemName: "plus")
+                            .foregroundColor(Color.darkBlue)
                             .font(.system(size: 24, weight: .bold))
                     }
                 })
@@ -42,8 +41,7 @@ struct DictionaryView: View {
             .padding(.leading, 30)
             .padding(.trailing, 30)
             .padding(.top, 40)
-            .padding(.bottom, 10)
-            
+            Divider()
             if self.gameStatus.dictionary.isEmpty {
                 Spacer()
                 VStack {

@@ -17,7 +17,7 @@ struct HomepageView: View {
         Group {
             if self.viewRouter.currentView == Homepage.dictionary {
                 ZStack {
-                    BackgroundView()
+                    Color.backgroundColor
                     VStack {
                         DictionaryView()
                         Divider()
@@ -31,9 +31,12 @@ struct HomepageView: View {
                 }
             } else if self.viewRouter.currentView == Homepage.game {
                 ZStack {
-                    BackgroundView()
-                    GameView()
+                    Color.backgroundColor
+                    VStack (spacing: 0) {
+                        GameView()
+                    }
                 }
+                
             } else if self.viewRouter.currentView == Homepage.onboarding {
                 OnBoardingView()
             }
