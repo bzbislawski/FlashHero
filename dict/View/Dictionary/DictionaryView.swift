@@ -40,8 +40,9 @@ struct DictionaryView: View {
             .frame(maxHeight: 44)
             .padding(.leading, 30)
             .padding(.trailing, 30)
-            .padding(.top, 40)
-            Divider()
+            .padding(.top, 10)
+            .padding(.bottom, 20)
+            
             if self.gameStatus.dictionary.isEmpty {
                 Spacer()
                 VStack {

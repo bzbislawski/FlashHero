@@ -14,33 +14,38 @@ struct HomepageView: View {
     @EnvironmentObject var activeSheetHandler: ActiveSheetHandler
     
     var body: some View {
-        Group {
-            if self.viewRouter.currentView == Homepage.dictionary {
-                ZStack {
-                    Color.backgroundColor
-                    VStack {
-                        DictionaryView()
-                        Divider()
-                        TabView()
-                            .frame(height: UIScreen.main.bounds.height * 0.1)
-                            .background(Color.backgroundColor)
+        ZStack {
+            VStack {
+                Color.backgroundColor
+            }.edgesIgnoringSafeArea(.all)
+            VStack {
+                if self.viewRouter.currentView == Homepage.dictionary {
+                    ZStack {
+                        Color.backgroundColor
+                        VStack {
+                            DictionaryView()
+                            Divider()
+                            TabView()
+                                .frame(height: UIScreen.main.bounds.height * 0.1)
+                                .background(Color.backgroundColor)
+                        }
+                        if self.activeSheetHandler.showSheet {
+                            ActiveSheetView()
+                        }
                     }
-                    if self.activeSheetHandler.showSheet {
-                        ActiveSheetView()
+                } else if self.viewRouter.currentView == Homepage.game {
+                    ZStack {
+                        Color.backgroundColor
+                        VStack (spacing: 0) {
+                            GameView()
+                        }
                     }
+                    
+                } else if self.viewRouter.currentView == Homepage.onboarding {
+                    OnBoardingView()
                 }
-            } else if self.viewRouter.currentView == Homepage.game {
-                ZStack {
-                    Color.backgroundColor
-                    VStack (spacing: 0) {
-                        GameView()
-                    }
-                }
-                
-            } else if self.viewRouter.currentView == Homepage.onboarding {
-                OnBoardingView()
-            }
-        }.edgesIgnoringSafeArea(.all)
+            }.edgesIgnoringSafeArea(.bottom)
+        }
     }
 }
 

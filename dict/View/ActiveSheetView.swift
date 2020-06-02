@@ -19,7 +19,7 @@ struct ActiveSheetView: View {
             Color.gray.opacity(0.7).onTapGesture {
                 self.showSheet = false
                 self.activeSheetHandler.delayHideView()
-            }
+            }.edgesIgnoringSafeArea(.all)
             
             VStack {
                 Spacer()
