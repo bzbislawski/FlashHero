@@ -73,6 +73,7 @@ struct GamePlayView: View {
 
 struct GamePlayView_Previews: PreviewProvider {
     static var previews: some View {
-        GamePlayView()
+        let gamePlay = GamePlay()
+        return GamePlayView().environmentObject(gamePlay)
     }
 }

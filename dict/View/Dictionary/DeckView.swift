@@ -29,43 +29,53 @@ struct DeckView: View {
                         Image(systemName: "folder")
                         Text(deck.wrappedName).font(.system(size: 20, weight: .semibold))
                     }
-                    .padding(.leading, 20)
+                    .padding(.leading, 30)
                     .foregroundColor(Color.darkBlue)
                 }
                 
                 Spacer()
-            }.padding(.top, 20)
+            }
+            .padding(.top, 20)
+            
             ScrollView(.horizontal, showsIndicators: false) {
-                HStack {
-                    ForEach(self.flashCards, id: \.self) { flashCard in
-                        MiniFlashCardView(deck: self.deck, flashCard: flashCard).onTapGesture {
+                ZStack {
+                    Color.white
+                        .cornerRadius(12)
+                        .frame(minWidth: UIScreen.main.bounds.width - 40)
+                    HStack {
+                        ForEach(self.flashCards, id: \.self) { flashCard in
+                            MiniFlashCardView(deck: self.deck, flashCard: flashCard).onTapGesture {
+                                self.activeSheetHandler.showSheet.toggle()
+                                self.activeSheetHandler.activeSheet = .flashCardForm
+                                self.activeSheetHandler.activeDeck = self.deck
+                                self.activeSheetHandler.activeFlashCard = flashCard
+                            }
+                            .frame(width: UIScreen.main.bounds.width / 2.8 , height: 100)
+                            .padding(.leading, 20)
+                        }
+                        
+                        Button(action: {
                             self.activeSheetHandler.showSheet.toggle()
                             self.activeSheetHandler.activeSheet = .flashCardForm
                             self.activeSheetHandler.activeDeck = self.deck
-                            self.activeSheetHandler.activeFlashCard = flashCard
+                            self.activeSheetHandler.activeFlashCard = nil
+                        }) {
+                            Image(systemName: "plus.app")
+                                .font(.system(size: 38, weight: .semibold))
+                                .frame(width: 100, height: 100)
+                                .overlay(
+                                    RoundedRectangle(cornerRadius: 12)
+                                        .strokeBorder(style: StrokeStyle(lineWidth: 5, dash: [10, 5]))
+                            )
+                                .foregroundColor(.secondaryBackgroundColor)
+                                .padding(.leading, 20)
+                                .padding(.trailing, 20)
                         }
-                        .frame(width: UIScreen.main.bounds.width / 2.8 , height: 100)
-                        .padding(.top, 5)
-                        .padding(.bottom)
-                        .padding(.trailing, 20)
+                        
+                        Spacer()
                     }
-                    Button(action: {
-                        self.activeSheetHandler.showSheet.toggle()
-                        self.activeSheetHandler.activeSheet = .flashCardForm
-                        self.activeSheetHandler.activeDeck = self.deck
-                        self.activeSheetHandler.activeFlashCard = nil
-                    }) {
-                        Image(systemName: "plus.app")
-                            .font(.system(size: 38, weight: .semibold))
-                            .frame(width: 100, height: 100)
-                            .overlay(
-                                RoundedRectangle(cornerRadius: 12)
-                                    .strokeBorder(style: StrokeStyle(lineWidth: 5, dash: [10, 5]))
-                        )
-                            .foregroundColor(.secondaryBackgroundColor)
-                            .padding(.top, 5)
-                            .padding(.bottom)
-                    }
+                    .padding(.top)
+                    .padding(.bottom)
                 }
                 .padding(.leading, 20)
                 .padding(.trailing, 20)
