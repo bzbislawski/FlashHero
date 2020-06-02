@@ -16,6 +16,7 @@ struct FlashCardView: View {
     @State private var showReverseText = false
     @State private var goAway = GoAway.UNANSWERED
     @State private var currentPosition: CGSize = .zero
+    @State private var offsetPercentage: Double = 0.0
     var flashCard: FlashCard
     var animationDuration = 0.3
     
@@ -40,69 +41,83 @@ struct FlashCardView: View {
     
     var body: some View {
         ZStack {
-            Rectangle()
-                .fill(LinearGradient(gradient: Gradient(colors: [deckColor.colorOne, deckColor.colorTwo]), startPoint: .topLeading, endPoint: .bottomTrailing))
-                .cornerRadius(10)
-                .frame(width: 320, height: 200)
-                .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color.white, lineWidth: 4))
-                .shadow(radius: 20, x: 0, y: self.showAnswer ? -20 : 20)
-                .rotation3DEffect(.degrees(self.showAnswer ? 180 : 0), axis: (x: 1, y: 0, z: 0))
-                .onTapGesture {
-                    self.showAnswer.toggle()
-            }
-            
-            self.textView(text: self.flashCard.wrappedWord)
-                .opacity(self.showAnswer ? 0 : 1)
-                .animation(Animation.linear(duration: self.animationDuration / 2))
-                .rotation3DEffect(.degrees(self.showAnswer ? 180 : 0), axis: (x: 1, y: 0, z: 0))
-                .onTapGesture {
-                    self.showAnswer.toggle()
-            }
-            
-            if self.showAnswer {
-                self.textView(text: self.flashCard.wrappedTranslation)
-                    .animation(.easeInOut(duration: 1.0))
-                    .transition(.asymmetric(
-                        insertion: AnyTransition.opacity.animation(Animation.easeInOut(duration: 0.5).delay(0.3)),
-                        removal: AnyTransition.opacity.animation(Animation.easeInOut(duration: 0.1))))
-            }
-        }
-        .frame(width: UIScreen.main.bounds.width)
-        .offset(x: self.goAway != GoAway.UNANSWERED ? CGFloat(self.goAway) * UIScreen.main.bounds.width : self.currentPosition.width)
-            
-        .gesture(DragGesture()
-        .onChanged { value in
-            self.timeCounter.start()
-            self.currentPosition = CGSize(width: value.translation.width, height: 0)
-        }
-        .onEnded { value in
-            let interval = self.timeCounter.stop()
-            let translation = abs(value.translation.width)
-            let allowMove = translation > 180 ||
-            (interval < 0.4 && translation > 50)
-            
-            if !allowMove {
-                self.currentPosition = CGSize.zero
-            } else {
-                if self.currentPosition.width > 0 {
-                    self.gamePlay.correctAnswers += 1
-                    self.goAway = GoAway.CORRECT
-                } else {
-                    self.gamePlay.wrongAnswers += 1
-                    self.goAway = GoAway.WRONG
+            ZStack {
+                Rectangle()
+                    .fill(LinearGradient(gradient: Gradient(colors: [deckColor.colorOne, deckColor.colorTwo]), startPoint: .topLeading, endPoint: .bottomTrailing))
+                    .cornerRadius(10)
+                    .frame(width: 320, height: 200)
+                    .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color.white, lineWidth: 4))
+                    .shadow(radius: 20, x: 0, y: self.showAnswer ? -20 : 20)
+                    .rotation3DEffect(.degrees(self.showAnswer ? 180 : 0), axis: (x: 1, y: 0, z: 0))
+                    .onTapGesture {
+                        self.showAnswer.toggle()
                 }
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
-                    self.gamePlay.flashCards.removeAll(where: { $0 == self.flashCard })
-                }
-            }
-        })
-            .onTapGesture {
-                self.showAnswer.toggle()
                 
-                DispatchQueue.main.asyncAfter(deadline: .now() + self.animationDuration / 2) {
-                    self.showFrontText.toggle()
-                    self.showReverseText.toggle()
+                self.textView(text: self.flashCard.wrappedWord)
+                    .opacity(self.showAnswer ? 0 : 1)
+                    .animation(Animation.linear(duration: self.animationDuration / 2))
+                    .rotation3DEffect(.degrees(self.showAnswer ? 180 : 0), axis: (x: 1, y: 0, z: 0))
+                    .onTapGesture {
+                        self.showAnswer.toggle()
                 }
+                
+                if self.showAnswer {
+                    self.textView(text: self.flashCard.wrappedTranslation)
+                        .animation(.easeInOut(duration: 1.0))
+                        .transition(.asymmetric(
+                            insertion: AnyTransition.opacity.animation(Animation.easeInOut(duration: 0.5).delay(0.3)),
+                            removal: AnyTransition.opacity.animation(Animation.easeInOut(duration: 0.1))))
+                }
+            }
+            .frame(width: UIScreen.main.bounds.width)
+            .offset(x: self.goAway != GoAway.UNANSWERED ? CGFloat(self.goAway) * UIScreen.main.bounds.width : self.currentPosition.width)
+                
+            .gesture(DragGesture()
+            .onChanged { value in
+                self.timeCounter.start()
+                self.currentPosition = CGSize(width: value.translation.width, height: 0)
+                self.offsetPercentage = Double(value.translation.width) / 180 * 100
+            }
+            .onEnded { value in
+                print(self.offsetPercentage)
+                let interval = self.timeCounter.stop()
+                let translation = abs(value.translation.width)
+                let allowMove = translation > 180 ||
+                    (interval < 0.4 && translation > 50)
+                
+                if !allowMove {
+                    self.currentPosition = CGSize.zero
+                    self.offsetPercentage = 0
+                } else {
+                    if self.currentPosition.width > 0 {
+                        self.gamePlay.correctAnswers += 1
+                        self.goAway = GoAway.CORRECT
+                        self.offsetPercentage = 100
+                    } else {
+                        self.gamePlay.wrongAnswers += 1
+                        self.goAway = GoAway.WRONG
+                        self.offsetPercentage = -100
+                    }
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                        self.gamePlay.flashCards.removeAll(where: { $0 == self.flashCard })
+                        self.offsetPercentage = 0
+                    }
+                }
+            })
+                .onTapGesture {
+                    self.showAnswer.toggle()
+                    
+                    DispatchQueue.main.asyncAfter(deadline: .now() + self.animationDuration / 2) {
+                        self.showFrontText.toggle()
+                        self.showReverseText.toggle()
+                    }
+            }
+            if (self.offsetPercentage) > 10 {
+                GameStampView(offsetPercentage: self.offsetPercentage)
+            }
+            if (self.offsetPercentage) < -10 {
+                GameStampView(offsetPercentage: self.offsetPercentage)
+            }
         }
         
     }

@@ -20,7 +20,10 @@ class Timer: ObservableObject {
     }
     
     func stop() -> Double {
-        let interval = (Date()).timeIntervalSince(self.date!)
+        var interval: TimeInterval = (Date()).timeIntervalSince1970
+        if self.date != nil {
+            interval = (Date()).timeIntervalSince(self.date!)
+        }
         countingStarted = false
         return interval
     }
