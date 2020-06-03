@@ -55,10 +55,6 @@ struct StartGameView: View {
                             .fill(Color.white)
                             .cornerRadius(12)
                             .frame(height: 47)
-                            .overlay(
-                                RoundedRectangle(cornerRadius: 12)
-                                    .stroke(Color.secondaryBackgroundColor, lineWidth: 1)
-                        )
                             .padding(.leading, 40)
                             .padding(.trailing, 40)
                             
@@ -92,10 +88,6 @@ struct StartGameView: View {
                             .fill(Color.white)
                             .cornerRadius(12)
                             .frame(height: 47)
-                            .overlay(
-                                RoundedRectangle(cornerRadius: 12)
-                                    .stroke(Color.secondaryBackgroundColor, lineWidth: 1)
-                        )
                             .padding(.leading, 40)
                             .padding(.trailing, 40)
                             .onTapGesture {
