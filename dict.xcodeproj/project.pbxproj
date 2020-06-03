@@ -44,6 +44,7 @@
 		D66E508A2470BB76006B055C /* KeyboardGuardian.swift in Sources */ = {isa = PBXBuildFile; fileRef = D66E50892470BB76006B055C /* KeyboardGuardian.swift */; };
 		D6A8CE42247B61850048AA21 /* GamePlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6A8CE41247B61850048AA21 /* GamePlayView.swift */; };
 		D6B754E9248700470068C87A /* GameStampView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6B754E8248700470068C87A /* GameStampView.swift */; };
+		D6B754ED248851B10068C87A /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = D6B754EC248851B10068C87A /* README.md */; };
 		D6BC6CF52464E323007D754A /* ButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6BC6CF42464E323007D754A /* ButtonView.swift */; };
 		D6BC6CF724672800007D754A /* ActiveSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6BC6CF624672800007D754A /* ActiveSheetView.swift */; };
 		D6E7E21624833F14001481C7 /* OnBoardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6E7E21524833F14001481C7 /* OnBoardingView.swift */; };
@@ -90,6 +91,7 @@
 		D66E50892470BB76006B055C /* KeyboardGuardian.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardGuardian.swift; sourceTree = "<group>"; };
 		D6A8CE41247B61850048AA21 /* GamePlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamePlayView.swift; sourceTree = "<group>"; };
 		D6B754E8248700470068C87A /* GameStampView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameStampView.swift; sourceTree = "<group>"; };
+		D6B754EC248851B10068C87A /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		D6BC6CF42464E323007D754A /* ButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonView.swift; sourceTree = "<group>"; };
 		D6BC6CF624672800007D754A /* ActiveSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveSheetView.swift; sourceTree = "<group>"; };
 		D6E7E21524833F14001481C7 /* OnBoardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingView.swift; sourceTree = "<group>"; };
@@ -188,6 +190,7 @@
 				D64D510E2385CA920075AD3D /* Info.plist */,
 				D64D51012385CA900075AD3D /* dict.xcdatamodeld */,
 				D64D51082385CA920075AD3D /* Preview Content */,
+				D6B754EC248851B10068C87A /* README.md */,
 			);
 			path = dict;
 			sourceTree = "<group>";
@@ -304,6 +307,7 @@
 			files = (
 				D64D510D2385CA920075AD3D /* LaunchScreen.storyboard in Resources */,
 				D64D510A2385CA920075AD3D /* Preview Assets.xcassets in Resources */,
+				D6B754ED248851B10068C87A /* README.md in Resources */,
 				D64D51072385CA920075AD3D /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
