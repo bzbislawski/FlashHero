@@ -22,7 +22,7 @@ struct GameStampView: View {
             )
             .foregroundColor(self.gameStamp.color)
             .rotationEffect(.degrees(self.gameStamp.degrees))
-            .offset(x: CGFloat(self.gameStamp.offset), y: -100)
+            .offset(x: CGFloat(self.gameStamp.offset), y: -20)
             .opacity(abs(self.offsetPercentage / 100))
     }
 }
