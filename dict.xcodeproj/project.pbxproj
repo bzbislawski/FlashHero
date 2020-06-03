@@ -154,6 +154,7 @@
 		D64D50F12385CA900075AD3D = {
 			isa = PBXGroup;
 			children = (
+				D6B754EC248851B10068C87A /* README.md */,
 				D64D50FC2385CA900075AD3D /* dict */,
 				D64D50FB2385CA900075AD3D /* Products */,
 			);
@@ -190,7 +191,6 @@
 				D64D510E2385CA920075AD3D /* Info.plist */,
 				D64D51012385CA900075AD3D /* dict.xcdatamodeld */,
 				D64D51082385CA920075AD3D /* Preview Content */,
-				D6B754EC248851B10068C87A /* README.md */,
 			);
 			path = dict;
 			sourceTree = "<group>";
