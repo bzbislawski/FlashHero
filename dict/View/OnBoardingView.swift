@@ -37,33 +37,34 @@ struct OnBoardingView: View {
                 .padding(.bottom, 35)
                 .scaleEffect(animate0 ? 1 : 0.7)
                 
-                ForEach(0..<self.elements.count) { index in
-                    HStack {
-                        self.elements[index].image
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: 64, height: 64)
-                            .padding(.trailing, 20)
-
-                        VStack (alignment: .leading) {
-                            Text(self.elements[index].title).font(.system(size: 20, weight: .bold))
-                            Text(self.elements[index].description).font(.system(size: 16, weight: .medium)).foregroundColor(Color.quinaryBackgroundColor)
+                VStack {
+                    ForEach(0..<self.elements.count) { index in
+                        HStack {
+                            self.elements[index].image
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 64, height: 64)
+                                .padding(.trailing, 20)
+                            
+                            VStack (alignment: .leading) {
+                                Text(self.elements[index].title).font(.system(size: 20, weight: .bold))
+                                Text(self.elements[index].description).font(.system(size: 16, weight: .medium)).foregroundColor(Color.quinaryBackgroundColor)
+                            }
+                            Spacer()
                         }
-                        Spacer()
                     }
+                    .padding(.bottom, 20)
+                    Button(action: {
+                        self.viewRouter.updateView(tabName: .dictionary)
+                    }) {
+                        ButtonView(text: "CONTINUE", backgroundColor: Color.blue, horizontalPadding: 0)
+                    }
+                    .padding(.top, 40)
                 }
                 .frame(width: UIScreen.main.bounds.width * 0.8)
                 .padding(.bottom, 20)
                 .opacity(animate ? 1.0 : 0)
             }
-            
-            Button(action: {
-                self.viewRouter.updateView(tabName: .dictionary)
-            }) {
-                ButtonView(text: "CONTINUE", backgroundColor: Color.blue)
-            }
-            .padding(.top, 40)
-            .opacity(animate ? 1.0 : 0)
         }
         .offset(y: animate ? 0 : 220)
         .animation(Animation.linear(duration: 0.3).delay(0.3))
