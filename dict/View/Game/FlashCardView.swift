@@ -11,6 +11,7 @@ import SwiftUI
 struct FlashCardView: View {
     @EnvironmentObject var gamePlay: GamePlay
     @ObservedObject var timeCounter = Timer()
+    @ObservedObject var gameStampViewModel = GameStampViewModel()
     @State private var showAnswer = false
     @State private var showFrontText = true
     @State private var showReverseText = false
@@ -79,7 +80,6 @@ struct FlashCardView: View {
                 self.offsetPercentage = Double(value.translation.width) / 180 * 100
             }
             .onEnded { value in
-                print(self.offsetPercentage)
                 let interval = self.timeCounter.stop()
                 let translation = abs(value.translation.width)
                 let allowMove = translation > 180 ||
@@ -113,10 +113,10 @@ struct FlashCardView: View {
                     }
             }
             if (self.offsetPercentage) > 10 {
-                GameStampView(offsetPercentage: self.offsetPercentage)
+                GameStampView(gameStamp: self.gameStampViewModel.correctStamp, offsetPercentage: self.offsetPercentage)
             }
             if (self.offsetPercentage) < -10 {
-                GameStampView(offsetPercentage: self.offsetPercentage)
+                GameStampView(gameStamp: self.gameStampViewModel.wrongStamp, offsetPercentage: self.offsetPercentage)
             }
         }
         

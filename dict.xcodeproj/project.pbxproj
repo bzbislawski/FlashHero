@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BA07B5C62487AC2B004704D8 /* GameStampViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA07B5C52487AC2B004704D8 /* GameStampViewModel.swift */; };
+		BA07B5CA2487BCE1004704D8 /* GameStampModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA07B5C92487BCE1004704D8 /* GameStampModel.swift */; };
 		BA1760ED242193C900695ECB /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1760EC242193C900695ECB /* GameView.swift */; };
 		BA50F35023DB11FA005D624B /* FlashCard+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA50F34C23DB11FA005D624B /* FlashCard+CoreDataClass.swift */; };
 		BA50F35123DB11FA005D624B /* FlashCard+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA50F34D23DB11FA005D624B /* FlashCard+CoreDataProperties.swift */; };
@@ -49,6 +51,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		BA07B5C52487AC2B004704D8 /* GameStampViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameStampViewModel.swift; sourceTree = "<group>"; };
+		BA07B5C92487BCE1004704D8 /* GameStampModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameStampModel.swift; sourceTree = "<group>"; };
 		BA1760EC242193C900695ECB /* GameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
 		BA50F34C23DB11FA005D624B /* FlashCard+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FlashCard+CoreDataClass.swift"; sourceTree = "<group>"; };
 		BA50F34D23DB11FA005D624B /* FlashCard+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FlashCard+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -103,6 +107,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BA07B5C72487AC88004704D8 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				BA07B5C52487AC2B004704D8 /* GameStampViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		BA07B5C82487BCC9004704D8 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				BA07B5C92487BCE1004704D8 /* GameStampModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		BA776E482428098700EEC11D /* Dictionary */ = {
 			isa = PBXGroup;
 			children = (
@@ -148,6 +168,8 @@
 		D64D50FC2385CA900075AD3D /* dict */ = {
 			isa = PBXGroup;
 			children = (
+				BA07B5C82487BCC9004704D8 /* Model */,
+				BA07B5C72487AC88004704D8 /* ViewModel */,
 				D6343FB624684FE400502085 /* ActiveSheetHandler.swift */,
 				D666166424840D3400201BC9 /* Timer.swift */,
 				D66E50892470BB76006B055C /* KeyboardGuardian.swift */,
@@ -296,6 +318,7 @@
 				D63B466223D517EC008370C7 /* DeckView.swift in Sources */,
 				BA50F35323DB11FA005D624B /* Deck+CoreDataProperties.swift in Sources */,
 				D6A8CE42247B61850048AA21 /* GamePlayView.swift in Sources */,
+				BA07B5CA2487BCE1004704D8 /* GameStampModel.swift in Sources */,
 				D6BC6CF52464E323007D754A /* ButtonView.swift in Sources */,
 				BA8C74A7240533610021C19C /* SelectDecksView.swift in Sources */,
 				D66E508A2470BB76006B055C /* KeyboardGuardian.swift in Sources */,
@@ -309,6 +332,7 @@
 				D66668252386D311008421AB /* DictionaryView.swift in Sources */,
 				D6BC6CF724672800007D754A /* ActiveSheetView.swift in Sources */,
 				D666166524840D3400201BC9 /* Timer.swift in Sources */,
+				BA07B5C62487AC2B004704D8 /* GameStampViewModel.swift in Sources */,
 				BA50F35223DB11FA005D624B /* Deck+CoreDataClass.swift in Sources */,
 				BA50F35123DB11FA005D624B /* FlashCard+CoreDataProperties.swift in Sources */,
 				BADE723E24201BA5003E7EB1 /* CardsOrderView.swift in Sources */,
