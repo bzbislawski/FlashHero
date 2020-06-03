@@ -14,8 +14,8 @@ struct GameStampModel {
     var wrongGameStamp: GameStamp
     
     init() {
-        correctGameStamp = GameStamp(text: "CORRECT", color: Color.green, offset: -100, degrees: -30)
-        wrongGameStamp = GameStamp(text: "WRONG", color: Color.red, offset: 100, degrees: 30)
+        correctGameStamp = GameStamp(text: "CORRECT", color: Color.green, offset: -Int(UIScreen.main.bounds.width/2) + 120, degrees: -30)
+        wrongGameStamp = GameStamp(text: "WRONG", color: Color.red, offset: Int(UIScreen.main.bounds.width/2) - 120, degrees: 30)
     }
     
     struct GameStamp {

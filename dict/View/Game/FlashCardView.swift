@@ -36,8 +36,10 @@ struct FlashCardView: View {
             .bold()
             .font(.title)
             .foregroundColor(Color.white)
-            .frame(maxWidth: 280)
+            .frame(minWidth: 300, minHeight: 200)
             .shadow(radius: 10)
+            .padding(.leading, 60)
+            .padding(.trailing, 60)
     }
     
     var body: some View {
@@ -46,10 +48,12 @@ struct FlashCardView: View {
                 Rectangle()
                     .fill(LinearGradient(gradient: Gradient(colors: [deckColor.colorOne, deckColor.colorTwo]), startPoint: .topLeading, endPoint: .bottomTrailing))
                     .cornerRadius(10)
-                    .frame(width: 320, height: 200)
+                    .frame(minWidth: 320, minHeight: 200)
                     .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color.white, lineWidth: 4))
                     .shadow(radius: 20, x: 0, y: self.showAnswer ? -20 : 20)
                     .rotation3DEffect(.degrees(self.showAnswer ? 180 : 0), axis: (x: 1, y: 0, z: 0))
+                    .padding(.leading, 40)
+                    .padding(.trailing, 40)
                     .onTapGesture {
                         self.showAnswer.toggle()
                 }

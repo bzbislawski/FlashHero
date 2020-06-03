@@ -136,7 +136,7 @@ struct StartGameView: View {
                 
                 Spacer()
             }
-        }
+        }.frame(maxWidth: 600)
         .sheet(isPresented: $showSheet) {
             if self.sheetType == .vocabulary {
                 SelectDecksView().environmentObject(self.gameStatus).environmentObject(self.gamePlay)
