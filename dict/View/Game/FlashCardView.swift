@@ -40,6 +40,8 @@ struct FlashCardView: View {
             .shadow(radius: 10)
             .padding(.leading, 60)
             .padding(.trailing, 60)
+            .padding(.top, 10)
+            .padding(.bottom, 10)
     }
     
     var body: some View {
