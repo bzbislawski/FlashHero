@@ -50,7 +50,7 @@ struct DeckView: View {
                                 self.activeSheetHandler.activeDeck = self.deck
                                 self.activeSheetHandler.activeFlashCard = flashCard
                             }
-                            .frame(width: UIScreen.main.bounds.width / 2.8 , height: 100)
+                            .frame(width: 150, height: 100)
                             .padding(.leading, 20)
                         }
                         

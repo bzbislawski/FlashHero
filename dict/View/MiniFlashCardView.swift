@@ -34,7 +34,6 @@ struct MiniFlashCardView: View {
                 .bold()
                 .font(.system(size: 22))
                 .foregroundColor(Color.white)
-                .frame(maxWidth: 280)
                 .shadow(radius: 10)
                 .padding(.all, 10)
         }
