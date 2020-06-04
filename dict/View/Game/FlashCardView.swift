@@ -78,7 +78,7 @@ struct FlashCardView: View {
             }
             .frame(width: UIScreen.main.bounds.width)
             .offset(x: self.goAway != GoAway.UNANSWERED ? CGFloat(self.goAway) * UIScreen.main.bounds.width : self.currentPosition.width)
-                
+            .rotationEffect(.degrees(self.offsetPercentage / 100) * 5)
             .gesture(DragGesture()
             .onChanged { value in
                 self.timeCounter.start()
