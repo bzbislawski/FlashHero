@@ -2,9 +2,9 @@
 
 # FlashHero
 
-This is a support page for a FlashHero. FlashHero is a iOS application.
+FlashHero is a learning app for iOS.
 
-### Contact
+### Credits
 Bartosz Zbislawski
 
 E-Mail: bzbislawski@gmail.com
